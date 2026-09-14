@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dhyjjervnss7y"]
+
+[ext_resource type="Script" uid="uid://cktaibrcr10b5" path="res://odins_tests/character_body_3d.gd" id="1_nivlf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
+size = Vector2(200, 200)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gm6uc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gm6uc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gm6uc"]
+
+[node name="Node3D" type="Node3D" unique_id=1439589701]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1370048584]
+mesh = SubResource("PlaneMesh_gm6uc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=153640908]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1858435546]
+shape = SubResource("WorldBoundaryShape3D_gm6uc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1485666996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8332479, -3.491116)
+mesh = SubResource("BoxMesh_gm6uc")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1201956425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3099248, 0)
+script = ExtResource("1_nivlf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=661075198]
+layers = 2
+mesh = SubResource("CapsuleMesh_gm6uc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=996736188]
+shape = SubResource("CapsuleShape3D_gm6uc")
+
+[node name="Camera" type="Camera3D" parent="CharacterBody3D" unique_id=1704766480]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, 0)
+cull_mask = 1048573
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1728845211]
+transform = Transform3D(0.91280603, -0.27103814, 0.3054889, 0, 0.74802613, 0.6636693, -0.40839338, -0.60580134, 0.6828028, 0, 0, 0)
