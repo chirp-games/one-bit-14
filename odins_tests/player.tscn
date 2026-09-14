@@ -1,10 +1,23 @@
 [gd_scene format=3 uid="uid://hqg4c2sf4rmk"]
 
 [ext_resource type="Script" uid="uid://cktaibrcr10b5" path="res://odins_tests/character_body_3d.gd" id="1_pgy84"]
+[ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_xk2t1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gm6uc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gm6uc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6fuyk"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2riv1"]
+render_priority = 0
+shader = ExtResource("2_xk2t1")
+shader_parameter/thickness = 0.70000000298024
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.3499999921768
+shader_parameter/edge_fade = 0.006000000285
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=516948197 groups=["gravity_body"]]
 script = ExtResource("1_pgy84")
@@ -16,7 +29,11 @@ mesh = SubResource("CapsuleMesh_gm6uc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=748064783]
 shape = SubResource("CapsuleShape3D_gm6uc")
 
-[node name="Camera" type="Camera3D" parent="." unique_id=577193140]
+[node name="Camera" type="Camera3D" parent="." unique_id=15610491]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, 0)
-cull_mask = 1048573
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40901852, 0.29192686)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera" unique_id=548381793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52975893)
+mesh = SubResource("QuadMesh_6fuyk")
+surface_material_override/0 = SubResource("ShaderMaterial_2riv1")

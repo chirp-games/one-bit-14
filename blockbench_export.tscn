@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://2w8vd4dmwvcu"]
+
+[ext_resource type="PackedScene" uid="uid://c26vkcxiivi0f" path="res://assets/blockbench/box.gltf" id="1_02iw0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgggf"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="blockbench_export" unique_id=1174974 instance=ExtResource("1_02iw0")]
+
+[node name="mesh" parent="." index="0" unique_id=1746691692]
+material_override = SubResource("StandardMaterial3D_vgggf")

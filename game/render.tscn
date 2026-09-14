@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://0ikx7ckdqk7r"]
+
+[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://odins_tests/player.tscn" id="1_i6pon"]
+[ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
+[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_i6pon"]
+[ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
+[ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0c34"]
+load_path = "res://.godot/imported/bayer16.png-3d835ff1015e98cbbdb7f177a7f4a9f3.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vv1mp"]
+shader = ExtResource("1_kmdim")
+shader_parameter/u_dither_tex = SubResource("CompressedTexture2D_a0c34")
+shader_parameter/u_color_tex = ExtResource("2_i6pon")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.42
+shader_parameter/u_offset = 0.0
+shader_parameter/u_dither_size = 2
+
+[sub_resource type="Environment" id="Environment_km8ha"]
+background_mode = 1
+ambient_light_energy = 6.36
+
+[node name="RenderGame" type="Control" unique_id=960045773]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2021350572]
+material = SubResource("ShaderMaterial_vv1mp")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1056115267]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=516948197 instance=ExtResource("1_i6pon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0810328, 0)
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1439589701 instance=ExtResource("2_itw3e")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=1413200284]
+environment = SubResource("Environment_km8ha")
+
+[node name="Comment" parent="." unique_id=2120769087 instance=ExtResource("5_vgggf")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = -118.0
+offset_right = 997.0
+offset_bottom = 89.0
+text = "This is the main game rendering scene. It handles the shaders.
+The SubViewport contains the player, the level, and the camera."

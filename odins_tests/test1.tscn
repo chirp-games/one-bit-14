@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3099248, 0)
 transform = Transform3D(0.91280603, -0.27103814, 0.3054889, 0, 0.74802613, 0.6636693, -0.40839338, -0.60580134, 0.6828028, 0, 0, 0)
 
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("2_wbep5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.411955, -3.115499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7404556e-05, 3.414713, -3.1154466)
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("3_3435s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.990569, 1.9961321, -2.1979282)

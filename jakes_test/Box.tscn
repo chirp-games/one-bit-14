@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dkx82op2hp5ul"]
 
-[ext_resource type="PackedScene" uid="uid://c26vkcxiivi0f" path="res://assets/blockbench/box.gltf" id="1_echrq"]
+[ext_resource type="PackedScene" uid="uid://2w8vd4dmwvcu" path="res://blockbench_export.tscn" id="1_echrq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_os57d"]
 
 [node name="Box" type="RigidBody3D" unique_id=1398796155 groups=["gravity_body", "pushable"]]
 
-[node name="blockbench_export" parent="." unique_id=1174974 instance=ExtResource("1_echrq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49255657, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=43976353]
 shape = SubResource("BoxShape3D_os57d")
+
+[node name="blockbench_export" parent="." unique_id=1174974 instance=ExtResource("1_echrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5033506, 0)
