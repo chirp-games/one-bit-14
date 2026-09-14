@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://nwp6vrv2duhn"]
+
+[ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_1mytf"]
+[ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_1mytf"]
+[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="3_vv1mp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dourk"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0c34"]
+render_priority = 0
+shader = ExtResource("2_1mytf")
+shader_parameter/thickness = 0.70000000298024
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.3499999921768
+shader_parameter/edge_fade = 0.006000000285
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km8ha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_km8ha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikshe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0c34"]
+load_path = "res://.godot/imported/bayer16.png-3d835ff1015e98cbbdb7f177a7f4a9f3.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vv1mp"]
+shader = ExtResource("1_1mytf")
+shader_parameter/u_dither_tex = SubResource("CompressedTexture2D_a0c34")
+shader_parameter/u_color_tex = ExtResource("3_vv1mp")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.42
+shader_parameter/u_offset = 0.0
+shader_parameter/u_dither_size = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_km8ha"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Environment" id="Environment_km8ha"]
+background_mode = 1
+ambient_light_energy = 6.36
+
+[node name="VisualsTest" type="Node3D" unique_id=905520475]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1056115267]
+size = Vector2i(1920, 1080)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1233880574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5151286)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Camera3D" unique_id=1490805508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52975893)
+mesh = SubResource("QuadMesh_dourk")
+surface_material_override/0 = SubResource("ShaderMaterial_a0c34")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1887710698]
+physics_material_override = SubResource("PhysicsMaterial_km8ha")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=917334864]
+transform = Transform3D(0.7985081, 0, 0.6019841, 0, 1, 0, -0.6019841, 0, 0.7985081, 0.5567777, 0, 0)
+mesh = SubResource("BoxMesh_km8ha")
+surface_material_override/0 = SubResource("ShaderMaterial_ikshe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=742843622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3646885, 0.800307, 0)
+mesh = SubResource("BoxMesh_km8ha")
+surface_material_override/0 = SubResource("ShaderMaterial_ikshe")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=397744398]
+material = SubResource("ShaderMaterial_vv1mp")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_km8ha")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1413200284]
+environment = SubResource("Environment_km8ha")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=204858988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3467307, -0.0530926, 3.044342)
