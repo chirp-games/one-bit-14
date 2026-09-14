@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://krvyuv8d8hwc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdqni"]
+albedo_color = Color(0.02745098, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3fx5"]
+material = SubResource("StandardMaterial3D_qdqni")
+size = Vector3(1, 0.189, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
+size = Vector3(1, 0.188, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvabg"]
+albedo_color = Color(1, 0.09803922, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
+material = SubResource("StandardMaterial3D_tvabg")
+size = Vector3(0.75, 0.126, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qaqa3"]
+size = Vector3(0.7519531, 0.12597656, 0.7529297)
+
+[node name="Button" type="Node3D" unique_id=8617206]
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=866226941]
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../RigidBody3D")
+linear_limit_y/lower_distance = -0.063
+linear_spring_y/enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=233320325]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1756103625]
+mesh = SubResource("BoxMesh_h3fx5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1082409053]
+shape = SubResource("BoxShape3D_gm6uc")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1138465487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158, 0)
+constant_force = Vector3(0, 14.715, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1613541808]
+mesh = SubResource("BoxMesh_gm6uc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=461272800]
+shape = SubResource("BoxShape3D_qaqa3")
