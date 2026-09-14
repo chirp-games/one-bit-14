@@ -4,6 +4,30 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0xfd7"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_0xfd7"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4nys"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_s8rmi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_f4nys"]
+offsets = PackedFloat32Array(0.4875, 0.66875, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.17073166, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0xfd7"]
+gradient = SubResource("Gradient_f4nys")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f4nys"]
+viewport_path = NodePath("SubViewport")
+
 [node name="BlackHole" type="Node3D" unique_id=1549274347]
 script = ExtResource("2_87a4u")
 gravity = 15
@@ -13,3 +37,61 @@ gravity = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1539919368]
 shape = SubResource("SphereShape3D_0xfd7")
 debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1724065712]
+mesh = SubResource("SphereMesh_0xfd7")
+surface_material_override/0 = SubResource("StandardMaterial3D_f4nys")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1870607899]
+transparent_bg = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport" unique_id=670361001]
+position = Vector2(256, 256)
+scale = Vector2(8, 8)
+amount = 30
+preprocess = 0.5
+randomness = 0.1
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_inner_radius = 2.0
+emission_ring_radius = 4.0
+spread = 100.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 42.35
+angular_velocity_max = 127.06
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.5
+tangential_accel_max = 20.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_s8rmi")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SubViewport" unique_id=460614562]
+position = Vector2(256, 256)
+scale = Vector2(8, 8)
+amount = 15
+preprocess = 0.5
+randomness = 0.1
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_inner_radius = 4.0
+emission_ring_radius = 6.0
+spread = 100.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 42.35
+angular_velocity_max = 127.06
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.5
+tangential_accel_max = 20.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_s8rmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=722846524]
+position = Vector2(257, 256)
+texture = SubResource("GradientTexture2D_0xfd7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1908499150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5265765e-05, 0.00047187507, -1.04904175e-05)
+billboard = 1
+texture = SubResource("ViewportTexture_f4nys")
