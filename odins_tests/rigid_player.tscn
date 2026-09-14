@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cwowogxc3ky8f"]
+
+[ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://odins_tests/rigid_player.gd" id="1_hk5cy"]
+[ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yf5fn"]
+
+[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_hk5cy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040988011]
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2050455832]
+mesh = SubResource("CapsuleMesh_yf5fn")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1645967111]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604, 0)
+
+[node name="blockbench_export" parent="Camera" unique_id=1472070164 instance=ExtResource("2_wcbod")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28370488, -0.32274288, -0.32797295)
