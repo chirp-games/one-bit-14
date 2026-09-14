@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dhyjjervnss7y"]
 
-[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://game/objects/player.tscn" id="1_nivlf"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="2_wbep5"]
 [ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="3_3435s"]
+[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://odins_tests/rigid_player.tscn" id="3_qdqni"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
@@ -19,9 +19,6 @@ mesh = SubResource("PlaneMesh_gm6uc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1858435546]
 shape = SubResource("WorldBoundaryShape3D_gm6uc")
 
-[node name="CharacterBody3D" parent="." unique_id=516948197 instance=ExtResource("1_nivlf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3099248, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1728845211]
 transform = Transform3D(0.91280603, -0.27103814, 0.3054889, 0, 0.74802613, 0.6636693, -0.40839338, -0.60580134, 0.6828028, 0, 0, 0)
 
@@ -33,3 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.990569, 1.9961321, -2.19792
 
 [node name="Box2" parent="." unique_id=1246468868 groups=["gravity_body", "pushable"] instance=ExtResource("3_3435s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2697603, 2.6422133, -3.9167328)
+
+[node name="RigidPlayer" parent="." unique_id=68552729 instance=ExtResource("3_qdqni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
