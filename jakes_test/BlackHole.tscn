@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dw6jd0bf8s3uc"]
+
+[ext_resource type="Script" uid="uid://b7u6sajcx8xuy" path="res://jakes_test/center_of_gravity.gd" id="2_87a4u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0xfd7"]
+
+[node name="BlackHole" type="Node3D" unique_id=1549274347]
+script = ExtResource("2_87a4u")
+gravity = 15
+
+[node name="Area3D" type="Area3D" parent="." unique_id=438350043]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1539919368]
+shape = SubResource("SphereShape3D_0xfd7")
+debug_color = Color(1, 0, 0, 0.41960785)
