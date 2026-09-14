@@ -35,17 +35,18 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x += direction.x * SPEED
+		velocity.z += direction.z * SPEED
 
 	# Push the pushable objects
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		var obj: CollisionObject3D = c.get_collider()
 		if obj is RigidBody3D and obj.is_in_group("pushable"):
-			c.get_collider().apply_force(-c.get_normal())
+			c.get_collider().apply_impulse(-c.get_normal() * .2)
 	
 	move_and_slide()
+	
+	if direction:
+		velocity.x -= direction.x * SPEED
+		velocity.z -= direction.z * SPEED
