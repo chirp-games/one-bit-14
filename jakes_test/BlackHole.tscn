@@ -30,7 +30,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="BlackHole" type="Node3D" unique_id=1549274347]
 script = ExtResource("2_87a4u")
-gravity = 15
+gravity = 60
 
 [node name="Area3D" type="Area3D" parent="." unique_id=438350043]
 
