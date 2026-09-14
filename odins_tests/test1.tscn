@@ -7,6 +7,9 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3435s"]
+friction = 0.3
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gm6uc"]
 
 [node name="Node3D" type="Node3D" unique_id=1439589701]
@@ -15,6 +18,7 @@ size = Vector2(200, 200)
 mesh = SubResource("PlaneMesh_gm6uc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=153640908]
+physics_material_override = SubResource("PhysicsMaterial_3435s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1858435546]
 shape = SubResource("WorldBoundaryShape3D_gm6uc")
