@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwowogxc3ky8f"]
 
-[ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://odins_tests/rigid_player.gd" id="1_hk5cy"]
+[ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://game/objects/rigid_player.gd" id="1_hk5cy"]
 [ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgyp3u5tvaeyv"]
 
 [ext_resource type="PackedScene" uid="uid://oih77xyu7f4" path="res://game/objects/world_floor.tscn" id="1_15okj"]
-[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://game/objects/player.tscn" id="2_hj65a"]
+[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="2_hj65a"]
 [ext_resource type="PackedScene" uid="uid://bfq4lo4tjmhta" path="res://game/objects/wall.tscn" id="3_tuvkr"]
 
 [node name="Level1" type="Node3D" unique_id=1801648244]

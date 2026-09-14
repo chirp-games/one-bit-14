@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0ikx7ckdqk7r"]
 
-[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://game/objects/player.tscn" id="1_i6pon"]
+[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="1_i6pon"]
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_i6pon"]
 [ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
