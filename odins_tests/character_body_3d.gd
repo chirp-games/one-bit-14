@@ -5,7 +5,6 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const LOOK_VELOCITY_Y = 0.01
 
-
 @onready var camera = %Camera
 
 func _ready() -> void:
@@ -44,4 +43,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	# Push the pushable objects
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		var obj: CollisionObject3D = c.get_collider()
+		if obj is RigidBody3D and obj.is_in_group("pushable"):
+			c.get_collider().apply_central_impulse(-c.get_normal() * .2)
+	
 	move_and_slide()
