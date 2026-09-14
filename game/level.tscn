@@ -15,6 +15,7 @@ mesh = SubResource("PlaneMesh_gm6uc")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=153640908]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1858435546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.178321, 0)
 shape = SubResource("WorldBoundaryShape3D_gm6uc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1728845211]

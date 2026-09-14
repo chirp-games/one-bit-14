@@ -7,11 +7,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gm6uc"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_6fuyk"]
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2riv1"]
-
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=516948197 groups=["gravity_body"]]
 script = ExtResource("1_pgy84")
 
@@ -24,13 +19,8 @@ shape = SubResource("CapsuleShape3D_gm6uc")
 
 [node name="Camera" type="Camera3D" parent="." unique_id=15610491]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, -0.07492745)
 cull_mask = 1048573
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera" unique_id=548381793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.52975893)
-mesh = SubResource("QuadMesh_6fuyk")
-surface_material_override/0 = SubResource("ShaderMaterial_2riv1")
 
 [node name="blockbench_export" parent="Camera" unique_id=1117988435 instance=ExtResource("2_xk2t1")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28370488, -0.32274288, -0.32797295)
