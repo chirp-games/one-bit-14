@@ -35,5 +35,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.411955, -3.115499)
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("3_3435s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.990569, 1.9961321, -2.1979282)
 
-[node name="Box2" parent="." unique_id=1246468868 groups=["gravity_body"] instance=ExtResource("3_3435s")]
+[node name="Box2" parent="." unique_id=1246468868 groups=["gravity_body", "pushable"] instance=ExtResource("3_3435s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2697603, 2.6422133, -3.9167328)
