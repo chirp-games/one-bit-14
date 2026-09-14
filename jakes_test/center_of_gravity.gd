@@ -10,6 +10,6 @@ func _physics_process(delta: float) -> void:
 		var apply_gravity = gravity * delta * (1. / float(pow(dist, 2.))) * body.global_position.direction_to(global_position)
 		
 		if body is RigidBody3D:
-			body.apply_central_impulse(apply_gravity)
+			body.apply_impulse(apply_gravity)
 		if body is CharacterBody3D:
 			body.velocity += apply_gravity
