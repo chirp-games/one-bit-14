@@ -9,8 +9,6 @@ const LOOK_VELOCITY_Y = 0.01
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	add_to_group("gravity_body")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -21,7 +19,7 @@ func _input(event: InputEvent) -> void:
 		camera.rotate_x(
 			mouse_event.relative.y * -LOOK_VELOCITY_Y
 		)
-		camera.rotation.x = clampf(camera.rotation.x, -PI, PI)
+		camera.rotation.x = clampf(camera.rotation.x, -PI/2, PI/2)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
