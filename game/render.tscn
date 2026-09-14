@@ -37,13 +37,13 @@ handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=516948197 instance=ExtResource("1_i6pon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0810328, 0)
-
-[node name="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1439589701 instance=ExtResource("2_itw3e")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=1413200284]
 environment = SubResource("Environment_km8ha")
+
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=516948197 instance=ExtResource("1_i6pon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0810328, 2.7141576)
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1439589701 instance=ExtResource("2_itw3e")]
 
 [node name="Comment" parent="." unique_id=2120769087 instance=ExtResource("5_vgggf")]
 layout_mode = 0
