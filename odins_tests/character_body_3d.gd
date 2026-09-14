@@ -46,6 +46,6 @@ func _physics_process(delta: float) -> void:
 		var c = get_slide_collision(i)
 		var obj: CollisionObject3D = c.get_collider()
 		if obj is RigidBody3D and obj.is_in_group("pushable"):
-			c.get_collider().apply_force(-c.get_normal())
+			c.get_collider().apply_central_impulse(-c.get_normal() * .2)
 	
 	move_and_slide()
