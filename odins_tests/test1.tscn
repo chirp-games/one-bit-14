@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dhyjjervnss7y"]
 
-[ext_resource type="Script" uid="uid://cktaibrcr10b5" path="res://odins_tests/character_body_3d.gd" id="1_nivlf"]
+[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://odins_tests/player.tscn" id="1_nivlf"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="2_wbep5"]
+[ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://odins_tests/box.tscn" id="3_3435s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
@@ -9,10 +10,6 @@ size = Vector2(200, 200)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gm6uc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_gm6uc"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gm6uc"]
 
 [node name="Node3D" type="Node3D" unique_id=1439589701]
 
@@ -28,24 +25,15 @@ shape = SubResource("WorldBoundaryShape3D_gm6uc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8332479, -3.491116)
 mesh = SubResource("BoxMesh_gm6uc")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1201956425]
+[node name="CharacterBody3D" parent="." unique_id=516948197 instance=ExtResource("1_nivlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3099248, 0)
-script = ExtResource("1_nivlf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=661075198]
-layers = 2
-mesh = SubResource("CapsuleMesh_gm6uc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=996736188]
-shape = SubResource("CapsuleShape3D_gm6uc")
-
-[node name="Camera" type="Camera3D" parent="CharacterBody3D" unique_id=1704766480]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, 0)
-cull_mask = 1048573
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1728845211]
 transform = Transform3D(0.91280603, -0.27103814, 0.3054889, 0, 0.74802613, 0.6636693, -0.40839338, -0.60580134, 0.6828028, 0, 0, 0)
 
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("2_wbep5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.411955, -3.115499)
+gravity = 424
+
+[node name="Box" parent="." unique_id=1246468868 instance=ExtResource("3_3435s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2697603, 2.6422133, -3.9167328)
