@@ -42,6 +42,7 @@ background_mode = 1
 ambient_light_energy = 6.36
 
 [node name="VisualsTest" type="Node3D" unique_id=905520475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018547058, 0)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1056115267]
 size = Vector2i(1920, 1080)

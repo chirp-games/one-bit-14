@@ -17,9 +17,9 @@ mesh = SubResource("CapsuleMesh_gm6uc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=748064783]
 shape = SubResource("CapsuleShape3D_gm6uc")
 
-[node name="Camera" type="Camera3D" parent="." unique_id=577193140]
+[node name="Camera" type="Camera3D" parent="." unique_id=15610491]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60438704, -0.07492745)
 cull_mask = 1048573
 
 [node name="blockbench_export" parent="Camera" unique_id=1117988435 instance=ExtResource("2_xk2t1")]
