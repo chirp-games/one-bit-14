@@ -10,6 +10,8 @@ const LOOK_VELOCITY_Y = 0.01
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	add_to_group("gravity_body")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
