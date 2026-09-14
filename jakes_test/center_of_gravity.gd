@@ -13,5 +13,3 @@ func _physics_process(delta: float) -> void:
 			body.apply_central_impulse(apply_gravity)
 		if body is CharacterBody3D:
 			body.velocity += apply_gravity
-
-		print(apply_gravity / delta)
