@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dhyjjervnss7y"]
 
-[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://odins_tests/player.tscn" id="1_nivlf"]
+[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://game/objects/player.tscn" id="1_nivlf"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="2_wbep5"]
-[ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://odins_tests/box.tscn" id="3_3435s"]
+[ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="3_3435s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)

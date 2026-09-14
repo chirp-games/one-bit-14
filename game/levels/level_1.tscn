@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cgyp3u5tvaeyv"]
+
+[ext_resource type="PackedScene" uid="uid://oih77xyu7f4" path="res://game/objects/world_floor.tscn" id="1_15okj"]
+[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://game/objects/player.tscn" id="2_hj65a"]
+[ext_resource type="PackedScene" uid="uid://bfq4lo4tjmhta" path="res://game/objects/wall.tscn" id="3_tuvkr"]
+
+[node name="Level1" type="Node3D" unique_id=1801648244]
+
+[node name="WorldFloor" parent="." unique_id=2113957581 instance=ExtResource("1_15okj")]
+
+[node name="CharacterBody3D" parent="." unique_id=516948197 instance=ExtResource("2_hj65a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1739010610]
+transform = Transform3D(0.3183448, 0.9476674, -0.024141595, -0.79454225, 0.28062367, 0.5384728, 0.51706797, -0.15223855, 0.84229696, 0, 0, 0)
+visible = false
+
+[node name="Walls" type="Node3D" parent="." unique_id=832539447]
+
+[node name="Wall" parent="Walls" unique_id=1029208964 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 2)
+
+[node name="Wall2" parent="Walls" unique_id=767712228 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 2, 0)
+
+[node name="Wall3" parent="Walls" unique_id=1035068372 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="Wall4" parent="Walls" unique_id=1394805315 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 2, -5)
+
+[node name="Wall5" parent="Walls" unique_id=291501463 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -5)
+
+[node name="Wall6" parent="Walls" unique_id=1059347469 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 2, -10)
+
+[node name="Wall7" parent="Walls" unique_id=183698872 instance=ExtResource("3_tuvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
