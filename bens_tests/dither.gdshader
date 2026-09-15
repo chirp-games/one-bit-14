@@ -12,7 +12,9 @@ uniform sampler2D u_color_tex;
 uniform int u_bit_depth;
 uniform float u_contrast;
 uniform float u_offset;
+uniform float noiseyness;
 uniform int u_dither_size;
+uniform sampler2D noise;
 
 void fragment() 
 {
@@ -58,7 +60,7 @@ void fragment()
 	ivec2 noise_size = textureSize(u_dither_tex, 0);
 	vec2 inv_noise_size = vec2(1.0 / float(noise_size.x), 1.0 / float(noise_size.y));
 	vec2 noise_uv = UV * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
-	float threshold = texture(u_dither_tex, noise_uv).r;
+	float threshold = texture(u_dither_tex, noise_uv).a + (texture(u_dither_tex, noise_uv).r * noiseyness);
 	
 	// adjust the dither slightly so min and max aren't quite at 0.0 and 1.0
 	// otherwise we wouldn't get fullly dark and fully light dither patterns at lum 0.0 and 1.0
