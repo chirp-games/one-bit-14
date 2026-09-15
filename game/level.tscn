@@ -66,7 +66,7 @@ speed = 0.1
 
 [node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_3gsf4")]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.090371, 3.1421928, 3.9468808)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.090371, 3.1421928, 3.9468808)
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]

@@ -1,12 +1,14 @@
 extends Node3D
 
+func _ready() -> void:
+	%Door.open()
 
 func _on_button_1_pushed() -> void:
 	print("pushed")
 	%PathPlatform.movement_mode = PathFollowPlatform.MovementMode.Forward
-	%Door.open()
+	%Door.close()
 
 func _on_button_1_released() -> void:
 	print("released")
 	%PathPlatform.movement_mode = PathFollowPlatform.MovementMode.Back
-	%Door.close()
+	%Door.open()
