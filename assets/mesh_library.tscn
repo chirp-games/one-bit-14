@@ -4,4 +4,4 @@
 
 [node name="MeshLibrary" type="Node3D" unique_id=1727511061]
 
-[node name="floortile" parent="." unique_id=705793881 instance=ExtResource("1_uxvh2")]
+[node name="floor_a" parent="." unique_id=705793881 instance=ExtResource("1_uxvh2")]
