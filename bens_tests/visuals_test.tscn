@@ -37,17 +37,19 @@ reflected_light_source = 1
 frequency = 0.1603
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmxxu"]
+width = 128
+height = 128
 noise = SubResource("FastNoiseLite_ptwua")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vv1mp"]
 shader = ExtResource("1_1mytf")
 shader_parameter/u_dither_tex = ExtResource("3_cmxxu")
 shader_parameter/u_color_tex = ExtResource("3_vv1mp")
-shader_parameter/u_bit_depth = 255
-shader_parameter/u_contrast = 0.5
-shader_parameter/u_offset = 0.0
+shader_parameter/u_bit_depth = 128
+shader_parameter/u_contrast = 0.975
+shader_parameter/u_offset = 0.125
 shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 1
+shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_cmxxu")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_km8ha"]
@@ -64,14 +66,14 @@ viewport_path = NodePath("LinesViewport")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018547058, 0)
 
 [node name="DitheringViewport" type="SubViewport" parent="." unique_id=723171075]
-size = Vector2i(800, 450)
+size = Vector2i(1920, 1080)
 
 [node name="Camera3DDither" type="Camera3D" parent="DitheringViewport" unique_id=772487782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.515)
 cull_mask = 1047553
 
 [node name="LinesViewport" type="SubViewport" parent="." unique_id=1970147825]
-size = Vector2i(800, 450)
+size = Vector2i(1920, 1080)
 
 [node name="Camera3DLines" type="Camera3D" parent="LinesViewport" unique_id=1233880574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5151286)

@@ -1,24 +1,32 @@
 [gd_scene format=3 uid="uid://bhk0eswhskkve"]
 
+[ext_resource type="Shader" uid="uid://dkba472br2yca" path="res://game/floor_shader.gdshader" id="1_8bv7i"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="2_8bv7i"]
+[ext_resource type="Texture2D" uid="uid://diruwriwyvueh" path="res://bens_tests/test_floor.png" id="2_uk5k8"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="2_xssv6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xssv6"]
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.9384497, 0.9384497, 0.9384497, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uk5k8"]
+render_priority = 0
+shader = ExtResource("1_8bv7i")
+shader_parameter/TEX = ExtResource("2_uk5k8")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gm6uc"]
 
+[sub_resource type="Environment" id="Environment_uk5k8"]
+background_mode = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 9.73
+
 [node name="Level" type="Node3D" unique_id=1439589701]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1370048584]
 mesh = SubResource("PlaneMesh_gm6uc")
-surface_material_override/0 = SubResource("StandardMaterial3D_xssv6")
+surface_material_override/0 = SubResource("ShaderMaterial_uk5k8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=153640908]
 physics_material_override = SubResource("PhysicsMaterial_xssv6")
@@ -44,3 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 17)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2142506758]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=165301731]
+environment = SubResource("Environment_uk5k8")

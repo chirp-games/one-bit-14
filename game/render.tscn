@@ -9,10 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="7_t7a8y"]
 [ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="8_n6cbj"]
 
-[sub_resource type="Environment" id="Environment_km8ha"]
-background_mode = 1
-ambient_light_energy = 6.36
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2ga11"]
 frequency = 0.1603
 
@@ -24,10 +20,10 @@ shader = ExtResource("1_kmdim")
 shader_parameter/u_dither_tex = ExtResource("7_t7a8y")
 shader_parameter/u_color_tex = ExtResource("2_i6pon")
 shader_parameter/u_bit_depth = 255
-shader_parameter/u_contrast = 0.5
-shader_parameter/u_offset = 0.0
+shader_parameter/u_contrast = 0.975
+shader_parameter/u_offset = 0.125
 shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 1.3
+shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_cmxxu")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rp5g8"]
@@ -53,12 +49,6 @@ offset_right = 997.0
 offset_bottom = 89.0
 text = "This is the main game rendering scene. It handles the shaders.
 The SubViewport contains the player, the level, and the camera."
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1413200284]
-environment = SubResource("Environment_km8ha")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=318923583]
-light_energy = 0.1
 
 [node name="Level" parent="." unique_id=1439589701 instance=ExtResource("2_itw3e")]
 

@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5975315, 0)
 
 [node name="DitherViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=713050419]
 unique_name_in_owner = true
-size = Vector2i(800, 450)
+size = Vector2i(1920, 1080)
 
 [node name="CameraDither" type="Camera3D" parent="Mesh/Cameras/DitherViewport" unique_id=1645967111]
 unique_name_in_owner = true
@@ -52,7 +52,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28
 
 [node name="OutlineViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=1534705054]
 unique_name_in_owner = true
-size = Vector2i(800, 450)
+size = Vector2i(1920, 1080)
 
 [node name="CameraOutline" type="Camera3D" parent="Mesh/Cameras/OutlineViewport" unique_id=143785601]
 unique_name_in_owner = true
