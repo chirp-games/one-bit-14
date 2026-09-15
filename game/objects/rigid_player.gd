@@ -1,12 +1,11 @@
 extends RigidBody3D
 
 const WALK_FORCE = 30
-const AIR_WALK_FORCE = 15
+const AIR_WALK_FORCE = 10
 const JUMP_IMPULSE = 5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
-const MAX_GROUND_VELOCITY = 7
-const MAX_AIR_VELOCITY = 50
+const MAX_GROUND_VELOCTIY = 7
 
 var cayote_timer = 0
 var on_floor: bool = false
@@ -44,25 +43,23 @@ func _physics_process(delta: float) -> void:
 
 	if on_floor:
 		cayote_timer = 0
-		clamp_players_velocity(MAX_GROUND_VELOCITY)
-	else:
-		clamp_players_velocity(MAX_AIR_VELOCITY)
-
-	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
-		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
-		print("HERE")
-		cayote_timer += 100
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	# You can't walk in a direction if you are not on the floor
-	if direction and on_floor:
-		self.physics_material_override.friction = 1
-		apply_central_force(direction * WALK_FORCE)
+	if on_floor:
+		if direction:
+			clamp_players_velocity(MAX_GROUND_VELOCTIY)
+			apply_central_force(direction * WALK_FORCE)
+		else:
+			# Slow down the player when they are not pressing any keys on the ground
+			clamp_players_velocity(MAX_GROUND_VELOCTIY * (1 - delta) / 5)
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE)
-		self.physics_material_override.friction = 10
+
+	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
+		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
+		cayote_timer += 100
 
 # Hack to move the camera to the right position
 func _process(_delta: float) -> void:
