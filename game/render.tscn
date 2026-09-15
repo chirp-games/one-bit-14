@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_i6pon"]
 [ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
-[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://odins_tests/rigid_player.tscn" id="4_vgggf"]
+[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0c34"]
@@ -16,6 +16,7 @@ shader_parameter/u_color_tex = ExtResource("2_i6pon")
 shader_parameter/u_bit_depth = 32
 shader_parameter/u_contrast = 0.42
 shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = 0.0
 shader_parameter/u_dither_size = 2
 
 [sub_resource type="Environment" id="Environment_km8ha"]
