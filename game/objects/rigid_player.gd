@@ -10,7 +10,10 @@ const GROUND_FRICTION = 1.25
 var cayote_timer = 0
 var on_floor: bool = false
 
-@onready var camera = %Camera
+@onready var dither_viewport: SubViewport = %DitherViewport
+@onready var outline_viewport: SubViewport = %OutlineViewport
+
+@onready var camera = %Cameras
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +36,6 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
-		print("HELLO")
 		cayote_timer += 100
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
@@ -44,6 +46,13 @@ func _physics_process(delta: float) -> void:
 
 	if direction:
 		apply_central_force(direction * WALK_FORCE)
+
+func _process(delta: float) -> void:
+	%CameraDither.global_position = %Cameras.global_position
+	%CameraDither.global_rotation = %Cameras.global_rotation
+	%CameraOutline.global_position = %Cameras.global_position
+	%CameraOutline.global_rotation = %Cameras.global_rotation
+	
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
