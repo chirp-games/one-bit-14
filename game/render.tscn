@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
 
+[sub_resource type="Environment" id="Environment_2h351"]
+background_mode = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 9.73
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
 frequency = 0.1603
 
@@ -53,6 +58,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4570165, -2.567738)
 contact_monitor = true
 max_contacts_reported = 100
 
+[node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1593385754]
+environment = SubResource("Environment_2h351")
+
 [node name="MainRender" type="SubViewportContainer" parent="." unique_id=1302230782]
 layout_mode = 0
 offset_right = 40.0
@@ -80,10 +92,6 @@ scale = Vector2(1.000074, 1.0000237)
 texture = SubResource("ViewportTexture_n3e1p")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
 
 [connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]
 [connection signal="delete_black_hole" from="Player" to="." method="_on_player_delete_black_hole"]

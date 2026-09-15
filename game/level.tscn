@@ -8,11 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_hjv22"]
 
-[sub_resource type="Environment" id="Environment_uk5k8"]
-background_mode = 1
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 9.73
-
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 size = Vector3(2, 1, 2)
 
@@ -31,9 +26,6 @@ script = ExtResource("1_8vjk3")
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("2_xssv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8019304, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=165301731]
-environment = SubResource("Environment_uk5k8")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=168572185]
 mesh_library = ExtResource("3_nspj4")
