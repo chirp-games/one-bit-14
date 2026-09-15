@@ -14,8 +14,14 @@ const MIN_KICK_POWER = .5
 const MAX_KICK_POWER = 2
 const KICK_ANGLE_FROM_GROUND = PI / 8
 
+const MAX_CHARGES := 1
+const RECHARGE_TIME := 0.1
+
 var cayote_timer = 0
 var on_floor: bool = false
+
+var charges := 1
+var recharging := false
 
 var held_object
 
@@ -78,6 +84,12 @@ func position_black_hole_preview():
 		).length()
 	)
 
+func recharge() -> void:
+	if not recharging:
+		return
+	recharging = false
+	charges += 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -106,7 +118,8 @@ func _input(event: InputEvent) -> void:
 			-1,
 		)
 		
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and charges > 0:
+		charges -= 1
 		create_black_hole.emit(%BlackHolePreview.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -114,7 +127,12 @@ func _physics_process(delta: float) -> void:
 	cayote_timer += delta
 
 	if on_floor:
+		if charges < MAX_CHARGES and not recharging:
+			recharging = true
+			get_tree().create_timer(RECHARGE_TIME).timeout.connect(recharge)
 		cayote_timer = 0
+	else:
+		recharging = false
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
