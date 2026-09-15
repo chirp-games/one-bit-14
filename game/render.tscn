@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cnf5udhk03rug" path="res://game/game.gd" id="1_itw3e"]
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
-[ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
 [ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
@@ -45,8 +44,8 @@ offset_bottom = 89.0
 text = "This is the main game rendering scene. It handles the shaders.
 The SubViewport contains the player, the level, and the camera."
 
-[node name="Level" parent="." unique_id=1439589701 instance=ExtResource("2_itw3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124053955, -0.06248474, 0.03686142)
+[node name="LevelContainer" type="Node3D" parent="." unique_id=179893977]
+unique_name_in_owner = true
 
 [node name="Player" parent="." unique_id=68552729 instance=ExtResource("4_vgggf")]
 unique_name_in_owner = true
@@ -88,3 +87,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
 
 [connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]
 [connection signal="delete_black_hole" from="Player" to="." method="_on_player_delete_black_hole"]
+[connection signal="reset_level" from="Player" to="." method="reset"]

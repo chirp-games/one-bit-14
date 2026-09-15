@@ -1,0 +1,16 @@
+extends Resource
+class_name LevelInfo
+
+## The order in which the level appears
+@export var number := 1
+## The name of the level, may give a hint to what the puzzle is
+@export var name := ""
+## The level scene - do not include the player object.
+@export var scene: PackedScene
+
+## Configure player starting state
+@export_category("Player")
+## The player's starting position, relative to the level scene origin
+@export var start_position: Vector3
+## The player's starting rotation
+@export var start_rotation: Vector3

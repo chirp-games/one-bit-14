@@ -13,13 +13,13 @@ loop = false
 tilt_enabled = false
 script = ExtResource("1_o40wd")
 
-[node name="Node" type="Node" parent="." unique_id=2111280335]
-
-[node name="Platform" type="AnimatableBody3D" parent="Node" unique_id=1563090045]
+[node name="Platform" type="AnimatableBody3D" parent="." unique_id=1563090045]
 unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Platform" unique_id=25649021]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=25649021]
 shape = SubResource("BoxShape3D_66u15")
 
-[node name="floating_platform" parent="Node/Platform" unique_id=395135997 instance=ExtResource("2_jnf2b")]
+[node name="floating_platform" parent="Platform" unique_id=395135997 instance=ExtResource("2_jnf2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1996206, 0)
+
+[node name="Node" type="Node" parent="." unique_id=2111280335]
