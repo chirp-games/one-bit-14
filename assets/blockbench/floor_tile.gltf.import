@@ -43,13 +43,13 @@ _subresources={
 "materials": {
 "material_0": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/glow.tres",
-"use_external/path": "uid://ck7dlreuoubx"
+"use_external/fallback_path": "res://assets/materials/black.tres",
+"use_external/path": "uid://n7ntdwyu1oyq"
 },
 "material_1": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/floor.tres",
-"use_external/path": "uid://b7ymbhu131n27"
+"use_external/fallback_path": "res://assets/materials/glow.tres",
+"use_external/path": "uid://ck7dlreuoubx"
 }
 }
 }
