@@ -20,7 +20,6 @@ ambient_light_energy = 9.73
 [node name="Level" type="Node3D" unique_id=1439589701]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1370048584]
-visible = false
 mesh = SubResource("PlaneMesh_gm6uc")
 surface_material_override/0 = ExtResource("1_8bv7i")
 
@@ -53,6 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
 environment = SubResource("Environment_uk5k8")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=168572185]
+visible = false
 mesh_library = ExtResource("4_uk5k8")
 cell_size = Vector3(1, 1, 1)
 data = {
