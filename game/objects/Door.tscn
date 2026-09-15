@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://v1n7htyu5ekv"]
+
+[ext_resource type="PackedScene" uid="uid://rlvrdmql1isp" path="res://assets/blockbench/door.gltf" id="1_1uqah"]
+[ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="2_jn41x"]
+
+[sub_resource type="Animation" id="Animation_jn41x"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.75, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_1uqah"]
+resource_name = "open"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 0, 0, 1, 1, 1.9, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 0, 0, 1, 1, -1.9, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jn41x"]
+_data = {
+&"RESET": SubResource("Animation_jn41x"),
+&"open": SubResource("Animation_1uqah")
+}
+
+[node name="Door" unique_id=924460666 instance=ExtResource("1_1uqah")]
+script = ExtResource("2_jn41x")
+
+[node name="door2" parent="." index="4" unique_id=122658717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Animations" type="AnimationPlayer" parent="." index="5" unique_id=226692766]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_jn41x")

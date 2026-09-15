@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="4_8vjk3"]
 [ext_resource type="MeshLibrary" uid="uid://da4h5ss3do05s" path="res://jakes_test/mesh_library.tres" id="4_uk5k8"]
 [ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_nspj4"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
@@ -81,6 +82,10 @@ curve = SubResource("Curve3D_8vjk3")
 [node name="PathPlatform" parent="Path3D" unique_id=1505859973 instance=ExtResource("6_nspj4")]
 unique_name_in_owner = true
 speed = 0.1
+
+[node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_3gsf4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.664817, -0.85780716, -4.053119)
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]
