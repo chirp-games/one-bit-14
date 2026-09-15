@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
 [ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="7_t7a8y"]
 [ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="8_n6cbj"]
+[ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2ga11"]
 frequency = 0.1603
@@ -87,3 +88,9 @@ grow_vertical = 2
 scale = Vector2(1.000074, 1.0000237)
 texture = SubResource("ViewportTexture_w7jgt")
 metadata/_edit_use_anchors_ = true
+
+[node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
+
+[connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]

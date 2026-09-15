@@ -44,7 +44,7 @@ gravity = 60
 shape = SubResource("SphereShape3D_0xfd7")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1724065712]
+[node name="Center" type="MeshInstance3D" parent="." unique_id=1724065712]
 mesh = SubResource("SphereMesh_0xfd7")
 surface_material_override/0 = SubResource("StandardMaterial3D_f4nys")
 
@@ -103,6 +103,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_s8rmi")
 
 [node name="UvRings" type="Node3D" parent="." unique_id=623480089]
+visible = false
 
 [node name="Ring" type="Sprite3D" parent="UvRings" unique_id=1515873195]
 unique_name_in_owner = true

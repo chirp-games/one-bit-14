@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_nf8g6"]
 [ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
 [ext_resource type="PackedScene" uid="uid://cqs8tmm1twbq8" path="res://jakes_test/Crosshair.tscn" id="4_5vn34"]
+[ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="5_ssesi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 rough = true
@@ -44,12 +45,22 @@ shape = SubResource("CapsuleShape3D_g4v7s")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="BlackHolePreview" parent="Mesh" unique_id=1549274347 instance=ExtResource("5_ssesi")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+gravity = 0
+preview_mode = true
+
 [node name="Cameras" type="Node3D" parent="Mesh" unique_id=2126917644]
 unique_name_in_owner = true
 
 [node name="KickRangeRayCast" type="RayCast3D" parent="Mesh/Cameras" unique_id=1099006009]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
+
+[node name="CreateBlackHoleRay" type="RayCast3D" parent="Mesh/Cameras" unique_id=2117583847]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -5)
 
 [node name="DitherViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=713050419]
 unique_name_in_owner = true
