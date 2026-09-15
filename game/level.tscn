@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="2_xssv6"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="4_8vjk3"]
 [ext_resource type="MeshLibrary" uid="uid://da4h5ss3do05s" path="res://jakes_test/mesh_library.tres" id="4_uk5k8"]
+[ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_nspj4"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gm6uc"]
 size = Vector2(200, 200)
@@ -18,23 +20,24 @@ background_mode = 1
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 9.73
 
-[sub_resource type="BoxMesh" id="BoxMesh_8vjk3"]
-size = Vector3(2, 0.115234375, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8vjk3"]
-size = Vector3(2, 0.107421875, 2)
-
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 size = Vector3(2, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfd7"]
 size = Vector3(2, 1, 2)
 
+[sub_resource type="Curve3D" id="Curve3D_8vjk3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="Level" type="Node3D" unique_id=1439589701]
 script = ExtResource("1_8vjk3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1370048584]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.834553, 0)
 mesh = SubResource("PlaneMesh_gm6uc")
 surface_material_override/0 = ExtResource("1_8bv7i")
 
@@ -61,20 +64,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.018598497, 0.9998271, 0, -0.9998271, 0.018598497, -6, 0.1951223, 3.5812922)
 
-[node name="Platform" type="RigidBody3D" parent="." unique_id=1553199000]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-mass = 1000.0
-gravity_scale = 0.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform" unique_id=257195484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4423828, 0.5)
-mesh = SubResource("BoxMesh_8vjk3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=1114829316]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.44628906, 0.5)
-shape = SubResource("BoxShape3D_8vjk3")
-
 [node name="Wall" type="StaticBody3D" parent="." unique_id=492455847]
 transform = Transform3D(0.9998015, -0.018961126, -0.006110668, -0.0059808856, 0.0068943202, -0.9999584, 0.019002464, 0.9997965, 0.0067795515, -6.4069433, 0.667063, 4.2037864)
 
@@ -85,6 +74,18 @@ mesh = SubResource("BoxMesh_0xfd7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=1208273777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 shape = SubResource("BoxShape3D_0xfd7")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1008085103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.91833, -0.24379885, 0)
+curve = SubResource("Curve3D_8vjk3")
+
+[node name="PathPlatform" parent="Path3D" unique_id=1505859973 instance=ExtResource("6_nspj4")]
+unique_name_in_owner = true
+speed = 0.1
+
+[node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_3gsf4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.664817, -0.85780716, -4.053119)
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]

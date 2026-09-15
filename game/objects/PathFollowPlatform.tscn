@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bi5cull8l705w"]
+
+[ext_resource type="Script" uid="uid://d2si2q4yst8f8" path="res://game/objects/path_follow_platform.gd" id="1_o40wd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jxvg"]
+size = Vector3(2, 0.115234375, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66u15"]
+size = Vector3(2, 0.107421875, 2)
+
+[node name="PathFollowPlatform" type="PathFollow3D" unique_id=1505859973]
+rotation_mode = 0
+cubic_interp = false
+loop = false
+tilt_enabled = false
+script = ExtResource("1_o40wd")
+
+[node name="Node" type="Node" parent="." unique_id=2111280335]
+
+[node name="Platform" type="AnimatableBody3D" parent="Node" unique_id=1563090045]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node/Platform" unique_id=124411723]
+mesh = SubResource("BoxMesh_7jxvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Platform" unique_id=25649021]
+shape = SubResource("BoxShape3D_66u15")
