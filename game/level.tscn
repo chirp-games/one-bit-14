@@ -10,6 +10,8 @@ size = Vector2(200, 200)
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.9384497, 0.9384497, 0.9384497, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gm6uc"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
@@ -19,16 +21,26 @@ mesh = SubResource("PlaneMesh_gm6uc")
 surface_material_override/0 = SubResource("StandardMaterial3D_xssv6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=153640908]
+physics_material_override = SubResource("PhysicsMaterial_xssv6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1858435546]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17832088, 0)
 shape = SubResource("WorldBoundaryShape3D_gm6uc")
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("2_xssv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8019304, 0)
 
+[node name="Box2" parent="." unique_id=1753719863 instance=ExtResource("2_xssv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8019304, 11)
+
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("2_8bv7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 3)
+gravity = 100
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1341695651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 14)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=2071030811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 17)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2142506758]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)

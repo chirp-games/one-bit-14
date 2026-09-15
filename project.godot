@@ -38,6 +38,7 @@ window/stretch/mode="canvas_items"
 statistic=""
 gravity_body="Objects that interact with Black Hoels"
 pushable="Objects that can be pushed by the player"
+player=""
 
 [gui]
 

@@ -4,6 +4,9 @@
 [ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_nf8g6"]
 [ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
+rough = true
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5vn34"]
@@ -19,10 +22,11 @@ shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
-[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body"]]
+[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_xssv6")
 script = ExtResource("1_hk5cy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040988011]

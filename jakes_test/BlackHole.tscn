@@ -28,7 +28,7 @@ fill_to = Vector2(1, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_f4nys"]
 viewport_path = NodePath("SubViewport")
 
-[node name="BlackHole" type="Node3D" unique_id=1549274347]
+[node name="BlackHole" type="Node3D" unique_id=1549274347 groups=["player"]]
 script = ExtResource("2_87a4u")
 gravity = 60
 

@@ -1,11 +1,12 @@
 extends RigidBody3D
 
 const WALK_FORCE = 30
+const AIR_WALK_FORCE = 15
 const JUMP_IMPULSE = 5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
-
-const GROUND_FRICTION = 1.25
+const MAX_GROUND_VELOCITY = 7
+const MAX_AIR_VELOCITY = 50
 
 var cayote_timer = 0
 var on_floor: bool = false
@@ -14,6 +15,13 @@ var on_floor: bool = false
 @onready var outline_viewport: SubViewport = %OutlineViewport
 
 @onready var camera = %Cameras
+
+func clamp_players_velocity(max_velocity):
+	var v = Vector2(linear_velocity.x, linear_velocity.z)
+	if v.length() > max_velocity:
+		linear_velocity.x = max_velocity * cos(v.angle())
+		linear_velocity.z = max_velocity * sin(v.angle())
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,20 +42,30 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	cayote_timer += delta
 
+	if on_floor:
+		cayote_timer = 0
+		clamp_players_velocity(MAX_GROUND_VELOCITY)
+	else:
+		clamp_players_velocity(MAX_AIR_VELOCITY)
+
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
+		print("HERE")
 		cayote_timer += 100
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	if on_floor:
-		cayote_timer = 0
 
-	if direction:
+	# You can't walk in a direction if you are not on the floor
+	if direction and on_floor:
+		self.physics_material_override.friction = 1
 		apply_central_force(direction * WALK_FORCE)
+	else:
+		apply_central_force(direction * AIR_WALK_FORCE)
+		self.physics_material_override.friction = 10
 
-func _process(delta: float) -> void:
+# Hack to move the camera to the right position
+func _process(_delta: float) -> void:
 	%CameraDither.global_position = %Cameras.global_position
 	%CameraDither.global_rotation = %Cameras.global_rotation
 	%CameraOutline.global_position = %Cameras.global_position
