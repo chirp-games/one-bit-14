@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yf5fn"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body"]]
 axis_lock_angular_x = true
@@ -16,12 +16,18 @@ script = ExtResource("1_hk5cy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040988011]
 shape = SubResource("CapsuleShape3D_g4v7s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2050455832]
-mesh = SubResource("CapsuleMesh_yf5fn")
+[node name="Mesh" type="Node3D" parent="." unique_id=616947894]
+unique_name_in_owner = true
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1645967111]
+[node name="Camera" type="Camera3D" parent="Mesh" unique_id=1645967111]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604, 0)
 
-[node name="blockbench_export" parent="Camera" unique_id=1472070164 instance=ExtResource("2_wcbod")]
+[node name="blockbench_export" parent="Mesh/Camera" unique_id=1472070164 instance=ExtResource("2_wcbod")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28370488, -0.32274288, -0.32797295)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=2050455832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377)
+visible = false
+mesh = SubResource("CapsuleMesh_wcbod")
+skeleton = NodePath("../..")

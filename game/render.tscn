@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://0ikx7ckdqk7r"]
 
-[ext_resource type="PackedScene" uid="uid://hqg4c2sf4rmk" path="res://odins_tests/player.tscn" id="1_i6pon"]
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_i6pon"]
 [ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
+[ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://odins_tests/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a0c34"]
@@ -40,10 +40,11 @@ render_target_update_mode = 4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=1413200284]
 environment = SubResource("Environment_km8ha")
 
-[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport" unique_id=516948197 instance=ExtResource("1_i6pon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0810328, 4.6188087)
-
 [node name="Level" parent="SubViewportContainer/SubViewport" unique_id=1439589701 instance=ExtResource("2_itw3e")]
+
+[node name="RigidPlayer" parent="SubViewportContainer/SubViewport" unique_id=68552729 instance=ExtResource("4_vgggf")]
+contact_monitor = true
+max_contacts_reported = 100
 
 [node name="Comment" parent="." unique_id=2120769087 instance=ExtResource("5_vgggf")]
 layout_mode = 0
