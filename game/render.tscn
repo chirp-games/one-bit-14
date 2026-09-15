@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124053955, -0.06248474, 0
 
 [node name="Player" parent="." unique_id=68552729 instance=ExtResource("4_vgggf")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0201635, -8.176007)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4570165, -2.567738)
 contact_monitor = true
 max_contacts_reported = 100
 

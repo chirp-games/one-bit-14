@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://f83ll04kkbeu"]
 
-[ext_resource type="PackedScene" uid="uid://bayse4bbv5av5" path="res://assets/blockbench/floor_tile.gltf" id="1_uxvh2"]
+[ext_resource type="PackedScene" uid="uid://bc8c4r11cxi6u" path="res://assets/mesh_library/floor.tscn" id="1_uxvh2"]
 
 [node name="MeshLibrary" type="Node3D" unique_id=1727511061]
 
-[node name="floor_a" parent="." unique_id=705793881 instance=ExtResource("1_uxvh2")]
+[node name="floortile" parent="." unique_id=417610785 instance=ExtResource("1_uxvh2")]
