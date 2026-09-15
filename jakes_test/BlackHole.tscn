@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dw6jd0bf8s3uc"]
 
 [ext_resource type="Script" uid="uid://b7u6sajcx8xuy" path="res://jakes_test/center_of_gravity.gd" id="2_87a4u"]
+[ext_resource type="Shader" uid="uid://bktaev8iw521m" path="res://jakes_test/black_whole_ring.gdshader" id="2_s8rmi"]
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_s8rmi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0xfd7"]
 
@@ -25,8 +27,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_f4nys"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_s8rmi"]
+viewport_path = NodePath("BlackHoleEffect")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8rmi"]
+render_priority = 0
+shader = ExtResource("2_s8rmi")
 
 [node name="BlackHole" type="Node3D" unique_id=1549274347 groups=["player"]]
 script = ExtResource("2_87a4u")
@@ -42,10 +48,10 @@ debug_color = Color(1, 0, 0, 0.41960785)
 mesh = SubResource("SphereMesh_0xfd7")
 surface_material_override/0 = SubResource("StandardMaterial3D_f4nys")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1870607899]
+[node name="BlackHoleEffect" type="SubViewport" parent="." unique_id=1870607899]
 transparent_bg = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport" unique_id=670361001]
+[node name="InnerRing" type="CPUParticles2D" parent="BlackHoleEffect" unique_id=670361001]
 position = Vector2(256, 256)
 scale = Vector2(8, 8)
 amount = 30
@@ -66,7 +72,7 @@ scale_amount_min = 10.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_s8rmi")
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="SubViewport" unique_id=460614562]
+[node name="OuterRing" type="CPUParticles2D" parent="BlackHoleEffect" unique_id=460614562]
 position = Vector2(256, 256)
 scale = Vector2(8, 8)
 amount = 15
@@ -87,11 +93,33 @@ scale_amount_min = 4.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_s8rmi")
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=722846524]
+[node name="EventHorizon" type="Sprite2D" parent="BlackHoleEffect" unique_id=722846524]
 position = Vector2(257, 256)
 texture = SubResource("GradientTexture2D_0xfd7")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1908499150]
+[node name="BlackHoleEffectBillboard" type="Sprite3D" parent="." unique_id=1908499150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5265765e-05, 0.00047187507, -1.04904175e-05)
 billboard = 1
-texture = SubResource("ViewportTexture_f4nys")
+texture = SubResource("ViewportTexture_s8rmi")
+
+[node name="UvRings" type="Node3D" parent="." unique_id=623480089]
+
+[node name="Ring" type="Sprite3D" parent="UvRings" unique_id=1515873195]
+unique_name_in_owner = true
+material_override = SubResource("ShaderMaterial_s8rmi")
+pixel_size = 0.07
+texture = ExtResource("3_s8rmi")
+
+[node name="Ring2" type="Sprite3D" parent="UvRings" unique_id=1382853302]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_s8rmi")
+pixel_size = 0.07
+texture = ExtResource("3_s8rmi")
+
+[node name="Ring3" type="Sprite3D" parent="UvRings" unique_id=288824364]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_s8rmi")
+pixel_size = 0.07
+texture = ExtResource("3_s8rmi")

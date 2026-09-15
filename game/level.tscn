@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8019304, 11)
 
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("2_8bv7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -2)
-gravity = 50
+gravity = 100
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1341695651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 14)

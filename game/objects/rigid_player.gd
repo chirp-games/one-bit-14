@@ -7,8 +7,19 @@ const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
 
+const MIN_KICK_POWER = 1
+const MAX_KICK_POWER = 5
+const KICK_ANGLE_FROM_GROUND = PI / 8
+
 var cayote_timer = 0
 var on_floor: bool = false
+
+var current_kick_power = 0:
+	set(val):
+		current_kick_power = val
+		%Crosshair.set_kick_power(val)
+var targeting_kick_obj = null
+var targeting_kick_obj_collision_point = Vector3(0, 0, 0)
 
 @onready var dither_viewport: SubViewport = %DitherViewport
 @onready var outline_viewport: SubViewport = %OutlineViewport
@@ -21,6 +32,32 @@ func clamp_players_velocity(max_velocity):
 		linear_velocity.x = max_velocity * cos(v.angle())
 		linear_velocity.z = max_velocity * sin(v.angle())
 
+func try_set_targeting_kick_object():
+	var obj: PhysicsBody3D = %KickRangeRayCast.get_collider()
+	if obj == null:
+		return null
+
+	if obj.is_in_group("kickable"):
+		targeting_kick_obj_collision_point = %KickRangeRayCast.get_collision_point()
+		if obj is RigidBody3D:
+			targeting_kick_obj = obj
+
+	return null
+
+func load_kick(delta):
+	if targeting_kick_obj:
+		current_kick_power += 3 * delta
+
+func release_kick():
+	var obj = targeting_kick_obj
+	if obj:
+		var impulse = current_kick_power * (MAX_KICK_POWER - MIN_KICK_POWER) + MIN_KICK_POWER
+		# Kick the object in the direction the player is looking
+		var direction = %KickRangeRayCast.global_position.direction_to(%KickRangeRayCast.global_transform * Vector3.FORWARD)
+		# The camera rotation works slightly better for y I think
+		direction.y = camera.rotation.x + PI / 4
+		var rotated_impulse = impulse * direction
+		obj.apply_impulse(rotated_impulse)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,11 +100,27 @@ func _physics_process(delta: float) -> void:
 		cayote_timer += 100
 
 # Hack to move the camera to the right position
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	%CameraDither.global_position = %Cameras.global_position
 	%CameraDither.global_rotation = %Cameras.global_rotation
 	%CameraOutline.global_position = %Cameras.global_position
 	%CameraOutline.global_rotation = %Cameras.global_rotation
+	
+	if targeting_kick_obj != null:
+		%Crosshair.show_kick_indicator()
+	else:
+		%Crosshair.hide_kick_indicator()
+
+	if Input.is_action_just_pressed("kick"):
+		try_set_targeting_kick_object()
+
+	if Input.is_action_pressed("kick"):
+		load_kick(delta)
+	elif Input.is_action_just_released("kick"):
+		if current_kick_power != 0:
+			release_kick()
+			current_kick_power = 0
+			targeting_kick_obj = null
 	
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

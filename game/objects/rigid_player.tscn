@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://game/objects/rigid_player.gd" id="1_hk5cy"]
 [ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_nf8g6"]
 [ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
+[ext_resource type="PackedScene" uid="uid://cqs8tmm1twbq8" path="res://jakes_test/Crosshair.tscn" id="4_5vn34"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 rough = true
@@ -29,15 +30,26 @@ axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_xssv6")
 script = ExtResource("1_hk5cy")
 
+[node name="Crosshair" parent="." unique_id=1119866348 instance=ExtResource("4_5vn34")]
+unique_name_in_owner = true
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040988011]
 shape = SubResource("CapsuleShape3D_g4v7s")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=616947894]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Cameras" type="Node3D" parent="Mesh" unique_id=2126917644]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5975315, 0)
+
+[node name="KickRangeRayCast" type="RayCast3D" parent="Mesh/Cameras" unique_id=1099006009]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
 
 [node name="DitherViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=713050419]
 unique_name_in_owner = true
