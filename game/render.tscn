@@ -5,20 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
 [ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
-[ext_resource type="Shader" uid="uid://cevhp0nwf1x82" path="res://game/quantize_color.gdshader" id="7_t7a8y"]
-=======
-[ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="7_t7a8y"]
-[ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="8_n6cbj"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
->>>>>>> 68fee62f54d06ccf77514be4108d8154db41151f
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3e1p"]
-shader = ExtResource("7_t7a8y")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_rp5g8"]
-viewport_path = NodePath("DitheringViewport")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
 frequency = 0.1603
@@ -39,9 +27,8 @@ shader_parameter/u_offset = 0.1
 shader_parameter/noiseyness = 0.13
 shader_parameter/u_dither_size = 1.0
 shader_parameter/noise = SubResource("NoiseTexture2D_n6cbj")
-shader_parameter/camera_loc = Vector3(0, 0, 0)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t7a8y"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3e1p"]
 viewport_path = NodePath("MainRender/SubViewport")
 
 [node name="Game" type="Control" unique_id=960045773]
@@ -77,16 +64,10 @@ handle_input_locally = false
 size = Vector2i(960, 540)
 render_target_update_mode = 4
 
-[node name="DitherViewport" type="TextureRect" parent="MainRender/SubViewport" unique_id=960132533]
+[node name="DitherViewport" type="TextureRect" parent="MainRender/SubViewport" unique_id=699462599]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_n3e1p")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_rp5g8")
-metadata/_edit_use_anchors_ = true
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PostProcess" type="TextureRect" parent="." unique_id=1224002854]
 material = SubResource("ShaderMaterial_rp5g8")
@@ -94,14 +75,11 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-<<<<<<< HEAD
-texture = SubResource("ViewportTexture_t7a8y")
-expand_mode = 2
-=======
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.000074, 1.0000237)
-texture = SubResource("ViewportTexture_w7jgt")
+texture = SubResource("ViewportTexture_n3e1p")
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]
@@ -109,4 +87,3 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
 
 [connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]
->>>>>>> 68fee62f54d06ccf77514be4108d8154db41151f
