@@ -23,6 +23,6 @@ func _physics_process(_delta: float) -> void:
 			body.apply_force(apply_gravity)
 		
 		if body.is_in_group("player"):
-			if body.global_position.distance_to(global_position) < 1:
+			if body.global_position.distance_to(global_position) < .1:
 				print("You died")
 				get_tree().quit()
