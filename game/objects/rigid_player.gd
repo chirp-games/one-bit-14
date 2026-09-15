@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 signal create_black_hole(position: Vector3)
+signal set_blackholes_enabled(enabled: bool)
 
 const WALK_FORCE = 30
 const AIR_WALK_FORCE = 10
@@ -15,6 +16,8 @@ const KICK_ANGLE_FROM_GROUND = PI / 8
 
 var cayote_timer = 0
 var on_floor: bool = false
+
+var held_object
 
 var current_kick_power = 0:
 	set(val):
@@ -91,9 +94,17 @@ func _input(event: InputEvent) -> void:
 		camera.rotation.x = clampf(camera.rotation.x, -PI/2, PI/2)
 
 	if event.is_action("scroll_up"):
-		blackhole_ray.target_position.z -= .1
+		blackhole_ray.target_position.z = clampf(
+			blackhole_ray.target_position.z - .1,
+			-10,
+			-1,
+		)
 	if event.is_action("scroll_down"):
-		blackhole_ray.target_position.z += .1
+		blackhole_ray.target_position.z = clampf(
+			blackhole_ray.target_position.z + .1,
+			-10,
+			-1,
+		)
 		
 	if event.is_action_pressed("click"):
 		create_black_hole.emit(%BlackHolePreview.global_position)
@@ -122,6 +133,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
 		cayote_timer += 100
+	if Input.is_action_just_pressed("pickup"):
+		if held_object:
+			set_blackholes_enabled.emit(false)
+		elif %PickupRay.get_collider().get_parent().is_in_group("grabbable"):
+			set_blackholes_enabled.emit(true)
 
 # Hack to move the camera to the right position
 func _process(delta: float) -> void:
