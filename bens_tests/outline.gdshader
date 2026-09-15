@@ -1,69 +1,52 @@
 shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
+uniform float threshold: hint_range(4, 5, 0.01) = 4.24;
+uniform vec3 line_color: source_color = vec3(0.4);
+uniform vec3 background_color: source_color = vec3(0.9);
 
-uniform float edge_threshold = 0.1;
-uniform vec3 line_color: source_color = vec3(1.0);
-uniform vec3 background_color: source_color = vec3(0.0);
+float calculation(float dx, float dy, float dz, float ex, float ey, float ez) {
+	float dist = (pow((dx*ex) + (dy*ey) + (dz*ez), 2)/(dx*dx + dy*dy + dz*dz))/(ex*ex + ey*ey + ez*ez);
+	return dist;
+}
 
-const mat3 sobel_y = mat3(
-	vec3(1.0, 0.0, -1.0),
-	vec3(2.0, 0.0, -2.0),
-	vec3(1.0, 0.0, -1.0)
-);
-
-const mat3 sobel_x = mat3(
-	vec3(1.0, 2.0, 1.0),
-	vec3(0.0, 0.0, 0.0),
-	vec3(-1.0, -2.0, -1.0)
-);
-
-float linearize_depth(vec2 uv_coord, mat4 proj_matrix){
+vec3 world_position(vec2 uv_coord, mat4 proj_matrix, mat4 view_matrix){
 	float depth = texture(DEPTH_TEXTURE, uv_coord).x;
 	vec3 ndc = vec3(uv_coord, depth) * 2.0 - 0.0;
 	vec4 view = proj_matrix * vec4(ndc, 1.0);
 	view.xyz /= view.w;
 	float linear_depth = -view.z;
-	return linear_depth;
+	vec4 world = view_matrix * proj_matrix * vec4(ndc, 1.0);
+	vec3 world_position = world.xyz / world.w;
+	return world_position;
 }
 
-void vertex(){
+void vertex() {
 	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
 }
 
 void fragment() {
-	vec2 uv = SCREEN_UV;
-	vec4 screen_color = texture(SCREEN_TEXTURE, uv);
-
-	float depth = linearize_depth(uv, INV_PROJECTION_MATRIX);
-
-	vec2 offset = 0.5 / VIEWPORT_SIZE;
-
-	float n = linearize_depth(uv + vec2(0.0, -offset.y), INV_PROJECTION_MATRIX);
-	float s = linearize_depth(uv + vec2(0.0, offset.y), INV_PROJECTION_MATRIX);
-	float e = linearize_depth(uv + vec2(offset.x, 0.0), INV_PROJECTION_MATRIX);
-	float w = linearize_depth(uv + vec2(-offset.x, 0.0), INV_PROJECTION_MATRIX);
-	float nw = linearize_depth(uv + vec2(-offset.x, -offset.y), INV_PROJECTION_MATRIX);
-	float ne = linearize_depth(uv + vec2(offset.x, -offset.y), INV_PROJECTION_MATRIX);
-	float sw = linearize_depth(uv + vec2(-offset.x, offset.y), INV_PROJECTION_MATRIX);
-	float se = linearize_depth(uv + vec2(offset.x, offset.y), INV_PROJECTION_MATRIX);
-
-	mat3 surrounding_pixels = mat3(
-		vec3(nw, n, ne),
-		vec3(w, depth, e),
-		vec3(sw, s, se)
-	);
-
-	float edge_x = dot(sobel_x[0], surrounding_pixels[0]) + dot(sobel_x[1], surrounding_pixels[1]) + dot(sobel_x[2], surrounding_pixels[2]);
-	float edge_y = dot(sobel_y[0], surrounding_pixels[0]) + dot(sobel_y[1], surrounding_pixels[1]) + dot(sobel_y[2], surrounding_pixels[2]);
-
-	float edge = sqrt(pow(edge_x, 2.0)+pow(edge_y, 2.0));
-
-	if (edge > edge_threshold) {
-		ALBEDO = line_color;
-	} else {
-		ALBEDO = background_color;
+	vec2 screen_uv = SCREEN_UV;
+	vec2 pixel_size = 1.0 / VIEWPORT_SIZE;
+	
+	vec3 coordinates[9];
+	for (int x = -1; x <=1; x++){
+		int i = x == -1 ? 0 : x == 0 ? 3 : 6;
+		for (int y = -1; y <= 1; y++){
+			vec2 offset = pixel_size * vec2(float(x), float(y));
+			coordinates[i + y + 1] = world_position(screen_uv + offset, INV_PROJECTION_MATRIX, INV_VIEW_MATRIX);
+		}
 	}
+	
+	float dist_x = 0.0;
+	float dist_y = 0.0;
+	for (int i = 0; i <=2; i++){
+		dist_x += calculation(coordinates[6+i].x - coordinates[i].x, coordinates[6+i].y - coordinates[i].y, coordinates[6+i].z - coordinates[i].z, coordinates[3+i].x - coordinates[i].x, coordinates[3+i].y - coordinates[i].y, coordinates[3+i].z - coordinates[i].z);
+		dist_y += calculation(coordinates[3*i+2].x - coordinates[3*i].x, coordinates[3*i+2].y - coordinates[3*i].y, coordinates[3*i+2].z - coordinates[3*i].z, coordinates[3*i+1].x - coordinates[3*i].x, coordinates[3*i+1].y - coordinates[3*i].y, coordinates[3*i+1].z - coordinates[3*i].z);
+	}
+	
+	float bend = sqrt(dist_x * dist_x + dist_y * dist_y);
+	
+	ALBEDO = bend < threshold ? line_color : background_color;
 }

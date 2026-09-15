@@ -8,6 +8,7 @@ shader_type canvas_item;
 
 uniform sampler2D u_dither_tex: repeat_enable, filter_nearest_mipmap;
 uniform sampler2D u_color_tex;
+uniform sampler2D outline_tex;
 
 uniform int u_bit_depth;
 uniform float u_contrast;
@@ -16,6 +17,7 @@ uniform float noiseyness;
 uniform float u_dither_size;
 uniform sampler2D noise;
 
+
 void fragment() 
 {
 	// sample the screen texture at the desired output resolution (according to u_dither_size)
@@ -23,9 +25,10 @@ void fragment()
 	vec2 screen_size = vec2(textureSize(TEXTURE, 0)) / u_dither_size;
 	vec2 screen_sample_uv = floor(UV * screen_size) / screen_size;
 	vec3 screen_col = texture(TEXTURE, screen_sample_uv).rgb;
+	vec2 screen_size_inv = 1. / screen_size;
 	
-	// calculate pixel luminosity (https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color)
-	float lum = (screen_col.r * 0.299) + (screen_col.g * 0.587) + (screen_col.b * 0.114);
+	// not using color channels for real color
+	float lum = max(max(screen_col.r,screen_col.g),screen_col.b);
 	
 	// adjust with contrast and offset parameters
 	float contrast = u_contrast;
@@ -60,7 +63,7 @@ void fragment()
 	ivec2 noise_size = textureSize(u_dither_tex, 0);
 	vec2 inv_noise_size = vec2(1.0 / float(noise_size.x), 1.0 / float(noise_size.y));
 	vec2 noise_uv = UV * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
-	float threshold = pow(texture(u_dither_tex, noise_uv).a,2) + (texture(u_dither_tex, noise_uv).r * noiseyness);
+	float threshold = pow(texture(u_dither_tex, noise_uv).r,2) + (texture(u_dither_tex, noise_uv).r * noiseyness);
 	
 	// adjust the dither slightly so min and max aren't quite at 0.0 and 1.0
 	// otherwise we wouldn't get fullly dark and fully light dither patterns at lum 0.0 and 1.0
@@ -72,6 +75,11 @@ void fragment()
 	// sample at the lower bound colour if ramp_val is 0.0, upper bound colour if 1.0
 	float col_sample = mix(lum_lower, lum_upper, ramp_val);
 	vec3 final_col = texture(u_color_tex, vec2(col_sample, 0.5)).rgb;
+	
+	//downscaled outline texture
+	float edge = texture(outline_tex, floor(UV * screen_size) / screen_size).r > 0.2 ? 1. : 0.;
+	
+	final_col = max(final_col,edge * texture(u_color_tex, vec2(0.99)).rgb);
 	
 	// return the final colour!
 	COLOR.rgb = final_col;

@@ -2,40 +2,34 @@
 
 [ext_resource type="Script" uid="uid://cnf5udhk03rug" path="res://game/game.gd" id="1_itw3e"]
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
-[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_i6pon"]
 [ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="2_itw3e"]
 [ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
-[ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="7_t7a8y"]
-[ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="8_n6cbj"]
+[ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ga11"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
 frequency = 0.1603
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmxxu"]
-noise = SubResource("FastNoiseLite_2ga11")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n6cbj"]
+noise = SubResource("FastNoiseLite_t7a8y")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf0hl"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ga11"]
+load_path = "res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rp5g8"]
 shader = ExtResource("1_kmdim")
-shader_parameter/u_dither_tex = ExtResource("7_t7a8y")
-shader_parameter/u_color_tex = ExtResource("2_i6pon")
-shader_parameter/u_bit_depth = 255
-shader_parameter/u_contrast = 0.975
-shader_parameter/u_offset = 0.125
+shader_parameter/u_dither_tex = ExtResource("7_n3e1p")
+shader_parameter/u_color_tex = SubResource("CompressedTexture2D_2ga11")
+shader_parameter/u_bit_depth = 16
+shader_parameter/u_contrast = 0.7
+shader_parameter/u_offset = 0.1
 shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 2.0
-shader_parameter/noise = SubResource("NoiseTexture2D_cmxxu")
+shader_parameter/u_dither_size = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_n6cbj")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rp5g8"]
-viewport_path = NodePath("DitheringViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxb3w"]
-shader = ExtResource("8_n6cbj")
-shader_parameter/u_color_tex = ExtResource("2_i6pon")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_w7jgt"]
-viewport_path = NodePath("LinesViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3e1p"]
+viewport_path = NodePath("MainRender/SubViewport")
 
 [node name="Game" type="Control" unique_id=960045773]
 layout_mode = 3
@@ -60,33 +54,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0201635, -8.176007)
 contact_monitor = true
 max_contacts_reported = 100
 
-[node name="DitherViewport" type="TextureRect" parent="." unique_id=960132533]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_pf0hl")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_rp5g8")
-metadata/_edit_use_anchors_ = true
+[node name="MainRender" type="SubViewportContainer" parent="." unique_id=1302230782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="OutlineViewport" type="TextureRect" parent="." unique_id=13343454]
+[node name="SubViewport" type="SubViewport" parent="MainRender" unique_id=1937693011]
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="DitherViewport" type="TextureRect" parent="MainRender/SubViewport" unique_id=699462599]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_nxb3w")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PostProcess" type="TextureRect" parent="." unique_id=1224002854]
+material = SubResource("ShaderMaterial_rp5g8")
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.000074, 1.0000237)
-texture = SubResource("ViewportTexture_w7jgt")
+texture = SubResource("ViewportTexture_n3e1p")
+expand_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]

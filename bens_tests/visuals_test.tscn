@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_1mytf"]
 [ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_1mytf"]
-[ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="3_cmxxu"]
+[ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="3_cmxxu"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="3_vv1mp"]
 [ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="4_vv1mp"]
 
@@ -13,7 +13,7 @@ size = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0c34"]
 render_priority = 0
 shader = ExtResource("2_1mytf")
-shader_parameter/edge_threshold = 0.001
+shader_parameter/threshold = 4.24
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/background_color = Color(0, 0, 0, 1)
 
@@ -26,31 +26,30 @@ size = Vector3(4, 0.01, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_al25e"]
 
-[sub_resource type="Environment" id="Environment_km8ha"]
-background_energy_multiplier = 0.0
-ambient_light_source = 1
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
-reflected_light_source = 1
+[sub_resource type="Environment" id="Environment_cmxxu"]
+background_mode = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 9.73
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ptwua"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
 frequency = 0.1603
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cmxxu"]
-width = 128
-height = 128
-noise = SubResource("FastNoiseLite_ptwua")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n6cbj"]
+noise = SubResource("FastNoiseLite_t7a8y")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vv1mp"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ga11"]
+load_path = "res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptwua"]
 shader = ExtResource("1_1mytf")
 shader_parameter/u_dither_tex = ExtResource("3_cmxxu")
-shader_parameter/u_color_tex = ExtResource("3_vv1mp")
-shader_parameter/u_bit_depth = 128
-shader_parameter/u_contrast = 0.975
-shader_parameter/u_offset = 0.125
+shader_parameter/u_color_tex = SubResource("CompressedTexture2D_2ga11")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.5
+shader_parameter/u_offset = 0.0
 shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 2.0
-shader_parameter/noise = SubResource("NoiseTexture2D_cmxxu")
+shader_parameter/u_dither_size = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_n6cbj")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_km8ha"]
 viewport_path = NodePath("DitheringViewport")
@@ -99,14 +98,14 @@ surface_material_override/0 = SubResource("ShaderMaterial_ikshe")
 transform = Transform3D(0.8513067, 0, 0.52466846, 0, 1, 0, -0.52466846, 0, 0.8513067, 0, 0, -1.7158355)
 mesh = SubResource("BoxMesh_al25e")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1413200284]
-environment = SubResource("Environment_km8ha")
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1720717705]
+environment = SubResource("Environment_cmxxu")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=505834416]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment2" unique_id=505834416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5882921, 2.9990005)
 light_energy = 0.385
 
-[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment" unique_id=765958148]
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment2" unique_id=765958148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0688424, 0.41257262, -1.6230717)
 
 [node name="Control" type="Control" parent="." unique_id=1584846931]
@@ -116,7 +115,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Dithering" type="TextureRect" parent="Control" unique_id=397744398]
-material = SubResource("ShaderMaterial_vv1mp")
+material = SubResource("ShaderMaterial_ptwua")
 layout_mode = 0
 offset_right = 800.0
 offset_bottom = 450.0
