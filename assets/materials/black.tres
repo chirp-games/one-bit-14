@@ -2,5 +2,6 @@
 
 [resource]
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 emission_enabled = true
-emission = Color(0.556953, 0.556953, 0.556953, 1)
+emission = Color(0.060530342, 0.060530365, 0.060530297, 1)
