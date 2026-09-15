@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 
 	for body in get_tree().get_nodes_in_group("gravity_body"):
 		var dist = body.global_position.distance_to(global_position)
-		var force = gravity * (1. / float(pow(dist, 2)))
+		var force = gravity * (1. / float(pow(dist, 1.5)))
 		if force > gravity:
 			force = gravity
 

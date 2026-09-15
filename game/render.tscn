@@ -87,3 +87,4 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
 
 [connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]
+[connection signal="delete_black_hole" from="Player" to="." method="_on_player_delete_black_hole"]
