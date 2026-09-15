@@ -61,6 +61,12 @@ target_position = Vector3(0, 0, -2)
 [node name="CreateBlackHoleRay" type="RayCast3D" parent="Mesh/Cameras" unique_id=2117583847]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -5)
+collision_mask = 3
+
+[node name="PickupRay" type="RayCast3D" parent="Mesh/Cameras" unique_id=1788632089]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collision_mask = 3
 
 [node name="DitherViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=713050419]
 unique_name_in_owner = true
@@ -93,3 +99,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377
 visible = false
 mesh = SubResource("CapsuleMesh_wcbod")
 skeleton = NodePath("../..")
+
+[connection signal="set_blackholes_enabled" from="." to="Mesh/BlackHolePreview" method="set_visible"]
