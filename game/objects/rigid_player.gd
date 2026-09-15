@@ -2,6 +2,7 @@ extends RigidBody3D
 
 signal create_black_hole(position: Vector3)
 signal delete_black_hole
+## Black hole placement
 signal set_blackholes_enabled(enabled: bool)
 
 const WALK_FORCE = 30
@@ -11,18 +12,22 @@ const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
 
-const MIN_KICK_POWER = .5
-const MAX_KICK_POWER = 2
-const KICK_ANGLE_FROM_GROUND = PI / 8
-
 const MAX_CHARGES := 1
 const RECHARGE_TIME := 0.1
 
 var cayote_timer = 0
 var on_floor: bool = false
 
-var charges := 1
+var charges := 1 :
+	set(value):
+		charges = value
+		%HoleCharges.text = str(charges)
+		if charges == 0:
+			set_blackholes_enabled.emit(false)
+		else:
+			set_blackholes_enabled.emit(true)
 var recharging := false
+var charge_tween: Tween
 
 var held_object
 
@@ -61,6 +66,9 @@ func recharge() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	%HoleRecharge.max_value = RECHARGE_TIME
+	%HoleRecharge.step = RECHARGE_TIME / 100
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -88,6 +96,7 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("click") and charges > 0:
 		charges -= 1
+		%HoleRecharge.value = 0
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
 		delete_black_hole.emit()
@@ -99,10 +108,15 @@ func _physics_process(delta: float) -> void:
 	if on_floor:
 		if charges < MAX_CHARGES and not recharging:
 			recharging = true
-			get_tree().create_timer(RECHARGE_TIME).timeout.connect(recharge)
+			charge_tween = get_tree().create_tween()
+			charge_tween.tween_property(%HoleRecharge, 'value', RECHARGE_TIME, RECHARGE_TIME)
+			charge_tween.tween_callback(recharge)
 		cayote_timer = 0
 	else:
 		recharging = false
+		if charge_tween and charge_tween.is_running():
+			charge_tween.stop()
+			%HoleRecharge.value = 0
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

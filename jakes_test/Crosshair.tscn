@@ -5,9 +5,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkyau"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13wa2"]
-bg_color = Color(1, 1, 1, 1)
-
 [node name="Crosshair" type="Control" unique_id=1070552366]
 layout_mode = 3
 anchors_preset = 0
@@ -31,23 +28,3 @@ offset_top = -2.0
 offset_right = 29.0
 offset_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vkyau")
-
-[node name="KickPower" type="ProgressBar" parent="." unique_id=715047556]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 57.0
-offset_top = -47.0
-offset_right = 61.0
-offset_bottom = -20.0
-scale = Vector2(2.920001, 3.1600003)
-max_value = 1.0
-
-[node name="KickIndicator" type="Panel" parent="." unique_id=106922706]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 54.0
-offset_top = 47.000004
-offset_right = 94.0
-offset_bottom = 87.0
-scale = Vector2(0.352988, 0.40361318)
-theme_override_styles/panel = SubResource("StyleBoxFlat_13wa2")
