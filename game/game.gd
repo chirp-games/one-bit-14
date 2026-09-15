@@ -25,16 +25,26 @@ var current_level: LevelInfo
 func load_levels() -> void:
 	for file in DirAccess.open("res://resources/levels").get_files():
 		levels.push_back(load_asset("res://resources/levels/%s" % file))
-	levels.sort_custom(func(x: LevelInfo): return x.number)
+	levels.sort_custom(func(x: LevelInfo, _i): return x.number)
 
 func place_level(level: int) -> void:
-	current_level = levels[levels.find_custom(func(x: LevelInfo): return x.number == level)]
+	var found = levels.find_custom(func(x: LevelInfo): return x.number == level)
+	if found < 0 or found >= len(levels):
+		push_error("Requested level (%d) not found" % level)
+		return
+	current_level = levels[found]
 	reset()
 
 func reset() -> void:
 	for child in %LevelContainer.get_children():
 		child.queue_free()
-	%LevelContainer.add_child(current_level.scene.instantiate())
+	var new_scene = current_level.scene.instantiate()
+	%LevelContainer.add_child(new_scene)
+	
+	if new_scene.has_signal("level_complete"):
+		new_scene.level_complete.connect(func(): place_level(current_level.number + 1))
+	else:
+		push_warning("Level %s has no level_complete signal." % current_level.name)
 	
 	%Player.linear_velocity = Vector3.ZERO
 	%Player.angular_velocity = Vector3.ZERO

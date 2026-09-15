@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://cafx2pe3h6vmq"]
+
+[ext_resource type="PackedScene" uid="uid://bhk0eswhskkve" path="res://game/level.tscn" id="1_n6gi3"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_5g0po"]
+
+[resource]
+script = ExtResource("2_5g0po")
+number = 2
+name = "Neo"
+scene = ExtResource("1_n6gi3")
+start_position = Vector3(-1, 0, 0)
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
