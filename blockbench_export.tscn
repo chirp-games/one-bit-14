@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2w8vd4dmwvcu"]
 
 [ext_resource type="PackedScene" uid="uid://c26vkcxiivi0f" path="res://assets/blockbench/box.gltf" id="1_02iw0"]
+[ext_resource type="Material" uid="uid://ck7dlreuoubx" path="res://assets/materials/glow.tres" id="2_482v8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgggf"]
 albedo_color = Color(0, 0, 0, 1)
@@ -9,3 +10,77 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="mesh" parent="." index="0" unique_id=1746691692]
 material_override = SubResource("StandardMaterial3D_vgggf")
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh2" parent="." index="1" unique_id=2125171752]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh3" parent="." index="2" unique_id=1736319981]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh4" parent="." index="3" unique_id=1444543585]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh5" parent="." index="4" unique_id=1695982064]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh6" parent="." index="5" unique_id=1819806884]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh7" parent="." index="6" unique_id=534051644]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh8" parent="." index="7" unique_id=481088457]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh9" parent="." index="8" unique_id=1394979942]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh10" parent="." index="9" unique_id=1186458034]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh11" parent="." index="10" unique_id=757220356]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh12" parent="." index="11" unique_id=594499809]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh13" parent="." index="12" unique_id=919226704]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh14" parent="." index="13" unique_id=1137471944]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh15" parent="." index="14" unique_id=621676486]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh16" parent="." index="15" unique_id=1042079943]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh17" parent="." index="16" unique_id=1565251465]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh18" parent="." index="17" unique_id=1819211058]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh19" parent="." index="18" unique_id=641933904]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh20" parent="." index="19" unique_id=1172861777]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh21" parent="." index="20" unique_id=360334849]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh22" parent="." index="21" unique_id=849201390]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh23" parent="." index="22" unique_id=2075538874]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh24" parent="." index="23" unique_id=1563076792]
+surface_material_override/0 = ExtResource("2_482v8")
+
+[node name="mesh25" parent="." index="24" unique_id=1771172014]
+visible = false
+surface_material_override/0 = ExtResource("2_482v8")

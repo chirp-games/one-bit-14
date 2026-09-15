@@ -55,7 +55,8 @@ func _physics_process(delta: float) -> void:
 			# Slow down the player when they are not pressing any keys on the ground
 			clamp_players_velocity(MAX_GROUND_VELOCTIY * (1 - delta) / 5)
 	else:
-		apply_central_force(direction * AIR_WALK_FORCE)
+		if linear_velocity.length() < 7:
+			apply_central_force(direction * AIR_WALK_FORCE)
 
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
