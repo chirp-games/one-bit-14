@@ -16,7 +16,7 @@ size = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ssesi"]
 render_priority = 0
 shader = ExtResource("2_nf8g6")
-shader_parameter/edge_threshold = 0.001
+shader_parameter/threshold = 4.24
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/background_color = Color(0, 0, 0, 1)
 
@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5975315, 0)
 
 [node name="DitherViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=713050419]
 unique_name_in_owner = true
-size = Vector2i(1920, 1080)
+size = Vector2i(960, 540)
 
 [node name="CameraDither" type="Camera3D" parent="Mesh/Cameras/DitherViewport" unique_id=1645967111]
 unique_name_in_owner = true
@@ -52,7 +52,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28
 
 [node name="OutlineViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=1534705054]
 unique_name_in_owner = true
-size = Vector2i(1920, 1080)
+size = Vector2i(960, 540)
 
 [node name="CameraOutline" type="Camera3D" parent="Mesh/Cameras/OutlineViewport" unique_id=143785601]
 unique_name_in_owner = true
