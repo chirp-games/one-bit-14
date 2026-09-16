@@ -1,49 +1,55 @@
 extends Node3D
 
 
-const STEP = 0.1
-const TURN_FACTOR := 0.01
+const STEP = 0.2
+const TURN_FACTOR := STEP / 10
 
-@export var max_length := 100
+@export var max_length := 30
 
-var length = 0
 var direction = Vector3.FORWARD
 var endpoint = Vector3.ZERO
 
 func propagate() -> void:
-	length = 0
 	direction = Vector3.FORWARD
 	endpoint = Vector3.ZERO
 	curve.clear_points()
 	
-	while max_length > length:
-		for object in effectors:
-			var dist = endpoint.distance_to(to_local(object.global_position))
+	var effector_positions = []
+	for object in effectors:
+		effector_positions.push_back(to_local(object.global_position))
+	
+	var space_state := get_world_3d().direct_space_state
+
+	for i in int(max_length / STEP):
+		for pos in effector_positions:
+			var dist = endpoint.distance_to(pos)
+			
+			if dist > 5:
+				continue
+			
 			direction = direction.slerp(
-				endpoint.direction_to(to_local(object.global_position)),
+				endpoint.direction_to(pos),
 				clamp(TURN_FACTOR / float(pow(dist, 1.5)), 0, 1)
 			).normalized()
 		
 		var target = direction * STEP
-		collisionRay.position = endpoint
-		collisionRay.target_position = target
-		collisionRay.force_raycast_update()
-		if collisionRay.is_colliding():
-			endpoint = to_local(collisionRay.get_collision_point())
-			curve.add_point(endpoint)
+		var query := PhysicsRayQueryParameters3D.create(
+			to_global(endpoint),
+			to_global(endpoint + target),
+		)
+
+		var hit := space_state.intersect_ray(query)
+		
+		if len(hit) > 0:
+			curve.add_point(to_local(hit["position"]))
 			break
 		
 		endpoint += target
 		curve.add_point(endpoint)
-		length += STEP
 
 @onready var curve: Curve3D = $Path3D.curve
 @onready var collisionRay: RayCast3D = $Collider
 @onready var effectors = get_tree().get_nodes_in_group("curves_light")
 
-func _ready() -> void:
-	#get_tree().call_group("curves_light", "connect", "updated", propagate)
-	pass
-
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	propagate()
