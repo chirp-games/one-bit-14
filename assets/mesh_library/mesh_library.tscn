@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dhenkc32ih2im"]
+
+[ext_resource type="PackedScene" uid="uid://dx2dw5b61un8a" path="res://jakes_test/mesh_library.glb" id="1_6eqsl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xfd7"]
+size = Vector3(2, 0.5161133, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_os57d"]
+size = Vector3(2, 4, 0.2)
+
+[node name="mesh_library" unique_id=1112363518 instance=ExtResource("1_6eqsl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(5025765) index="0" unique_id=1903643448]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile/StaticBody3D" index="0" unique_id=1133061887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24194336, 0)
+shape = SubResource("BoxShape3D_0xfd7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(1030172208) index="0" unique_id=107244631]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile/StaticBody3D" index="0" unique_id=1882788783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.8920568)
+shape = SubResource("BoxShape3D_os57d")

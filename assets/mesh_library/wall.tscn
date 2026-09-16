@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cm7fnmatif5ko"]
+
+[ext_resource type="PackedScene" uid="uid://da5idbgmbvslk" path="res://assets/blockbench/wall.gltf" id="1_4dqp5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xfd7"]
+size = Vector3(2, 4, 0.1)
+
+[node name="wall" unique_id=1594220600 instance=ExtResource("1_4dqp5")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mesh" parent_id_path=PackedInt32Array(1658854180) index="0" unique_id=278473242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.75, 0.375)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesh/StaticBody3D" index="0" unique_id=1441401111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9966142, 3.776667, -1.8382169)
+shape = SubResource("BoxShape3D_0xfd7")
