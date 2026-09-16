@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bumn7py77oo5s"]
+
+[ext_resource type="PackedScene" uid="uid://bi458kmdefvyp" path="res://jakes_test/guy.glb" id="1_iprmk"]
+[ext_resource type="PackedScene" uid="uid://doqb7rf5j3xgb" path="res://game/objects/gun.tscn" id="2_rwvso"]
+
+[node name="IsometricGuy" type="Node3D" unique_id=1391830877]
+
+[node name="guy" parent="." unique_id=141561520 instance=ExtResource("1_iprmk")]
+
+[node name="Gun" parent="." unique_id=1741919520 instance=ExtResource("2_rwvso")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 3.4235344, -1.3911405)

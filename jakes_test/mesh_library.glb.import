@@ -71,11 +71,11 @@ _subresources={
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
-"mesh_library_Cube_004": {
+"mesh_library_Cube_007": {
 "generate/lightmap_uv": 2,
 "generate/lods": 2,
 "generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 0.0,
+"lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": false,
 "save_to_file/fallback_path": "",
 "save_to_file/path": ""
