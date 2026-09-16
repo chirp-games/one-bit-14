@@ -2,12 +2,14 @@ shader_type spatial;
 render_mode unshaded, cull_disabled;
 varying vec3 normal;
 varying vec3 world_position;
+varying vec3 local_position;
 varying vec3 pos_fract;
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	normal = normalize(NORMAL);
-	pos_fract = normalize(fract(world_position));
+	local_position = VERTEX;
+	normal = NORMAL;
+	pos_fract = fract(world_position);
 }
 
 void fragment() {
@@ -16,9 +18,9 @@ void fragment() {
     float depth_linear = -view.z;
 	
 	ALBEDO = vec3(
-		0.0,
-		0.0,
-		0.0
+		normal.x,
+		length(local_position.zy) > 0.26 ? 0.8 : 0.3,
+		length(local_position.zy) > 0.33 ? 0.8 : 0.3
 	);
 }
 

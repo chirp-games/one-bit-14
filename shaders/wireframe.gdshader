@@ -8,12 +8,12 @@ void vertex() {
 }
 
 void fragment() {
-	//vec3 screen_color = texture(screen_texture, SCREEN_UV).rgb;
-	//if (ALBEDO.r > ALBEDO.b) {
-			//ALBEDO = vec3(0.0);
-		//} else {
-			//ALBEDO = vec3(brightness);
-	//}
+	vec3 screen_color = texture(screen_texture, SCREEN_UV).rgb;
+	if (ALBEDO.r > ALBEDO.b) {
+			ALBEDO = vec3(0.0);
+		} else {
+			ALBEDO = vec3(brightness);
+	}
 }
 
 //void light() {
