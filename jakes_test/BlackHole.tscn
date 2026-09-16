@@ -34,7 +34,7 @@ viewport_path = NodePath("BlackHoleEffect")
 render_priority = 0
 shader = ExtResource("2_s8rmi")
 
-[node name="BlackHole" type="Node3D" unique_id=1549274347 groups=["player"]]
+[node name="BlackHole" type="Node3D" unique_id=1549274347 groups=["curves_light", "player"]]
 script = ExtResource("2_87a4u")
 gravity = 60
 
