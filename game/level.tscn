@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bhk0eswhskkve"]
 
 [ext_resource type="Script" uid="uid://dx8v16b7vpcnl" path="res://game/level.gd" id="1_8vjk3"]
-[ext_resource type="PackedScene" uid="uid://cd8hcutprxwcm" path="res://game/objects/laser_turret.tscn" id="2_hjv22"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="2_xssv6"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="3_nspj4"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="4_8vjk3"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_hjv22"]
 [ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="9_1565f"]
+[ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="9_ogdhh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 size = Vector3(2, 1, 2)
@@ -25,9 +25,6 @@ point_count = 2
 
 [node name="Level" type="Node3D" unique_id=1439589701]
 script = ExtResource("1_8vjk3")
-
-[node name="LaserTurret" parent="." unique_id=1796878736 instance=ExtResource("2_hjv22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9568647, 5.022496)
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("2_xssv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8019304, 0)
@@ -78,6 +75,9 @@ omni_range = 13.0
 
 [node name="LaserReciever" parent="." unique_id=898270630 instance=ExtResource("9_1565f")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -11.95)
+
+[node name="WallMountedLaserGun" parent="." unique_id=492900681 instance=ExtResource("9_ogdhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.001967)
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]

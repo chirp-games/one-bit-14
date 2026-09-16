@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://becai6go1fqgr"]
+
+[ext_resource type="PackedScene" uid="uid://xe64gnn800n6" path="res://jakes_test/wall_mounted_laser_gun.glb" id="1_bo7lo"]
+[ext_resource type="PackedScene" uid="uid://cq044wa5y21bw" path="res://game/objects/laser.tscn" id="2_n7ew7"]
+
+[node name="WallMountedLaserGun" type="Node3D" unique_id=492900681]
+
+[node name="wall_mounted_laser_gun" parent="." unique_id=1494679382 instance=ExtResource("1_bo7lo")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Laser" parent="." unique_id=2123689957 instance=ExtResource("2_n7ew7")]
