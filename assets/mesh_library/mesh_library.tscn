@@ -10,25 +10,25 @@ size = Vector3(2, 4, 2)
 
 [node name="mesh_library" unique_id=1112363518 instance=ExtResource("1_6eqsl")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(657656514) index="0" unique_id=1903643448]
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(290303975) index="0" unique_id=1903643448]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile/StaticBody3D" index="0" unique_id=1133061887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28404987, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1562573972) index="0" unique_id=1909381211]
+[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1996993156) index="0" unique_id=1909381211]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grate/StaticBody3D" index="0" unique_id=1433678303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(122238207) index="0" unique_id=107244631]
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(812525859) index="0" unique_id=107244631]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile/StaticBody3D" index="0" unique_id=1882788783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_os57d")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile_corner" parent_id_path=PackedInt32Array(1368594021) index="0" unique_id=1819876203]
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile_corner" parent_id_path=PackedInt32Array(1077198827) index="0" unique_id=1819876203]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile_corner/StaticBody3D" index="0" unique_id=409973044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
