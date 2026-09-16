@@ -38,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 0.018598497, 0.9998271, 0, -0.9998271, 0.018
 
 [node name="Wall" type="StaticBody3D" parent="." unique_id=492455847]
 transform = Transform3D(0.9998015, -0.018961126, -0.006110668, -0.0059808856, 0.0068943202, -0.9999584, 0.019002464, 0.9997965, 0.0067795515, -6.4069433, 0.667063, 4.2037864)
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=1090496072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
