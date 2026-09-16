@@ -43,13 +43,13 @@ _subresources={
 "materials": {
 "grate": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/midtone.tres",
-"use_external/path": "uid://deubqb767vrul"
+"use_external/fallback_path": "res://assets/materials/black.tres",
+"use_external/path": "uid://n7ntdwyu1oyq"
 },
 "walls_and_floor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/midtone.tres",
-"use_external/path": "uid://deubqb767vrul"
+"use_external/fallback_path": "res://assets/materials/black.tres",
+"use_external/path": "uid://n7ntdwyu1oyq"
 }
 }
 }

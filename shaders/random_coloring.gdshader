@@ -3,12 +3,16 @@ render_mode unshaded, cull_disabled;
 varying vec3 normal;
 varying vec3 world_normal;
 varying vec3 world_position;
+varying vec3 local_position;
 varying vec3 pos_fract;
+varying vec3 pos_fract_local;
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	local_position = VERTEX;
 	normal = normalize(abs(NORMAL));
 	world_normal = normalize((MODEL_MATRIX * vec4(normal, 0.0)).xyz);
+	pos_fract_local = normalize(fract(local_position * 0.999));
 	pos_fract = normalize(fract(world_position));
 }
 
@@ -18,9 +22,9 @@ void fragment() {
     float depth_linear = -view.z;
 	
 	ALBEDO = vec3(
-		world_normal.z * 0.45 + pos_fract.z * 0.45 + abs(world_normal.x * 0.1),
-		world_normal.y * 0.5 + pos_fract.y * 0.5,
-		depth_linear * 0.9 + pos_fract.x * 0.1
+		world_normal.z * 0.45 + clamp(pos_fract_local.z,0.,0.999) * 0.45 + abs(world_normal.x * 0.1),
+		world_normal.x * 0.5 + clamp(pos_fract_local.x,0.,0.999) * 0.5,
+		depth_linear * 0.9 + clamp(pos_fract_local.y,0.,0.999) * 0.1
 	);
 }
 
