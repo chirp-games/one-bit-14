@@ -16,7 +16,7 @@ font_size = 75
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
-[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["player"]]
+[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -86,8 +86,9 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
 
-[node name="gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
-transform = Transform3D(0.23930739, 0, -0.97094387, -0.070015036, 0.99739665, -0.017256523, 0.96841615, 0.07211028, 0.23868439, 0.48840177, -0.16524416, -0.30498868)
+[node name="Gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+unique_name_in_owner = true
+transform = Transform3D(0.19144586, -1.2320047e-09, -0.776755, -0.025660904, 0.7995633, -0.006324612, 0.77633107, 0.026428813, 0.19134136, 0.8309363, -0.32325977, 0.13339281)
 
 [node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true

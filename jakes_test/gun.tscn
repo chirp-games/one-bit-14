@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://bnojoechjpkmm"]
 
 [ext_resource type="PackedScene" uid="uid://d3csyrni4dqlt" path="res://jakes_test/gun.glb" id="1_egf7j"]
-[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="2_ib7n2"]
-[ext_resource type="Material" uid="uid://ck7dlreuoubx" path="res://assets/materials/glow.tres" id="3_qfiav"]
+[ext_resource type="Script" uid="uid://bcrepximp1li3" path="res://jakes_test/gun.gd" id="2_a6wjj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssesi"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
 
 [node name="gun" unique_id=1877890053 instance=ExtResource("1_egf7j")]
+script = ExtResource("2_a6wjj")
 
-[node name="Cube" parent="." index="0" unique_id=474552940]
-surface_material_override/0 = ExtResource("2_ib7n2")
-surface_material_override/1 = ExtResource("3_qfiav")
-surface_material_override/2 = ExtResource("2_ib7n2")
+[node name="Gun" parent="." index="4" unique_id=710311696]
+surface_material_override/1 = SubResource("StandardMaterial3D_ssesi")

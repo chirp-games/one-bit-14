@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cwaxqr7sedwj0"]
 
+[ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_217sc"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="6_qrmb6"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="7_ab4h6"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_217sc")
 
 [node name="CompletionArea" parent="." unique_id=168728735 instance=ExtResource("6_qrmb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9160032, -0.49342018, -10.889685)
@@ -21,4 +23,8 @@ light_energy = 16.0
 area_range = 16.919
 area_size = Vector2(9.975621, 8.125718)
 
+[node name="CompletionArea2" parent="." unique_id=1036395825 instance=ExtResource("6_qrmb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.998, -1, 0)
+
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="level_complete" from="CompletionArea2" to="." method="on_complete"]

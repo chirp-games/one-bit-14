@@ -14,7 +14,7 @@ const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
 
 const MAX_CHARGES := 1
-const RECHARGE_TIME := 0.1
+const RECHARGE_TIME := 0.3
 
 var cayote_timer = 0
 var on_floor: bool = false
@@ -27,7 +27,12 @@ var charges := 1 :
 			set_blackholes_enabled.emit(false)
 		else:
 			set_blackholes_enabled.emit(true)
-var recharging := false
+var recharging := false:
+	set(val):
+		recharging = val
+		%Gun.show_recharge_status(recharging)
+	get():
+		return recharging
 var charge_tween: Tween
 
 var held_object
