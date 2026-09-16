@@ -15,6 +15,7 @@ script = ExtResource("1_o40wd")
 
 [node name="Platform" type="AnimatableBody3D" parent="." unique_id=1563090045]
 unique_name_in_owner = true
+collision_layer = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=25649021]
 shape = SubResource("BoxShape3D_66u15")

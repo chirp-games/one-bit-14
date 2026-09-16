@@ -34,6 +34,7 @@ linear_spring_y/enabled = true
 linear_spring_y/stiffness = 200.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=233320325]
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1756103625]
 mesh = SubResource("BoxMesh_h3fx5")
@@ -44,6 +45,7 @@ shape = SubResource("BoxShape3D_gm6uc")
 [node name="PushPart" type="RigidBody3D" parent="." unique_id=1138465487]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158, 0)
+collision_layer = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

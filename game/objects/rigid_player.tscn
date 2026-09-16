@@ -18,6 +18,7 @@ font_size = 75
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
+collision_layer = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -84,7 +85,7 @@ target_position = Vector3(0, 0, -2)
 [node name="CreateBlackHoleRay" type="RayCast3D" parent="Mesh/Camera" unique_id=2117583847]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -5)
-collision_mask = 3
+collision_mask = 2
 
 [node name="PickupRay" type="RayCast3D" parent="Mesh/Camera" unique_id=1788632089]
 unique_name_in_owner = true

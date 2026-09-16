@@ -36,6 +36,7 @@ func propagate() -> void:
 		var query := PhysicsRayQueryParameters3D.create(
 			to_global(endpoint),
 			to_global(endpoint + target),
+			0b100 # Light colliders have bit 3 set
 		)
 
 		var hit := space_state.intersect_ray(query)
