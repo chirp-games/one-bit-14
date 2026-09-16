@@ -38,7 +38,6 @@ var charge_tween: Tween
 
 var held_object
 
-@onready var camera = %Camera
 @onready var blackhole_ray: RayCast3D = %CreateBlackHoleRay
 
 func clamp_players_velocity(max_velocity):
@@ -74,16 +73,6 @@ func _ready() -> void:
 	%HoleRecharge.step = RECHARGE_TIME / 100
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		var mouse_event := event as InputEventMouseMotion
-		%Mesh.rotate_y(
-			camera.rotation_degrees.y + mouse_event.relative.x * -LOOK_VELOCITY_Y
-		)
-		camera.rotate_x(
-			mouse_event.relative.y * -LOOK_VELOCITY_Y
-		)
-		camera.rotation.x = clampf(camera.rotation.x, -PI/2, PI/2)
-
 	if event.is_action("scroll_up"):
 		blackhole_ray.target_position.z = clampf(
 			blackhole_ray.target_position.z - .1,
