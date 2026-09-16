@@ -63,6 +63,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2040988011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0127997, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=616947894]
@@ -71,7 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="IsometricGuy" parent="Mesh" unique_id=1391830877 instance=ExtResource("6_ivxs2")]
 transform = Transform3D(0.00455529, 0, -0.2499585, 0, 0.25, 0, 0.2499585, 0, 0.00455529, 0, -0.5, 0)
-visible = false
 
 [node name="KickRangeRayCast" type="RayCast3D" parent="Mesh" unique_id=1099006009]
 unique_name_in_owner = true
@@ -93,6 +93,7 @@ collision_mask = 3
 [node name="Gun" parent="Mesh" unique_id=1877890053 instance=ExtResource("4_ssesi")]
 unique_name_in_owner = true
 transform = Transform3D(0.19144586, -1.2320047e-09, -0.776755, -0.025660904, 0.7995633, -0.006324612, 0.77633107, 0.026428813, 0.19134136, 0.8309363, -0.8232598, 0.13339281)
+visible = false
 
 [node name="BlackHolePreview" parent="Mesh" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true

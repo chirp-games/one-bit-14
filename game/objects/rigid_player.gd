@@ -111,7 +111,15 @@ func _physics_process(delta: float) -> void:
 			%HoleRecharge.value = 0
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var camera = get_viewport().get_camera_3d()
+	var camera_transfom = Transform3D(Vector3(camera.basis.x), Vector3(0, 0, 0), Vector3(camera.basis.z), Vector3(0, 0, 0))
+
+	var direction: Vector3 = (camera_transfom.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	# If the player is moving
+	if direction:
+		%Mesh.rotation.x = direction.x
+		%Mesh.rotation.z = direction.z
 
 	if on_floor:
 		if direction:
