@@ -28,7 +28,7 @@ func propagate() -> void:
 				continue
 			
 			direction = direction.slerp(
-				endpoint.direction_to(pos),
+				endpoint.direction_tlasero(pos),
 				clamp(TURN_FACTOR / float(pow(dist, 1.5)), 0, 1)
 			).normalized()
 		
@@ -50,9 +50,12 @@ func propagate() -> void:
 		endpoint += target
 		curve.add_point(endpoint)
 
-@onready var curve: Curve3D = $Path3D.curve
+@onready var curve: Curve3D = Curve3D.new()
 @onready var collisionRay: RayCast3D = $Collider
 @onready var effectors = get_tree().get_nodes_in_group("curves_light")
+
+func _ready() -> void:
+	$Path3D.curve = curve
 
 func _physics_process(_delta: float) -> void:
 	propagate()
