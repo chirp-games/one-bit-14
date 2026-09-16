@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://b7ymbhu131n27"]
-
-[ext_resource type="Shader" uid="uid://dkba472br2yca" path="res://game/floor_shader.gdshader" id="1_g8uw3"]
-[ext_resource type="Texture2D" uid="uid://diruwriwyvueh" path="res://bens_tests/test_floor.png" id="2_24vhv"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_g8uw3")
-shader_parameter/TEX = ExtResource("2_24vhv")

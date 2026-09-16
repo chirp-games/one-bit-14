@@ -1,33 +1,13 @@
 [gd_scene format=3 uid="uid://nwp6vrv2duhn"]
 
 [ext_resource type="Script" uid="uid://k3sppppudexu" path="res://bens_tests/visuals_test_init.gd" id="1_jypyi"]
-[ext_resource type="Material" uid="uid://c70hvh3ddkkea" path="res://resources/material/main_material.tres" id="1_v3xiq"]
-[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="2_1mytf"]
-[ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="3_cmxxu"]
-[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="3_vv1mp"]
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="3_a0c34"]
 
 [sub_resource type="Environment" id="Environment_km8ha"]
 background_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_dourk"]
 size = Vector3(1, 1.2597656, 15.793457)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmxxu"]
-frequency = 0.035
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vv1mp"]
-noise = SubResource("FastNoiseLite_cmxxu")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3xiq"]
-shader = ExtResource("2_1mytf")
-shader_parameter/u_dither_tex = ExtResource("3_cmxxu")
-shader_parameter/u_color_tex = ExtResource("3_vv1mp")
-shader_parameter/u_bit_depth = 32
-shader_parameter/u_contrast = 0.775
-shader_parameter/u_offset = 0.0
-shader_parameter/noiseyness = -0.04
-shader_parameter/u_dither_size = 2.0
-shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dourk"]
 viewport_path = NodePath("SubViewport")
@@ -202,15 +182,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018547058, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=590754777]
 transform = Transform3D(0.88338685, 0, -0.46864456, 0, 1, 0, 0.46864456, 0, 0.88338685, -2.027628, -0.48945022, -5.850437)
 mesh = SubResource("BoxMesh_dourk")
-surface_material_override/0 = ExtResource("1_v3xiq")
+surface_material_override/0 = ExtResource("3_a0c34")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1795886624]
 transform = Transform3D(0.9113661, 0, 0.1641649, 0, 1, 0, -0.9885421, 0, 0.1513485, 0.12968016, -0.41708088, -5.850437)
 mesh = SubResource("BoxMesh_dourk")
-surface_material_override/0 = ExtResource("1_v3xiq")
+surface_material_override/0 = ExtResource("3_a0c34")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1423491807]
-material = SubResource("ShaderMaterial_v3xiq")
+material = ExtResource("3_a0c34")
 offset_right = 960.0
 offset_bottom = 540.0
 texture = SubResource("ViewportTexture_dourk")
