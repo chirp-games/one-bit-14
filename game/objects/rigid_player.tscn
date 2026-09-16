@@ -86,7 +86,8 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
 
-[node name="gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+[node name="Gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+unique_name_in_owner = true
 transform = Transform3D(0.19144586, -1.2320047e-09, -0.776755, -0.025660904, 0.7995633, -0.006324612, 0.77633107, 0.026428813, 0.19134136, 0.8309363, -0.32325977, 0.13339281)
 
 [node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
