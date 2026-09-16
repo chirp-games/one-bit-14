@@ -50,6 +50,7 @@ func reset() -> void:
 	%Player.angular_velocity = Vector3.ZERO
 	%Player.global_position = current_level.start_position
 	%Player.get_node("%Mesh").global_rotation_degrees = current_level.start_rotation
+	%Player.get_node("%Camera").rotation = Vector3.ZERO
 	%Player.reset_physics_interpolation()
 	
 	%BlackHole.global_position = Vector3(0, -10000, 0)

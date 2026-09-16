@@ -87,13 +87,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("scroll_up"):
 		blackhole_ray.target_position.z = clampf(
 			blackhole_ray.target_position.z - .1,
-			-10,
+			-5,
 			-1,
 		)
 	if event.is_action("scroll_down"):
 		blackhole_ray.target_position.z = clampf(
 			blackhole_ray.target_position.z + .1,
-			-10,
+			-5,
 			-1,
 		)
 		
