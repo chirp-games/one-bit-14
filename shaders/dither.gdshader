@@ -16,6 +16,7 @@ uniform float u_offset;
 uniform float noiseyness;
 uniform float u_dither_size;
 uniform sampler2D noise;
+uniform bool bypass = false;
 
 
 void fragment() 
@@ -100,7 +101,7 @@ void fragment()
 	
 	
 	if (avg_color >= 5.) {
-		COLOR.rgb = texture(u_color_tex, vec2(0.99)).rgb;
+		if (!bypass) COLOR.rgb = texture(u_color_tex, vec2(0.99)).rgb;
 	} else {
 		// map the dither texture onto the screen. there are better ways of doing this that makes the dither pattern 'stick'
 		// with objects in the 3D world, instead of being mapped onto the screen. see lucas pope's details posts on how he 
@@ -122,6 +123,6 @@ void fragment()
 		vec3 final_col = texture(u_color_tex, vec2(col_sample, 0.5)).rgb;
 			
 		// return the final colour!
-		COLOR.rgb = final_col;
+		if (!bypass) COLOR.rgb = final_col;
 	}
 }

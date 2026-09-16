@@ -20,6 +20,7 @@ shader_parameter/u_offset = 0.0
 shader_parameter/noiseyness = -0.04
 shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
+shader_parameter/bypass = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n2vao"]
 _surfaces = [{
@@ -84,6 +85,7 @@ shader_parameter/u_offset = 0.0
 shader_parameter/noiseyness = -0.04
 shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_bv35c")
+shader_parameter/bypass = false
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ek7ng"]
 frequency = 0.035
@@ -101,6 +103,7 @@ shader_parameter/u_offset = 0.0
 shader_parameter/noiseyness = -0.04
 shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_2e6p7")
+shader_parameter/bypass = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k5jk"]
 resource_name = "Mid.001"
