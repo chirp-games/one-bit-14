@@ -5,7 +5,7 @@ varying vec3 world_position;
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	normal = normalize(NORMAL + fract(world_position / 10000.));
+	normal = normalize(NORMAL + fract(world_position / 100.));
 }
 
 void fragment() {

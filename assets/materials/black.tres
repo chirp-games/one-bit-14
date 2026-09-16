@@ -17,6 +17,6 @@ shader_parameter/outline_color = Color(1, 0, 0, 1)
 shader_parameter/outline_threshold = 0.2
 
 [resource]
-render_priority = 1
+render_priority = 0
 next_pass = SubResource("ShaderMaterial_45wdl")
 shader = ExtResource("3_gl3a6")

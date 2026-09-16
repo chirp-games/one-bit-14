@@ -88,8 +88,6 @@ void fragment()
 	vec2 n_uv = floor(UV * screen_size) / screen_size;
 	
 	float avg_color = 0.0;
-	float right_avg = 0.0;
-	float left_avg = 0.0;
 	for (int i = 0;i<25;i++) {
 		vec4 t = texture(TEXTURE,vec2(
 			clamp(n_uv.x + float(points[i].x) * TEXTURE_PIXEL_SIZE.x,0.0,0.9999),
@@ -97,18 +95,11 @@ void fragment()
 			);
 		if (t.b < 0.01 && t.g <= 0.01 && t.r >= 0.99) {
 			avg_color += 1.;
-		} else {
-			if (i < 10) {
-				left_avg += (t.r+t.b+t.g);
-			}
-			if (i > 15) {
-				right_avg += (t.r+t.b+t.g);
-			}
 		}
 	}
 	
 	
-	if (avg_color >= 3.) {
+	if (avg_color >= 5.) {
 		COLOR.rgb = texture(u_color_tex, vec2(0.99)).rgb;
 	} else {
 		// map the dither texture onto the screen. there are better ways of doing this that makes the dither pattern 'stick'
