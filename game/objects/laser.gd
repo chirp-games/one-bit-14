@@ -28,7 +28,7 @@ func propagate() -> void:
 				continue
 			
 			direction = direction.slerp(
-				endpoint.direction_tlasero(pos),
+				endpoint.direction_to(pos),
 				clamp(TURN_FACTOR / float(pow(dist, 1.5)), 0, 1)
 			).normalized()
 		

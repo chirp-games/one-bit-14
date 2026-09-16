@@ -24,13 +24,14 @@ var charges := 1 :
 		charges = value
 		%HoleCharges.text = str(charges)
 		if charges == 0:
+			%Gun.show_recharge_status(true)
 			set_blackholes_enabled.emit(false)
 		else:
+			%Gun.show_recharge_status(false)
 			set_blackholes_enabled.emit(true)
 var recharging := false:
 	set(val):
 		recharging = val
-		%Gun.show_recharge_status(recharging)
 	get():
 		return recharging
 var charge_tween: Tween
