@@ -67,36 +67,33 @@ shape = SubResource("CapsuleShape3D_g4v7s")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="gun" parent="Mesh" unique_id=1877890053 instance=ExtResource("4_ssesi")]
-transform = Transform3D(0.23930739, 0, -0.97094387, -0.070015036, 0.99739665, -0.017256523, 0.96841615, 0.07211028, 0.23868439, 0.48840177, -0.66524416, -0.30498868)
-
-[node name="BlackHolePreview" parent="Mesh" unique_id=1549274347 instance=ExtResource("5_ssesi")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.009019613)
-gravity = 0
-preview_mode = true
-
-[node name="Cameras" type="Node3D" parent="Mesh" unique_id=2126917644]
-unique_name_in_owner = true
-
-[node name="Camera" type="Camera3D" parent="Mesh/Cameras" unique_id=1645967111]
+[node name="Camera" type="Camera3D" parent="Mesh" unique_id=1645967111]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 cull_mask = 1047553
 
-[node name="KickRangeRayCast" type="RayCast3D" parent="Mesh/Cameras" unique_id=1099006009]
+[node name="KickRangeRayCast" type="RayCast3D" parent="Mesh/Camera" unique_id=1099006009]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 
-[node name="CreateBlackHoleRay" type="RayCast3D" parent="Mesh/Cameras" unique_id=2117583847]
+[node name="CreateBlackHoleRay" type="RayCast3D" parent="Mesh/Camera" unique_id=2117583847]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -5)
 collision_mask = 3
 
-[node name="PickupRay" type="RayCast3D" parent="Mesh/Cameras" unique_id=1788632089]
+[node name="PickupRay" type="RayCast3D" parent="Mesh/Camera" unique_id=1788632089]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
+
+[node name="gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+transform = Transform3D(0.23930739, 0, -0.97094387, -0.070015036, 0.99739665, -0.017256523, 0.96841615, 0.07211028, 0.23868439, 0.48840177, -0.16524416, -0.30498868)
+
+[node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.009019613)
+gravity = 0
+preview_mode = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=2050455832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377)
@@ -104,4 +101,4 @@ visible = false
 mesh = SubResource("CapsuleMesh_wcbod")
 skeleton = NodePath("../..")
 
-[connection signal="set_blackholes_enabled" from="." to="Mesh/BlackHolePreview" method="set_visible"]
+[connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]
