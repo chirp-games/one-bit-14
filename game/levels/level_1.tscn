@@ -8,7 +8,7 @@
 
 [node name="WorldFloor" parent="." unique_id=2113957581 instance=ExtResource("1_15okj")]
 
-[node name="CharacterBody3D" parent="." unique_id=516948197 instance=ExtResource("2_hj65a")]
+[node name="RigidPlayer" parent="." unique_id=516948197 instance=ExtResource("2_hj65a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1739010610]
