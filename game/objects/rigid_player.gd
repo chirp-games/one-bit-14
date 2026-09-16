@@ -112,14 +112,14 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var camera = get_viewport().get_camera_3d()
-	var camera_transfom = Transform3D(Vector3(camera.basis.x), Vector3(0, 0, 0), Vector3(camera.basis.z), Vector3(0, 0, 0))
-
-	var direction: Vector3 = (camera_transfom.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var y_angle = camera.rotation.y
+	var direction: Vector3 = (Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, y_angle)).normalized()
+	
 	
 	# If the player is moving
 	if direction:
-		%Mesh.rotation.x = direction.x
-		%Mesh.rotation.z = direction.z
+		var face_angle = atan(direction.x / direction.z)
+		%Mesh.rotation.y = face_angle
 
 	if on_floor:
 		if direction:
