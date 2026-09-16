@@ -48,8 +48,8 @@ _subresources={
 },
 "Dark": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://assets/materials/black.tres",
-"use_external/path": "uid://n7ntdwyu1oyq"
+"use_external/fallback_path": "res://assets/materials/black_round.tres",
+"use_external/path": "uid://dk8gq0jm2xnms"
 }
 }
 }
