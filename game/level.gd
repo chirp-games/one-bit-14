@@ -5,6 +5,12 @@ signal level_complete
 func on_complete() -> void:
 	level_complete.emit()
 
+func recieve_laser() -> void:
+	print("DING - Got laser")
+	
+func lose_laser() -> void:
+	print("Lost laser :(")
+
 func _ready() -> void:
 	%Door.open()
 

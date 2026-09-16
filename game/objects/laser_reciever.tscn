@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://btaqj7t5yfjkq"]
+
+[ext_resource type="Script" uid="uid://c1kh1athhjwce" path="res://game/objects/reciever_top.gd" id="1_882dp"]
+[ext_resource type="Script" uid="uid://bdhu3ahk4jy5l" path="res://game/objects/reciever.gd" id="2_uvdmh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
+size = Vector3(0.1, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
+size = Vector3(0.02, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3fx5"]
+size = Vector3(0.02, 0.3, 0.3)
+
+[node name="LaserReciever" type="Node3D" unique_id=898270630]
+script = ExtResource("1_882dp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1013374174]
+collision_layer = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1206146083]
+mesh = SubResource("BoxMesh_gm6uc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2014237067]
+shape = SubResource("BoxShape3D_gm6uc")
+
+[node name="Reciever" type="StaticBody3D" parent="." unique_id=539245264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
+collision_layer = 7
+script = ExtResource("2_uvdmh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Reciever" unique_id=885023632]
+mesh = SubResource("BoxMesh_h3fx5")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reciever" unique_id=4508086]
+shape = SubResource("BoxShape3D_gm6uc")
+
+[connection signal="laser_hit" from="Reciever" to="." method="laser_hit"]

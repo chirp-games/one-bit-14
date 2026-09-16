@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_nspj4"]
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_hjv22"]
+[ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="9_1565f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 size = Vector3(2, 1, 2)
@@ -74,6 +75,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 0)
 light_energy = 5.0
 omni_range = 13.0
 
+[node name="LaserReciever" parent="." unique_id=898270630 instance=ExtResource("9_1565f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -11.95)
+
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="pushed" from="LaserReciever" to="." method="recieve_laser"]
+[connection signal="released" from="LaserReciever" to="." method="lose_laser"]
