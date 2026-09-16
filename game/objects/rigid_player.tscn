@@ -102,4 +102,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_wcbod")
 skeleton = NodePath("../..")
 
+[node name="AreaLight3D" type="AreaLight3D" parent="Mesh" unique_id=229529407]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
+
 [connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]
