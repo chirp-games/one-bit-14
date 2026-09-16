@@ -6,6 +6,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p78q"]
 albedo_color = Color(1, 0, 0.016666412, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_siedi"]
 material = SubResource("StandardMaterial3D_6p78q")
