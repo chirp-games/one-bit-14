@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://game/objects/rigid_player.gd" id="1_hk5cy"]
 [ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_nf8g6"]
-[ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
 [ext_resource type="Texture2D" uid="uid://dcrtfox2jvvd0" path="res://assets/ui/charge.png" id="3_ivxs2"]
 [ext_resource type="PackedScene" uid="uid://cqs8tmm1twbq8" path="res://jakes_test/Crosshair.tscn" id="4_5vn34"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="5_ssesi"]
+[ext_resource type="PackedScene" uid="uid://doqb7rf5j3xgb" path="res://game/objects/gun.tscn" id="7_wt63v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 rough = true
@@ -81,12 +81,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="BlackHolePreview" parent="Mesh" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.009019613)
 gravity = 0
 preview_mode = true
 
 [node name="Cameras" type="Node3D" parent="Mesh" unique_id=2126917644]
 unique_name_in_owner = true
+
+[node name="Gun" parent="Mesh/Cameras" unique_id=1741919520 instance=ExtResource("7_wt63v")]
+transform = Transform3D(-0.021212222, 0, -0.999775, 0, 1, 0, 0.999775, 0, -0.021212222, 0.3102121, -0.16288543, -0.25780672)
 
 [node name="KickRangeRayCast" type="RayCast3D" parent="Mesh/Cameras" unique_id=1099006009]
 unique_name_in_owner = true
@@ -109,9 +112,6 @@ size = Vector2i(960, 540)
 [node name="CameraDither" type="Camera3D" parent="Mesh/Cameras/DitherViewport" unique_id=1645967111]
 unique_name_in_owner = true
 cull_mask = 1047553
-
-[node name="blockbench_export" parent="Mesh/Cameras" unique_id=1472070164 instance=ExtResource("2_wcbod")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28370488, -0.29158348, -0.32797295)
 
 [node name="OutlineViewport" type="SubViewport" parent="Mesh/Cameras" unique_id=1534705054]
 unique_name_in_owner = true

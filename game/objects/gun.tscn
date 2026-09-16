@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://doqb7rf5j3xgb"]
+
+[ext_resource type="PackedScene" uid="uid://d3csyrni4dqlt" path="res://jakes_test/gun.glb" id="1_iqqbq"]
+
+[node name="Gun" type="Node3D" unique_id=1741919520]
+
+[node name="gun" parent="." unique_id=1877890053 instance=ExtResource("1_iqqbq")]
