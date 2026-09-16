@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cq044wa5y21bw"]
+
+[ext_resource type="Script" uid="uid://blskee7cqmnrt" path="res://game/objects/laser.gd" id="1_jip06"]
+
+[sub_resource type="Curve3D" id="Curve3D_o7tws"]
+
+[node name="Laser" type="Node3D" unique_id=2123689957]
+script = ExtResource("1_jip06")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=155807602]
+curve = SubResource("Curve3D_o7tws")
+
+[node name="Collider" type="RayCast3D" parent="." unique_id=1972241685]
+target_position = Vector3(0, 0, -1)
