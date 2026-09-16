@@ -15,16 +15,10 @@ void fragment() {
     view.xyz /= view.w;
     float depth_linear = -view.z;
 	
-	float theta = atan(normal.x, normal.y);
-	vec2 normal_2d = vec2(
-		normal.z,
-		normal.y
-	);
-	
 	ALBEDO = vec3(
-		normal_2d.x * 0.5 + pos_fract.z * 0.5,
-		normal_2d.y * 0.5 + pos_fract.y * 0.5,
-		depth_linear
+		0.0,
+		0.0,
+		0.0
 	);
 }
 
