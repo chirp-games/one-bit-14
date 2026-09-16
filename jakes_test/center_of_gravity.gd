@@ -9,6 +9,9 @@ func _ready() -> void:
 	if preview_mode:
 		$Center.hide()
 		$BlackHoleEffectBillboard.modulate.a = .5
+		remove_from_group("curves_light")
+	else:
+		set_notify_transform(true)
 
 func _physics_process(_delta: float) -> void:
 	if preview_mode:
