@@ -1,132 +1,221 @@
 [gd_scene format=3 uid="uid://nwp6vrv2duhn"]
 
-[ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_1mytf"]
-[ext_resource type="Shader" uid="uid://cqhnt67i7k2v2" path="res://bens_tests/outline.gdshader" id="2_1mytf"]
+[ext_resource type="Script" uid="uid://k3sppppudexu" path="res://bens_tests/visuals_test_init.gd" id="1_jypyi"]
+[ext_resource type="Material" uid="uid://c70hvh3ddkkea" path="res://resources/material/main_material.tres" id="1_v3xiq"]
+[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="2_1mytf"]
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="3_cmxxu"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="3_vv1mp"]
-[ext_resource type="Shader" uid="uid://btn00teo6midp" path="res://bens_tests/outline_material.gdshader" id="4_vv1mp"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_dourk"]
-flip_faces = true
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0c34"]
-render_priority = 0
-shader = ExtResource("2_1mytf")
-shader_parameter/threshold = 4.24
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/background_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km8ha"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_km8ha"]
-size = Vector3(4, 0.01, 5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikshe"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_al25e"]
-
-[sub_resource type="Environment" id="Environment_cmxxu"]
+[sub_resource type="Environment" id="Environment_km8ha"]
 background_mode = 1
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 9.73
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
-frequency = 0.1603
+[sub_resource type="BoxMesh" id="BoxMesh_dourk"]
+size = Vector3(1, 1.2597656, 15.793457)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n6cbj"]
-noise = SubResource("FastNoiseLite_t7a8y")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmxxu"]
+frequency = 0.035
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ga11"]
-load_path = "res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.s3tc.ctex"
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vv1mp"]
+noise = SubResource("FastNoiseLite_cmxxu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3xiq"]
+shader = ExtResource("2_1mytf")
+shader_parameter/u_dither_tex = ExtResource("3_cmxxu")
+shader_parameter/u_color_tex = ExtResource("3_vv1mp")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.775
+shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = -0.04
+shader_parameter/u_dither_size = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dourk"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Shader" id="Shader_cmxxu"]
+code = "shader_type spatial;
+render_mode diffuse_toon;
+uniform sampler2D screen_texture: hint_screen_texture;
+uniform float brightness: hint_range(0.0, 1.0) = 0.5;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 screen_color = texture(screen_texture, SCREEN_UV).rgb;
+	
+	if (ALBEDO.r > ALBEDO.b) {
+		ALBEDO = vec3(0.0);
+	} else {
+		ALBEDO = vec3(brightness);
+	}
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ptwua"]
-shader = ExtResource("1_1mytf")
-shader_parameter/u_dither_tex = ExtResource("3_cmxxu")
-shader_parameter/u_color_tex = SubResource("CompressedTexture2D_2ga11")
-shader_parameter/u_bit_depth = 32
-shader_parameter/u_contrast = 0.5
-shader_parameter/u_offset = 0.0
-shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_n6cbj")
+render_priority = 0
+shader = SubResource("Shader_cmxxu")
+shader_parameter/brightness = 0.1190000056525
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_km8ha"]
-viewport_path = NodePath("DitheringViewport")
+[sub_resource type="Shader" id="Shader_efndj"]
+code = "shader_type spatial;
+render_mode unshaded;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efndj"]
-shader = ExtResource("4_vv1mp")
-shader_parameter/u_color_tex = ExtResource("3_vv1mp")
+uniform sampler2D screen_texture: hint_screen_texture;
+uniform sampler2D depth_texture: hint_depth_texture;
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a0c34"]
-viewport_path = NodePath("LinesViewport")
+uniform vec3 outline_color: source_color;
+uniform float outline_threshold = 0.2;
+
+const float sobel_x[8] = float[](
+        -1.0,  0.0,  1.0,
+        -2.0,        2.0,
+        -1.0,  0.0,  1.0
+    );
+const float sobel_y[8] = float[](
+        -1.0, -2.0, -1.0,
+         0.0,        0.0,
+         1.0,  2.0,  1.0
+    );
+const vec2 offset[8] = vec2[](
+        vec2(-1, -1), vec2( 0, -1), vec2( 1, -1),
+        vec2(-1,  0),             vec2( 1,  0),
+        vec2(-1,  1), vec2( 0,  1), vec2( 1,  1)
+    );
+
+vec3 get_view_pos(vec2 uv, float depth, mat4 inv_proj_m){
+	vec4 ncd = vec4((uv*2.0)-1.0,depth,1.0);
+	vec4 veiw_pos = inv_proj_m*ncd;
+	return veiw_pos.xyz /= veiw_pos.w;
+}
+
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	vec2 texel = 1.0 / vec2(textureSize(depth_texture, 0));
+	vec3 screen_color = texture(screen_texture, uv).rgb;
+	mat4 inv_proj_m = INV_PROJECTION_MATRIX;
+
+	float center_depth = texture(depth_texture, uv).r;
+	vec3 center_view = get_view_pos(uv, center_depth, inv_proj_m);
+	vec3 center_normal = texture(screen_texture, uv).rgb * 2.0 - 1.0;
+
+	float depth_edge_x = 0.0;
+	float depth_edge_y = 0.0;
+
+	float norm_edge_x = 0.0;
+	float norm_edge_y = 0.0;
+ 
+	for (int i = 0; i < 8; i++) {
+		vec2 neighbor_uv = clamp(uv + offset[i] * texel, vec2(0.0), vec2(1.0));
+
+		float neighbor_depth  = texture(depth_texture, neighbor_uv).r;
+		vec3  neighbor_view   = get_view_pos(neighbor_uv, neighbor_depth, inv_proj_m);
+		vec3  neighbor_normal = texture(screen_texture, neighbor_uv).rgb * 2.0 - 1.0;
+
+		float dist = distance(center_view, neighbor_view);
+		float diff = length(neighbor_normal - center_normal);
+
+		depth_edge_x += dist * sobel_x[i];
+		depth_edge_y += dist * sobel_y[i];
+
+		norm_edge_x += diff * sobel_x[i];
+		norm_edge_y += diff * sobel_y[i];
+	}
+
+	float depth_edge = sqrt(depth_edge_x * depth_edge_x + depth_edge_y * depth_edge_y)*10.0;
+	depth_edge = clamp(depth_edge, 0.0, 1.0);
+
+	float gradient = sqrt(norm_edge_x * norm_edge_x + norm_edge_y * norm_edge_y);
+	float normal_edge = float(gradient > outline_threshold);
+
+	float combined_edge = max(normal_edge, depth_edge);
+	
+	ALBEDO = mix(screen_color, outline_color, combined_edge);
+	ALPHA = combined_edge;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jypyi"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ptwua")
+shader = SubResource("Shader_efndj")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_threshold = 0.2
+
+[sub_resource type="Shader" id="Shader_444cg"]
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled;
+varying vec3 normal;
+varying vec3 world_position;
+
+void vertex() {
+	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	normal = normalize(NORMAL + fract(world_position / 10000.));
+}
+
+void fragment() {
+    vec4 view = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, FRAGCOORD.z, 1.0);
+    view.xyz /= view.w;
+    float depth_linear = -view.z;
+	
+	ALBEDO = vec3(
+		normal.x / 2. + 0.5,
+		normal.y / 2. + 0.5,
+		depth_linear
+	);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fq8d"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_jypyi")
+shader = SubResource("Shader_444cg")
 
 [node name="VisualsTest" type="Node3D" unique_id=905520475]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018547058, 0)
+script = ExtResource("1_jypyi")
 
-[node name="DitheringViewport" type="SubViewport" parent="." unique_id=723171075]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1103647453]
+transform = Transform3D(0.91564673, -1.7571276e-08, 0.40198395, -0.40198395, -4.002419e-08, 0.91564673, 0, -1, -4.371139e-08, 0, 6.335759, 0)
+light_angular_distance = 0.5
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1705493837]
+environment = SubResource("Environment_km8ha")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1250037886]
 size = Vector2i(1920, 1080)
 
-[node name="Camera3DDither" type="Camera3D" parent="DitheringViewport" unique_id=772487782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.515)
-cull_mask = 1047553
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1425073630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018547058, 0)
 
-[node name="LinesViewport" type="SubViewport" parent="." unique_id=1970147825]
-size = Vector2i(1920, 1080)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=590754777]
+transform = Transform3D(0.88338685, 0, -0.46864456, 0, 1, 0, 0.46864456, 0, 0.88338685, -2.027628, -0.48945022, -5.850437)
+mesh = SubResource("BoxMesh_dourk")
+surface_material_override/0 = ExtResource("1_v3xiq")
 
-[node name="Camera3DLines" type="Camera3D" parent="LinesViewport" unique_id=1233880574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5151286)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1795886624]
+transform = Transform3D(0.9113661, 0, 0.1641649, 0, 1, 0, -0.9885421, 0, 0.1513485, 0.12968016, -0.41708088, -5.850437)
+mesh = SubResource("BoxMesh_dourk")
+surface_material_override/0 = ExtResource("1_v3xiq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LinesViewport/Camera3DLines" unique_id=1490805508]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.987022e-06, -0.001901038, -0.5293218)
-layers = 2
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_dourk")
-surface_material_override/0 = SubResource("ShaderMaterial_a0c34")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1423491807]
+material = SubResource("ShaderMaterial_v3xiq")
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("ViewportTexture_dourk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1887710698]
-physics_material_override = SubResource("PhysicsMaterial_km8ha")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D" unique_id=1886119885]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21194327, -0.7302809, -2.2926342)
-layers = 3
-mesh = SubResource("BoxMesh_km8ha")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_ikshe")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=119312073]
-transform = Transform3D(0.8513067, 0, 0.52466846, 0, 1, 0, -0.52466846, 0, 0.8513067, 0, 0, -1.7158355)
-mesh = SubResource("BoxMesh_al25e")
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1720717705]
-environment = SubResource("Environment_cmxxu")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment2" unique_id=505834416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5882921, 2.9990005)
-light_energy = 0.385
-
-[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment2" unique_id=765958148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0688424, 0.41257262, -1.6230717)
-
-[node name="Control" type="Control" parent="." unique_id=1584846931]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Dithering" type="TextureRect" parent="Control" unique_id=397744398]
-material = SubResource("ShaderMaterial_ptwua")
-layout_mode = 0
-offset_right = 800.0
-offset_bottom = 450.0
-texture = SubResource("ViewportTexture_km8ha")
-stretch_mode = 2
-
-[node name="Lines" type="TextureRect" parent="Control" unique_id=296973219]
-material = SubResource("ShaderMaterial_efndj")
-layout_mode = 0
-offset_right = 800.0
-offset_bottom = 450.0
-scale = Vector2(1.000074, 1.0000237)
-texture = SubResource("ViewportTexture_a0c34")
-stretch_mode = 2
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=844973085]
+transform = Transform3D(21.224968, 0, 3.0900357, 0, 1, 0, 11.260035, 0, -5.8246636, -2.1139932, -1.6547368, -5.850437)
+mesh = SubResource("BoxMesh_dourk")
+surface_material_override/0 = SubResource("ShaderMaterial_6fq8d")
