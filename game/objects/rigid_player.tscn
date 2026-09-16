@@ -16,7 +16,7 @@ font_size = 75
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
-[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["player"]]
+[node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
