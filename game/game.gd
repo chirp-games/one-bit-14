@@ -54,10 +54,7 @@ func reset() -> void:
 	
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
-func _ready() -> void:
-	%DitherViewport.texture = %Player.dither_viewport.get_texture()
-	$PostProcess.material.set_shader_parameter("outline_tex", %Player.outline_viewport.get_texture())
-	
+func _ready() -> void:	
 	load_levels()
 	place_level(1)
 

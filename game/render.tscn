@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://0ikx7ckdqk7r"]
 
 [ext_resource type="Script" uid="uid://cnf5udhk03rug" path="res://game/game.gd" id="1_itw3e"]
-[ext_resource type="Shader" uid="uid://bc40t1mpyj7og" path="res://bens_tests/dither.gdshader" id="1_kmdim"]
 [ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
+[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="5_n3e1p"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
+[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="6_t7a8y"]
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
 
@@ -12,33 +13,53 @@ background_mode = 1
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 9.73
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_t7a8y"]
-frequency = 0.1603
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmxxu"]
+frequency = 0.035
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n6cbj"]
-noise = SubResource("FastNoiseLite_t7a8y")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vv1mp"]
+noise = SubResource("FastNoiseLite_cmxxu")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ga11"]
-load_path = "res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rp5g8"]
-shader = ExtResource("1_kmdim")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6cbj"]
+shader = ExtResource("5_n3e1p")
 shader_parameter/u_dither_tex = ExtResource("7_n3e1p")
-shader_parameter/u_color_tex = SubResource("CompressedTexture2D_2ga11")
-shader_parameter/u_bit_depth = 16
-shader_parameter/u_contrast = 0.7
-shader_parameter/u_offset = 0.1
-shader_parameter/noiseyness = 0.13
-shader_parameter/u_dither_size = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_n6cbj")
+shader_parameter/u_color_tex = ExtResource("6_t7a8y")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.775
+shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = -0.04
+shader_parameter/u_dither_size = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n3e1p"]
-viewport_path = NodePath("MainRender/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_km8ha"]
+viewport_path = NodePath("GameContainer/MainGame")
 
 [node name="Game" type="Control" unique_id=960045773]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_itw3e")
+
+[node name="GameContainer" type="SubViewportContainer" parent="." unique_id=1748951069]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MainGame" type="SubViewport" parent="GameContainer" unique_id=581796732]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="LevelContainer" type="Node3D" parent="GameContainer/MainGame" unique_id=179893977]
+unique_name_in_owner = true
+
+[node name="Player" parent="GameContainer/MainGame" unique_id=68552729 instance=ExtResource("4_vgggf")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4570165, -2.567738)
+contact_monitor = true
+max_contacts_reported = 100
+
+[node name="BlackHole" parent="GameContainer/MainGame" unique_id=1549274347 instance=ExtResource("9_n6cbj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
 
 [node name="Comment" parent="." unique_id=2120769087 instance=ExtResource("5_vgggf")]
 layout_mode = 0
@@ -49,50 +70,16 @@ offset_bottom = 89.0
 text = "This is the main game rendering scene. It handles the shaders.
 The SubViewport contains the player, the level, and the camera."
 
-[node name="LevelContainer" type="Node3D" parent="." unique_id=179893977]
-unique_name_in_owner = true
-
-[node name="Player" parent="." unique_id=68552729 instance=ExtResource("4_vgggf")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4570165, -2.567738)
-contact_monitor = true
-max_contacts_reported = 100
-
-[node name="BlackHole" parent="." unique_id=1549274347 instance=ExtResource("9_n6cbj")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -730.4249, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1593385754]
 environment = SubResource("Environment_2h351")
 
-[node name="MainRender" type="SubViewportContainer" parent="." unique_id=1302230782]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1510037905]
+material = SubResource("ShaderMaterial_n6cbj")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = SubResource("ViewportTexture_km8ha")
 
-[node name="SubViewport" type="SubViewport" parent="MainRender" unique_id=1937693011]
-handle_input_locally = false
-size = Vector2i(960, 540)
-render_target_update_mode = 4
-
-[node name="DitherViewport" type="TextureRect" parent="MainRender/SubViewport" unique_id=699462599]
-unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PostProcess" type="TextureRect" parent="." unique_id=1224002854]
-material = SubResource("ShaderMaterial_rp5g8")
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.000074, 1.0000237)
-texture = SubResource("ViewportTexture_n3e1p")
-expand_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[connection signal="create_black_hole" from="Player" to="." method="_on_player_create_black_hole"]
-[connection signal="delete_black_hole" from="Player" to="." method="_on_player_delete_black_hole"]
-[connection signal="reset_level" from="Player" to="." method="reset"]
+[connection signal="create_black_hole" from="GameContainer/MainGame/Player" to="." method="_on_player_create_black_hole"]
+[connection signal="delete_black_hole" from="GameContainer/MainGame/Player" to="." method="_on_player_delete_black_hole"]
+[connection signal="reset_level" from="GameContainer/MainGame/Player" to="." method="reset"]

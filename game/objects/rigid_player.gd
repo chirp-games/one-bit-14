@@ -32,11 +32,7 @@ var charge_tween: Tween
 
 var held_object
 
-
-@onready var dither_viewport: SubViewport = %DitherViewport
-@onready var outline_viewport: SubViewport = %OutlineViewport
-
-@onready var camera = %Cameras
+@onready var camera = %Camera
 @onready var blackhole_ray: RayCast3D = %CreateBlackHoleRay
 
 func clamp_players_velocity(max_velocity):
@@ -146,13 +142,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		reset_level.emit()
 
-# Hack to move the camera to the right position
 func _process(_delta: float) -> void:
-	%CameraDither.global_position = %Cameras.global_position
-	%CameraDither.global_rotation = %Cameras.global_rotation
-	%CameraOutline.global_position = %Cameras.global_position
-	%CameraOutline.global_rotation = %Cameras.global_rotation
-
 	position_black_hole_preview()
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

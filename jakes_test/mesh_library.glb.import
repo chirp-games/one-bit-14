@@ -41,6 +41,16 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"Dark": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/materials/black.tres",
+"use_external/path": "uid://n7ntdwyu1oyq"
+},
+"Dark.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/materials/black.tres",
+"use_external/path": "uid://n7ntdwyu1oyq"
+},
 "Light": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://assets/materials/glow.tres",
@@ -48,8 +58,8 @@ _subresources={
 },
 "Mid": {
 "use_external/enabled": true,
-"use_external/fallback_path": "",
-"use_external/path": "uid://bvbdt3mlqrrx4"
+"use_external/fallback_path": "res://assets/materials/midtone.tres",
+"use_external/path": "uid://b7ymbhu131n27"
 }
 }
 }
