@@ -29,7 +29,7 @@ shader_parameter/u_offset = 0.0
 shader_parameter/noiseyness = -0.04
 shader_parameter/u_dither_size = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
-shader_parameter/bypass = false
+shader_parameter/bypass = true
 
 [node name="Game" type="Control" unique_id=960045773]
 layout_mode = 3

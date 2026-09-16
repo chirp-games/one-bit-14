@@ -7,7 +7,7 @@ varying vec3 pos_fract;
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	normal = normalize(NORMAL);
-	pos_fract = normalize(fract(world_position * 2.));
+	pos_fract = normalize(fract(world_position));
 }
 
 void fragment() {
@@ -18,7 +18,7 @@ void fragment() {
 	float theta = atan(normal.x, normal.y);
 	vec2 normal_2d = vec2(
 		abs(normal.x * cos(2. * theta) + normal.y * cos(2. * theta)),
-		normal.y * 0.75 + 0.25
+		normal.y
 	);
 	
 	ALBEDO = vec3(
