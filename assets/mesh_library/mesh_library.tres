@@ -186,7 +186,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_bv35c"]
+[sub_resource type="ImageTexture" id="ImageTexture_ek7ng"]
 image = SubResource("Image_sxl8m")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n05wa"]
@@ -224,7 +224,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n05wa")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ek7ng"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2e6p7"]
 resource_name = "mesh_library_Cube_002"
 _surfaces = [{
 "aabb": AABB(-0.9975978, -0.046653304, -0.99844533, 2.2670712, 4.07907, 2.084786),
@@ -252,10 +252,10 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_llfy6"]
+[sub_resource type="ImageTexture" id="ImageTexture_y81d5"]
 image = SubResource("Image_7sr3q")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_y81d5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_lyr3q"]
 resource_name = "mesh_library_Plane"
 _surfaces = [{
 "aabb": AABB(-1.015, -0.044999998, -1.015, 2.03, 0.029999997, 2.03),
@@ -282,7 +282,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_83i1n"]
+[sub_resource type="ImageTexture" id="ImageTexture_5nrr2"]
 image = SubResource("Image_5g6dl")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5nrr2"]
@@ -730,23 +730,23 @@ item/2/mesh_cast_shadow = 1
 item/2/shapes = [SubResource("BoxShape3D_0xfd7"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)]
 item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/navigation_layers = 1
-item/2/preview = SubResource("ImageTexture_bv35c")
+item/2/preview = SubResource("ImageTexture_ek7ng")
 item/3/name = "wall_tile_corner"
-item/3/mesh = SubResource("ArrayMesh_ek7ng")
+item/3/mesh = SubResource("ArrayMesh_2e6p7")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/mesh_cast_shadow = 1
 item/3/shapes = [SubResource("BoxShape3D_os57d"), Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.868, 2, 0), SubResource("BoxShape3D_os57d"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.8920567)]
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1
-item/3/preview = SubResource("ImageTexture_llfy6")
+item/3/preview = SubResource("ImageTexture_y81d5")
 item/4/name = "grate"
-item/4/mesh = SubResource("ArrayMesh_y81d5")
+item/4/mesh = SubResource("ArrayMesh_lyr3q")
 item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/mesh_cast_shadow = 1
 item/4/shapes = [SubResource("BoxShape3D_0xfd7"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)]
 item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/navigation_layers = 1
-item/4/preview = SubResource("ImageTexture_83i1n")
+item/4/preview = SubResource("ImageTexture_5nrr2")
 item/5/name = "wall_tile_dirty_1"
 item/5/mesh = SubResource("ArrayMesh_83i1n")
 item/5/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

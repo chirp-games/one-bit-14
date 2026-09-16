@@ -11,5 +11,5 @@ emission_energy_multiplier = 5.0
 [node name="gun" unique_id=1877890053 instance=ExtResource("1_egf7j")]
 script = ExtResource("2_a6wjj")
 
-[node name="Gun" parent="." index="4" unique_id=769709975]
+[node name="Gun" parent="." index="4" unique_id=570230898]
 surface_material_override/1 = SubResource("StandardMaterial3D_ssesi")
