@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://cwowogxc3ky8f"]
 
 [ext_resource type="Script" uid="uid://7vg2y3emog5i" path="res://game/objects/rigid_player.gd" id="1_hk5cy"]
-[ext_resource type="PackedScene" uid="uid://81ehsfg88jyu" path="res://assets/blockbench/gun.gltf" id="2_wcbod"]
 [ext_resource type="Texture2D" uid="uid://dcrtfox2jvvd0" path="res://assets/ui/charge.png" id="3_ivxs2"]
 [ext_resource type="PackedScene" uid="uid://cqs8tmm1twbq8" path="res://jakes_test/Crosshair.tscn" id="4_5vn34"]
+[ext_resource type="PackedScene" uid="uid://bnojoechjpkmm" path="res://jakes_test/gun.tscn" id="4_ssesi"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="5_ssesi"]
-[ext_resource type="PackedScene" uid="uid://doqb7rf5j3xgb" path="res://game/objects/gun.tscn" id="7_wt63v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 rough = true
@@ -68,6 +67,9 @@ shape = SubResource("CapsuleShape3D_g4v7s")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="gun" parent="Mesh" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+transform = Transform3D(0.23930739, 0, -0.97094387, -0.070015036, 0.99739665, -0.017256523, 0.96841615, 0.07211028, 0.23868439, 0.48840177, -0.66524416, -0.30498868)
+
 [node name="BlackHolePreview" parent="Mesh" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.009019613)
@@ -95,9 +97,6 @@ collision_mask = 3
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
-
-[node name="blockbench_export" parent="Mesh/Cameras" unique_id=1472070164 instance=ExtResource("2_wcbod")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.28370488, -0.29158348, -0.32797295)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=2050455832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377)

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bnojoechjpkmm"]
+
+[ext_resource type="PackedScene" uid="uid://d3csyrni4dqlt" path="res://jakes_test/gun.glb" id="1_egf7j"]
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="2_ib7n2"]
+[ext_resource type="Material" uid="uid://ck7dlreuoubx" path="res://assets/materials/glow.tres" id="3_qfiav"]
+
+[node name="gun" unique_id=1877890053 instance=ExtResource("1_egf7j")]
+
+[node name="Cube" parent="." index="0" unique_id=474552940]
+surface_material_override/0 = ExtResource("2_ib7n2")
+surface_material_override/1 = ExtResource("3_qfiav")
+surface_material_override/2 = ExtResource("2_ib7n2")
