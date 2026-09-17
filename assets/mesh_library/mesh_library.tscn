@@ -5,6 +5,18 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfd7"]
 size = Vector3(2, 0.45812988, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vot57"]
+size = Vector3(2, 2, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8br5f"]
+size = Vector3(0.25, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbhwy"]
+size = Vector3(2, 2, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n3e1p"]
+points = PackedVector3Array(-1, 2, -1, 1, 0, 1, 1, 2, -1, 1, 0, -1, -1, 0, -1, -1, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_os57d"]
 size = Vector3(2, 4, 0.25)
 
@@ -13,25 +25,52 @@ size = Vector3(0.25, 4, 2)
 
 [node name="mesh_library" unique_id=1112363518 instance=ExtResource("1_6eqsl")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(82031028) index="0" unique_id=1903643448]
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(93754417) index="0" unique_id=1903643448]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile/StaticBody3D" index="0" unique_id=1133061887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28404987, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1869174599) index="0" unique_id=1909381211]
+[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1910001374) index="0" unique_id=1909381211]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grate/StaticBody3D" index="0" unique_id=1433678303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(402798471) index="0" unique_id=107244631]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_wall_tile" parent_id_path=PackedInt32Array(1545188512) index="0" unique_id=1428123367]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_wall_tile/StaticBody3D" index="0" unique_id=1709812667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
+shape = SubResource("BoxShape3D_vot57")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_wall_tile_corner" parent_id_path=PackedInt32Array(1978283975) index="0" unique_id=1590649042]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="half_wall_tile_corner/StaticBody3D" index="0" unique_id=1483770091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, 0)
+shape = SubResource("BoxShape3D_8br5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_wall_tile_corner/StaticBody3D" index="1" unique_id=99187466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
+shape = SubResource("BoxShape3D_nbhwy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stair" parent_id_path=PackedInt32Array(874331207) index="0" unique_id=137224045]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stair/StaticBody3D" index="0" unique_id=1878437136]
+shape = SubResource("ConvexPolygonShape3D_n3e1p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_grate" parent_id_path=PackedInt32Array(2119756014) index="0" unique_id=1104960397]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_grate/StaticBody3D" index="0" unique_id=1013037820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
+shape = SubResource("BoxShape3D_os57d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(711063815) index="0" unique_id=107244631]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile/StaticBody3D" index="0" unique_id=1882788783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
 shape = SubResource("BoxShape3D_os57d")
 
-[node name="wall_tile_corner" parent="." index="5" unique_id=68107539]
+[node name="wall_tile_corner" parent="." index="9" unique_id=479458820]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_tile_corner" index="0" unique_id=1819876203]

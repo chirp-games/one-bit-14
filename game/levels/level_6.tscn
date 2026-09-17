@@ -33,7 +33,7 @@ area_range = 16.919
 area_size = Vector2(9.975621, 8.125718)
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_1o817")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.703307, 0.65959334, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.336091, -0.5837405, 0)
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("4_deupr")]
 unique_name_in_owner = true

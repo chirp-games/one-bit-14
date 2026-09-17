@@ -31,7 +31,7 @@ node_a = NodePath("../StaticBody3D")
 node_b = NodePath("../PushPart")
 linear_limit_y/lower_distance = -0.063
 linear_spring_y/enabled = true
-linear_spring_y/stiffness = 100.0
+linear_spring_y/stiffness = 50.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=233320325]
 collision_layer = 7

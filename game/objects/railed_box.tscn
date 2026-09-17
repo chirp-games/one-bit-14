@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://dl38deygmk43u" path="res://game/objects/railed_box.gd" id="1_xopbt"]
 [ext_resource type="PackedScene" uid="uid://ds68x1fbbucw2" path="res://assets/blender/railed_box.glb" id="2_wdfcw"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_echrq"]
+friction = 0.0
+absorbent = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cghko"]
 size = Vector3(2, 0.7, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="PathFollow3D" type="PathFollow3D" unique_id=787075143]
+[node name="RailedBox" type="PathFollow3D" unique_id=787075143]
 script = ExtResource("1_xopbt")
 
 [node name="RailedBox" type="RigidBody3D" parent="." unique_id=96412231 groups=["gravity_body"]]
@@ -17,6 +21,8 @@ unique_name_in_owner = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_echrq")
 
 [node name="railed_box" parent="RailedBox" unique_id=73822898 instance=ExtResource("2_wdfcw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -45,9 +51,6 @@ linear_limit/upper_distance = 0.0
 linear_limit/lower_distance = 0.25
 
 [node name="Rail" type="PathMesh3D" parent="." unique_id=1549315691]
-collision_mode = 1
-collision_layer = 1
-collision_mask = 1
 mesh = SubResource("BoxMesh_0xfd7")
 surface_0/offset = Vector2(0, 0)
 surface_0/rotation = Vector3(0, 0, 0)
