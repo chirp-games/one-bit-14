@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dylhyrt1l0r5n"]
+
+[ext_resource type="PackedScene" uid="uid://bsoh7akdwoyes" path="res://assets/blender/railed_box.glb" id="1_tspco"]
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="2_i3500"]
+
+[node name="railed_box" unique_id=513737664 instance=ExtResource("1_tspco")]
+
+[node name="Center" parent="." index="0" unique_id=1826194857]
+surface_material_override/0 = ExtResource("2_i3500")

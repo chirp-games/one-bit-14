@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dyn1b4me8mqus"]
+
+[ext_resource type="PackedScene" uid="uid://bsoh7akdwoyes" path="res://assets/blender/railed_box.glb" id="1_xopbt"]
+
+[node name="RailedBox" type="Node3D" unique_id=888255898]
+
+[node name="railed_box" parent="." unique_id=513737664 instance=ExtResource("1_xopbt")]
