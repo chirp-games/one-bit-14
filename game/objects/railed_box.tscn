@@ -1,7 +1,45 @@
 [gd_scene format=3 uid="uid://dyn1b4me8mqus"]
 
+[ext_resource type="Script" uid="uid://dl38deygmk43u" path="res://game/objects/railed_box.gd" id="1_wdfcw"]
 [ext_resource type="PackedScene" uid="uid://bsoh7akdwoyes" path="res://assets/blender/railed_box.glb" id="1_xopbt"]
 
-[node name="RailedBox" type="Node3D" unique_id=888255898]
+[sub_resource type="BoxMesh" id="BoxMesh_wdfcw"]
+size = Vector3(0.4, 0.4, 0.4)
 
-[node name="railed_box" parent="." unique_id=513737664 instance=ExtResource("1_xopbt")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdfcw"]
+size = Vector3(2, 2, 2)
+
+[node name="RailedBox" type="PathFollow3D" unique_id=1575612350]
+script = ExtResource("1_wdfcw")
+
+[node name="PathMesh3D" type="PathMesh3D" parent="." unique_id=1459364922]
+mesh = SubResource("BoxMesh_wdfcw")
+surface_0/offset = Vector2(0, 0)
+surface_0/rotation = Vector3(0, 0, 0)
+surface_0/rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/mesh_length_override = 0.0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/triangle_count = 0
+unique_name_in_owner = true
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="." unique_id=242595417]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+node_a = NodePath("../Body")
+linear_limit/lower_distance = 1.0
+
+[node name="Body" type="RigidBody3D" parent="." unique_id=1811298942 groups=["gravity_body", "pushable"]]
+unique_name_in_owner = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="railed_box" parent="Body" unique_id=513737664 instance=ExtResource("1_xopbt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body" unique_id=1277672037]
+shape = SubResource("BoxShape3D_wdfcw")

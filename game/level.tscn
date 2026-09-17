@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="2_xssv6"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="3_nspj4"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="4_8vjk3"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_ogdhh"]
 [ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_nspj4"]
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_3gsf4"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_hjv22"]
@@ -19,6 +20,20 @@ size = Vector3(2, 1, 2)
 [sub_resource type="Curve3D" id="Curve3D_8vjk3"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_1565f"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ogdhh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -45,13 +60,27 @@ mesh = SubResource("BoxMesh_0xfd7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="Path3D" type="Path3D" parent="." unique_id=1008085103]
+[node name="Platform" type="Path3D" parent="." unique_id=1008085103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.91833, -0.24379885, 0)
 curve = SubResource("Curve3D_8vjk3")
 
-[node name="PathPlatform" parent="Path3D" unique_id=1505859973 instance=ExtResource("6_nspj4")]
+[node name="PathPlatform" parent="Platform" unique_id=1505859973 instance=ExtResource("6_nspj4")]
 unique_name_in_owner = true
 speed = 0.1
+
+[node name="RailBox" type="Path3D" parent="." unique_id=1969455306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4581704, 0.2688377, -0.29969215)
+curve = SubResource("Curve3D_1565f")
+
+[node name="RailedBox" parent="RailBox" unique_id=212971999 instance=ExtResource("5_ogdhh")]
+transform = Transform3D(-4.3711267e-08, 0, -0.9999972, 0, 0.9999997, 0, 0.9999972, 0, -4.3711267e-08, 0, 0, 0)
+
+[node name="RailBox2" type="Path3D" parent="." unique_id=1453437870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8531964, 0.2688377, 3.6287284)
+curve = SubResource("Curve3D_ogdhh")
+
+[node name="RailedBox" parent="RailBox2" unique_id=195611713 instance=ExtResource("5_ogdhh")]
+transform = Transform3D(-0.9999972, 0, -8.7422535e-08, 0, 0.9999997, 0, 8.7422535e-08, 0, -0.9999972, 0, 0, 0)
 
 [node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_3gsf4")]
 unique_name_in_owner = true
