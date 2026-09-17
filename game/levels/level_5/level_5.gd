@@ -7,15 +7,10 @@ var progressing := false
 var time := 0.
 var last_second := -1
 
-var first = true
-
 func succeeding() -> void:
 	progressing = true
 
 func failing() -> void:
-	if first:
-		first = false
-		return
 	progressing = false
 	time = 0
 	last_second = -1
