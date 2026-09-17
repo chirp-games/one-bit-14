@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_u3bt3"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="2_pkj3y"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="3_nangp"]
-[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="4_pkj3y"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="5_nangp"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_5rwuc"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/door.tscn" id="6_yh1g4"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
 script = ExtResource("1_u3bt3")
@@ -34,15 +34,6 @@ area_size = Vector2(9.975621, 8.125718)
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("2_pkj3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.998, -1, 0)
 
-[node name="Door" parent="." unique_id=924460666 instance=ExtResource("4_pkj3y")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5, -1, 0)
-
-[node name="Door2" parent="." unique_id=77873393 instance=ExtResource("4_pkj3y")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.5, -1, 0)
-
-[node name="Door3" parent="." unique_id=1657523761 instance=ExtResource("4_pkj3y")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.5, -1, 0)
-
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("5_nangp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.55, 0)
 
@@ -54,6 +45,15 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6, 
 
 [node name="Button3" parent="." unique_id=1798241754 instance=ExtResource("6_5rwuc")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10, 6, -1.903)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("6_yh1g4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -1, 0)
+
+[node name="Door2" parent="." unique_id=67721313 instance=ExtResource("6_yh1g4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, -1, 0)
+
+[node name="Door3" parent="." unique_id=611631500 instance=ExtResource("6_yh1g4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, -1, 0)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="Button" to="Door" method="open"]

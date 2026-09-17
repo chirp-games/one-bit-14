@@ -1,54 +1,109 @@
 [gd_scene format=3 uid="uid://v1n7htyu5ekv"]
 
-[ext_resource type="PackedScene" uid="uid://rlvrdmql1isp" path="res://assets/blockbench/door.gltf" id="1_1uqah"]
-[ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="2_jn41x"]
+[ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="1_p6dr1"]
 
-[sub_resource type="Animation" id="Animation_jn41x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(1.5, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(1.5, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0u6y"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(1, 3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_57qmd"]
+size = Vector3(1, 3, 0.3)
+
+[sub_resource type="Animation" id="Animation_p6dr1"]
 length = 0.001
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("door")
+tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.75, 0, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("door2")
+tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -1, 1.5, 0)
 
-[sub_resource type="Animation" id="Animation_1uqah"]
+[sub_resource type="Animation" id="Animation_w5v75"]
 resource_name = "open"
+length = 0.5000033594105393
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("door")
+tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 0, 0, 1, 1, 1.9, 0, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.5, 1.5, 0, 0.5, 1, 1.5, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("door2")
+tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 0, 0, 1, 1, -1.9, 0, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.5, 1.5, 0, 0.5, 1, -1.5, 1.5, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jn41x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3c8gx"]
 _data = {
-&"RESET": SubResource("Animation_jn41x"),
-&"open": SubResource("Animation_1uqah")
+&"RESET": SubResource("Animation_p6dr1"),
+&"open": SubResource("Animation_w5v75")
 }
 
-[node name="Door" unique_id=924460666 instance=ExtResource("1_1uqah")]
-script = ExtResource("2_jn41x")
+[node name="Door" type="RigidBody3D" unique_id=527303417]
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_p6dr1")
 
-[node name="door2" parent="." index="4" unique_id=122658717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1459069565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2, 0)
+shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="Animations" type="AnimationPlayer" parent="." index="5" unique_id=226692766]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1093366212]
+mesh = SubResource("BoxMesh_g4v7s")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=132628616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 2, 0)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D2" unique_id=190695981]
+mesh = SubResource("BoxMesh_g4v7s")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=677799919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_57qmd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D3" unique_id=673602750]
+mesh = SubResource("BoxMesh_d0u6y")
+skeleton = NodePath("../..")
+
+[node name="Door" type="CollisionShape3D" parent="." unique_id=1859775493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1653628588]
+mesh = SubResource("BoxMesh_57qmd")
+
+[node name="Door2" type="CollisionShape3D" parent="." unique_id=1601459810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door2" unique_id=1055645082]
+mesh = SubResource("BoxMesh_57qmd")
+
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=398918870]
 unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_jn41x")
+libraries/ = SubResource("AnimationLibrary_3c8gx")
