@@ -13,25 +13,25 @@ size = Vector3(0.25, 4, 2)
 
 [node name="mesh_library" unique_id=1112363518 instance=ExtResource("1_6eqsl")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(1876368928) index="0" unique_id=1903643448]
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(82031028) index="0" unique_id=1903643448]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile/StaticBody3D" index="0" unique_id=1133061887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28404987, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1697134427) index="0" unique_id=1909381211]
+[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(1869174599) index="0" unique_id=1909381211]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="grate/StaticBody3D" index="0" unique_id=1433678303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)
 shape = SubResource("BoxShape3D_0xfd7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(1252995307) index="0" unique_id=107244631]
+[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(402798471) index="0" unique_id=107244631]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile/StaticBody3D" index="0" unique_id=1882788783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
 shape = SubResource("BoxShape3D_os57d")
 
-[node name="wall_tile_corner" parent="." index="3" unique_id=121432032]
+[node name="wall_tile_corner" parent="." index="5" unique_id=68107539]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="wall_tile_corner" index="0" unique_id=1819876203]
