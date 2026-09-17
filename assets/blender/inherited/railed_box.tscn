@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dylhyrt1l0r5n"]
+
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="1_rx8at"]
+[ext_resource type="Material" uid="uid://ck7dlreuoubx" path="res://assets/materials/glow.tres" id="2_a36rd"]
+
+[node name="railed_box" unique_id=513737664]
+
+[node name="Center" parent="." index="0" unique_id=235712725]
+surface_material_override/0 = ExtResource("1_rx8at")
+
+[node name="Decor" parent="." index="1" unique_id=635660592]
+surface_material_override/0 = ExtResource("2_a36rd")
