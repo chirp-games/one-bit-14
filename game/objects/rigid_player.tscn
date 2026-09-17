@@ -102,6 +102,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.009019613)
 gravity = 0
 preview_mode = true
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Mesh/Camera" unique_id=1407023800]
+current = true
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=2050455832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377)
 visible = false

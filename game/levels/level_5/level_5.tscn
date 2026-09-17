@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://bjhhfpvp7i1tg"]
 
-[ext_resource type="Script" uid="uid://d0485i0vlub5u" path="res://game/levels/level_4.gd" id="1_sxgo0"]
+[ext_resource type="Script" uid="uid://ck5pcpdcylj2i" path="res://game/levels/level_5/level_5.gd" id="1_hd7f6"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_rasc3"]
-[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_hd7f6"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="4_315wo"]
 [ext_resource type="Script" uid="uid://dycfujac8wbd5" path="res://game/levels/level_5/box.gd" id="5_sxgo0"]
 [ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="6_hd7f6"]
 [ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="7_315wo"]
+[ext_resource type="AudioStream" uid="uid://cgvr28nsojox8" path="res://assets/sounds/bleep.wav" id="7_hd7f6"]
+[ext_resource type="AudioStream" uid="uid://bgb6ut2xp5uyt" path="res://assets/sounds/fail.wav" id="8_315wo"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
-script = ExtResource("1_sxgo0")
+script = ExtResource("1_hd7f6")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=488222975]
 mesh_library = ExtResource("2_rasc3")
@@ -32,9 +33,6 @@ light_energy = 16.0
 area_range = 16.919
 area_size = Vector2(9.975621, 8.125718)
 
-[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_hd7f6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.998, -1, 0)
-
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("4_315wo")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 9.6, 0)
@@ -48,4 +46,15 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 
 [node name="WallMountedLaserGun" parent="." unique_id=492900681 instance=ExtResource("7_315wo")]
 transform = Transform3D(-0.99999917, 0, -0.001269666, 0, 1, 0, 0.001269666, 0, -0.99999917, -5, -0.5, -4)
 
-[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[node name="Bleeper" type="AudioStreamPlayer" parent="." unique_id=1450243203]
+unique_name_in_owner = true
+stream = ExtResource("7_hd7f6")
+bus = &"SFX"
+
+[node name="Failure" type="AudioStreamPlayer" parent="." unique_id=1706177572]
+unique_name_in_owner = true
+stream = ExtResource("8_315wo")
+bus = &"SFX"
+
+[connection signal="pushed" from="LaserReciever" to="." method="failing"]
+[connection signal="released" from="LaserReciever" to="." method="succeeding"]
