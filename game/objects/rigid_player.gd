@@ -67,8 +67,7 @@ func recharge() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	%HoleRecharge.max_value = RECHARGE_TIME
 	%HoleRecharge.step = RECHARGE_TIME / 100
 
@@ -114,12 +113,11 @@ func _physics_process(delta: float) -> void:
 	var camera = get_viewport().get_camera_3d()
 	var y_angle = camera.rotation.y
 	var direction: Vector3 = (Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, y_angle)).normalized()
-	
-	
-	# If the player is moving
-	if direction:
-		var face_angle = atan(direction.x / direction.z)
-		%Mesh.rotation.y = face_angle
+
+	var mouse_position = get_viewport().get_mouse_position()
+	var guy_on_camera = camera.unproject_position(global_position)
+
+	%Mesh.rotation.y = -guy_on_camera.angle_to_point(mouse_position)
 
 	if on_floor:
 		if direction:
