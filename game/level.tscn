@@ -33,7 +33,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_ogdhh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -76,11 +76,11 @@ curve = SubResource("Curve3D_1565f")
 transform = Transform3D(-4.3711267e-08, 0, -0.9999972, 0, 0.9999997, 0, 0.9999972, 0, -4.3711267e-08, 0, 0, 0)
 
 [node name="RailBox2" type="Path3D" parent="." unique_id=1453437870]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8531964, 0.2688377, 3.6287284)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8531964, 0.081706524, 3.6287284)
 curve = SubResource("Curve3D_ogdhh")
 
 [node name="RailedBox" parent="RailBox2" unique_id=195611713 instance=ExtResource("5_ogdhh")]
-transform = Transform3D(-0.9999972, 0, -8.7422535e-08, 0, 0.9999997, 0, 8.7422535e-08, 0, -0.9999972, 0, 0, 0)
+transform = Transform3D(-4.3711267e-08, 0.9999997, -4.3711267e-08, 0, -4.3711374e-08, -0.9999972, -0.9999972, -4.3711374e-08, 1.9106802e-15, 0, 0, 0)
 
 [node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_3gsf4")]
 unique_name_in_owner = true
