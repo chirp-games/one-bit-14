@@ -1,7 +1,31 @@
 [gd_scene format=3 uid="uid://dyn1b4me8mqus"]
 
-[ext_resource type="PackedScene" uid="uid://bsoh7akdwoyes" path="res://assets/blender/railed_box.glb" id="1_xopbt"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(2, 2, 0.75)
 
-[node name="RailedBox" type="Node3D" unique_id=888255898]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(2, 0.75, 2)
 
-[node name="railed_box" parent="." unique_id=513737664 instance=ExtResource("1_xopbt")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
+size = Vector3(2, 2, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0u6y"]
+size = Vector3(2, 0.75, 2)
+
+[node name="RailedBox" type="RigidBody3D" unique_id=96412231]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=291778960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.625)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=998297135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1364771135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625)
+shape = SubResource("BoxShape3D_57qmd")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=538556958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
+shape = SubResource("BoxShape3D_d0u6y")

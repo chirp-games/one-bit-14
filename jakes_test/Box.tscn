@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkx82op2hp5ul"]
 
-[ext_resource type="PackedScene" uid="uid://2w8vd4dmwvcu" path="res://blockbench_export.tscn" id="1_echrq"]
+[ext_resource type="PackedScene" uid="uid://2w8vd4dmwvcu" path="res://assets/blockbench/inherited/blockbench_export.tscn" id="1_echrq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t7a8y"]
 
