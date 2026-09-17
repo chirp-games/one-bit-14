@@ -1,31 +1,62 @@
 [gd_scene format=3 uid="uid://dyn1b4me8mqus"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(2, 2, 0.75)
+[ext_resource type="Script" uid="uid://dl38deygmk43u" path="res://game/objects/railed_box.gd" id="1_xopbt"]
+[ext_resource type="PackedScene" uid="uid://ds68x1fbbucw2" path="res://assets/blender/railed_box.glb" id="2_wdfcw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
-size = Vector3(2, 0.75, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cghko"]
+size = Vector3(2, 0.7, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
-size = Vector3(2, 2, 0.75)
+[sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
+size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d0u6y"]
-size = Vector3(2, 0.75, 2)
+[node name="PathFollow3D" type="PathFollow3D" unique_id=787075143]
+script = ExtResource("1_xopbt")
 
-[node name="RailedBox" type="RigidBody3D" unique_id=96412231]
+[node name="RailedBox" type="RigidBody3D" parent="." unique_id=96412231 groups=["gravity_body"]]
+unique_name_in_owner = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=291778960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.625)
-shape = SubResource("BoxShape3D_g4v7s")
+[node name="railed_box" parent="RailedBox" unique_id=73822898 instance=ExtResource("2_wdfcw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=998297135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-shape = SubResource("BoxShape3D_yf5fn")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailedBox" unique_id=555713374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("BoxShape3D_cghko")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1364771135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625)
-shape = SubResource("BoxShape3D_57qmd")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RailedBox" unique_id=523017922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.65, 0)
+shape = SubResource("BoxShape3D_cghko")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=538556958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
-shape = SubResource("BoxShape3D_d0u6y")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RailedBox" unique_id=808112729]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, 0.65, 0, 0)
+shape = SubResource("BoxShape3D_cghko")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RailedBox" unique_id=1702966436]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, -0.65, 0, 0)
+shape = SubResource("BoxShape3D_cghko")
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="." unique_id=557640913]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+node_a = NodePath("../RailedBox")
+linear_limit/upper_distance = 0.0
+linear_limit/lower_distance = 1.0
+
+[node name="Rail" type="PathMesh3D" parent="." unique_id=1549315691]
+collision_mode = 1
+collision_layer = 1
+collision_mask = 1
+mesh = SubResource("BoxMesh_0xfd7")
+surface_0/offset = Vector2(0, 0)
+surface_0/rotation = Vector3(0, 0, 0)
+surface_0/rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/mesh_length_override = 0.0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/triangle_count = 0
+unique_name_in_owner = true
