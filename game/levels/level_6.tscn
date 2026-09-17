@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://da1utxmhhy36q"]
+
+[ext_resource type="Script" uid="uid://cmw0ew5uxfltg" path="res://game/levels/level_6.gd" id="1_0jwxh"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_myn66"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_1o817"]
+[ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="4_deupr"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_tycs3"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_myerm"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_fkd7i"]
+
+[sub_resource type="Curve3D" id="Curve3D_0jwxh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_0jwxh")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=488222975]
+mesh_library = ExtResource("2_myn66")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(-1, 65535, 0, -1, 0, 0, -65536, 0, 0, -65536, 65535, 0, -1, 1, 0, -65536, 1, 0, -65536, 65534, 0, -1, 65534, 0, -2, 65534, 0, -2, 65535, 0, -2, 0, 0, -2, 1, 0, -65535, 65535, 0, -65535, 0, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65533, 0, 0, -65533, 65535, 0, -65533, 65534, 0, -65534, 65534, 0, -65535, 65534, 0, -65534, 65535, 0, -65534, 0, 0, -65532, 0, 0, -65532, 65535, 0, -65532, 65534, 0, -65532, 1, 0, -65531, 1, 0, -65531, 0, 0, -65531, 65535, 0, -65531, 65534, 0)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=169850254]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5, -5.258455, 0)
+light_energy = 16.0
+area_range = 16.919
+area_size = Vector2(9.975621, 8.125718)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_1o817")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.998, -1, 0)
+
+[node name="Box" parent="." unique_id=1398796155 instance=ExtResource("4_deupr")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1145873, 0.096940994, 0)
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("6_myerm")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8790231, -1, -3)
+
+[node name="Button2" parent="." unique_id=2026634638 instance=ExtResource("6_myerm")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 3)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1546878631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95619273, -0.1301446, -2.6938689)
+curve = SubResource("Curve3D_0jwxh")
+
+[node name="PathFollow3D" parent="Path3D" unique_id=787075143 instance=ExtResource("5_tycs3")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+
+[node name="Path3D2" type="Path3D" parent="." unique_id=283486016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.974885, -0.1301446, 2.9203093)
+curve = SubResource("Curve3D_0jwxh")
+
+[node name="PathFollow3D" parent="Path3D2" unique_id=1520931852 instance=ExtResource("5_tycs3")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+
+[node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_fkd7i")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.736171, -1.0791228, 0)
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
+[connection signal="pushed" from="Button2" to="." method="on_complete"]
+[connection signal="pushed" from="Button2" to="." method="_on_button_2_pushed"]
