@@ -10,4 +10,5 @@ name = "Wall"
 scene = ExtResource("1_7yle5")
 start_position = Vector3(0, 2, 0)
 start_rotation = Vector3(0, 90, 0)
+floor = -4
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"
