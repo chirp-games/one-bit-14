@@ -94,6 +94,22 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.0168915, 2.0279005, -15.265175)
 
+[node name="A6" parent="Wall1" unique_id=1013299589 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.5168915, 2.0279005, -15.265175)
+
+[node name="A7" parent="Wall1" unique_id=1560445261 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.5168915, 2.0279005, -15.265175)
+
+[node name="A8" parent="Wall1" unique_id=913144895 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.5168915, 2.0279005, -15.265175)
+
+[node name="A9" parent="Wall1" unique_id=807072770 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.5168915, 2.0279005, -15.265175)
+
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
