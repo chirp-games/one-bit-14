@@ -19,7 +19,7 @@ light_energy = 16.0
 omni_range = 40.0
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_ur7w6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 26, 2.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 26, 2.125)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CompletionArea" unique_id=2057568022]
 light_energy = 16.0
