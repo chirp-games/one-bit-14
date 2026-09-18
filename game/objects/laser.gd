@@ -1,6 +1,6 @@
 extends Node3D
 
-const STEP = 0.2
+const STEP = 0.5
 const TURN_FACTOR := STEP / 10
 @export var max_length := 30
 
