@@ -50,7 +50,7 @@ stream = ExtResource("8_315wo")
 bus = &"SFX"
 
 [node name="Button" parent="." unique_id=8617206 instance=ExtResource("9_pn1y3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.9032247, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.05, 0)
 
 [connection signal="pushed" from="Button" to="." method="succeeding"]
 [connection signal="released" from="Button" to="." method="failing"]
