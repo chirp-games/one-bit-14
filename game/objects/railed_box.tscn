@@ -19,6 +19,9 @@ emission = Color(0.9999998, 0.06428058, 0.29319063, 1)
 material = SubResource("StandardMaterial3D_n3e1p")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_wdfcw"]
+size = Vector3(0.25, 0.25, 0.1)
+
 [node name="RailedBox" type="PathFollow3D" unique_id=787075143]
 script = ExtResource("1_xopbt")
 
@@ -75,3 +78,11 @@ surface_0/sample_cubic = false
 surface_0/tilt = true
 surface_0/triangle_count = 0
 unique_name_in_owner = true
+
+[node name="FirstEnd" type="MeshInstance3D" parent="." unique_id=1494488080]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_wdfcw")
+
+[node name="SecondEnd" type="MeshInstance3D" parent="." unique_id=2004856556]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_wdfcw")
