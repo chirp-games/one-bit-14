@@ -65,6 +65,10 @@ func _on_player_create_black_hole(pos: Vector3) -> void:
 func _on_player_delete_black_hole() -> void:
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("reset"):
+		reset()
+
 func _physics_process(delta: float) -> void:
 	if %Player.position.y < current_level.floor:
 		reset()

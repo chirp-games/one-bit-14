@@ -103,6 +103,9 @@ func _input(event: InputEvent) -> void:
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
 		delete_black_hole.emit()
+	
+	if event.is_action_pressed("reset_level"):
+		reset_level.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -144,9 +147,6 @@ func _physics_process(delta: float) -> void:
 			set_blackholes_enabled.emit(false)
 		elif %PickupRay.get_collider().get_parent().is_in_group("grabbable"):
 			set_blackholes_enabled.emit(true)
-	
-	if Input.is_action_just_pressed("reset"):
-		reset_level.emit()
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
