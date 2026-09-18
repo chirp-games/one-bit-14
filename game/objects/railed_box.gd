@@ -18,6 +18,6 @@ func _ready() -> void:
 	%Rail.global_rotation = Vector3(0, 0, 0)
 
 	var dist = path.curve.get_point_position(0).distance_to(path.curve.get_point_position(1))
-	%SliderJoint3D.set_param(SliderJoint3D.PARAM_LINEAR_LIMIT_UPPER, dist - .25)
+	%SliderJoint3D.set_param(SliderJoint3D.PARAM_LINEAR_LIMIT_UPPER, dist)
 
 	%RailedBox.global_position = path.global_position + start_offset * path.curve.get_point_position(1)

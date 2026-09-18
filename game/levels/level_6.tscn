@@ -50,7 +50,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11458731, 0.096940994, -17)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1546878631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9990134, -0.1301446, 0.35297823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999, -1, 0.353)
 curve = SubResource("Curve3D_0jwxh")
 
 [node name="PathFollow3D" parent="Path3D" unique_id=787075143 instance=ExtResource("5_tycs3")]

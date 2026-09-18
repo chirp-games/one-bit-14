@@ -8,7 +8,7 @@ signal reset_level
 
 const WALK_FORCE = 30
 const AIR_WALK_FORCE = 10
-const JUMP_IMPULSE = 5
+const JUMP_IMPULSE = 5.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
