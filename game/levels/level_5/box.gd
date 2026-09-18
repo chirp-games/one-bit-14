@@ -28,6 +28,7 @@ func _ready() -> void:
 	launch()
 
 func _physics_process(delta: float) -> void:
-	if (global_position.distance_to(start_position) > 50) and not resetting:
+	watchdog += delta
+	if (global_position.distance_to(start_position) > 50 or watchdog > 15) and not resetting:
 		resetting = true
 		reset()
