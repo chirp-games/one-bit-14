@@ -5,7 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="3_nangp"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="5_nangp"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_5rwuc"]
-[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/door.tscn" id="6_yh1g4"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="6_yh1g4"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
 script = ExtResource("1_u3bt3")
