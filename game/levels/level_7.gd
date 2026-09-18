@@ -11,3 +11,7 @@ func _on_button_released() -> void:
 	print("released")
 	%Door1.open()
 	%Door2.close()
+
+
+func _on_completion_area_level_complete() -> void:
+	on_complete()
