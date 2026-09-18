@@ -8,20 +8,20 @@ albedo_color = Color(0.02745098, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3fx5"]
 material = SubResource("StandardMaterial3D_qdqni")
-size = Vector3(1, 0.189, 1)
+size = Vector3(1.5, 0.19, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
-size = Vector3(1, 0.188, 1)
+size = Vector3(1.5, 0.188, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvabg"]
 albedo_color = Color(1, 0.09803922, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
 material = SubResource("StandardMaterial3D_tvabg")
-size = Vector3(0.75, 0.126, 0.75)
+size = Vector3(1.25, 0.126, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qaqa3"]
-size = Vector3(0.7519531, 0.12597656, 0.7529297)
+size = Vector3(1.25, 0.126, 1.25)
 
 [node name="Button" type="Node3D" unique_id=8617206]
 script = ExtResource("1_1ukj6")
@@ -31,7 +31,7 @@ node_a = NodePath("../StaticBody3D")
 node_b = NodePath("../PushPart")
 linear_limit_y/lower_distance = -0.063
 linear_spring_y/enabled = true
-linear_spring_y/stiffness = 50.0
+linear_spring_y/stiffness = 35.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=233320325]
 collision_layer = 7
@@ -49,7 +49,7 @@ collision_layer = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 0.1
+mass = 0.05
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PushPart" unique_id=1613541808]
 material_override = ExtResource("2_s8b07")
