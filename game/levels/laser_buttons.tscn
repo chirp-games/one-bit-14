@@ -94,8 +94,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.0168915, 2.0279005, -15.265175)
 
-[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
 [connection signal="released" from="Button" to="." method="_on_button_released"]
 [connection signal="pushed" from="LaserReciever1" to="." method="_on_laser_reciever_1_pushed"]

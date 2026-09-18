@@ -67,6 +67,7 @@ _data = {
 }
 
 [node name="Door" type="RigidBody3D" unique_id=527303417]
+collision_layer = 7
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_p6dr1")

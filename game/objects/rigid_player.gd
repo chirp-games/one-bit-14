@@ -166,4 +166,5 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		i += 1
 
 func _on_lethal() -> void:
+	print("died")
 	reset_level.emit()
