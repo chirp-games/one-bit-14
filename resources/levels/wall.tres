@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://wf2bd1dsd3bo"]
+
+[ext_resource type="PackedScene" uid="uid://80ueqw01fky6" path="res://game/levels/wall.tscn" id="1_7yle5"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_vpbyp"]
+
+[resource]
+script = ExtResource("2_vpbyp")
+number = 9
+name = "Wall"
+scene = ExtResource("1_7yle5")
+start_position = Vector3(0, 2, 0)
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
