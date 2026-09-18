@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="1_p6dr1"]
 [ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="2_jn41x"]
-[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="3_0knua"]
+[ext_resource type="Material" uid="uid://ctgu26h1f3wye" path="res://assets/materials/boxes.tres" id="3_0knua"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(1.5, 4, 0.25)

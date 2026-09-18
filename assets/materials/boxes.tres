@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ctgu26h1f3wye"]
+
+[ext_resource type="Shader" uid="uid://dhribg3pkblg2" path="res://shaders/wireframe.gdshader" id="1_daqf7"]
+[ext_resource type="Shader" uid="uid://c47ip7g7nxyp5" path="res://shaders/sobel.gdshader" id="2_pk8ql"]
+[ext_resource type="Shader" uid="uid://dwprd77etkf2e" path="res://shaders/random_coloring.gdshader" id="3_04av8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a71kg"]
+render_priority = 0
+shader = ExtResource("1_daqf7")
+shader_parameter/brightness = 0.50000002375
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45wdl"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_a71kg")
+shader = ExtResource("2_pk8ql")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_threshold = 0.2
+
+[resource]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_45wdl")
+shader = ExtResource("3_04av8")

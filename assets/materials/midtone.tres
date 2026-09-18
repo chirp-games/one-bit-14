@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a71kg"]
 render_priority = 0
 shader = ExtResource("1_fasfd")
-shader_parameter/brightness = 0.50000002375
+shader_parameter/brightness = 0.2000000095
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45wdl"]
 render_priority = 1
