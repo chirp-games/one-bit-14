@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="1_p6dr1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(1.5, 4, 1)
+size = Vector3(1.5, 4, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
-size = Vector3(1.5, 4, 1)
+size = Vector3(1.5, 4, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
-size = Vector3(2, 1, 1)
+size = Vector3(3, 1, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d0u6y"]
-size = Vector3(2, 1, 1)
+size = Vector3(3, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
-size = Vector3(1, 3, 0.3)
+size = Vector3(1.5, 3, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_57qmd"]
-size = Vector3(1, 3, 0.3)
+size = Vector3(1.5, 3, 0.1)
 
 [sub_resource type="Animation" id="Animation_p6dr1"]
 length = 0.001
@@ -46,14 +46,14 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.5, 1.5, 0, 0.5, 1, 1.5, 1.5, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0, 0.5, 1, 2, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.5, 1.5, 0, 0.5, 1, -1.5, 1.5, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0, 0.5, 1, -2, 1.5, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3c8gx"]
 _data = {
@@ -67,7 +67,7 @@ freeze_mode = 1
 script = ExtResource("1_p6dr1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1459069565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 2, 0)
 shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1093366212]
@@ -75,7 +75,7 @@ mesh = SubResource("BoxMesh_g4v7s")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=132628616]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 2, 0)
 shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D2" unique_id=190695981]
