@@ -71,7 +71,7 @@ transform = Transform3D(-0.9999977, 0, -8.742257e-08, 0, 1, 0, 8.742257e-08, 0, 
 start_offset = 1.0
 
 [node name="Path3D2" type="Path3D" parent="." unique_id=111400642]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031, -0.86, 0)
 curve = SubResource("Curve3D_l3oeq")
 
 [node name="PathFollow3D" parent="Path3D2" unique_id=202867081 instance=ExtResource("5_fwxom")]
