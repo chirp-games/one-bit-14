@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cim75hyr0llqo"]
+
+[ext_resource type="Script" uid="uid://dlmxetg4abnoj" path="res://game/levels/level_7.gd" id="1_kd8s7"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_j2ee2"]
+[ext_resource type="PackedScene" uid="uid://cd8hcutprxwcm" path="res://game/objects/laser_turret.tscn" id="3_sgghk"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="4_j2ee2"]
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_kd8s7")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1128055610]
+mesh_library = ExtResource("2_j2ee2")
+data = {
+"cells": PackedInt32Array(65535, 0, 0, 0, 0, 0, 0, 65535, 1048576, 65535, 65535, 0, 65534, 0, 0, 65534, 65535, 0, 65533, 0, 0, 65533, 65535, 0, 65532, 0, 0, 65532, 65535, 0, 65531, 0, 0, 65531, 65535, 0, 65531, 1, 1, 65532, 1, 1, 65533, 1, 1, 65534, 1, 1, 0, 1, 1, 65535, 1, 1, 65531, 65534, 655361, 65532, 65534, 655361, 65533, 65534, 655361, 65534, 65534, 655361, 65535, 65534, 655361, 0, 65534, 655361, 1, 0, 1048577, 1, 65535, 1048577, 196603, 65535, 1048576, 196603, 0, 1048576, 196604, 0, 1048576, 196605, 0, 1048576, 196605, 65535, 1048576, 196604, 65535, 1048576, 196606, 0, 1048576, 196606, 65535, 1048576, 196607, 65535, 1048576, 196607, 0, 1048576, 131072, 0, 1048576, 131072, 65535, 1048576, 65530, 0, 1441793, 65530, 65535, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="LaserTurret" parent="." unique_id=1796878736 instance=ExtResource("3_sgghk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 2)
+
+[node name="LaserTurret2" parent="." unique_id=906077802 instance=ExtResource("3_sgghk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2)
+
+[node name="LaserTurret3" parent="." unique_id=1032726234 instance=ExtResource("3_sgghk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 2)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("4_j2ee2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1409684269]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+spot_range = 8.0
+spot_attenuation = 0.0
+spot_angle = 60.0
