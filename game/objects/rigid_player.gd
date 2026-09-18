@@ -5,6 +5,7 @@ signal delete_black_hole
 ## Black hole placement
 signal set_blackholes_enabled(enabled: bool)
 signal reset_level
+signal lethal
 
 const WALK_FORCE = 30
 const AIR_WALK_FORCE = 10
@@ -163,3 +164,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		if normal.dot(Vector3.UP) > 0.67: # this can be dialed in
 			on_floor = true
 		i += 1
+
+func _on_lethal() -> void:
+	reset_level.emit()
