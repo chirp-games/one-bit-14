@@ -20,3 +20,12 @@ func _physics_process(delta: float) -> void:
 	if movement_mode == MovementMode.Back:
 		progress_ratio = clamp(progress_ratio - speed * delta, 0, 1)
 	%Platform.global_position = global_position
+
+func stop() -> void:
+	movement_mode = 0
+
+func forward() -> void:
+	movement_mode = 1
+
+func back() -> void:
+	movement_mode = 2
