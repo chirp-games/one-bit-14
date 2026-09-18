@@ -160,6 +160,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		#  1.0 would be perfectly straight up
 		#  0.0 is a wall
 		# -1.0 is a ceiling
-		if normal.dot(Vector3.UP) > 0.8: # this can be dialed in
+		if normal.dot(Vector3.UP) > 0.67: # this can be dialed in
 			on_floor = true
 		i += 1
