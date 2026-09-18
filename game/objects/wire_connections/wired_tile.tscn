@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c18ofqt55hqyi"]
+
+[ext_resource type="Script" uid="uid://bralf5myvco6j" path="res://game/objects/wire_connections/wired_tile.gd" id="1_ktd2w"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_26rqu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j1p2o"]
+size = Vector3(2, 0.023, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6fxx"]
+size = Vector3(1, 0.023, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2hoof"]
+size = Vector3(1.07, 0.023, 0.15)
+
+[node name="Floor" type="Node3D" unique_id=2011983873]
+script = ExtResource("1_ktd2w")
+
+[node name="Floor" type="GridMap" parent="." unique_id=706284321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -1)
+mesh_library = ExtResource("2_26rqu")
+data = {
+"cells": PackedInt32Array(0, 0, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Wires" type="Node3D" parent="." unique_id=1768884229]
+
+[node name="straight" type="MeshInstance3D" parent="Wires" unique_id=1443228120]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.006, 0)
+mesh = SubResource("BoxMesh_j1p2o")
+skeleton = NodePath("../..")
+
+[node name="bend" type="MeshInstance3D" parent="Wires" unique_id=2113723580]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.006, 0)
+mesh = SubResource("BoxMesh_x6fxx")
+skeleton = NodePath("../..")
+
+[node name="bend_2" type="MeshInstance3D" parent="Wires" unique_id=1984051323]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.006, -0.45989046)
+mesh = SubResource("BoxMesh_2hoof")
+skeleton = NodePath("../..")
