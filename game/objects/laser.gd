@@ -46,7 +46,7 @@ func propagate() -> void:
 			if hit["collider"].has_signal("lethal"):
 				hit["collider"].emit_signal("lethal")
 			break
-		
+
 		endpoint += target
 		curve.add_point(endpoint)
 

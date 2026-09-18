@@ -52,12 +52,12 @@ func reset() -> void:
 	%Player.get_node("%Mesh").global_rotation_degrees = current_level.start_rotation
 	%Player.get_node("%Camera").rotation = Vector3.ZERO
 	%Player.reset_physics_interpolation()
-	
+
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
 func _ready() -> void:
 	load_levels()
-	place_level(7)
+	place_level(11)
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos
