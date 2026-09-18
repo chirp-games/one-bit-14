@@ -5,13 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_1o817"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="4_deupr"]
 [ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_tycs3"]
+[ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_1o817"]
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_fkd7i"]
 [ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="7_myn66"]
 [ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="8_1o817"]
 
 [sub_resource type="Curve3D" id="Curve3D_0jwxh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_myn66"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -23,7 +31,7 @@ script = ExtResource("1_0jwxh")
 mesh_library = ExtResource("2_myn66")
 collision_layer = 7
 data = {
-"cells": PackedInt32Array(-1, 65535, 0, -1, 0, 0, -65536, 0, 0, -65536, 65535, 0, -1, 1, 655361, -65536, 1, 655361, -65536, 65534, 1, -1, 65534, 1, -2, 65534, 1, -2, 65535, 0, -2, 0, 0, -2, 1, 655361, -65535, 65535, 0, -65535, 0, 0, -65535, 1, 655361, -65534, 1, 1048576, -65533, 1, 1441803, -65533, 0, 1441803, -65533, 65535, 1441803, -65533, 65534, 1441803, -65534, 65534, 1048576, -65535, 65534, 1, -65534, 65535, 0, -65534, 0, 0, -65532, 0, 1048576, -65532, 65535, 1048576, -65532, 65534, 0, -65532, 1, 0, -65531, 1, 0, -65531, 0, 0, -65531, 65535, 0, -65531, 65534, 0, 4, 0, 1441792, 4, 1, 1441792, 5, 1, 1441792, 5, 0, 1441792, 5, 65535, 1441792, 4, 65535, 1441792, 4, 65534, 1441792, 5, 65534, 1441792)
+"cells": PackedInt32Array(-1, 0, 0, -65536, 0, 0, -65536, 65535, 0, -1, 1, 655361, -65536, 1, 655361, -2, 65535, 0, -2, 0, 0, -2, 1, 655361, -65535, 65535, 0, -65535, 0, 0, -65535, 1, 655361, -65534, 1, 1048577, -65533, 1, 1441803, -65533, 0, 1441803, -65533, 65535, 1441803, -65533, 65534, 1441803, -65534, 65534, 1048577, -65534, 65535, 1048577, -65534, 0, 1048577, -65532, 0, 1048576, -65532, 65535, 1048576, -65532, 65534, 0, -65532, 1, 0, -65531, 1, 0, -65531, 0, 0, -65531, 65535, 0, -65531, 65534, 0, 4, 0, 1441792, 4, 1, 1441792, 5, 1, 1441792, 5, 0, 1441792, 5, 65535, 1441792, 4, 65535, 1441792, 4, 65534, 1441792, 5, 65534, 1441792, -3, 1, 1441793, -3, 0, 1441793, -3, 65535, 1441793, -2, 65533, 1441792, -1, 65533, 1441792, -65536, 65533, 1441792, -65535, 65533, 1441792, -2, 65524, 0, -1, 65524, 0, -65536, 65524, 0, -65535, 65524, 0, -65536, 65523, 0, -1, 65523, 0, -2, 65523, 0, -2, 65522, 0, -1, 65522, 0, -65535, 65523, 0, -65535, 65522, 0, -65536, 65522, 0, -1, 65526, 0, -65536, 65526, 0, -2, 65526, 0, -2, 65525, 655371, -1, 65525, 655371, -65536, 65525, 655371, -65535, 65525, 655371, -65535, 65526, 0, -65535, 65527, 0, -65536, 65527, 0, -1, 65527, 0, -2, 65527, 0, 65534, 65525, 655360, 65535, 65525, 655360, 0, 65525, 655360, 1, 65525, 655360, 1, 65524, 655360, 1, 65523, 655360, 0, 65523, 655360, 0, 65522, 655360, 65535, 65522, 655360, 65535, 65523, 655360, 65535, 65524, 655360, 65534, 65524, 655360, 65534, 65523, 655360, 1, 65522, 655360, 1, 65521, 655360, 0, 65521, 655360, 65534, 65522, 655360, 65534, 65521, 655360, 65535, 65521, 655360, -3, 65534, 1441793)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
@@ -34,18 +42,12 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=169850254]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5, -5.258455, 0)
-light_energy = 16.0
-area_range = 16.919
-area_size = Vector2(9.975621, 8.125718)
-
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_1o817")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.952894, 1.7978361, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04710579, 2.797836, -26)
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("4_deupr")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1145873, 0.096940994, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11458731, 0.096940994, -17)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1546878631]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9990134, -0.1301446, 0.35297823)
@@ -54,15 +56,29 @@ curve = SubResource("Curve3D_0jwxh")
 [node name="PathFollow3D" parent="Path3D" unique_id=787075143 instance=ExtResource("5_tycs3")]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
 
+[node name="Path3D2" type="Path3D" parent="." unique_id=1947314294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9990134, -1.0456433, -7.752969)
+curve = SubResource("Curve3D_myn66")
+
+[node name="PathFollowPlatform" parent="Path3D2" unique_id=1505859973 instance=ExtResource("6_1o817")]
+unique_name_in_owner = true
+speed = 0.1
+movement_mode = 1
+
 [node name="Door" parent="." unique_id=924460666 instance=ExtResource("7_fkd7i")]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.736171, 0.9208772, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.26382923, 0.92087746, -22)
 
 [node name="WallMountedLaserGun" parent="." unique_id=492900681 instance=ExtResource("7_myn66")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -1, 1.2593334, 3.7244968)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3, 1.45, 0.549)
 
 [node name="LaserReciever" parent="." unique_id=898270630 instance=ExtResource("8_1o817")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1.2593334, -3.6957653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.45, 0.549)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1238834055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -12)
+light_energy = 10.0
+omni_range = 30.0
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
