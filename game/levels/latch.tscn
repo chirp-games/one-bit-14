@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bhbfgqkuidefd"]
+[gd_scene format=3 uid="uid://dqk2q7txkdoom"]
 
 [ext_resource type="Script" uid="uid://dlmxetg4abnoj" path="res://game/levels/latch.gd" id="1_l12sc"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_5pflw"]
