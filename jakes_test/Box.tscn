@@ -16,3 +16,6 @@ shape = SubResource("BoxShape3D_os57d")
 
 [node name="blockbench_export" parent="." unique_id=1174974 instance=ExtResource("1_echrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5033506, 0)
+
+[node name="blockbench_export2" parent="." unique_id=1803246006 instance=ExtResource("1_echrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5033506, 0)
