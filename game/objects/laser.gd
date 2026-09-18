@@ -8,6 +8,11 @@ var direction = Vector3.FORWARD
 var endpoint = Vector3.ZERO
 
 func propagate() -> void:
+	# Disable the laser's logic when it is hidden to reduce lag and to
+	# prevent the player from dying when they touch it
+	if not visible:
+		return
+
 	direction = Vector3.FORWARD
 	endpoint = Vector3.ZERO
 	curve.clear_points()
