@@ -61,9 +61,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 node_a = NodePath("../RailedBox")
 linear_limit/upper_distance = 0.0
 linear_limit/lower_distance = 0.0
-linear_limit/softness = 16.0
-linear_limit/restitution = 10.0
-linear_limit/damping = 10.0
 
 [node name="Rail" type="PathMesh3D" parent="." unique_id=1549315691]
 mesh = SubResource("BoxMesh_0xfd7")

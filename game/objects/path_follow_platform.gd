@@ -22,10 +22,10 @@ func _physics_process(delta: float) -> void:
 	%Platform.global_position = global_position
 
 func stop() -> void:
-	movement_mode = 0
+	movement_mode = MovementMode.Stopped
 
 func forward() -> void:
-	movement_mode = 1
+	movement_mode = MovementMode.Forward
 
 func back() -> void:
-	movement_mode = 2
+	movement_mode = MovementMode.Back
