@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://dfsxsjhnekman"]
+
+[ext_resource type="PackedScene" uid="uid://dwugyrb2ivbfg" path="res://game/levels/laser_walls.tscn" id="1_jud4m"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_rkltv"]
+
+[resource]
+script = ExtResource("2_rkltv")
+number = 11
+name = "Laser Walls"
+scene = ExtResource("1_jud4m")
+start_position = Vector3(0, 2, 0)
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
