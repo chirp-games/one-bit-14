@@ -1,23 +1,28 @@
 [gd_scene format=3 uid="uid://v1n7htyu5ekv"]
 
 [ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="1_p6dr1"]
+[ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="2_jn41x"]
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="3_0knua"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(1.5, 4, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+material = ExtResource("2_jn41x")
 size = Vector3(1.5, 4, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
 size = Vector3(3, 1, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d0u6y"]
+material = ExtResource("2_jn41x")
 size = Vector3(3, 1, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
 size = Vector3(1.5, 3, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_57qmd"]
+material = ExtResource("3_0knua")
 size = Vector3(1.5, 3, 0.1)
 
 [sub_resource type="Animation" id="Animation_p6dr1"]
