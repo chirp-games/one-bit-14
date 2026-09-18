@@ -1,9 +1,7 @@
 extends Node3D
 
-
 const STEP = 0.2
 const TURN_FACTOR := STEP / 10
-
 @export var max_length := 30
 
 var direction = Vector3.FORWARD
@@ -45,17 +43,36 @@ func propagate() -> void:
 			curve.add_point(to_local(hit["position"]))
 			if hit["collider"].has_signal("laser_hit"):
 				hit["collider"].emit_signal("laser_hit")
+			if hit["collider"].has_signal("lethal"):
+				hit["collider"].emit_signal("lethal")
 			break
 		
 		endpoint += target
 		curve.add_point(endpoint)
 
+	if curve.point_count <= 1:
+		return
+
+	# Only update the visuals if we have a different shape curve
+	if not are_curves_equal(%VisibleCurve.curve, curve):
+		%VisibleCurve.curve = curve.duplicate()
+
 @onready var curve: Curve3D = Curve3D.new()
 @onready var collisionRay: RayCast3D = $Collider
 @onready var effectors = get_tree().get_nodes_in_group("curves_light")
 
-func _ready() -> void:
-	$Path3D.curve = curve
+func are_curves_equal(a: Curve3D, b: Curve3D):
+	if a.point_count == 0 or b.point_count == 0:
+		return false
+	if a.point_count != b.point_count:
+		return false
+	var a_points = a.get_baked_points()
+	var b_points = b.get_baked_points()
+	for i in a.point_count:
+		if a_points[i] != b_points[i]:
+			return false
+	return true
 
-func _physics_process(_delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	propagate()

@@ -50,7 +50,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11458731, 0.096940994, -17)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=1546878631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9990134, -0.1301446, 0.35297823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999, -1, 0.353)
 curve = SubResource("Curve3D_0jwxh")
 
 [node name="PathFollow3D" parent="Path3D" unique_id=787075143 instance=ExtResource("5_tycs3")]
@@ -80,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -12)
 light_energy = 10.0
 omni_range = 30.0
 
-[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="LaserReciever" to="." method="_on_laser_reciever_pushed"]
 [connection signal="released" from="LaserReciever" to="." method="_on_laser_reciever_released"]

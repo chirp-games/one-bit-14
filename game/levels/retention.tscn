@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bhxovi46a4amc"]
+
+[ext_resource type="Script" uid="uid://cmw0ew5uxfltg" path="res://game/levels/level_6.gd" id="1_qph57"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_uvbrm"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_8fnkn"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="4_uvbrm"]
+[ext_resource type="PackedScene" uid="uid://cd8hcutprxwcm" path="res://game/objects/laser_turret.tscn" id="5_0fioa"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="6_yqjsg"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="7_yqjsg"]
+[ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="8_at62v"]
+
+[sub_resource type="Curve3D" id="Curve3D_at62v"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wu4ba"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -14),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_qph57")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1238834055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 22.5, -1)
+light_energy = 16.0
+omni_range = 20.0
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_8fnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 25, 2.125)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=2069765744]
+mesh_library = ExtResource("2_uvbrm")
+data = {
+"cells": PackedInt32Array(655360, 0, 4, 720895, 0, 1441793, 655361, 0, 1048577, 655360, 1, 0, 655360, 2, 0, 720895, 1, 1441793, 655361, 1, 1048577, 786432, 1, 1048576, 786432, 0, 0, 786432, 2, 0, 655360, 3, 1, 720895, 2, 1441793, 655361, 2, 1048577, 720895, 65535, 1441793, 655361, 65535, 1048577, 589823, 65535, 1441793, 458751, 65535, 1441793, 393216, 65534, 655361, 524288, 65534, 655361, 655360, 65534, 655361, 524289, 65535, 1048577, 393217, 65535, 1048577, 393216, 0, 10, 524288, 0, 10, 786432, 65535, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 12, 0)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("4_uvbrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21, 0)
+
+[node name="LaserTurret" parent="." unique_id=1796878736 instance=ExtResource("5_0fioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21, 5)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=405543942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 22, 3)
+curve = SubResource("Curve3D_at62v")
+
+[node name="RailedBox" parent="Path3D" unique_id=787075143 instance=ExtResource("6_yqjsg")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("7_yqjsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21, 1)
+
+[node name="Button2" parent="." unique_id=1243065918 instance=ExtResource("7_yqjsg")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 1, 24.8, 3)
+
+[node name="Path3D2" type="Path3D" parent="." unique_id=1086278457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10.5, 10)
+curve = SubResource("Curve3D_wu4ba")
+
+[node name="PathFollowPlatform" parent="Path3D2" unique_id=1505859973 instance=ExtResource("8_at62v")]
+
+[node name="LaserTurret" parent="Path3D2/PathFollowPlatform" unique_id=1871351472 instance=ExtResource("5_0fioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="LaserTurret2" parent="Path3D2/PathFollowPlatform" unique_id=1006389962 instance=ExtResource("5_0fioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
+
+[node name="LaserTurret3" parent="Path3D2/PathFollowPlatform" unique_id=422009508 instance=ExtResource("5_0fioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
+
+[connection signal="pushed" from="Button" to="Door" method="open"]
+[connection signal="released" from="Button" to="Door" method="close"]

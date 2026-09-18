@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dwugyrb2ivbfg"]
+
+[ext_resource type="Script" uid="uid://dollv6bjrma6v" path="res://game/levels/laser_buttons.gd" id="1_tv2el"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_gsrm0"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="2_sjg5p"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="3_gsrm0"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="4_lyeev"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="5_tv2el"]
+[ext_resource type="PackedScene" uid="uid://cq044wa5y21bw" path="res://game/objects/laser.tscn" id="7_lyeev"]
+[ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="8_tv2el"]
+[ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="9_tv2el"]
+
+[sub_resource type="Curve3D" id="Curve3D_b6xh1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_tv2el")
+
+[node name="Floor" type="GridMap" parent="." unique_id=1423643689]
+mesh_library = ExtResource("2_gsrm0")
+data = {
+"cells": PackedInt32Array(-65536, 65535, 1048576, -1, 65535, 1048576, -2, 65535, 1048576, -3, 65535, 1048576, -4, 65535, 1048576, -5, 65535, 1048576, -5, 65534, 1048576, -4, 65534, 1048576, -3, 65534, 1048576, -2, 65534, 1048576, -1, 65534, 1048576, -65536, 65534, 1048576, -65535, 65535, 1048576, -65536, 0, 1048576, -1, 0, 1048576, -2, 0, 1048576, -3, 0, 1048576, -4, 0, 1048576, -5, 0, 1048576, -6, 0, 1048576, -5, 1, 1048576, -4, 1, 1048576, -3, 1, 1048576, -2, 1, 1048576, -1, 1, 1048576, -65536, 1, 1048576, -65535, 1, 1048576, -65534, 1, 1048576, -65534, 0, 1048576, -65534, 65535, 1048576, -65535, 0, 1048576, -6, 65533, 1048576, -5, 65533, 1048576, -4, 65533, 1048576, -3, 65533, 1048576, -2, 65533, 1048576, -1, 65533, 1048576, -65536, 65533, 1048576, -65535, 65533, 1048576, -65534, 65533, 1048576, -65534, 65534, 1048576, -65535, 65534, 1048576, -65533, 0, 1048576, -65533, 1, 1048576, -65533, 65535, 1048576, -65533, 65534, 1048576, -65533, 65533, 1048576, -8, 65533, 1048576, -8, 65534, 1048576, -9, 65534, 1048576, -9, 65535, 1048576, -9, 0, 1048576, -8, 0, 1048576, -7, 0, 1048576, -6, 65535, 1048576, -6, 65534, 1048576, -7, 65533, 1048576, -8, 65535, 1048576, -7, 65535, 1048576, -7, 65534, 1048576, -6, 1, 1048576, -7, 1, 1048576, -8, 1, 1048576, -9, 1, 1048576, -10, 1, 1048576, -10, 0, 1048576, -9, 65533, 1048576, -10, 65533, 1048576, -10, 65534, 1048576, -10, 65535, 1048576, -5, 65532, 1048576, -5, 65531, 1048576, -5, 65530, 1048576, -5, 65529, 1048576, -5, 65528, 1048576, -5, 65527, 1048576, -5, 65526, 1048576, -5, 65525, 1048576, -5, 65524, 1048576, -6, 65524, 1048576, -6, 65525, 1048576, -6, 65526, 1048576, -6, 65527, 1048576, -6, 65528, 1048576, -6, 65529, 1048576, -6, 65530, 1048576, -6, 65531, 1048576, -6, 65532, 1048576)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("2_sjg5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66390896, -0.5837405, 18)
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("3_gsrm0")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012, -1, 0)
+
+[node name="Middle3" type="Path3D" parent="." unique_id=1825457781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5028086, -0.786, -22.6)
+curve = SubResource("Curve3D_b6xh1")
+
+[node name="Box1" parent="Middle3" unique_id=374735350 instance=ExtResource("4_lyeev")]
+transform = Transform3D(-0.9999977, 0, -8.742257e-08, 0, 1, 0, 8.742257e-08, 0, -0.9999977, 0, 0, 0)
+start_offset = 1.0
+
+[node name="Middle" type="Path3D" parent="." unique_id=1546878631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.786, -17.6)
+curve = SubResource("Curve3D_b6xh1")
+
+[node name="Box1" parent="Middle" unique_id=787075143 instance=ExtResource("4_lyeev")]
+transform = Transform3D(-0.9999977, 0, -8.742257e-08, 0, 1, 0, 8.742257e-08, 0, -0.9999977, 0, 0, 0)
+start_offset = 1.0
+
+[node name="Door1" parent="." unique_id=924460666 instance=ExtResource("5_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 10)
+is_open = true
+
+[node name="Door2" parent="." unique_id=962123478 instance=ExtResource("5_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 16.1236)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=650667086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 7, -13.015533)
+light_energy = 10.0
+omni_range = 30.0
+
+[node name="Laser" parent="." unique_id=2123689957 instance=ExtResource("7_lyeev")]
+
+[node name="TriggerLaser1" parent="." unique_id=492900681 instance=ExtResource("8_tv2el")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.0168915, 2.0279005, -17.265175)
+
+[node name="LaserReciever1" parent="." unique_id=898270630 instance=ExtResource("9_tv2el")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -5.0168915, -1.4385545, -17.265175)
+
+[node name="Wall1" type="Node3D" parent="." unique_id=2066051639]
+
+[node name="A1" parent="Wall1" unique_id=1363690515 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.0168915, 2.0279005, -15.265175)
+
+[node name="A2" parent="Wall1" unique_id=1924764378 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6.0168915, 2.0279005, -15.265175)
+
+[node name="A3" parent="Wall1" unique_id=879728502 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.0168915, 2.0279005, -15.265175)
+
+[node name="A4" parent="Wall1" unique_id=1227305878 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.0168915, 2.0279005, -15.265175)
+
+[node name="A5" parent="Wall1" unique_id=851219254 instance=ExtResource("8_tv2el")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.0168915, 2.0279005, -15.265175)
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
+[connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
+[connection signal="released" from="Button" to="." method="_on_button_released"]
+[connection signal="pushed" from="LaserReciever1" to="." method="_on_laser_reciever_1_pushed"]
+[connection signal="released" from="LaserReciever1" to="." method="_on_laser_reciever_1_released"]
