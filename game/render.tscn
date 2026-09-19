@@ -82,6 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10000, 0)
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1315549566]
 stream = ExtResource("9_2ga11")
 volume_db = -6.0
+bus = &"Music"
 
 [connection signal="create_black_hole" from="SubViewportContainer/MainGame/Player" to="." method="_on_player_create_black_hole"]
 [connection signal="delete_black_hole" from="SubViewportContainer/MainGame/Player" to="." method="_on_player_delete_black_hole"]
