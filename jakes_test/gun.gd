@@ -8,3 +8,6 @@ func show_recharge_status(charging: bool):
 	else:
 		material.emission_enabled = true
 		material.albedo_color = Color.WHITE
+
+func set_charge(f: float):
+	$Cube_003.set_instance_shader_parameter("black_hole_distance", f)

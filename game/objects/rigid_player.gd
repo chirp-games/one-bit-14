@@ -20,6 +20,11 @@ const RECHARGE_TIME := 0.3
 var cayote_timer = 0
 var on_floor: bool = false
 
+var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
+var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
+var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .08
+var black_hole_position = 0.0
+
 var charges := 1 :
 	set(value):
 		charges = value
@@ -86,18 +91,21 @@ func _input(event: InputEvent) -> void:
 		camera.rotation.x = clampf(camera.rotation.x, -PI/2, PI/2)
 
 	if event.is_action("scroll_up"):
-		blackhole_ray.target_position.z = clampf(
-			blackhole_ray.target_position.z - .1,
-			-5,
-			-1,
+		black_hole_position = clampf(
+			black_hole_position + BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL,
+			0.,
+			1.,
 		)
+
 	if event.is_action("scroll_down"):
-		blackhole_ray.target_position.z = clampf(
-			blackhole_ray.target_position.z + .1,
-			-5,
-			-1,
+		black_hole_position = clampf(
+			black_hole_position - BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL,
+			0.,
+			1.,
 		)
-		
+
+	blackhole_ray.target_position.z = -1 * black_hole_position * (BLACK_HOLE_PLACEMENT_DIST_MAX - BLACK_HOLE_PLACEMENT_DIST_MIN) - BLACK_HOLE_PLACEMENT_DIST_MIN
+
 	if event.is_action_pressed("click") and charges > 0:
 		charges -= 1
 		%HoleRecharge.value = 0
@@ -145,6 +153,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
+	%Gun.set_charge(black_hole_position)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
