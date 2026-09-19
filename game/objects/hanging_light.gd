@@ -2,18 +2,11 @@
 
 extends Node3D
 
-@export var length = 3:
-	set(v):
-		if not is_node_ready():
-			return
-		length = v
-		%Bulb.position = -length
-		%String.mesh.size.y = length - .5
-		%String.position.y = length / 2.
-	get():
-		return length
+@export var length: float = 3.0
 
-func _ready() -> void:
-	%String.mesh.size.y = length - .5
-	%String.position.y = length / 2.
+func _enter_tree() -> void:
+	%String.mesh = %String.mesh.duplicate()
+	
 	%Bulb.position.y = -length
+	%String.mesh.size.y = length
+	%String.position.y = length / 2.
