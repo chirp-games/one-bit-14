@@ -19,6 +19,7 @@ func failing() -> void:
 func _process(delta: float) -> void:
 	if progressing:
 		time += delta
+		print(time)
 		
 		if last_second != floor(time):
 			last_second = floor(time)

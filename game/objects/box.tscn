@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://3jipfs8ogvwa"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
+[ext_resource type="PackedScene" uid="uid://2w8vd4dmwvcu" path="res://assets/blockbench/inherited/blockbench_export.tscn" id="1_5pvc2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3435s"]
-albedo_color = Color(1, 0.20392157, 0.19215687, 1)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5pvc2"]
+friction = 0.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
-material = SubResource("StandardMaterial3D_3435s")
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekxcr"]
 
-[node name="Box" type="RigidBody3D" unique_id=1246468868]
+[node name="Box" type="RigidBody3D" unique_id=1246468868 groups=["gravity_body", "kickable", "pushable"]]
+collision_layer = 7
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_5pvc2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1407976292]
-shape = SubResource("BoxShape3D_gm6uc")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=320595030]
+shape = SubResource("BoxShape3D_ekxcr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1971866129]
-mesh = SubResource("BoxMesh_gm6uc")
+[node name="blockbench_export" parent="." unique_id=1174974 instance=ExtResource("1_5pvc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5033506, 0)
+
+[node name="blockbench_export2" parent="." unique_id=866835185 instance=ExtResource("1_5pvc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5033506, 0)

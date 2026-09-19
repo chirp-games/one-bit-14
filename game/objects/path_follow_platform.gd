@@ -13,8 +13,6 @@ enum MovementMode {
 @export var movement_mode: MovementMode = MovementMode.Stopped
 
 func _physics_process(delta: float) -> void:
-	if progress_ratio >= 1 or progress_ratio <= 0:
-		speed *= -1
 	if movement_mode == MovementMode.Forward:
 		progress_ratio = clamp(progress_ratio + speed * delta, 0, 1)
 	if movement_mode == MovementMode.Back:

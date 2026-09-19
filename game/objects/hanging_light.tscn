@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="1_outfh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fyet2"]
-size = Vector3(0.025, 3.5, 0.025)
+size = Vector3(0.025, 4.5, 0.025)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60d88"]
 albedo_color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
@@ -82,18 +82,19 @@ size = Vector3(0.3, 0.3, 0.3)
 
 [node name="HangingLight" type="Node3D" unique_id=1437048895]
 script = ExtResource("1_60d88")
+length = 3
 
-[node name="Generic6DOFJoint3D" type="PinJoint3D" parent="." unique_id=932175566]
+[node name="PinJoint3D" type="PinJoint3D" parent="." unique_id=914825376]
 node_a = NodePath("../Bulb")
 
 [node name="Bulb" type="RigidBody3D" parent="." unique_id=1629014096 groups=["gravity_body"]]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 mass = 5.0
 
 [node name="String" type="MeshInstance3D" parent="Bulb" unique_id=1666056005]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 mesh = SubResource("BoxMesh_fyet2")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_60d88")
@@ -113,6 +114,5 @@ shape = SubResource("BoxShape3D_km8ha")
 [node name="SpotLight3D" type="SpotLight3D" parent="Bulb" unique_id=97481572]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 light_energy = 10.0
-spot_range = 22.135548
+spot_range = 25.0
 spot_attenuation = 0.0
-spot_angle = 16.30226

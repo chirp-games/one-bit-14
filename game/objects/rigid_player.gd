@@ -13,22 +13,30 @@ const JUMP_IMPULSE = 5.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
+const AIR_RESISTANCE = 0.1
 
 const MAX_CHARGES := 1
-const RECHARGE_TIME := 0.3
+
+# We don't use the hole recharge animation for the time it takes to recharge
+@onready var RECHARGE_TIME: float  = .3
 
 var cayote_timer = 0
 var on_floor: bool = false
+
+var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
+var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
+var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
+var black_hole_position = 0.0
+
+var floor: Object
 
 var charges := 1 :
 	set(value):
 		charges = value
 		%HoleCharges.text = str(charges)
 		if charges == 0:
-			%Gun.show_recharge_status(true)
 			set_blackholes_enabled.emit(false)
 		else:
-			%Gun.show_recharge_status(false)
 			set_blackholes_enabled.emit(true)
 var recharging := false:
 	set(val):
@@ -86,21 +94,25 @@ func _input(event: InputEvent) -> void:
 		camera.rotation.x = clampf(camera.rotation.x, -PI/2, PI/2)
 
 	if event.is_action("scroll_up"):
-		blackhole_ray.target_position.z = clampf(
-			blackhole_ray.target_position.z - .1,
-			-5,
-			-1,
+		black_hole_position = clampf(
+			black_hole_position + BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL,
+			0.,
+			1.,
 		)
+
 	if event.is_action("scroll_down"):
-		blackhole_ray.target_position.z = clampf(
-			blackhole_ray.target_position.z + .1,
-			-5,
-			-1,
+		black_hole_position = clampf(
+			black_hole_position - BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL,
+			0.,
+			1.,
 		)
-		
+
+	blackhole_ray.target_position.z = -1 * black_hole_position * (BLACK_HOLE_PLACEMENT_DIST_MAX - BLACK_HOLE_PLACEMENT_DIST_MIN) - BLACK_HOLE_PLACEMENT_DIST_MIN
+
 	if event.is_action_pressed("click") and charges > 0:
 		charges -= 1
 		%HoleRecharge.value = 0
+		%AnimationPlayer.play("fire")
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
 		delete_black_hole.emit()
@@ -110,11 +122,14 @@ func _physics_process(delta: float) -> void:
 	cayote_timer += delta
 
 	if on_floor:
-		if charges < MAX_CHARGES and not recharging:
+		# Do not start the recharging until recoil is over
+		var is_reloading = %AnimationPlayer.current_animation == "fire" and %AnimationPlayer.is_playing()
+		if charges < MAX_CHARGES and not recharging and not is_reloading:
 			recharging = true
 			charge_tween = get_tree().create_tween()
 			charge_tween.tween_property(%HoleRecharge, 'value', RECHARGE_TIME, RECHARGE_TIME)
 			charge_tween.tween_callback(recharge)
+			%AnimationPlayer.play("reload")
 		cayote_timer = 0
 	else:
 		recharging = false
@@ -126,15 +141,18 @@ func _physics_process(delta: float) -> void:
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if on_floor:
+		var floor_material = floor.get("physics_material")
+		var friction = 1.
+		if floor_material:
+			friction = max(0.01, floor_material.friction)
 		if direction:
-			clamp_players_velocity(MAX_GROUND_VELOCTIY)
-			apply_central_force(direction * WALK_FORCE)
+			clamp_players_velocity(MAX_GROUND_VELOCTIY / friction)
+			apply_central_force(direction * WALK_FORCE * friction)
 		else:
-			# Slow down the player when they are not pressing any keys on the ground
-			clamp_players_velocity(MAX_GROUND_VELOCTIY * (1 - delta) / 5)
+			apply_central_force(-self.linear_velocity.normalized() * friction)
 	else:
-		if linear_velocity.length() < 7:
-			apply_central_force(direction * AIR_WALK_FORCE)
+		apply_central_force(direction * AIR_WALK_FORCE)
+		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
@@ -145,17 +163,21 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
+	%Gun.set_charge(%HoleRecharge.value / RECHARGE_TIME)
+	%Gun.set_dist(black_hole_position)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
 	var i := 0
 	on_floor = false
+	floor = null
 	while i < state.get_contact_count():
 		var normal := state.get_contact_local_normal(i)
 		#  1.0 would be perfectly straight up
 		#  0.0 is a wall
 		# -1.0 is a ceiling
-		if normal.dot(Vector3.UP) > 0.67: # this can be dialed in
+		if normal.dot(Vector3.UP) > 0.3: # this can be dialed in
+			floor = state.get_contact_collider_object(i)
 			on_floor = true
 		i += 1
 

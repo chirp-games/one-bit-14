@@ -25,7 +25,7 @@ var current_level: LevelInfo
 func load_levels() -> void:
 	for file in DirAccess.open("res://resources/levels").get_files():
 		levels.push_back(load_asset("res://resources/levels/%s" % file))
-	levels.sort_custom(func(_i, x: LevelInfo): return x.number)
+	levels.sort_custom(func(a:LevelInfo, b:LevelInfo): return a.number < b.number)
 
 func place_level(level: int) -> void:
 	var found = levels.find_custom(func(x: LevelInfo): return x.number == level)
@@ -57,7 +57,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	load_levels()
-	place_level(7)
+	place_level(2)
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos
@@ -65,6 +65,6 @@ func _on_player_create_black_hole(pos: Vector3) -> void:
 func _on_player_delete_black_hole() -> void:
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
-func _physics_process(delta: float) -> void:
-	if %Player.position.y < -5:
+func _physics_process(_delta: float) -> void:
+	if %Player.position.y < (current_level.floor if current_level else -5):
 		reset()

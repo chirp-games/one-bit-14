@@ -144,7 +144,7 @@ type = 1
 [node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("7_5pflw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.029663, 3.4131923)
 
-[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
 [connection signal="released" from="Button" to="." method="_on_button_released"]
