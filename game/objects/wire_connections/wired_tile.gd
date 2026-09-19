@@ -39,7 +39,7 @@ func power_off():
 	for node in all_nodes:
 		node.set_surface_override_material(0, off_material)
 
-func _process(delta: float) -> void:
+func _ready(delta: float) -> void:
 	if powered:
 		power_on()
 	else:
