@@ -73,9 +73,11 @@ layout_mode = 2
 text = "Gravity Well"
 label_settings = SubResource("LabelSettings_gm6uc")
 
-[node name="Button2" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=605779891]
+[node name="HSlider" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=214697753]
 layout_mode = 2
-text = "Settings"
+
+[node name="HSlider2" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1834702073]
+layout_mode = 2
 
 [node name="Button" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1356153872]
 layout_mode = 2
