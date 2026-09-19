@@ -13,6 +13,7 @@ const JUMP_IMPULSE = 5.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
+const AIR_RESISTANCE = 0.1
 
 const MAX_CHARGES := 1
 
@@ -26,6 +27,8 @@ var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
 var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
 var black_hole_position = 0.0
+
+var floor: Object
 
 var charges := 1 :
 	set(value):
@@ -138,15 +141,18 @@ func _physics_process(delta: float) -> void:
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if on_floor:
+		var floor_material = floor.get("physics_material")
+		var friction = 1.
+		if floor_material:
+			friction = max(0.01, floor_material.friction)
 		if direction:
-			clamp_players_velocity(MAX_GROUND_VELOCTIY)
-			apply_central_force(direction * WALK_FORCE)
+			clamp_players_velocity(MAX_GROUND_VELOCTIY / friction)
+			apply_central_force(direction * WALK_FORCE * friction)
 		else:
-			# Slow down the player when they are not pressing any keys on the ground
-			clamp_players_velocity(MAX_GROUND_VELOCTIY * (1 - delta) / 5)
+			apply_central_force(-self.linear_velocity.normalized() * friction)
 	else:
-		if linear_velocity.length() < 7:
-			apply_central_force(direction * AIR_WALK_FORCE)
+		apply_central_force(direction * AIR_WALK_FORCE)
+		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
@@ -164,12 +170,14 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
 	var i := 0
 	on_floor = false
+	floor = null
 	while i < state.get_contact_count():
 		var normal := state.get_contact_local_normal(i)
 		#  1.0 would be perfectly straight up
 		#  0.0 is a wall
 		# -1.0 is a ceiling
 		if normal.dot(Vector3.UP) > 0.3: # this can be dialed in
+			floor = state.get_contact_collider_object(i)
 			on_floor = true
 		i += 1
 
