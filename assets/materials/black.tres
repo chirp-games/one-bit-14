@@ -10,7 +10,7 @@ shader = ExtResource("1_2isvp")
 shader_parameter/brightness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45wdl"]
-render_priority = 1
+render_priority = 0
 next_pass = SubResource("ShaderMaterial_a71kg")
 shader = ExtResource("2_3paw3")
 shader_parameter/outline_color = Color(1, 0, 0, 1)

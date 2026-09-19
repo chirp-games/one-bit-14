@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://piub7fxweqpw"]
+
+[ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="1_outfh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikshe"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_outfh"]
+lightmap_size_hint = Vector2i(7, 7)
+
+[sub_resource type="Shader" id="Shader_f71ma"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode depth_draw_opaque, cull_back, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+
+	// Billboard Mode: Enabled
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
+			MAIN_CAM_INV_VIEW_MATRIX[0],
+			MAIN_CAM_INV_VIEW_MATRIX[1],
+			MAIN_CAM_INV_VIEW_MATRIX[2],
+			MODEL_MATRIX[3]);
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ALPHA = 0.5 - length(UV - 0.5) > 0.05 ? 1.0 : 0.0;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outfh"]
+render_priority = 0
+shader = SubResource("Shader_f71ma")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km8ha"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="HangingLight" type="Node3D" unique_id=1437048895]
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=1687474523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7289988, 0)
+node_a = NodePath("../RigidBody3D")
+linear_limit_y/lower_distance = -8.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1629014096 groups=["gravity_body"]]
+mass = 0.5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D" unique_id=975584083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4596271, 0)
+mesh = SubResource("BoxMesh_ikshe")
+surface_material_override/0 = ExtResource("1_outfh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1817341273]
+mesh = SubResource("QuadMesh_outfh")
+surface_material_override/0 = SubResource("ShaderMaterial_outfh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1566342945]
+shape = SubResource("BoxShape3D_km8ha")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="RigidBody3D" unique_id=97481572]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_energy = 10.0
+spot_range = 22.135548
+spot_attenuation = 0.0
+spot_angle = 16.30226
