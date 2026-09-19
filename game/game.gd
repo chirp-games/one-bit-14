@@ -62,7 +62,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	load_levels()
-	place_level(2)
+	place_level(1)
 	if not Engine.is_editor_hint():
 		loop_music()
 
@@ -75,3 +75,10 @@ func _on_player_delete_black_hole() -> void:
 func _physics_process(_delta: float) -> void:
 	if %Player.position.y < (current_level.floor if current_level else -5):
 		reset()
+		%Player
+func _process(delta: float) -> void:
+	if %BlackHole.global_position != null:
+		var viewport = %Player.get_viewport()
+		print(%Player.get_viewport().get_camera_3d().unproject_position(%BlackHole.global_position))
+		var black_hole_pos = viewport.get_camera_3d().unproject_position(%BlackHole.global_position)
+		$SubViewportContainer.material.set_shader_parameter("black_hole_location", Vector4(black_hole_pos.x,black_hole_pos.y,%Player.global_position.distance_to(%BlackHole.global_position),0. if viewport.get_camera_3d().is_position_behind(%BlackHole.global_position) else 1.))
