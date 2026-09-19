@@ -24,7 +24,7 @@ void fragment() {
 	ALBEDO = vec3(
 		abs(world_normal.z) * 0.5 * clamp(local_position.y,0.1,0.99) + pos_fract.x * 0.25 + pos_fract.y * 0.25,
 		abs(world_normal.y) * 0.5 + pos_fract.x * 0.25 + pos_fract.z * 0.25,
-		abs(world_normal.x) * 0.5 * clamp(local_position.y,0.1,0.99)
+		abs(world_normal.x) * 0.5 * clamp(local_position.y,0.1,0.99) + depth_linear
 	);
 }
 

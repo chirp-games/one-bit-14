@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="6_qrmb6"]
 [ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="7_6jjde"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="7_ab4h6"]
+[ext_resource type="PackedScene" uid="uid://piub7fxweqpw" path="res://game/objects/hanging_light.tscn" id="8_bxukv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7neg2"]
 friction = 0.2
@@ -114,6 +115,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 6)
 [node name="WallMountedLaserGun3" parent="." unique_id=88188669 instance=ExtResource("7_6jjde")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 6)
+
+[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("8_bxukv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8394345, 6.770757, -5.870568)
+length = 2.0
+
+[node name="HangingLight2" parent="." unique_id=1186201673 instance=ExtResource("8_bxukv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8394345, 6.7633305, 2.284602)
+length = 2.0
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]

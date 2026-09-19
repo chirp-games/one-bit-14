@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://c1bn15xciemp7"]
+
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="1_kx72h"]
+[ext_resource type="Script" uid="uid://45m1b1md274p" path="res://game/levels/yeet.gd" id="1_u7ta5"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="2_83pnv"]
+[ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="3_u7ta5"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="4_0wx7s"]
+[ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="5_83pnv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivxs2"]
+
+[sub_resource type="Curve3D" id="Curve3D_u7ta5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Yeet" type="Node3D" unique_id=1671796706]
+script = ExtResource("1_u7ta5")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=556697965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+mesh_library = ExtResource("1_kx72h")
+physics_material = SubResource("PhysicsMaterial_ivxs2")
+data = {
+"cells": PackedInt32Array(65535, 65534, 13, 0, 65535, 1441805, 65535, 0, 655373, 65534, 65535, 1048589, 65537, 65535, 1441805, 131071, 1, 655373, 131069, 65535, 1048589, 131071, 65533, 13, 65535, 65535, 0, 65535, 65533, 13, 1, 65535, 1441805, 65535, 1, 655373, 65533, 65535, 1048589, 262141, 65529, 1441793, 262142, 65529, 4, 262143, 65529, 4, 196608, 65529, 4, 196609, 65529, 1048577, 196609, 65530, 1048577, 196608, 65530, 1441796, 262142, 65530, 4, 262143, 65530, 0, 262141, 65530, 1441793, 327680, 65530, 655360, 327680, 65529, 655360, 393215, 65529, 655360, 393214, 65529, 655360, 393214, 65530, 655360, 262142, 65531, 10, 196608, 65531, 10, 196608, 65528, 0, 262143, 65528, 0, 262142, 65528, 0, 196608, 65527, 0, 262143, 65527, 0, 262142, 65527, 0, 262142, 65526, 0, 262143, 65526, 0, 196608, 65526, 0, 196609, 65528, 0, 196610, 65528, 0, 196610, 65527, 0, 196610, 65526, 0, 196609, 65526, 0, 196609, 65527, 0, 262141, 65527, 0, 262141, 65526, 0, 262140, 65526, 0, 262140, 65527, 0, 262140, 65528, 0, 262141, 65528, 0, 262139, 65528, 0, 262139, 65527, 0, 262139, 65526, 0, 196611, 65528, 0, 196611, 65527, 0, 196611, 65526, 0, 131074, 65519, 13, 196607, 65519, 13, 196604, 65519, 13, 196605, 65519, 1048587, 196605, 65520, 1048588, 131072, 65519, 1048587, 131072, 65520, 1048588, 131075, 65519, 1048587, 131075, 65520, 1048588, 131068, 65521, 10, 131071, 65521, 10, 65538, 65521, 10, 196603, 65519, 1441803, 196603, 65520, 655372, 196604, 65520, 0, 196606, 65519, 1441803, 196606, 65520, 655372, 131073, 65519, 1441803, 131073, 65520, 655372, 196607, 65520, 0, 131074, 65520, 0, 262139, 65518, 13, 262140, 65518, 13, 262141, 65518, 13, 262142, 65518, 13, 262143, 65518, 13, 196608, 65518, 13, 196609, 65518, 13, 196610, 65518, 13, 196611, 65518, 13)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="GridMap2" type="GridMap" parent="." unique_id=1594850853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+mesh_library = ExtResource("1_kx72h")
+data = {
+"cells": PackedInt32Array(262143, 65530, 1441802, 262142, 65530, 1441802, 262143, 65529, 655370, 262141, 65518, 1441805, 196608, 65518, 1441805, 196611, 65518, 1441805, 262139, 65518, 1048589, 196611, 65519, 1441805, 196611, 65520, 1441805, 196608, 65519, 1441805, 196608, 65520, 1441805, 262141, 65519, 1441805, 262141, 65520, 1441805, 262139, 65519, 1048589, 262139, 65520, 1048589, 262142, 65519, 1048589, 262142, 65520, 1048589, 196609, 65519, 1048589, 196609, 65520, 1048589, 196609, 65518, 1048589, 262142, 65518, 1048589, 196603, 65520, 1048587, 196603, 65519, 1048587, 196603, 65518, 12, 196604, 65518, 11, 196605, 65518, 11, 196606, 65518, 11, 196607, 65518, 11, 131072, 65518, 11, 131073, 65518, 11, 131074, 65518, 11, 131075, 65518, 1441804, 131075, 65519, 1441803, 131075, 65520, 1441803)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Diagonal L" type="GridMap" parent="." unique_id=423254871]
+transform = Transform3D(0.999849, 0, 0.999849, 0, 1.414, 0, -0.999849, 0, 0.999849, 2, 0, 0)
+mesh_library = ExtResource("1_kx72h")
+data = {
+"cells": PackedInt32Array(65534, 65535, 1048589, 0, 65535, 1441805, 65535, 0, 655373, 65535, 65534, 13)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("2_83pnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Box" parent="." unique_id=1398796155 instance=ExtResource("3_u7ta5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -10)
+
+[node name="Box2" parent="." unique_id=445406539 instance=ExtResource("3_u7ta5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -18)
+
+[node name="Box3" parent="." unique_id=43936652 instance=ExtResource("3_u7ta5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 7.5, -18)
+
+[node name="Box4" parent="." unique_id=226961084 instance=ExtResource("3_u7ta5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7.5, -18)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("4_0wx7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -13)
+
+[node name="Door2" parent="." unique_id=1481917932 instance=ExtResource("4_0wx7s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 7, -16)
+
+[node name="Button2" parent="." unique_id=87639175 instance=ExtResource("2_83pnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30)
+
+[node name="Button3" parent="." unique_id=1091956512 instance=ExtResource("2_83pnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, -30)
+
+[node name="Button4" parent="." unique_id=126078854 instance=ExtResource("2_83pnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, -30)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1910021696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2016970630]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, 0)
+spot_range = 15.0
+spot_attenuation = 0.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=444363593]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 14, -32)
+spot_range = 15.0
+spot_attenuation = 0.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=639671840]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6, 14, -32)
+spot_range = 15.0
+spot_attenuation = 0.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="." unique_id=845090166]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6, 14, -32)
+spot_range = 15.0
+spot_attenuation = 0.0
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1786721754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7, -16)
+curve = SubResource("Curve3D_u7ta5")
+
+[node name="Launcher" parent="Path3D" unique_id=1505859973 instance=ExtResource("5_83pnv")]
+unique_name_in_owner = true
+
+[node name="Button5" parent="." unique_id=1752198700 instance=ExtResource("2_83pnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7, -16)
+
+[connection signal="three" from="." to="Door2" method="open"]
+[connection signal="pushed" from="Button" to="Door" method="open"]
+[connection signal="released" from="Button" to="Door" method="close"]
+[connection signal="pushed" from="Button5" to="Path3D/Launcher" method="forward"]
+[connection signal="released" from="Button5" to="Path3D/Launcher" method="back"]

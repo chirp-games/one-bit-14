@@ -6,7 +6,7 @@ extends Node3D
 
 func _enter_tree() -> void:
 	%String.mesh = %String.mesh.duplicate()
-	
+
 	%Bulb.position.y = -length
 	%String.mesh.size.y = length
 	%String.position.y = length / 2.

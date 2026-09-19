@@ -18,6 +18,10 @@ uniform float u_dither_size;
 uniform sampler2D noise;
 uniform bool bypass = false;
 
+uniform sampler2D bn_dither_tex: repeat_enable, filter_nearest_mipmap;
+uniform int bn_bit_depth;
+uniform float bn_contrast;
+uniform float bn_offset;
 
 void fragment() 
 {
@@ -30,6 +34,9 @@ void fragment()
 	
 	// not using color channels for real color
 	float lum = max(max(screen_col.r,screen_col.g),screen_col.b);
+	
+	// decide if beyer
+	bool beyer = screen_col.g > screen_col.b ? true : false;
 	
 	// adjust with contrast and offset parameters
 	float contrast = u_contrast;
@@ -100,9 +107,9 @@ void fragment()
 	}
 	
 	
-	if (avg_color >= 5.) {
+	if (avg_color >= 1.) {
 		if (!bypass) COLOR.rgb = texture(u_color_tex, vec2(0.99)).rgb;
-	} else {
+	} else if (beyer) {
 		// map the dither texture onto the screen. there are better ways of doing this that makes the dither pattern 'stick'
 		// with objects in the 3D world, instead of being mapped onto the screen. see lucas pope's details posts on how he 
 		// achieved this in Obra Dinn: https://forums.tigsource.com/index.php?topic=40832.msg1363742#msg1363742
@@ -123,6 +130,20 @@ void fragment()
 		vec3 final_col = texture(u_color_tex, vec2(col_sample, 0.5)).rgb;
 			
 		// return the final colour!
+		if (!bypass) COLOR.rgb = final_col;
+	} else {
+		ivec2 noise_size = textureSize(bn_dither_tex, 0);
+		vec2 inv_noise_size = vec2(1.0 / float(noise_size.x), 1.0 / float(noise_size.y));
+		vec2 noise_uv = UV * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
+		float threshold = pow(texture(bn_dither_tex, noise_uv).r,2) + (texture(bn_dither_tex, noise_uv).r * noiseyness);
+		
+		// adjust the dither slightly so min and max aren't quite at 0.0 and 1.0
+		// otherwise we wouldn't get fullly dark and fully light dither patterns at lum 0.0 and 1.0
+		threshold = threshold * 0.99 + 0.005;
+
+		float ramp_val = lum_scaled < threshold ? 0.0f : 1.0f;
+		float col_sample = mix(lum_lower, lum_upper, ramp_val);
+		vec3 final_col = texture(u_color_tex, vec2(col_sample, 0.5)).rgb;
 		if (!bypass) COLOR.rgb = final_col;
 	}
 }

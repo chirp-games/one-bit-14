@@ -17,6 +17,11 @@ uniform float noiseyness;
 uniform float u_dither_size;
 uniform sampler2D noise;
 
+uniform int blue_noise_bit_depth;
+uniform float blue_noise_contrast;
+uniform float blue_noise_offset;
+uniform float blue_noise_dither_size;
+
 
 void fragment() 
 {

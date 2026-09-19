@@ -8,6 +8,8 @@
 render_priority = 0
 shader = ExtResource("1_daqf7")
 shader_parameter/brightness = 0.50000002375
+shader_parameter/use_beyer = true
+shader_parameter/emissive = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45wdl"]
 render_priority = 1
