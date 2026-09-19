@@ -8,6 +8,7 @@
 render_priority = 0
 shader = ExtResource("1_3q3vt")
 shader_parameter/brightness = 0.50000002375
+shader_parameter/use_beyer = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45wdl"]
 render_priority = 1

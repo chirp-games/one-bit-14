@@ -1,87 +1,185 @@
-[gd_scene format=3 uid="uid://dhenkc32ih2im"]
+[gd_scene format=3 uid="uid://c6r7dfgkw5qji"]
 
-[ext_resource type="PackedScene" uid="uid://dx2dw5b61un8a" path="res://jakes_test/mesh_library.glb" id="1_6eqsl"]
+[ext_resource type="PackedScene" uid="uid://bpxuiov6t2pu6" path="res://assets/mesh_library/mesh_library.glb" id="1_vot57"]
+[ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="2_8br5f"]
+[ext_resource type="Material" uid="uid://c6yql6gwevluy" path="res://assets/materials/wire_on.tres" id="3_nbhwy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xfd7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(2, 0.25, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vot57"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
+size = Vector3(2, 0.01, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
 size = Vector3(2, 2, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g4v7s"]
+points = PackedVector3Array(1, 0, 1, 1, 0, -1, -1, 0, 1, 1, 0, 1, 1, 2, -1, -1, 2, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0u6y"]
+size = Vector3(2, 4, 0.014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8br5f"]
-size = Vector3(0.25, 2, 2)
+size = Vector3(2, 4, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nbhwy"]
-size = Vector3(2, 2, 0.25)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g4v7s"]
+friction = 0.0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n3e1p"]
-points = PackedVector3Array(-1, 2, -1, 1, 0, 1, 1, 2, -1, 1, 0, -1, -1, 0, -1, -1, 0, 1)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eoy3p"]
+friction = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_os57d"]
-size = Vector3(2, 4, 0.05)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1ysnh"]
+friction = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6eqsl"]
-size = Vector3(0.25, 4, 2)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nbhwy"]
+friction = 0.0
 
-[node name="mesh_library" unique_id=1112363518 instance=ExtResource("1_6eqsl")]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8br5f"]
+friction = 0.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="floor_tile" parent_id_path=PackedInt32Array(141891230) index="0" unique_id=1903643448]
+[node name="mesh_library" unique_id=991967809 instance=ExtResource("1_vot57")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_tile/StaticBody3D" index="0" unique_id=1133061887]
+[node name="floor_tile" parent="." index="0" unique_id=6588319]
+surface_material_override/0 = ExtResource("2_8br5f")
+
+[node name="FloorBody" type="StaticBody3D" parent="floor_tile" index="0" unique_id=383413736]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="floor_tile/FloorBody" index="0" unique_id=229780924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
-shape = SubResource("BoxShape3D_0xfd7")
+shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(393938833) index="0" unique_id=1909381211]
+[node name="floor_tile_wire_center" parent="." index="1" unique_id=770532204]
+surface_material_override/0 = ExtResource("2_8br5f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="grate/StaticBody3D" index="0" unique_id=1433678303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27093506, 0)
-shape = SubResource("BoxShape3D_0xfd7")
+[node name="FloorBody" type="StaticBody3D" parent="floor_tile_wire_center" index="0" unique_id=143612870]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_wall_tile" parent_id_path=PackedInt32Array(1880567686) index="0" unique_id=1428123367]
+[node name="FloorCollision" type="CollisionShape3D" parent="floor_tile_wire_center/FloorBody" index="0" unique_id=75217946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+shape = SubResource("BoxShape3D_g4v7s")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_wall_tile/StaticBody3D" index="0" unique_id=1709812667]
+[node name="floor_tile_wire_corner" parent="." index="2" unique_id=1111665155]
+surface_material_override/0 = ExtResource("2_8br5f")
+
+[node name="FloorBody" type="StaticBody3D" parent="floor_tile_wire_corner" index="0" unique_id=1023374898]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="floor_tile_wire_corner/FloorBody" index="0" unique_id=740633549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="GrateBody" type="StaticBody3D" parent="grate" parent_id_path=PackedInt32Array(911261352) index="0" unique_id=419004417]
+
+[node name="GrateCollision" type="CollisionShape3D" parent="grate/GrateBody" index="0" unique_id=222657188]
+shape = SubResource("BoxShape3D_57qmd")
+
+[node name="half_wall_tile" parent="." index="4" unique_id=36597949]
+surface_material_override/0 = ExtResource("2_8br5f")
+
+[node name="HalfWallBody" type="StaticBody3D" parent="half_wall_tile" index="0" unique_id=490543327]
+
+[node name="HalfWallColision" type="CollisionShape3D" parent="half_wall_tile/HalfWallBody" index="0" unique_id=109530158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
-shape = SubResource("BoxShape3D_vot57")
+shape = SubResource("BoxShape3D_yf5fn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_wall_tile_corner" parent_id_path=PackedInt32Array(831165900) index="0" unique_id=1590649042]
+[node name="half_wall_tile_corner" parent="." index="5" unique_id=764158231]
+surface_material_override/0 = ExtResource("2_8br5f")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="half_wall_tile_corner/StaticBody3D" index="0" unique_id=1483770091]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, 0)
+[node name="HalfWallCorner" type="StaticBody3D" parent="half_wall_tile_corner" index="0" unique_id=217365042]
+
+[node name="HalfWallCollision" type="CollisionShape3D" parent="half_wall_tile_corner/HalfWallCorner" index="0" unique_id=1447338339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="HalfWallCollision2" type="CollisionShape3D" parent="half_wall_tile_corner/HalfWallCorner" index="1" unique_id=391322807]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.875, 1, 0)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="StairBody" type="StaticBody3D" parent="stair" parent_id_path=PackedInt32Array(936920328) index="0" unique_id=93876580]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stair/StairBody" index="0" unique_id=1291931192]
+shape = SubResource("ConvexPolygonShape3D_g4v7s")
+
+[node name="WallGrateBody" type="StaticBody3D" parent="wall_grate" parent_id_path=PackedInt32Array(459982447) index="0" unique_id=25513266]
+
+[node name="WallGrateCollision" type="CollisionShape3D" parent="wall_grate/WallGrateBody" index="0" unique_id=1594138145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.959)
+shape = SubResource("BoxShape3D_d0u6y")
+
+[node name="wall_tile" parent="." index="8" unique_id=1708302248]
+surface_material_override/0 = ExtResource("2_8br5f")
+
+[node name="WallBody" type="StaticBody3D" parent="wall_tile" index="0" unique_id=372426720]
+
+[node name="WallCollision" type="CollisionShape3D" parent="wall_tile/WallBody" index="0" unique_id=1730043699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
 shape = SubResource("BoxShape3D_8br5f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_wall_tile_corner/StaticBody3D" index="1" unique_id=99187466]
+[node name="wall_tile_corner" parent="." index="9" unique_id=1506817691]
+surface_material_override/0 = ExtResource("2_8br5f")
+
+[node name="WallCorner" type="StaticBody3D" parent="wall_tile_corner" index="0" unique_id=517201414]
+
+[node name="WallCollision" type="CollisionShape3D" parent="wall_tile_corner/WallCorner" index="0" unique_id=886799378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
+shape = SubResource("BoxShape3D_8br5f")
+
+[node name="WallCollision2" type="CollisionShape3D" parent="wall_tile_corner/WallCorner" index="1" unique_id=1919005979]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.875, 2, 0)
+shape = SubResource("BoxShape3D_8br5f")
+
+[node name="frictionless_floor" parent="." index="10" unique_id=1033116235]
+surface_material_override/0 = ExtResource("3_nbhwy")
+
+[node name="FrictionlessFloor" type="StaticBody3D" parent="frictionless_floor" index="0" unique_id=18219252]
+physics_material_override = SubResource("PhysicsMaterial_g4v7s")
+
+[node name="FloorCollision" type="CollisionShape3D" parent="frictionless_floor/FrictionlessFloor" index="0" unique_id=1627595085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="frictionless_half_wall" parent="." index="11" unique_id=430524067]
+surface_material_override/0 = ExtResource("3_nbhwy")
+
+[node name="FrictionlessHalfWall" type="StaticBody3D" parent="frictionless_half_wall" index="0" unique_id=650040923]
+physics_material_override = SubResource("PhysicsMaterial_eoy3p")
+
+[node name="HalfWallColision" type="CollisionShape3D" parent="frictionless_half_wall/FrictionlessHalfWall" index="0" unique_id=145331225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
-shape = SubResource("BoxShape3D_nbhwy")
+shape = SubResource("BoxShape3D_yf5fn")
 
-[node name="stair" parent="." index="6" unique_id=1909251344]
-visible = false
+[node name="frictionless_half_wall_corner" parent="." index="12" unique_id=904647375]
+surface_material_override/0 = ExtResource("3_nbhwy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stair" index="0" unique_id=137224045]
+[node name="FrictionlessHalfWallCorner" type="StaticBody3D" parent="frictionless_half_wall_corner" index="0" unique_id=2043493288]
+physics_material_override = SubResource("PhysicsMaterial_1ysnh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stair/StaticBody3D" index="0" unique_id=1878437136]
-shape = SubResource("ConvexPolygonShape3D_n3e1p")
+[node name="HalfWallCollision" type="CollisionShape3D" parent="frictionless_half_wall_corner/FrictionlessHalfWallCorner" index="0" unique_id=445470035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.875)
+shape = SubResource("BoxShape3D_yf5fn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_grate" parent_id_path=PackedInt32Array(1465343064) index="0" unique_id=1104960397]
+[node name="HalfWallCollision2" type="CollisionShape3D" parent="frictionless_half_wall_corner/FrictionlessHalfWallCorner" index="1" unique_id=1387448719]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.875, 1, 0)
+shape = SubResource("BoxShape3D_yf5fn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_grate/StaticBody3D" index="0" unique_id=1013037820]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.96)
-shape = SubResource("BoxShape3D_os57d")
+[node name="frictionless_wall" parent="." index="13" unique_id=2018603354]
+surface_material_override/0 = ExtResource("3_nbhwy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile" parent_id_path=PackedInt32Array(1813904570) index="0" unique_id=107244631]
+[node name="FrictionlessWall" type="StaticBody3D" parent="frictionless_wall" index="0" unique_id=2068435371]
+physics_material_override = SubResource("PhysicsMaterial_nbhwy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile/StaticBody3D" index="0" unique_id=1882788783]
+[node name="WallCollision" type="CollisionShape3D" parent="frictionless_wall/FrictionlessWall" index="0" unique_id=2030657415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
-shape = SubResource("BoxShape3D_os57d")
+shape = SubResource("BoxShape3D_8br5f")
 
-[node name="wall_tile_corner" parent="." index="9" unique_id=2028666437]
-visible = false
+[node name="frictionless_wall_corner" parent="." index="14" unique_id=1037114495]
+surface_material_override/0 = ExtResource("3_nbhwy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall_tile_corner" index="0" unique_id=1819876203]
+[node name="FrictionlessWallCorner" type="StaticBody3D" parent="frictionless_wall_corner" index="0" unique_id=976513774]
+physics_material_override = SubResource("PhysicsMaterial_8br5f")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="wall_tile_corner/StaticBody3D" index="0" unique_id=1542044864]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 2, 0)
-shape = SubResource("BoxShape3D_6eqsl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_tile_corner/StaticBody3D" index="1" unique_id=409973044]
+[node name="WallCollision" type="CollisionShape3D" parent="frictionless_wall_corner/FrictionlessWallCorner" index="0" unique_id=2172298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.875)
-shape = SubResource("BoxShape3D_os57d")
+shape = SubResource("BoxShape3D_8br5f")
+
+[node name="WallCollision2" type="CollisionShape3D" parent="frictionless_wall_corner/FrictionlessWallCorner" index="1" unique_id=795437721]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.875, 2, 0)
+shape = SubResource("BoxShape3D_8br5f")

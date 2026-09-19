@@ -13,7 +13,7 @@ const JUMP_IMPULSE = 5.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 7
-const AIR_RESISTANCE = 0.1
+const AIR_RESISTANCE = 0.25
 
 const MAX_CHARGES := 1
 
@@ -149,7 +149,7 @@ func _physics_process(delta: float) -> void:
 			clamp_players_velocity(MAX_GROUND_VELOCTIY / friction)
 			apply_central_force(direction * WALK_FORCE * friction)
 		else:
-			apply_central_force(-self.linear_velocity.normalized() * friction)
+			apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE)
 		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
