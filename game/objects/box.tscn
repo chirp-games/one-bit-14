@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://2w8vd4dmwvcu" path="res://assets/blockbench/inherited/blockbench_export.tscn" id="1_5pvc2"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5pvc2"]
+friction = 0.5
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ekxcr"]
 
 [node name="Box" type="RigidBody3D" unique_id=1246468868 groups=["gravity_body", "kickable", "pushable"]]
 collision_layer = 7
 mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_5pvc2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=320595030]
 shape = SubResource("BoxShape3D_ekxcr")
