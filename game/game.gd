@@ -63,7 +63,8 @@ func reset() -> void:
 func _ready() -> void:
 	load_levels()
 	place_level(1)
-	loop_music()
+	if not Engine.is_editor_hint():
+		loop_music()
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos
