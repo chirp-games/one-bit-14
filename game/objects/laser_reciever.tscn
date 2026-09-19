@@ -6,11 +6,14 @@
 [sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
 size = Vector3(0.1, 0.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
-size = Vector3(0.02, 0.3, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvdmh"]
+size = Vector3(0.071894534, 0.3, 0.3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3fx5"]
 size = Vector3(0.02, 0.3, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
+size = Vector3(0.18908203, 0.3, 0.3)
 
 [node name="LaserReciever" type="Node3D" unique_id=898270630]
 script = ExtResource("1_882dp")
@@ -23,7 +26,8 @@ mesh = SubResource("BoxMesh_gm6uc")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2014237067]
-shape = SubResource("BoxShape3D_gm6uc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025710717, 0, 0)
+shape = SubResource("BoxShape3D_uvdmh")
 
 [node name="Reciever" type="StaticBody3D" parent="." unique_id=539245264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
@@ -35,6 +39,7 @@ mesh = SubResource("BoxMesh_h3fx5")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Reciever" unique_id=4508086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08454099, 0, 0)
 shape = SubResource("BoxShape3D_gm6uc")
 
 [connection signal="laser_hit" from="Reciever" to="." method="laser_hit"]

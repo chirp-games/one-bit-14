@@ -4,6 +4,8 @@ extends Node3D
 
 @export var powered = false:
 	set(v):
+		if all_nodes == null:
+			return
 		powered = v
 		if powered:
 			power_on()
@@ -17,6 +19,7 @@ extends Node3D
 enum Type {
 	Straight,
 	Bend,
+	Half,
 }
 
 var powered_material = load("res://assets/materials/wire_on.tres")
@@ -36,7 +39,7 @@ func power_off():
 	for node in all_nodes:
 		node.set_surface_override_material(0, off_material)
 
-func _ready() -> void:
+func _process(delta: float) -> void:
 	if powered:
 		power_on()
 	else:
@@ -49,3 +52,6 @@ func _ready() -> void:
 		hide_all()
 		%bend.show()
 		%bend_2.show()
+	if type == Type.Half:
+		hide_all()
+		%bend.show()
