@@ -36,7 +36,7 @@ shader_parameter/bn_dither_tex = ExtResource("4_t7a8y")
 shader_parameter/bn_bit_depth = 32
 shader_parameter/bn_contrast = 1.0
 shader_parameter/bn_offset = 0.0
-shader_parameter/black_hole_location = Vector4(0, 0, 0, 0)
+shader_parameter/black_hole_location = Vector4(0, 0, 10002, 0)
 
 [node name="Game" type="Control" unique_id=960045773]
 layout_mode = 3

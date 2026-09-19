@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="4_yko13"]
 [ext_resource type="PackedScene" uid="uid://c18ofqt55hqyi" path="res://game/objects/wire_connections/wired_tile.tscn" id="5_2aicr"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_ykgsh"]
+[ext_resource type="PackedScene" uid="uid://piub7fxweqpw" path="res://game/objects/hanging_light.tscn" id="8_aupiq"]
 
 [node name="FlakCannon" type="Node3D" unique_id=262432238]
 script = ExtResource("1_nbu2s")
@@ -33,12 +34,12 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="OffsetGrate" type="GridMap" parent="." unique_id=461802059]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.1)
 mesh_library = ExtResource("1_382mj")
 data = {
 "cells": PackedInt32Array(65535, 1, 655370)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Button1" parent="." unique_id=8617206 instance=ExtResource("2_d2dnw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3)
@@ -48,15 +49,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
 
 [node name="Door1" parent="." unique_id=527303417 instance=ExtResource("3_cf4ar")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 4.10009)
 
 [node name="Door2" parent="." unique_id=1548503260 instance=ExtResource("3_cf4ar")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 1.8795853)
 
 [node name="Door3" parent="." unique_id=1832884454 instance=ExtResource("3_cf4ar")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -6.117696)
 
 [node name="Box" parent="." unique_id=1246468868 instance=ExtResource("4_yko13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -2)
@@ -150,6 +151,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9, 1
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("7_ykgsh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -9)
+
+[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("8_aupiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -1)
+length = 2.0
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]
