@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="8_at62v"]
 [ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="9_5pbhf"]
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="9_wu4ba"]
+[ext_resource type="PackedScene" uid="uid://piub7fxweqpw" path="res://game/objects/hanging_light.tscn" id="10_5pbhf"]
 
 [sub_resource type="Curve3D" id="Curve3D_wu4ba"]
 _data = {
@@ -22,6 +23,7 @@ script = ExtResource("1_qph57")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1238834055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 22.5, -1)
+light_energy = 5.0
 omni_range = 10.0
 omni_attenuation = 0.25
 
@@ -63,6 +65,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
 [node name="LaserTurret3" parent="Path3D2/PathFollowPlatform" unique_id=422009508 instance=ExtResource("5_0fioa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Path3D2/PathFollowPlatform" unique_id=373917914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
 [node name="Path3D3" type="Path3D" parent="." unique_id=2085329639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.75, 3)
 curve = SubResource("Curve3D_wu4ba")
@@ -77,6 +82,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1, 0
 
 [node name="LaserTurret3" parent="Path3D3/PathFollowPlatform" unique_id=596220638 instance=ExtResource("5_0fioa")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, -1.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Path3D3/PathFollowPlatform" unique_id=1310785804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("9_wu4ba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21.5, 3)
@@ -104,6 +112,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5
 
 [node name="WallMountedLaserGun8" parent="." unique_id=2029532468 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.1, 10, 0.5)
+
+[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("10_5pbhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 27.2, -1)
 
 [connection signal="pushed" from="Button" to="Door" method="open"]
 [connection signal="released" from="Button" to="Door" method="close"]
