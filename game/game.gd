@@ -22,6 +22,11 @@ static func load_asset(path : String) -> Resource:
 var levels: Array[LevelInfo] = []
 var current_level: LevelInfo
 
+func loop_music() -> void:
+	$BGM.play()
+	await get_tree().create_timer($BGM.stream.get_length()).timeout
+	loop_music()
+
 func load_levels() -> void:
 	for file in DirAccess.open("res://resources/levels").get_files():
 		levels.push_back(load_asset("res://resources/levels/%s" % file))
@@ -57,7 +62,8 @@ func reset() -> void:
 
 func _ready() -> void:
 	load_levels()
-	place_level(2)
+	place_level(1)
+	loop_music()
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos

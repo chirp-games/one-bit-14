@@ -16,8 +16,8 @@ shader = ExtResource("4_qfiav")
 [node name="gun" unique_id=1877890053 instance=ExtResource("1_egf7j")]
 script = ExtResource("2_a6wjj")
 
-[node name="Cube_003" parent="." index="2" unique_id=1441503062]
+[node name="Cube_003" parent="." index="2" unique_id=443232453]
 surface_material_override/1 = SubResource("ShaderMaterial_qfiav")
 
-[node name="Gun" parent="." index="4" unique_id=1586330110]
+[node name="Gun" parent="." index="4" unique_id=1733772993]
 surface_material_override/1 = SubResource("ShaderMaterial_ib7n2")
