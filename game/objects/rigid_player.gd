@@ -22,6 +22,7 @@ const MAX_CHARGES := 1
 
 var cayote_timer = 0
 var on_floor: bool = false
+var black_hole_placed_position = Vector3(0, 0, 0)
 
 var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
@@ -77,6 +78,8 @@ func recharge() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	%AnimationPlayer.play("release_black_hole")
+
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	%HoleRecharge.max_value = RECHARGE_TIME
@@ -113,9 +116,12 @@ func _input(event: InputEvent) -> void:
 		charges -= 1
 		%HoleRecharge.value = 0
 		%AnimationPlayer.play("fire")
+		black_hole_placed_position = %BlackHolePreview.global_position
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
+		black_hole_placed_position = Vector3.ZERO
 		delete_black_hole.emit()
+		%AnimationPlayer.play("release_black_hole")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -129,7 +135,6 @@ func _physics_process(delta: float) -> void:
 			charge_tween = get_tree().create_tween()
 			charge_tween.tween_property(%HoleRecharge, 'value', RECHARGE_TIME, RECHARGE_TIME)
 			charge_tween.tween_callback(recharge)
-			%AnimationPlayer.play("reload")
 		cayote_timer = 0
 	else:
 		recharging = false
@@ -160,6 +165,17 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reset"):
 		reset_level.emit()
+
+	# Rotate gun slightly torwards black hole
+	if black_hole_placed_position != Vector3(0, 0, 0):
+		var old_rotation = %RotateGunToBlackHole.rotation
+		%RotateGunToBlackHole.look_at(black_hole_placed_position)
+		%RotateGunToBlackHole.rotation.x = clampf(%RotateGunToBlackHole.rotation.x, -PI / 12 , PI / 12)
+		%RotateGunToBlackHole.rotation.y = clampf(%RotateGunToBlackHole.rotation.y, -PI / 12, PI / 12)
+		%RotateGunToBlackHole.rotation.z = clampf(%RotateGunToBlackHole.rotation.z, -PI / 12, PI / 12)
+		%RotateGunToBlackHole.rotation = lerp(old_rotation, %RotateGunToBlackHole.rotation, 10 * delta)
+	else:
+		%RotateGunToBlackHole.rotation = lerp(%RotateGunToBlackHole.rotation, Vector3.ZERO, 10 * delta)
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
