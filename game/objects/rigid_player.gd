@@ -140,12 +140,6 @@ func _physics_process(delta: float) -> void:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
 		cayote_timer += 100
 	
-	if Input.is_action_just_pressed("pickup"):
-		if held_object:
-			set_blackholes_enabled.emit(false)
-		elif %PickupRay.get_collider().get_parent().is_in_group("grabbable"):
-			set_blackholes_enabled.emit(true)
-	
 	if Input.is_action_just_pressed("reset"):
 		reset_level.emit()
 
