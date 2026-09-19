@@ -16,3 +16,9 @@ class_name LevelInfo
 @export var start_rotation: Vector3
 ## Resets the player's position when below this threshold
 @export var floor: int = -10
+
+@export_category("Unlocks")
+## Lock state when the game first runs or "Reset Unlocks" is pressed.
+@export var starts_unlocked = false
+## Array of levels unlocked when this level is completed
+@export var unlocks: Array[int] = []

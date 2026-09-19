@@ -3,6 +3,7 @@ extends Control
 
 
 func place_next_level() -> void:
+	LevelManager.level_complete()
 	place_level(LevelManager.next_level())
 
 func loop_music() -> void:

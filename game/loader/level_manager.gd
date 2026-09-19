@@ -37,5 +37,26 @@ func next_level() -> LevelInfo:
 	current_number += 1
 	return current_level
 
+func level_complete() -> void:
+	if Engine.is_editor_hint(): # Progress disabled in editor
+		return
+	var current_unlocks: Array = ConfigManager.get_value("unlocks", [])
+	current_unlocks.append_array(current_level.unlocks)
+	ConfigManager.set_value("unlocks", current_unlocks)
+
+func reset_unlocks() -> void:
+	if Engine.is_editor_hint():
+		return
+	var unlocks = []
+	for level in levels:
+		if level.starts_unlocked:
+			unlocks.push_back(level.number)
+	ConfigManager.set_value("unlocks", unlocks)
+
 func _ready() -> void:
 	load_levels()
+	if Engine.is_editor_hint():
+		return
+	var current_unlocks: Array = ConfigManager.get_value("unlocks", [])
+	if current_unlocks == []:
+		reset_unlocks()

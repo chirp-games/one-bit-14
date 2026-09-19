@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" uid="uid://dfl18pf86l1rd" path="res://assets/shaders/remap.gdshader" id="1_7i4t2"]
 [ext_resource type="Script" uid="uid://cccd5a7j4wep8" path="res://game/loader/picker.gd" id="1_ep7oq"]
-[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="1_xrplp"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_7i4t2"]
 [ext_resource type="FontFile" uid="uid://bg5unci03fxcf" path="res://assets/fonts/PixelOperator.ttf" id="3_0j8yd"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="6_hgp8l"]
@@ -11,15 +10,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7i4t2"]
 shader = ExtResource("1_7i4t2")
 shader_parameter/u_color_tex = ExtResource("2_7i4t2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3jju"]
-shader = ExtResource("1_xrplp")
-shader_parameter/u_bit_depth = 0
-shader_parameter/u_contrast = 0.0
-shader_parameter/u_offset = 0.0
-shader_parameter/noiseyness = 0.0
-shader_parameter/u_dither_size = 0.0
-shader_parameter/bypass = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
 font = ExtResource("3_0j8yd")
@@ -44,13 +34,13 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="Picker" type="HBoxContainer" parent="SubViewport" unique_id=860967095]
-material = SubResource("ShaderMaterial_b3jju")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ep7oq")
+bypass_unlocks = true
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewport/Picker" unique_id=174141007]
 layout_mode = 2
