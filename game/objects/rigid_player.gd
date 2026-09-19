@@ -168,7 +168,7 @@ func _physics_process(delta: float) -> void:
 			%GunBobAnimationPlayer.play("RESET")
 
 	if not %GunMovementAnimationPlayer.is_playing() or %GunMovementAnimationPlayer.current_animation == "cover" or %GunMovementAnimationPlayer.current_animation == "RESET":
-		if cayote_timer > 0.1:
+		if cayote_timer > 0.1 and Vector2(linear_velocity.x, linear_velocity.z).length() > 5:
 			%GunMovementAnimationPlayer.play("cover", .2)
 		else:
 			%GunMovementAnimationPlayer.play("RESET", .3)
