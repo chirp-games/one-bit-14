@@ -52,6 +52,5 @@ func _physics_process(_delta: float) -> void:
 func _process(delta: float) -> void:
 	if %BlackHole.global_position != null:
 		var viewport = %Player.get_viewport()
-		print(%Player.get_viewport().get_camera_3d().unproject_position(%BlackHole.global_position))
 		var black_hole_pos = viewport.get_camera_3d().unproject_position(%BlackHole.global_position)
 		$SubViewportContainer.material.set_shader_parameter("black_hole_location", Vector4(black_hole_pos.x,black_hole_pos.y,%Player.global_position.distance_to(%BlackHole.global_position),0. if viewport.get_camera_3d().is_position_behind(%BlackHole.global_position) else 1.))
