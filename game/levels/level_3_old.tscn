@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://d2bohm5tfeb7m"]
+
+[ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_0emyo"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_h8cav"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_skwjn"]
+[ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="4_2axqi"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="5_np8gc"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="6_d8jpt"]
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_0emyo")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=488222975]
+mesh_library = ExtResource("2_h8cav")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(-6, 0, 0, -6, 65535, 0, -7, 65535, 1441792, -7, 0, 0, -4, 65535, 0, -4, 0, 0, -3, 65535, 0, -3, 0, 0, -2, 65535, 0, -2, 0, 0, -1, 0, 0, -1, 65535, 0, -65536, 65535, 0, -65536, 0, 0, -5, 65535, 0, -5, 0, 0, -7, 1, 1, -6, 1, 1, -5, 1, 1, -4, 1, 1, -3, 1, 1, -2, 1, 1, -1, 1, 1, -65536, 1, 1, -65535, 0, 1048577, -65535, 65535, 1048577, -65536, 65534, 655361, -1, 65534, 655361, -2, 65534, 655361, -3, 65534, 655361, -4, 65534, 655361, -5, 65534, 655361, -6, 65534, 655361, -7, 65534, 655361, -8, 65535, 0, -8, 0, 0, -10, 65535, 1441793, -10, 0, 1441793, -8, 65534, 655361, -9, 65534, 655361, -8, 1, 1, -9, 1, 1, -9, 0, 0, -9, 65535, 0, 131064, 65535, 1441793, 131063, 65535, 0, 131063, 0, 0, 131064, 0, 1441793, 65536, 1, 1, 131071, 1, 1, 131070, 1, 1, 131069, 1, 1, 131068, 1, 1, 131067, 1, 1, 131066, 1, 1, 131065, 1, 1, 131065, 65534, 655361, 131066, 65534, 655361, 131067, 65534, 655361, 131068, 65534, 655361, 131069, 65534, 655361, 131070, 65534, 655361, 131071, 65534, 655361, 65536, 65534, 655361, 65537, 65535, 1048577, 65537, 0, 1048577, 262137, 65535, 1048576, 262137, 0, 1048576, 196608, 65535, 1048576, 196608, 0, 1048576, 262143, 0, 1048576, 262142, 0, 1048576, 262141, 0, 1048576, 262140, 0, 1048576, 262139, 0, 1048576, 262138, 0, 1048576, 262138, 65535, 1048576, 262139, 65535, 1048576, 262140, 65535, 1048576, 262141, 65535, 1048576, 262142, 65535, 1048576, 262143, 65535, 1048576, 131069, 65535, 655363, 131068, 65535, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="GridMap2" type="GridMap" parent="." unique_id=899815805]
+mesh_library = ExtResource("2_h8cav")
+data = {
+"cells": PackedInt32Array(65536, 65535, 4, 131071, 65535, 4, 131066, 65535, 4, 131067, 0, 4, 131068, 0, 4, 131069, 0, 4, 131070, 0, 4, 131071, 0, 4, 65536, 0, 4, 131070, 65535, 4, 131069, 65535, 4, 131068, 65535, 4, 131065, 65535, 4, 131065, 0, 4, 131067, 65535, 131076, 131066, 0, 131076, 131064, 0, 655360, 131064, 65535, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=169850254]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5, -5.258455, 0)
+light_energy = 16.0
+area_range = 16.919
+area_size = Vector2(9.975621, 8.125718)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_skwjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.998, -1, 0)
+
+[node name="Box" parent="." unique_id=1398796155 instance=ExtResource("4_2axqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.55, 0)
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("5_np8gc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2, 4, -1.903)
+
+[node name="Button2" parent="." unique_id=1562697671 instance=ExtResource("5_np8gc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6, 4, -1.903)
+
+[node name="Button3" parent="." unique_id=1798241754 instance=ExtResource("5_np8gc")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -10, 6, -1.903)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("6_d8jpt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -1, 0)
+
+[node name="Door2" parent="." unique_id=67721313 instance=ExtResource("6_d8jpt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, -1, 0)
+
+[node name="Door3" parent="." unique_id=611631500 instance=ExtResource("6_d8jpt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, -1, 0)
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="pushed" from="Button" to="Door" method="open"]
+[connection signal="released" from="Button" to="Door" method="close"]
+[connection signal="pushed" from="Button2" to="Door2" method="open"]
+[connection signal="released" from="Button2" to="Door2" method="close"]
+[connection signal="pushed" from="Button3" to="Door3" method="open"]
+[connection signal="released" from="Button3" to="Door3" method="close"]
