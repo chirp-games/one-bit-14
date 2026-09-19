@@ -15,4 +15,4 @@ class_name LevelInfo
 ## The player's starting rotation
 @export var start_rotation: Vector3
 ## Resets the player's position when below this threshold
-@export var floor: int
+@export var floor: int = -10

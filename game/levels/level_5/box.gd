@@ -4,17 +4,26 @@ extends RigidBody3D
 @export var launch_force: float = 4
 
 var resetting = false
+var counting = true
 var watchdog = 0
 
 func launch() -> void:
 	apply_central_impulse(Vector3.LEFT * launch_force)
 
+func watchdog_relax() -> void:
+	counting = false
+
+func watchdog_arm() -> void:
+	counting = true
+
 func reset() -> void:
 	freeze = true
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector3.ONE * 0.001, 0.5)
+	tween.tween_property(self, "freeze", false, 0)
 	tween.tween_property(self, "global_position",  start_position, 0)
 	tween.tween_property(self, "global_rotation",  Vector3.ZERO, 0)
+	tween.tween_property(self, "freeze", true, 0)
 	tween.tween_property(self, "scale", Vector3.ONE, 0.5)
 	tween.tween_property(self, "freeze", false, 0)
 	tween.tween_property(self, "resetting", false, 0)
@@ -28,7 +37,8 @@ func _ready() -> void:
 	launch()
 
 func _physics_process(delta: float) -> void:
-	watchdog += delta
+	if counting:
+		watchdog += delta
 	if (global_position.distance_to(start_position) > 50 or watchdog > 8) and not resetting:
 		resetting = true
 		reset()

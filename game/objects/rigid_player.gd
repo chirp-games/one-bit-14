@@ -24,7 +24,7 @@ var on_floor: bool = false
 
 var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
-var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .08
+var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
 var black_hole_position = 0.0
 
 var charges := 1 :
@@ -169,7 +169,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		#  1.0 would be perfectly straight up
 		#  0.0 is a wall
 		# -1.0 is a ceiling
-		if normal.dot(Vector3.UP) > 0.67: # this can be dialed in
+		if normal.dot(Vector3.UP) > 0.3: # this can be dialed in
 			on_floor = true
 		i += 1
 
