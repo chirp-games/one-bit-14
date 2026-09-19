@@ -73,9 +73,12 @@ script = ExtResource("6_hgp8l")
 [node name="Label2" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=78376748]
 layout_mode = 2
 theme = ExtResource("7_eth52")
-text = "Reset Unlocks"
+text = "Reset Progress"
 
 [node name="Button" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1356153872]
 layout_mode = 2
 theme = ExtResource("7_eth52")
 text = "Quit"
+
+[connection signal="pressed" from="SubViewport/Picker/HBoxContainer/VBoxContainer/Label2" to="SubViewport/Picker" method="reset_unlocks"]
+[connection signal="pressed" from="SubViewport/Picker/HBoxContainer/VBoxContainer/Button" to="SubViewport/Picker" method="quit"]

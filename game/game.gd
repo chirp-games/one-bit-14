@@ -4,7 +4,11 @@ extends Control
 
 func place_next_level() -> void:
 	LevelManager.level_complete()
-	place_level(LevelManager.next_level())
+	var next_level := LevelManager.next_level()
+	if not LevelManager.level_unlocked(next_level.number):
+		get_tree().call_deferred("change_scene_to_file", "res://game/loader/picker.tscn")
+		return
+	place_level(next_level)
 
 func loop_music() -> void:
 	$BGM.play()
