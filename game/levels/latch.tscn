@@ -142,7 +142,7 @@ transform = Transform3D(1.3113416e-07, 4.3711385e-08, 1, 4.3711385e-08, 1, -4.37
 type = 1
 
 [node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("7_5pflw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.016751, 3.4131923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.029663, 3.4131923)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]

@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://piub7fxweqpw"]
 
+[ext_resource type="Script" uid="uid://r7twcmfugel1" path="res://game/objects/hanging_light.gd" id="1_60d88"]
 [ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="1_outfh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fyet2"]
+size = Vector3(0.025, 3.5, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60d88"]
+albedo_color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ikshe"]
 size = Vector3(0.5, 0.2, 0.5)
@@ -72,28 +81,36 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 size = Vector3(0.3, 0.3, 0.3)
 
 [node name="HangingLight" type="Node3D" unique_id=1437048895]
+script = ExtResource("1_60d88")
 
-[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=1687474523]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7289988, 0)
-node_a = NodePath("../RigidBody3D")
-linear_limit_y/lower_distance = -8.0
+[node name="Generic6DOFJoint3D" type="PinJoint3D" parent="." unique_id=932175566]
+node_a = NodePath("../Bulb")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1629014096 groups=["gravity_body"]]
-mass = 0.5
+[node name="Bulb" type="RigidBody3D" parent="." unique_id=1629014096 groups=["gravity_body"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+mass = 5.0
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D" unique_id=975584083]
+[node name="String" type="MeshInstance3D" parent="Bulb" unique_id=1666056005]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+mesh = SubResource("BoxMesh_fyet2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_60d88")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bulb" unique_id=975584083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4596271, 0)
 mesh = SubResource("BoxMesh_ikshe")
 surface_material_override/0 = ExtResource("1_outfh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1817341273]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bulb" unique_id=1817341273]
 mesh = SubResource("QuadMesh_outfh")
 surface_material_override/0 = SubResource("ShaderMaterial_outfh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1566342945]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bulb" unique_id=1566342945]
 shape = SubResource("BoxShape3D_km8ha")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="RigidBody3D" unique_id=97481572]
+[node name="SpotLight3D" type="SpotLight3D" parent="Bulb" unique_id=97481572]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 light_energy = 10.0
 spot_range = 22.135548
