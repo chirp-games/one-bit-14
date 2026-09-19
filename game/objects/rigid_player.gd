@@ -49,7 +49,7 @@ var charge_tween: Tween
 var held_object
 
 @onready var camera = %Camera
-@onready var blackhole_ray: RayCast3D = %CreateBlackHoleRay
+@onready var blackhole_ray: SpringArm3D = %CreateBlackHoleRay
 
 func clamp_players_velocity(max_velocity):
 	var v = Vector2(linear_velocity.x, linear_velocity.z)
@@ -58,17 +58,17 @@ func clamp_players_velocity(max_velocity):
 		linear_velocity.z = max_velocity * sin(v.angle())
 
 func position_black_hole_preview():
-	%BlackHolePreview.global_position = (
-		blackhole_ray.global_position +
-		blackhole_ray.global_position.direction_to(
-			blackhole_ray.global_transform * Vector3.FORWARD
-		) *
-		(
-			to_local(blackhole_ray.get_collision_point()) if
-			blackhole_ray.is_colliding() else
-			blackhole_ray.target_position
-		).length()
+	var direction = blackhole_ray.position.direction_to(
+			blackhole_ray.transform * Vector3.FORWARD
 	)
+	
+	var spring_arm_len = blackhole_ray.get_hit_length()
+	var position_along_ray = black_hole_position * (BLACK_HOLE_PLACEMENT_DIST_MAX - BLACK_HOLE_PLACEMENT_DIST_MIN) + BLACK_HOLE_PLACEMENT_DIST_MIN
+
+	if position_along_ray > spring_arm_len:
+		position_along_ray = spring_arm_len
+
+	%BlackHolePreview.position = -position_along_ray * direction
 
 func recharge() -> void:
 	if not recharging:
@@ -109,8 +109,6 @@ func _input(event: InputEvent) -> void:
 			0.,
 			1.,
 		)
-
-	blackhole_ray.target_position.z = -1 * black_hole_position * (BLACK_HOLE_PLACEMENT_DIST_MAX - BLACK_HOLE_PLACEMENT_DIST_MIN) - BLACK_HOLE_PLACEMENT_DIST_MIN
 
 	if event.is_action_pressed("click") and charges > 0:
 		charges -= 1
