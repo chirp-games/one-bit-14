@@ -126,3 +126,4 @@ length = 2.0
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]
+[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]

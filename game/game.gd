@@ -50,7 +50,7 @@ func reset() -> void:
 		new_scene.level_complete.connect(func(): place_level(current_level.number + 1))
 	else:
 		push_warning("Level %s has no level_complete signal." % current_level.name)
-	
+
 	%Player.linear_velocity = Vector3.ZERO
 	%Player.angular_velocity = Vector3.ZERO
 	%Player.global_position = current_level.start_position
