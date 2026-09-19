@@ -22,13 +22,19 @@ uniform sampler2D bn_dither_tex: repeat_enable, filter_nearest_mipmap;
 uniform int bn_bit_depth;
 uniform float bn_contrast;
 uniform float bn_offset;
+uniform vec4 black_hole_location;
 
 void fragment() 
 {
+	// Setup blackhole location
+	float dist = length(vec2(UV.x-black_hole_location.x/1920.,(UV.y-black_hole_location.y/1080.)*0.5625));
+    float scale = 40.;
+    float amount = clamp(black_hole_location.w * (1. + sin(dist * scale) / (dist * scale * 10. * black_hole_location.z)),1.,10.);
+	
 	// sample the screen texture at the desired output resolution (according to u_dither_size)
 	// this will effectively pixelate the resulting output
 	vec2 screen_size = vec2(textureSize(TEXTURE, 0)) / u_dither_size;
-	vec2 screen_sample_uv = floor(UV * screen_size) / screen_size;
+	vec2 screen_sample_uv = floor(UV * amount * screen_size) / screen_size;
 	vec3 screen_col = texture(TEXTURE, screen_sample_uv).rgb;
 	vec2 screen_size_inv = 1. / screen_size;
 	
@@ -93,7 +99,7 @@ void fragment()
 		vec2(2,2)
 	);
 	
-	vec2 n_uv = floor(UV * screen_size) / screen_size;
+	vec2 n_uv = floor(UV * amount * screen_size) / screen_size;
 	
 	float avg_color = 0.0;
 	for (int i = 0;i<25;i++) {
@@ -107,7 +113,7 @@ void fragment()
 	}
 	
 	
-	if (avg_color >= 1.) {
+	if (avg_color >= 1. && dist > 0.1 / black_hole_location.z) {
 		if (!bypass) COLOR.rgb = texture(u_color_tex, vec2(0.99)).rgb;
 	} else if (beyer) {
 		// map the dither texture onto the screen. there are better ways of doing this that makes the dither pattern 'stick'
@@ -116,7 +122,7 @@ void fragment()
 		ivec2 noise_size = textureSize(u_dither_tex, 0);
 		vec2 inv_noise_size = vec2(1.0 / float(noise_size.x), 1.0 / float(noise_size.y));
 		vec2 noise_uv = UV * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
-		float threshold = pow(texture(u_dither_tex, noise_uv).r,2) + (texture(u_dither_tex, noise_uv).r * noiseyness);
+		float threshold = texture(u_dither_tex, noise_uv).r + (texture(u_dither_tex, noise_uv).r * noiseyness);
 		
 		// adjust the dither slightly so min and max aren't quite at 0.0 and 1.0
 		// otherwise we wouldn't get fullly dark and fully light dither patterns at lum 0.0 and 1.0
@@ -134,8 +140,8 @@ void fragment()
 	} else {
 		ivec2 noise_size = textureSize(bn_dither_tex, 0);
 		vec2 inv_noise_size = vec2(1.0 / float(noise_size.x), 1.0 / float(noise_size.y));
-		vec2 noise_uv = UV * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
-		float threshold = pow(texture(bn_dither_tex, noise_uv).r,2) + (texture(bn_dither_tex, noise_uv).r * noiseyness);
+		vec2 noise_uv = UV * amount * inv_noise_size * vec2(float(screen_size.x), float(screen_size.y));
+		float threshold = texture(bn_dither_tex, noise_uv).r + (texture(bn_dither_tex, noise_uv).r * noiseyness);
 		
 		// adjust the dither slightly so min and max aren't quite at 0.0 and 1.0
 		// otherwise we wouldn't get fullly dark and fully light dither patterns at lum 0.0 and 1.0

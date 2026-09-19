@@ -3,7 +3,12 @@ extends Control
 
 
 func place_next_level() -> void:
-	place_level(LevelManager.next_level())
+	LevelManager.level_complete()
+	var next_level := LevelManager.next_level()
+	if not LevelManager.level_unlocked(next_level.number):
+		get_tree().call_deferred("change_scene_to_file", "res://game/loader/picker.tscn")
+		return
+	place_level(next_level)
 
 func loop_music() -> void:
 	$BGM.play()
@@ -48,3 +53,9 @@ func _on_player_delete_black_hole() -> void:
 func _physics_process(_delta: float) -> void:
 	if %Player.position.y < (LevelManager.current_level.floor if LevelManager.current_level else -5):
 		reset()
+		%Player
+func _process(delta: float) -> void:
+	if %BlackHole.global_position != null:
+		var viewport = %Player.get_viewport()
+		var black_hole_pos = viewport.get_camera_3d().unproject_position(%BlackHole.global_position)
+		$SubViewportContainer.material.set_shader_parameter("black_hole_location", Vector4(black_hole_pos.x,black_hole_pos.y,%Player.global_position.distance_to(%BlackHole.global_position),0. if viewport.get_camera_3d().is_position_behind(%BlackHole.global_position) else 1.))

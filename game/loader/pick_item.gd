@@ -12,10 +12,19 @@ var level: LevelInfo = preload("res://resources/levels/level_1.tres") :
 	set(value):
 		level = value
 		update_text()
+		check_locked()
 var hovering = false
 var pressing = false
 var loading = false
+var enabled = false
+var bypass = false
 var start_size
+
+func check_locked() -> void:
+	if Engine.is_editor_hint():
+		return
+	var unlocks: Array = ConfigManager.get_value("unlocks")
+	enabled = level.number in unlocks
 
 func update_text() -> void:
 	%Button.text = "%d - %s" % [level.number, level.name]
@@ -29,6 +38,7 @@ func load_level() -> void:
 
 func _ready() -> void:
 	update_text()
+	check_locked()
 	
 	await get_tree().process_frame
 	start_size = size
@@ -40,16 +50,14 @@ func _process(_delta: float) -> void:
 			size.x + (start_size.x if start_size else size.x) * slant_mult,
 			size.y - %Line.width
 		)
-	).has_point(get_local_mouse_position()):
+	).has_point(get_local_mouse_position()) and (enabled or bypass):
 		if not hovering:
 			create_tween().tween_property(self, "size", Vector2(start_size.x * hover_mult, size.y), 0.1)
 			hovering = true
 	elif hovering and not pressing:
 		create_tween().tween_property(self, "size", Vector2(start_size.x, size.y), 0.1)
 		hovering = false
-	elif hovering:
-		pass
-	
+
 	var progress = []
 	var status = ResourceLoader.load_threaded_get_status(game_scene, progress)
 	if status == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE or not loading:
@@ -66,6 +74,9 @@ func _process(_delta: float) -> void:
 		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(game_scene))
 
 func _gui_input(event: InputEvent) -> void:
+	if not (enabled or bypass):
+		return
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			pressing = true
