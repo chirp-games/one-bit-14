@@ -35,8 +35,6 @@ func reset() -> void:
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
 func _ready() -> void:
-	load_levels()
-	place_level(1)
 	reset()
 	if not Engine.is_editor_hint():
 		loop_music()
