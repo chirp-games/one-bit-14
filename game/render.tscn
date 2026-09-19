@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="6_t7a8y"]
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
+[ext_resource type="AudioStream" uid="uid://d3q0wr3w130hq" path="res://assets/sound/spacesong.wav" id="9_2ga11"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
 
 [sub_resource type="Environment" id="Environment_2h351"]
@@ -76,6 +77,10 @@ max_contacts_reported = 100
 [node name="BlackHole" parent="SubViewportContainer/MainGame" unique_id=1549274347 instance=ExtResource("9_n6cbj")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10000, 0)
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1315549566]
+stream = ExtResource("9_2ga11")
+volume_db = -6.0
 
 [connection signal="create_black_hole" from="SubViewportContainer/MainGame/Player" to="." method="_on_player_create_black_hole"]
 [connection signal="delete_black_hole" from="SubViewportContainer/MainGame/Player" to="." method="_on_player_delete_black_hole"]
