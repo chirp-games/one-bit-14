@@ -79,5 +79,5 @@ func are_curves_equal(a: Curve3D, b: Curve3D):
 	return true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	propagate()

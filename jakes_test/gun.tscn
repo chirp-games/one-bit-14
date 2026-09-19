@@ -3,22 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://d3csyrni4dqlt" path="res://jakes_test/gun.glb" id="1_egf7j"]
 [ext_resource type="Script" uid="uid://bcrepximp1li3" path="res://jakes_test/gun.gd" id="2_a6wjj"]
 [ext_resource type="Shader" uid="uid://cqlctbws1dk46" path="res://jakes_test/gun_fill.gdshader" id="3_ib7n2"]
+[ext_resource type="Shader" uid="uid://de6nnam0xvkep" path="res://jakes_test/gun_charge.gdshader" id="4_qfiav"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfiav"]
 render_priority = 0
 shader = ExtResource("3_ib7n2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssesi"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 5.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib7n2"]
+render_priority = 0
+shader = ExtResource("4_qfiav")
 
 [node name="gun" unique_id=1877890053 instance=ExtResource("1_egf7j")]
 script = ExtResource("2_a6wjj")
 
-[node name="Cube_003" parent="." index="2" unique_id=716865071]
-instance_shader_parameters/black_hole_distance = 0.5
+[node name="Cube_003" parent="." index="2" unique_id=1441503062]
 surface_material_override/1 = SubResource("ShaderMaterial_qfiav")
 
-[node name="Gun" parent="." index="4" unique_id=716800652]
-surface_material_override/1 = SubResource("StandardMaterial3D_ssesi")
+[node name="Gun" parent="." index="4" unique_id=1586330110]
+surface_material_override/1 = SubResource("ShaderMaterial_ib7n2")

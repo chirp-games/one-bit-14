@@ -16,6 +16,62 @@ font_size = 75
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
+[sub_resource type="Animation" id="Animation_wt63v"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunAnimations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Camera/GunAnimations:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ivxs2"]
+resource_name = "fire"
+length = 0.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunAnimations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.03333333, 1, 0, 0.05, 0.3, 0.23333333, 1, 0, -0.02, -0.1, 0.3, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ytfj8"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunAnimations:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.3, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.2617994, 0, 0), Vector3(-0.2617994, 0, 0), Vector3(0.034906585, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt63v"]
+_data = {
+&"RESET": SubResource("Animation_wt63v"),
+&"fire": SubResource("Animation_ivxs2"),
+&"reload": SubResource("Animation_ytfj8")
+}
+
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 collision_layer = 7
 axis_lock_angular_x = true
@@ -90,9 +146,11 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
 
-[node name="Gun" parent="Mesh/Camera" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+[node name="GunAnimations" type="Node3D" parent="Mesh/Camera" unique_id=721720213]
+
+[node name="Gun" parent="Mesh/Camera/GunAnimations" unique_id=1877890053 instance=ExtResource("4_ssesi")]
 unique_name_in_owner = true
-transform = Transform3D(0.19144586, -1.2320047e-09, -0.776755, -0.025660904, 0.7995633, -0.006324612, 0.77633107, 0.026428813, 0.19134136, 0.8309363, -0.32325977, 0.13339281)
+transform = Transform3D(-3.4921182e-08, -1.8301421e-09, -0.7999999, -0.041868765, 0.79890364, -1.1087015e-16, 0.7989036, 0.04186877, -3.4969105e-08, 0.8309363, -0.32325977, 0.13339281)
 
 [node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true
@@ -108,6 +166,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032221675, 0, -0.02911377
 visible = false
 mesh = SubResource("CapsuleMesh_wcbod")
 skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=742376171]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_wt63v")
 
 [connection signal="lethal" from="." to="." method="_on_lethal"]
 [connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]
