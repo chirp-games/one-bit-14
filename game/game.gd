@@ -1,68 +1,41 @@
 @tool
 extends Control
 
-## https://www.reddit.com/r/godot/comments/13u9w0j/comment/ldb4q0w
-static func load_asset(path : String) -> Resource:
-	if OS.has_feature("export"):
-		# Check if file is .remap
-		if not path.ends_with(".remap"):
-			return load(path)
 
-		# Open the file
-		var __config_file = ConfigFile.new()
-		__config_file.load(path)
-
-		# Load the remapped file
-		var __remapped_file_path = __config_file.get_value("remap", "path")
-		__config_file = null
-		return load(__remapped_file_path)
-	else:
-		return load(path)
-
-var levels: Array[LevelInfo] = []
-var current_level: LevelInfo
+func place_next_level() -> void:
+	place_level(LevelManager.next_level())
 
 func loop_music() -> void:
 	$BGM.play()
 	await get_tree().create_timer($BGM.stream.get_length()).timeout
 	loop_music()
 
-func load_levels() -> void:
-	for file in DirAccess.open("res://resources/levels").get_files():
-		levels.push_back(load_asset("res://resources/levels/%s" % file))
-	levels.sort_custom(func(a:LevelInfo, b:LevelInfo): return a.number < b.number)
-
-func place_level(level: int) -> void:
-	var found = levels.find_custom(func(x: LevelInfo): return x.number == level)
-	if found < 0 or found >= len(levels):
-		push_error("Requested level (%d) not found" % level)
-		return
-	current_level = levels[found]
+func place_level(level: LevelInfo) -> void:
+	LevelManager.current_number = level.number
 	reset()
 
 func reset() -> void:
 	for child in %LevelContainer.get_children():
 		child.queue_free()
-	var new_scene = current_level.scene.instantiate()
+	var new_scene = LevelManager.current_level.scene.instantiate()
 	%LevelContainer.add_child(new_scene)
 	
 	if new_scene.has_signal("level_complete"):
-		new_scene.level_complete.connect(func(): place_level(current_level.number + 1))
+		new_scene.level_complete.connect(place_next_level)
 	else:
-		push_warning("Level %s has no level_complete signal." % current_level.name)
-
+		push_warning("Level '%s' has no level_complete signal." % LevelManager.current_level.name)
+	
 	%Player.linear_velocity = Vector3.ZERO
 	%Player.angular_velocity = Vector3.ZERO
-	%Player.global_position = current_level.start_position
-	%Player.get_node("%Mesh").global_rotation_degrees = current_level.start_rotation
+	%Player.global_position = LevelManager.current_level.start_position
+	%Player.get_node("%Mesh").global_rotation_degrees = LevelManager.current_level.start_rotation
 	%Player.get_node("%Camera").rotation = Vector3.ZERO
 	%Player.reset_physics_interpolation()
 
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
 func _ready() -> void:
-	load_levels()
-	place_level(2)
+	reset()
 	if not Engine.is_editor_hint():
 		loop_music()
 
@@ -73,5 +46,5 @@ func _on_player_delete_black_hole() -> void:
 	%BlackHole.global_position = Vector3(0, -10000, 0)
 
 func _physics_process(_delta: float) -> void:
-	if %Player.position.y < (current_level.floor if current_level else -5):
+	if %Player.position.y < (LevelManager.current_level.floor if LevelManager.current_level else -5):
 		reset()
