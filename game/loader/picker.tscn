@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://rgda1ji5mes3"]
+
+[ext_resource type="Shader" uid="uid://dfl18pf86l1rd" path="res://assets/shaders/remap.gdshader" id="1_7i4t2"]
+[ext_resource type="Script" uid="uid://cccd5a7j4wep8" path="res://game/loader/picker.gd" id="1_ep7oq"]
+[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="1_xrplp"]
+[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_7i4t2"]
+[ext_resource type="FontFile" uid="uid://bg5unci03fxcf" path="res://assets/fonts/PixelOperator.ttf" id="3_0j8yd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i4t2"]
+shader = ExtResource("1_7i4t2")
+shader_parameter/u_color_tex = ExtResource("2_7i4t2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3jju"]
+shader = ExtResource("1_xrplp")
+shader_parameter/u_bit_depth = 0
+shader_parameter/u_contrast = 0.0
+shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = 0.0
+shader_parameter/u_dither_size = 0.0
+shader_parameter/bypass = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
+font = ExtResource("3_0j8yd")
+font_size = 100
+
+[node name="SubViewportContainer" type="SubViewportContainer" unique_id=1898376378]
+material = SubResource("ShaderMaterial_7i4t2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=775040730]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1579581870]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Picker" type="HBoxContainer" parent="SubViewport" unique_id=860967095]
+material = SubResource("ShaderMaterial_b3jju")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ep7oq")
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Picker" unique_id=174141007]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 500
+
+[node name="LevelList" type="VBoxContainer" parent="SubViewport/Picker/MarginContainer" unique_id=1847638559]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -5
+
+[node name="HBoxContainer" type="CenterContainer" parent="SubViewport/Picker" unique_id=1884464356]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Picker/HBoxContainer" unique_id=2085026683]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1011842576]
+layout_mode = 2
+text = "Gravity Well"
+label_settings = SubResource("LabelSettings_gm6uc")
+
+[node name="HSlider" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=214697753]
+layout_mode = 2
+
+[node name="HSlider2" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1834702073]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1356153872]
+layout_mode = 2
+text = "Quit"

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d3dncwsor66d4"]
+
+[ext_resource type="Script" uid="uid://dqw3rppah7ajk" path="res://game/loader/pick_item.gd" id="1_b3jju"]
+[ext_resource type="FontFile" uid="uid://bg5unci03fxcf" path="res://assets/fonts/PixelOperator.ttf" id="2_yumse"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uuelr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1idwh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87bcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6ny2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f1d2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xrplp"]
+size = Vector2(32, 32)
+
+[node name="PickItem" type="MarginContainer" unique_id=1679864784]
+offset_right = 79.0
+offset_bottom = 23.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_b3jju")
+
+[node name="Line" type="Line2D" parent="." unique_id=1313215926]
+unique_name_in_owner = true
+points = PackedVector2Array(2.5, 2.5, 186.7, 2.5, 169.5, 49.5, 2.5, 49.5)
+closed = true
+width = 5.0
+
+[node name="Button" type="Button" parent="." unique_id=1613488742]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
+theme_override_fonts/font = ExtResource("2_yumse")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uuelr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1idwh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_87bcv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c6ny2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0f1d2")
+text = "01 - Name"
+icon = SubResource("PlaceholderTexture2D_xrplp")
+alignment = 0
