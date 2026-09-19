@@ -18,14 +18,41 @@ font_size = 75
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcbod"]
 
 [sub_resource type="Animation" id="Animation_wt63v"]
-length = 0.001
+length = 3.0000000000000004
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Camera/GunAnimations")
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Camera/GunCenter/GunAnimations:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mq64w"]
+resource_name = "cover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.08726646, 0.5235988, 0), Vector3(-0.10471976, 0.54105204, 0.017453292), Vector3(-0.08726646, 0.5235988, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ivxs2"]
 resource_name = "fire"
@@ -33,7 +60,7 @@ length = 0.3
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Camera/GunAnimations")
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.03333333, 1, 0, 0.05, 0.3, 0.23333333, 1, 0, -0.02, -0.1, 0.3, 1, 0, 0, 0)
@@ -43,10 +70,25 @@ resource_name = "hold"
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Camera/GunAnimations")
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_xxxfs"]
+resource_name = "landing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.17453292, -0.5235988, 0), Vector3(-0.17453292, 0, 0), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_oh56g"]
 resource_name = "release_black_hole"
@@ -54,9 +96,49 @@ resource_name = "release_black_hole"
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wt63v"]
 _data = {
 &"RESET": SubResource("Animation_wt63v"),
+&"cover": SubResource("Animation_mq64w"),
 &"fire": SubResource("Animation_ivxs2"),
 &"hold": SubResource("Animation_tk1b1"),
+&"landing": SubResource("Animation_xxxfs"),
 &"release_black_hole": SubResource("Animation_oh56g")
+}
+
+[sub_resource type="Animation" id="Animation_arf0k"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations/GunBob:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ytfj8"]
+resource_name = "bob"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Camera/GunCenter/GunAnimations/GunBob:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.008726646, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oh56g"]
+_data = {
+&"RESET": SubResource("Animation_arf0k"),
+&"bob": SubResource("Animation_ytfj8")
 }
 
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
@@ -133,17 +215,19 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
 
-[node name="GunAnimations" type="Node3D" parent="Mesh/Camera" unique_id=721720213]
+[node name="GunCenter" type="Node3D" parent="Mesh/Camera" unique_id=626254350]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.680163, -0.24543554, -0.10290575)
 
-[node name="GunBob" type="Node3D" parent="Mesh/Camera/GunAnimations" unique_id=1516152704]
+[node name="GunAnimations" type="Node3D" parent="Mesh/Camera/GunCenter" unique_id=721720213]
 
-[node name="RotateGunToBlackHole" type="Node3D" parent="Mesh/Camera/GunAnimations/GunBob" unique_id=198787330]
+[node name="GunBob" type="Node3D" parent="Mesh/Camera/GunCenter/GunAnimations" unique_id=1516152704]
+
+[node name="RotateGunToBlackHole" type="Node3D" parent="Mesh/Camera/GunCenter/GunAnimations/GunBob" unique_id=198787330]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75257844, -0.16497445, -0.12436758)
 
-[node name="Gun" parent="Mesh/Camera/GunAnimations/GunBob/RotateGunToBlackHole" unique_id=1877890053 instance=ExtResource("4_ssesi")]
+[node name="Gun" parent="Mesh/Camera/GunCenter/GunAnimations/GunBob/RotateGunToBlackHole" unique_id=1877890053 instance=ExtResource("4_ssesi")]
 unique_name_in_owner = true
-transform = Transform3D(-3.4921182e-08, -1.8301421e-09, -0.7999999, -0.041868765, 0.79890364, -1.1087015e-16, 0.7989036, 0.04186877, -3.4969105e-08, 0.078357875, -0.23987776, 0.2577604)
+transform = Transform3D(-3.4921182e-08, -1.8301421e-09, -0.7999999, -0.041868765, 0.7989038, -1.1087017e-16, 0.7989036, 0.04186877, -3.4969105e-08, 0.025815427, -0.16497448, 0.33342773)
 
 [node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true
@@ -160,9 +244,15 @@ visible = false
 mesh = SubResource("CapsuleMesh_wcbod")
 skeleton = NodePath("../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=742376171]
+[node name="GunMovementAnimationPlayer" type="AnimationPlayer" parent="." unique_id=742376171]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_wt63v")
+playback_default_blend_time = 0.1
+
+[node name="GunBobAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1635274646]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_oh56g")
+playback_default_blend_time = 0.2
 
 [connection signal="lethal" from="." to="." method="_on_lethal"]
 [connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]

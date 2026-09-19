@@ -78,7 +78,7 @@ func recharge() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%AnimationPlayer.play("release_black_hole")
+	%GunMovementAnimationPlayer.play("RESET")
 
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -115,21 +115,22 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") and charges > 0:
 		charges -= 1
 		%HoleRecharge.value = 0
-		%AnimationPlayer.play("fire")
+		%GunMovementAnimationPlayer.play("fire", .05)
 		black_hole_placed_position = %BlackHolePreview.global_position
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
 		black_hole_placed_position = Vector3.ZERO
 		delete_black_hole.emit()
-		%AnimationPlayer.play("release_black_hole")
+		%GunMovementAnimationPlayer.play("release_black_hole")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	cayote_timer += delta
+	if not on_floor:
+		cayote_timer += delta
 
 	if on_floor:
 		# Do not start the recharging until recoil is over
-		var is_reloading = %AnimationPlayer.current_animation == "fire" and %AnimationPlayer.is_playing()
+		var is_reloading = %GunMovementAnimationPlayer.current_animation == "fire" and %GunMovementAnimationPlayer.is_playing()
 		if charges < MAX_CHARGES and not recharging and not is_reloading:
 			recharging = true
 			charge_tween = get_tree().create_tween()
@@ -159,6 +160,19 @@ func _physics_process(delta: float) -> void:
 		apply_central_force(direction * AIR_WALK_FORCE)
 		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 
+	if on_floor and direction:
+		if %GunBobAnimationPlayer.current_animation != "bob":
+			%GunBobAnimationPlayer.play("bob")
+	else:
+		if %GunBobAnimationPlayer.current_animation != "RESET":
+			%GunBobAnimationPlayer.play("RESET")
+
+	if not %GunMovementAnimationPlayer.is_playing() or %GunMovementAnimationPlayer.current_animation == "cover" or %GunMovementAnimationPlayer.current_animation == "RESET":
+		if cayote_timer > 0.1:
+			%GunMovementAnimationPlayer.play("cover", .2)
+		else:
+			%GunMovementAnimationPlayer.play("RESET", .3)
+
 	if Input.is_action_just_pressed("jump") and cayote_timer < CAYOTE_TIME:
 		apply_impulse(Vector3(0,1.,0) * JUMP_IMPULSE)
 		cayote_timer += 100
@@ -173,9 +187,9 @@ func _physics_process(delta: float) -> void:
 		%RotateGunToBlackHole.rotation.x = clampf(%RotateGunToBlackHole.rotation.x, -PI / 12 , PI / 12)
 		%RotateGunToBlackHole.rotation.y = clampf(%RotateGunToBlackHole.rotation.y, -PI / 12, PI / 12)
 		%RotateGunToBlackHole.rotation.z = clampf(%RotateGunToBlackHole.rotation.z, -PI / 12, PI / 12)
-		%RotateGunToBlackHole.rotation = lerp(old_rotation, %RotateGunToBlackHole.rotation, 10 * delta)
+		%RotateGunToBlackHole.rotation = lerp(old_rotation, %RotateGunToBlackHole.rotation, 5 * delta)
 	else:
-		%RotateGunToBlackHole.rotation = lerp(%RotateGunToBlackHole.rotation, Vector3.ZERO, 10 * delta)
+		%RotateGunToBlackHole.rotation = lerp(%RotateGunToBlackHole.rotation, Vector3.ZERO, 5 * delta)
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
