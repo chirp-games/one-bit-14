@@ -19,6 +19,7 @@ func _ready():
 		bus_label.text = bus + " volume"
 		bus_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		bus_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		bus_label.add_theme_font_size_override("font_size", 32)
 
 		bus_slider = HSlider.new()
 		bus_slider.min_value = 0

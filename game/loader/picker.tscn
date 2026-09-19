@@ -5,6 +5,8 @@
 [ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="1_xrplp"]
 [ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_7i4t2"]
 [ext_resource type="FontFile" uid="uid://bg5unci03fxcf" path="res://assets/fonts/PixelOperator.ttf" id="3_0j8yd"]
+[ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="6_hgp8l"]
+[ext_resource type="Theme" uid="uid://bp35ok3gel4nx" path="res://assets/global.tres" id="7_eth52"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7i4t2"]
 shader = ExtResource("1_7i4t2")
@@ -73,12 +75,17 @@ layout_mode = 2
 text = "Gravity Well"
 label_settings = SubResource("LabelSettings_gm6uc")
 
-[node name="HSlider" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=214697753]
+[node name="Volume" type="GridContainer" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=2013261365]
 layout_mode = 2
+columns = 2
+script = ExtResource("6_hgp8l")
 
-[node name="HSlider2" type="HSlider" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1834702073]
+[node name="Label2" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=78376748]
 layout_mode = 2
+theme = ExtResource("7_eth52")
+text = "Reset Unlocks"
 
 [node name="Button" type="Button" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1356153872]
 layout_mode = 2
+theme = ExtResource("7_eth52")
 text = "Quit"
