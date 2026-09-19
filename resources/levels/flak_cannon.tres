@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://dweitv1e0wqnm"]
+
+[ext_resource type="PackedScene" uid="uid://clxdicqofsh6m" path="res://game/levels/flak_cannon.tscn" id="1_3tbh1"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_ut24v"]
+
+[resource]
+script = ExtResource("2_ut24v")
+number = 12
+name = "Flak Canon"
+scene = ExtResource("1_3tbh1")
+start_position = Vector3(0, 2, -3)
+start_rotation = Vector3(0, 225, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
