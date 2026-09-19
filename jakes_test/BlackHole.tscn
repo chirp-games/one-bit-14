@@ -6,11 +6,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0xfd7"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_0xfd7"]
-radius = 0.18
-height = 0.36
+[sub_resource type="SphereMesh" id="SphereMesh_y3s33"]
+radial_segments = 16
+rings = 16
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4nys"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8rmi"]
+shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Curve" id="Curve_s8rmi"]
@@ -45,8 +46,8 @@ shape = SubResource("SphereShape3D_0xfd7")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Center" type="MeshInstance3D" parent="." unique_id=1724065712]
-mesh = SubResource("SphereMesh_0xfd7")
-surface_material_override/0 = SubResource("StandardMaterial3D_f4nys")
+mesh = SubResource("SphereMesh_y3s33")
+surface_material_override/0 = SubResource("StandardMaterial3D_s8rmi")
 
 [node name="BlackHoleEffect" type="SubViewport" parent="." unique_id=1870607899]
 transparent_bg = true
@@ -99,6 +100,7 @@ texture = SubResource("GradientTexture2D_0xfd7")
 
 [node name="BlackHoleEffectBillboard" type="Sprite3D" parent="." unique_id=1908499150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5265765e-05, 0.00047187507, -1.04904175e-05)
+pixel_size = 0.025
 billboard = 1
 texture = SubResource("ViewportTexture_s8rmi")
 

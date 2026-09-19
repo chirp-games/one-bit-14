@@ -72,5 +72,4 @@ void fragment() {
 	
 	ALBEDO = mix(screen_color, outline_color, combined_edge);
 	ALPHA = combined_edge;
-	DEPTH = 0.999;
 }
