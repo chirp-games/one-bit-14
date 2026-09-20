@@ -47,7 +47,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3)
 
 [node name="Button2" parent="." unique_id=518393246 instance=ExtResource("2_d2dnw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 11)
 
 [node name="Door1" parent="." unique_id=527303417 instance=ExtResource("3_cf4ar")]
 unique_name_in_owner = true
@@ -75,6 +75,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
 
 [node name="w7" parent="Wires1" unique_id=1330116640 instance=ExtResource("5_2aicr")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 1, -1)
+type = 1
+
+[node name="w8" parent="Wires1" unique_id=1581015164 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 1)
+
+[node name="w9" parent="Wires1" unique_id=128785493 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 3)
+
+[node name="w10" parent="Wires1" unique_id=1334690682 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 5)
+
+[node name="w11" parent="Wires1" unique_id=2070118703 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 7)
+
+[node name="w13" parent="Wires1" unique_id=772754597 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 9)
+
+[node name="w12" parent="Wires1" unique_id=1102941382 instance=ExtResource("5_2aicr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 11)
 type = 2
 
 [node name="w2" parent="Wires1" unique_id=1361097465 instance=ExtResource("5_2aicr")]
@@ -111,10 +130,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 1, 1)
 
 [node name="w12" parent="Wires2" unique_id=680699905 instance=ExtResource("5_2aicr")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 1, 1)
+transform = Transform3D(1.5529405e-22, 1.0000001, 1.7763568e-15, 1.0000001, 0, -8.742278e-08, -8.742278e-08, 0, -1, 0, 2, 1)
 
 [node name="w13" parent="Wires2" unique_id=1104369338 instance=ExtResource("5_2aicr")]
-transform = Transform3D(4.371139e-08, 1, -3.821371e-15, 1, -4.371139e-08, -8.742278e-08, -8.742278e-08, 0, -1, -2, 2, 1)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 3, 1)
 
 [node name="w15" parent="Wires2" unique_id=236094435 instance=ExtResource("5_2aicr")]
 transform = Transform3D(4.371139e-08, 1, -3.821371e-15, 4.371139e-08, 1.910686e-15, 1, 1, -4.371139e-08, -4.371139e-08, -2, 4, -1)
