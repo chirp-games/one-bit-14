@@ -18,7 +18,7 @@ config/name="Gravity Well"
 run/main_scene="uid://rgda1ji5mes3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.1254902, 0.16862746, 0.26666668, 1)
-config/icon="res://icon.svg"
+config/icon="uid://em6xnqg4x3yn"
 
 [audio]
 
