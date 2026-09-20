@@ -24,3 +24,7 @@ func _on_button_2_released() -> void:
 	%Door2.close()
 	for w in %Wires1.get_children():
 		w.power_off()
+
+
+func _on_completion_area_level_complete() -> void:
+	on_complete()
