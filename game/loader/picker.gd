@@ -6,7 +6,7 @@ const item = preload("res://game/loader/pick_item.tscn")
 const code = [
 	KEY_UP, KEY_UP, KEY_DOWN, KEY_DOWN,
 	KEY_LEFT, KEY_RIGHT, KEY_LEFT, KEY_RIGHT,
-	KEY_A, KEY_B 
+	KEY_B, KEY_A
 ]
 
 @export var bypass_unlocks = false
