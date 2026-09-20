@@ -12,17 +12,16 @@ absorbent = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_cghko"]
 size = Vector3(2, 0.7, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3e1p"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.9999998, 0.06428058, 0.29319063, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
-material = SubResource("StandardMaterial3D_n3e1p")
-size = Vector3(0.1, 0.1, 0.1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_wdfcw"]
 size = Vector3(0.25, 0.25, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_os57d"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdfcw"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.6
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wdfcw"]
 random_pitch = 1.3348398
@@ -71,20 +70,6 @@ node_a = NodePath("../RailedBox")
 linear_limit/upper_distance = 0.0
 linear_limit/lower_distance = 0.0
 
-[node name="Rail" type="PathMesh3D" parent="." unique_id=1549315691]
-mesh = SubResource("BoxMesh_0xfd7")
-surface_0/offset = Vector2(0, 0)
-surface_0/rotation = Vector3(0, 0, 0)
-surface_0/rotation_order = 2
-surface_0/distribution = 0
-surface_0/alignment = 0
-surface_0/mesh_length_override = 0.0
-surface_0/warp_along_curve = true
-surface_0/sample_cubic = false
-surface_0/tilt = true
-surface_0/triangle_count = 0
-unique_name_in_owner = true
-
 [node name="FirstEnd" type="MeshInstance3D" parent="." unique_id=1494488080]
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_wdfcw")
@@ -93,7 +78,12 @@ mesh = SubResource("BoxMesh_wdfcw")
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_wdfcw")
 
+[node name="Rail" type="MeshInstance3D" parent="." unique_id=1153847532]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_os57d")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdfcw")
 [node name="BoxHit" type="AudioStreamPlayer3D" parent="." unique_id=945023068]
+
 stream = SubResource("AudioStreamRandomizer_wdfcw")
 volume_db = -2.0
 max_db = -3.0

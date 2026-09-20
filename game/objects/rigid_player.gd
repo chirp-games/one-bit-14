@@ -6,6 +6,7 @@ signal delete_black_hole
 signal set_blackholes_enabled(enabled: bool)
 signal reset_level
 signal lethal
+signal laser_hit
 
 const WALK_FORCE = 120
 const AIR_WALK_FORCE = 15
@@ -233,3 +234,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _on_lethal() -> void:
 	print("died")
 	reset_level.emit()
+
+
+func _on_laser_hit() -> void:
+	pass # Replace with function body.
