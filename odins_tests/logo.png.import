@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj0ml2n0r1uf4"
-path="res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.ctex"
+uid="uid://em6xnqg4x3yn"
+path="res://.godot/imported/logo.png-83439a115f1117c75380c6b9cd4499bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bens_tests/dither_color.png"
-dest_files=["res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.ctex"]
+source_file="res://odins_tests/logo.png"
+dest_files=["res://.godot/imported/logo.png-83439a115f1117c75380c6b9cd4499bb.ctex"]
 
 [params]
 

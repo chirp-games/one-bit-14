@@ -30,7 +30,7 @@ func propagate() -> void:
 			
 			if dist > 5:
 				continue
-			
+
 			direction = direction.slerp(
 				endpoint.direction_to(pos),
 				clamp(TURN_FACTOR / float(pow(dist, 1.5)), 0, 1)
@@ -62,21 +62,67 @@ func propagate() -> void:
 		%VisibleCurve.curve = curve.duplicate()
 		update_sprites()
 
+var height = .025
+
 func update_sprites():
-	for c in %PointMeshes.get_children():
-		c.queue_free()
+	var length = curve.get_baked_length()
 
-	var points = curve.get_baked_points()
+	var vertices = PackedVector3Array()
 
-	for point in range(len(points) - 1):
-		var l: MeshInstance3D = $LaserBase.duplicate()
+	var pos = 0
+	while pos < length:
+		var p1 = curve.sample_baked(pos)
+		var p2 = curve.sample_baked(pos + 0.5)
+		# bottom
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
 
-		%PointMeshes.add_child(l)
+		vertices.push_back(Vector3(p1.x + height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
 
-		l.basis.x = points[point].direction_to(points[point + 1])
-		l.position = points[point]
-		l.visible = true
+		# Top
+		vertices.push_back(Vector3(p2.x - height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
 
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+
+		# Left
+		vertices.push_back(Vector3(p2.x - height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+
+		# Right
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+
+		vertices.push_back(Vector3(p1.x + height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+
+
+
+
+		pos += 0.5
+
+	# Initialize the ArrayMesh.
+	var arr_mesh = ArrayMesh.new()
+	var arrays = []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = vertices
+
+	# Create the Mesh.
+	arr_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	%Laser.mesh = arr_mesh
 
 func are_curves_equal(a: Curve3D, b: Curve3D):
 	if a.point_count == 0 or b.point_count == 0:

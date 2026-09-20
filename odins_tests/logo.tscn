@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://dxt38gcuumsxl"]
+
+[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="1_c461o"]
+[ext_resource type="Script" uid="uid://cewvhflh4xtw0" path="res://odins_tests/logo.gd" id="1_ls8n4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ls8n4"]
+load_path = "res://.godot/imported/blue_noise.png-ee6a5884982ab359ee0c43fc3dc3b182.s3tc.ctex"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5ouyr"]
+frequency = 0.035
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w60ya"]
+noise = SubResource("FastNoiseLite_5ouyr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r61mv"]
+load_path = "res://.godot/imported/dither_color.png-860e87c66d1c980dd888fc169011e59b.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ko81u"]
+load_path = "res://.godot/imported/bayer16.png-3d835ff1015e98cbbdb7f177a7f4a9f3.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywbuv"]
+shader = ExtResource("1_c461o")
+shader_parameter/u_dither_tex = SubResource("CompressedTexture2D_ko81u")
+shader_parameter/u_color_tex = SubResource("CompressedTexture2D_r61mv")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.775
+shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = -0.075
+shader_parameter/u_dither_size = 1.135
+shader_parameter/noise = SubResource("NoiseTexture2D_w60ya")
+shader_parameter/bypass = false
+shader_parameter/bn_dither_tex = SubResource("CompressedTexture2D_ls8n4")
+shader_parameter/bn_bit_depth = 32
+shader_parameter/bn_contrast = 1.0
+shader_parameter/bn_offset = 0.0
+shader_parameter/black_hole_location = Vector4(0, 0, 10002, 0)
+
+[sub_resource type="Curve" id="Curve_8gdrc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_uqts5"]
+offsets = PackedFloat32Array(0.244, 0.335, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.17073166, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_584ic"]
+gradient = SubResource("Gradient_uqts5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" unique_id=666571719]
+script = ExtResource("1_ls8n4")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1354089541]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VP" type="SubViewport" parent="SubViewportContainer" unique_id=801071237]
+unique_name_in_owner = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer/VP" unique_id=311289676]
+material = SubResource("ShaderMaterial_ywbuv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/VP/SubViewportContainer" unique_id=794621182]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/VP/SubViewportContainer/SubViewport" unique_id=856779019]
+position = Vector2(256, 256)
+scale = Vector2(5, 5)
+
+[node name="InnerRing" type="CPUParticles2D" parent="SubViewportContainer/VP/SubViewportContainer/SubViewport/Node2D" unique_id=313842461]
+scale = Vector2(8, 8)
+amount = 60
+preprocess = 0.5
+randomness = 0.1
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_inner_radius = 2.0
+emission_ring_radius = 4.0
+spread = 100.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 42.35
+angular_velocity_max = 127.06
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.5
+tangential_accel_max = 20.0
+scale_amount_min = 25.0
+scale_amount_max = 25.0
+scale_amount_curve = SubResource("Curve_8gdrc")
+
+[node name="OuterRing" type="CPUParticles2D" parent="SubViewportContainer/VP/SubViewportContainer/SubViewport/Node2D" unique_id=435263244]
+scale = Vector2(8, 8)
+amount = 30
+preprocess = 0.5
+randomness = 0.1
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_inner_radius = 4.0
+emission_ring_radius = 6.0
+spread = 100.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 42.35
+angular_velocity_max = 127.06
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.5
+tangential_accel_max = 20.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_8gdrc")
+
+[node name="EventHorizon" type="Sprite2D" parent="SubViewportContainer/VP/SubViewportContainer/SubViewport/Node2D" unique_id=2049278929]
+texture = SubResource("GradientTexture2D_584ic")
+
+[node name="Label" type="Label" parent="SubViewportContainer/VP/SubViewportContainer/SubViewport" unique_id=887455470]
+offset_left = 210.0
+offset_top = 222.5
+offset_right = 302.0
+offset_bottom = 289.5
+text = "Gravity
+Well"
+label_settings = SubResource("LabelSettings_gm6uc")
+horizontal_alignment = 1
+vertical_alignment = 1
