@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dl38deygmk43u" path="res://game/objects/railed_box.gd" id="1_xopbt"]
 [ext_resource type="PackedScene" uid="uid://ds68x1fbbucw2" path="res://assets/blender/railed_box.glb" id="2_wdfcw"]
+[ext_resource type="AudioStream" uid="uid://bm7swdbqyeagj" path="res://assets/sound/box_hit_loud.mp3" id="3_cghko"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_echrq"]
 friction = 0.1
@@ -22,6 +23,11 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 3.6
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wdfcw"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("3_cghko")
+
 [node name="RailedBox" type="PathFollow3D" unique_id=787075143]
 script = ExtResource("1_xopbt")
 
@@ -35,6 +41,8 @@ axis_lock_angular_z = true
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_echrq")
 gravity_scale = 0.5
+contact_monitor = true
+max_contacts_reported = 4
 
 [node name="railed_box" parent="RailedBox" unique_id=73822898 instance=ExtResource("2_wdfcw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -74,3 +82,10 @@ mesh = SubResource("BoxMesh_wdfcw")
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_os57d")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdfcw")
+[node name="BoxHit" type="AudioStreamPlayer3D" parent="." unique_id=945023068]
+
+stream = SubResource("AudioStreamRandomizer_wdfcw")
+volume_db = -2.0
+max_db = -3.0
+
+[connection signal="body_entered" from="RailedBox" to="." method="_on_railed_box_body_entered"]
