@@ -8,7 +8,7 @@ var pushed_signal_emitted = false
 var released_signal_emitted = true
 
 func _physics_process(_delta: float) -> void:
-	if %PushPart.position.y <= .1:
+	if %PushPart.position.y <= -.05:
 		released_signal_emitted = false
 		if not pushed_signal_emitted:
 			pushed.emit()
