@@ -12,6 +12,7 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_o7tws"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jip06"]
+cull_mode = 2
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 10.0
