@@ -5,6 +5,9 @@ extends Control
 func place_next_level() -> void:
 	LevelManager.level_complete()
 	var next_level := LevelManager.next_level()
+	if not next_level:
+		main_menu()
+		return
 	if not LevelManager.level_unlocked(next_level.number):
 		get_tree().call_deferred("change_scene_to_file", "res://game/loader/picker.tscn")
 		return
@@ -38,6 +41,9 @@ func reset() -> void:
 	%Player.reset_physics_interpolation()
 
 	%BlackHole.global_position = Vector3(0, -10000, 0)
+
+func main_menu() -> void:
+	get_tree().change_scene_to_file("res://game/loader/picker.tscn")
 
 func _ready() -> void:
 	reset()

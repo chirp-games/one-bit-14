@@ -25,9 +25,8 @@ var normal_level_numbers: Array[int] = []
 var current_number: int = 1
 var current_level: LevelInfo :
 	get():
-		return levels[
-			levels.find_custom(func(x: LevelInfo): return x.number == current_number)
-		]
+		var level_index = levels.find_custom(func(x: LevelInfo): return x.number == current_number)
+		return levels[level_index] if level_index >= 0 else null
 
 func load_levels() -> void:
 	for file in DirAccess.open("res://resources/levels").get_files():
