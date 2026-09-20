@@ -28,6 +28,7 @@ var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
 var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
 var black_hole_position = 0.75
+var footsteps_cooldown = 0.0
 
 var floor: Object
 
@@ -193,10 +194,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		%RotateGunToBlackHole.rotation = lerp(%RotateGunToBlackHole.rotation, Vector3.ZERO, 5 * delta)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	position_black_hole_preview()
 	%Gun.set_charge(%HoleRecharge.value / RECHARGE_TIME)
 	%Gun.set_dist(black_hole_position)
+	
+	footsteps_cooldown -= delta
+	
+	if footsteps_cooldown <= 0.:
+		if (on_floor and linear_velocity.length() > 1.0):
+			$Footsteps.play()
+			footsteps_cooldown = 0.35
+		else:
+			footsteps_cooldown = 0.
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3

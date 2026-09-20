@@ -26,3 +26,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	%FirstEnd.global_position = path.global_position + path.curve.get_point_position(0) - Vector3(0, 0, 0.05)
 	%SecondEnd.global_position = path.global_position + path.curve.get_point_position(1) - Vector3(0, 0, 0.05)
+
+var last_velocity: Vector3 = Vector3.ZERO
+
+func _physics_process(_delta: float) -> void:
+	last_velocity = %RailedBox.linear_velocity
+	
+func _on_railed_box_body_entered(body: Node) -> void:
+	var impact_velocity = (last_velocity - %RailedBox.linear_velocity).length()
+	print(impact_velocity)
+	if impact_velocity >  3.0:	
+		$BoxHit.play(0.04)
