@@ -297,7 +297,6 @@ playback_default_blend_time = 0.2
 [node name="LaserDeath" type="AnimationPlayer" parent="." unique_id=1008846421]
 libraries/ = SubResource("AnimationLibrary_knxwg")
 
-[connection signal="laser_hit" from="." to="." method="_on_laser_hit"]
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=768047715]
 stream = SubResource("AudioStreamRandomizer_km8ha")
 volume_db = -25.0
@@ -311,5 +310,6 @@ volume_db = -4.0
 stream = SubResource("AudioStreamRandomizer_bdu65")
 volume_db = -4.0
 
+[connection signal="laser_hit" from="." to="." method="_on_laser_hit"]
 [connection signal="lethal" from="." to="." method="_on_lethal"]
 [connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]
