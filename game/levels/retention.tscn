@@ -116,6 +116,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.1
 [node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("10_5pbhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 27.2, -1)
 
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="Button" to="Door" method="open"]
 [connection signal="released" from="Button" to="Door" method="close"]
 [connection signal="pushed" from="Button2" to="Path3D2/PathFollowPlatform" method="forward"]
