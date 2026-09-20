@@ -141,6 +141,18 @@ _data = {
 &"bob": SubResource("Animation_ytfj8")
 }
 
+[sub_resource type="Animation" id="Animation_knxwg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_bdu65"]
+resource_name = "death"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knxwg"]
+_data = {
+&"RESET": SubResource("Animation_knxwg"),
+&"death": SubResource("Animation_bdu65")
+}
+
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 collision_layer = 7
 axis_lock_angular_x = true
@@ -255,5 +267,9 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_oh56g")
 playback_default_blend_time = 0.2
 
+[node name="LaserDeath" type="AnimationPlayer" parent="." unique_id=1008846421]
+libraries/ = SubResource("AnimationLibrary_knxwg")
+
+[connection signal="laser_hit" from="." to="." method="_on_laser_hit"]
 [connection signal="lethal" from="." to="." method="_on_lethal"]
 [connection signal="set_blackholes_enabled" from="." to="Mesh/Camera/BlackHolePreview" method="set_visible"]

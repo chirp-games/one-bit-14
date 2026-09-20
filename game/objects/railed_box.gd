@@ -12,16 +12,15 @@ var path: Path3D
 func _ready() -> void:
 	path = get_parent()
 
-	if path != null:
-		%Rail.path_3d = path
-
-	%Rail.global_rotation = Vector3(0, 0, 0)
-
 	var dist = path.curve.get_point_position(0).distance_to(path.curve.get_point_position(1))
 	%SliderJoint3D.set_param(SliderJoint3D.PARAM_LINEAR_LIMIT_LOWER, .6)
 	%SliderJoint3D.set_param(SliderJoint3D.PARAM_LINEAR_LIMIT_UPPER, dist -.6)
 
 	%RailedBox.global_position = path.global_position + start_offset * path.curve.get_point_position(1)
+
+	%Rail.global_position = path.global_position + .5 * path.curve.get_point_position(1)
+	%Rail.scale.z = dist
+
 
 func _process(_delta: float) -> void:
 	%FirstEnd.global_position = path.global_position + path.curve.get_point_position(0) - Vector3(0, 0, 0.05)

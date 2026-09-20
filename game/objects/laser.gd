@@ -49,8 +49,6 @@ func propagate() -> void:
 			curve.add_point(to_local(hit["position"]))
 			if hit["collider"].has_signal("laser_hit"):
 				hit["collider"].emit_signal("laser_hit")
-			if hit["collider"].has_signal("lethal"):
-				hit["collider"].emit_signal("lethal")
 			break
 
 		endpoint += target
@@ -62,13 +60,23 @@ func propagate() -> void:
 	# Only update the visuals if we have a different shape curve
 	if not are_curves_equal(%VisibleCurve.curve, curve):
 		%VisibleCurve.curve = curve.duplicate()
+		update_sprites()
 
-@onready var curve: Curve3D = Curve3D.new()
-@onready var collisionRay: RayCast3D = $Collider
+func update_sprites():
+	for c in %PointMeshes.get_children():
+		c.queue_free()
 
-func _ready() -> void:
-	await get_tree().process_frame
-	effectors = get_tree().get_nodes_in_group("curves_light")
+	var points = curve.get_baked_points()
+
+	for point in range(len(points) - 1):
+		var l: MeshInstance3D = $LaserBase.duplicate()
+
+		%PointMeshes.add_child(l)
+
+		l.basis.x = points[point].direction_to(points[point + 1])
+		l.position = points[point]
+		l.visible = true
+
 
 func are_curves_equal(a: Curve3D, b: Curve3D):
 	if a.point_count == 0 or b.point_count == 0:
@@ -81,6 +89,14 @@ func are_curves_equal(a: Curve3D, b: Curve3D):
 		if a_points[i] != b_points[i]:
 			return false
 	return true
+
+@onready var curve: Curve3D = Curve3D.new()
+@onready var collisionRay: RayCast3D = $Collider
+
+func _ready() -> void:
+	await get_tree().process_frame
+	effectors = get_tree().get_nodes_in_group("curves_light")
+
 
 
 func _physics_process(_delta: float) -> void:

@@ -11,16 +11,15 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_o7tws"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p78q"]
-albedo_color = Color(1, 0, 0.016666412, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_jip06"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7tws"]
 emission_enabled = true
-emission = Color(1, 0, 0, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_siedi"]
-material = SubResource("StandardMaterial3D_6p78q")
-size = Vector3(0.03, 0.03, 0.5)
-
-[node name="Laser" type="Node3D" unique_id=2123689957 groups=["laser"]]
+[node name="Laser" type="Node3D" unique_id=2123689957]
 script = ExtResource("1_jip06")
 
 [node name="Direction" type="Path3D" parent="." unique_id=1188082519]
@@ -34,17 +33,9 @@ curve = SubResource("Curve3D_o7tws")
 [node name="Collider" type="RayCast3D" parent="." unique_id=1972241685]
 target_position = Vector3(0, 0, -1)
 
-[node name="LaserMesh" type="PathMesh3D" parent="." unique_id=1158297813 node_paths=PackedStringArray("path_3d")]
-path_3d = NodePath("../VisibleCurve")
-mesh = SubResource("BoxMesh_siedi")
-surface_0/offset = Vector2(0, 0)
-surface_0/rotation = Vector3(0, 0, 0)
-surface_0/rotation_order = 2
-surface_0/distribution = 0
-surface_0/alignment = 0
-surface_0/mesh_length_override = 0.0
-surface_0/warp_along_curve = true
-surface_0/sample_cubic = false
-surface_0/tilt = true
-surface_0/triangle_count = 0
+[node name="PointMeshes" type="Node3D" parent="." unique_id=1804139686]
 unique_name_in_owner = true
+
+[node name="LaserBase" type="MeshInstance3D" parent="." unique_id=1116673728]
+mesh = SubResource("BoxMesh_jip06")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7tws")
