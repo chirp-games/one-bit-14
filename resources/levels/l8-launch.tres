@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://c8bjs56ehmxlw"]
+
+[ext_resource type="PackedScene" uid="uid://bjhhfpvp7i1tg" path="res://game/levels/level_5/level_5.tscn" id="1_nldi2"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_e1l8t"]
+
+[resource]
+script = ExtResource("2_e1l8t")
+number = 8
+name = "Launch"
+scene = ExtResource("1_nldi2")
+start_position = Vector3(0, 4, 0)
+start_rotation = Vector3(0, 90, 0)
+floor = -2
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b75qkcabxpm7x"]
+
+[ext_resource type="PackedScene" uid="uid://da1utxmhhy36q" path="res://game/levels/level_6.tscn" id="1_0scjm"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_6uvl2"]
+
+[resource]
+script = ExtResource("2_6uvl2")
+number = 11
+name = "Jake WIP"
+scene = ExtResource("1_0scjm")
+start_position = Vector3(0, 6, 0)
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

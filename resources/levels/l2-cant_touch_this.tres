@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://cafx2pe3h6vmq"]
 
-[ext_resource type="PackedScene" uid="uid://gyfkpm37n068" path="res://game/levels/level_2.tscn" id="1_n6gi3"]
-[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_5g0po"]
+[ext_resource type="PackedScene" uid="uid://gyfkpm37n068" path="res://game/levels/level_2.tscn" id="1_ynnil"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_hf5rv"]
 
 [resource]
-script = ExtResource("2_5g0po")
+script = ExtResource("2_hf5rv")
 number = 2
 name = "Can't Touch This"
-scene = ExtResource("1_n6gi3")
+scene = ExtResource("1_ynnil")
 start_position = Vector3(2, 0, 0)
 start_rotation = Vector3(0, 90, 0)
 floor = -5

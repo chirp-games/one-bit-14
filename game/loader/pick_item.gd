@@ -11,7 +11,7 @@ const empty = preload("res://assets/ui/empty.png")
 @export var hover_mult = 1.5
 @export var press_mult = 1.4
 
-var level: LevelInfo = preload("res://resources/levels/level_1.tres") : 
+var level: LevelInfo = preload("res://resources/levels/l1-button_press.tres") : 
 	set(value):
 		level = value
 		update_text()
@@ -39,7 +39,7 @@ func update_icon() -> void:
 		%Button.icon = empty
 
 func update_text() -> void:
-	%Button.text = "%d - %s" % [level.number, level.name]
+	%Button.text = "%02d - %s" % [level.number, level.name]
 
 func load_level() -> void:
 	# Has to be specified or all levels move
