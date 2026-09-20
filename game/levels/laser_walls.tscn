@@ -105,6 +105,5 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, -38.127308)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
-[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="pushed" from="Button2" to="." method="_on_button_2_pushed"]
 [connection signal="released" from="Button2" to="." method="_on_button_2_released"]

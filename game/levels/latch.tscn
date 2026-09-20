@@ -136,6 +136,5 @@ transform = Transform3D(1.3113416e-07, 4.3711385e-08, 1, 4.3711385e-08, 1, -4.37
 type = 1
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
-[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="pushed" from="Button" to="." method="_on_button_pushed"]
 [connection signal="released" from="Button" to="." method="_on_button_released"]

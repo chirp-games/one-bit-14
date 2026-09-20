@@ -15,8 +15,6 @@ func failing() -> void:
 	progressing = false
 	time = 0
 	last_second = -1
-	%Failure.stop()
-	%Failure.play()
 
 func _process(delta: float) -> void:
 	if progressing:

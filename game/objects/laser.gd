@@ -49,6 +49,8 @@ func propagate() -> void:
 			curve.add_point(to_local(hit["position"]))
 			if hit["collider"].has_signal("laser_hit"):
 				hit["collider"].emit_signal("laser_hit")
+			if hit["collider"].has_signal("lethal"):
+				hit["collider"].emit_signal("lethal")
 			break
 
 		endpoint += target

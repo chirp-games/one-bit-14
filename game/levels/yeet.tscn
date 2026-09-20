@@ -48,7 +48,7 @@ spot_range = 15.0
 spot_attenuation = 0.0
 
 [node name="Funnel2" type="Node3D" parent="." unique_id=200738785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 0, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -16)
 
 [node name="CompletionArea" parent="Funnel2" unique_id=1036395825 instance=ExtResource("4_jr4jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -70,6 +70,9 @@ data = {
 
 [node name="AreaLight3D" type="AreaLight3D" parent="Funnel2" unique_id=670528408]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.25, 0)
+
+[node name="AreaLight3D2" type="AreaLight3D" parent="Funnel2" unique_id=1803872515]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.05, 0)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=556697965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
@@ -243,6 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 13, -16)
 [connection signal="three" from="." to="Laser Blocker/WallMountedLaserGun9" method="turn_off"]
 [connection signal="pushed" from="Funnel/Button" to="Door" method="open"]
 [connection signal="released" from="Funnel/Button" to="Door" method="close"]
+[connection signal="level_complete" from="Funnel2/CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="Button2" to="." method="button2"]
 [connection signal="pushed" from="Button3" to="." method="button3"]
 [connection signal="pushed" from="Button4" to="." method="button4"]

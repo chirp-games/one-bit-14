@@ -12,11 +12,11 @@ signal laser_hit
 
 const WALK_FORCE = 120
 const AIR_WALK_FORCE = 15
-const JUMP_IMPULSE = 6.5
+const JUMP_IMPULSE = 7.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 8
-const AIR_RESISTANCE = 1.
+const AIR_RESISTANCE = 1.5
 const SLOW_MULTIPLIER = 0.25
 
 const MAX_CHARGES := 1
@@ -182,7 +182,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE * slow_mult)
 	# yk what you are always in the air
-	apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
+	apply_central_force(-self.linear_velocity * AIR_RESISTANCE)
 
 	if on_floor and direction:
 		if %GunBobAnimationPlayer.current_animation != "bob":

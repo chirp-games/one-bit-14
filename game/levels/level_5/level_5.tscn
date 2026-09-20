@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dkx82op2hp5ul" path="res://jakes_test/Box.tscn" id="4_315wo"]
 [ext_resource type="Script" uid="uid://dycfujac8wbd5" path="res://game/levels/level_5/box.gd" id="5_sxgo0"]
 [ext_resource type="AudioStream" uid="uid://cgvr28nsojox8" path="res://assets/sounds/bleep.wav" id="7_hd7f6"]
-[ext_resource type="AudioStream" uid="uid://bgb6ut2xp5uyt" path="res://assets/sounds/fail.wav" id="8_315wo"]
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="9_pn1y3"]
 
 [node name="Level" type="Node3D" unique_id=1439589701]
@@ -42,11 +41,6 @@ script = ExtResource("5_sxgo0")
 [node name="Bleeper" type="AudioStreamPlayer" parent="." unique_id=1450243203]
 unique_name_in_owner = true
 stream = ExtResource("7_hd7f6")
-bus = &"SFX"
-
-[node name="Failure" type="AudioStreamPlayer" parent="." unique_id=1706177572]
-unique_name_in_owner = true
-stream = ExtResource("8_315wo")
 bus = &"SFX"
 
 [node name="Button" parent="." unique_id=8617206 instance=ExtResource("9_pn1y3")]
