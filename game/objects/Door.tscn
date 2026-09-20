@@ -33,14 +33,14 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1, 1.5, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -1, 1.5, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0)
 
 [sub_resource type="Animation" id="Animation_w5v75"]
 resource_name = "open"
@@ -97,14 +97,14 @@ mesh = SubResource("BoxMesh_d0u6y")
 skeleton = NodePath("../..")
 
 [node name="Door" type="CollisionShape3D" parent="." unique_id=1859775493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.5, 0)
 shape = SubResource("BoxShape3D_yf5fn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1653628588]
 mesh = SubResource("BoxMesh_57qmd")
 
 [node name="Door2" type="CollisionShape3D" parent="." unique_id=1601459810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.5, 0)
 shape = SubResource("BoxShape3D_yf5fn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door2" unique_id=1055645082]

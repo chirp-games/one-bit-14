@@ -60,10 +60,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -6.117696)
 
 [node name="Box" parent="." unique_id=1246468868 instance=ExtResource("4_yko13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5635493, -2)
 
 [node name="Box2" parent="." unique_id=1284410787 instance=ExtResource("4_yko13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5475998, -1)
 
 [node name="Wires1" type="Node3D" parent="." unique_id=244928967]
 unique_name_in_owner = true

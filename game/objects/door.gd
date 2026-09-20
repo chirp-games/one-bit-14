@@ -5,8 +5,6 @@ extends Node3D
 func _ready() -> void:
 	if is_open:
 		%Animations.play("open")
-	else:
-		%Animations.play_backwards("open")
 
 func open():
 	if is_open:
