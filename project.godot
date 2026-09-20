@@ -47,6 +47,7 @@ pushable="Objects that can be pushed by the player"
 player=""
 kickable=""
 curves_light=""
+audio_master=""
 
 [gui]
 

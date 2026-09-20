@@ -15,6 +15,9 @@ func loop_music() -> void:
 	await get_tree().create_timer($BGM.stream.get_length()).timeout
 	loop_music()
 
+func audio_sync(audio: AudioStreamPlayer3D) -> void:
+	audio.play($BGM.get_playback_position() + AudioServer.get_time_since_last_mix())
+
 func place_level(level: LevelInfo) -> void:
 	LevelManager.current_number = level.number
 	reset()

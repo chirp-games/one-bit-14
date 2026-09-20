@@ -9,9 +9,20 @@ func _ready() -> void:
 	if preview_mode:
 		$Center.hide()
 		$BlackHoleEffectBillboard.modulate.a = .5
+		$AudioStreamPlayer3D.queue_free()
 		remove_from_group("curves_light")
 	else:
 		set_notify_transform(true)
+
+func mute() -> void:
+	if preview_mode:
+		return
+	get_tree().create_tween().tween_property($AudioStreamPlayer3D, "volume_db", -80, 0.1)
+
+func unmute() -> void:
+	if preview_mode:
+		return
+	get_tree().create_tween().tween_property($AudioStreamPlayer3D, "volume_db", 0, 0.1)
 
 func _physics_process(_delta: float) -> void:
 	if preview_mode:

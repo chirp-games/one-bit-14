@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://1r5pmg00strx" path="res://game/objects/door.gd" id="1_p6dr1"]
 [ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="2_jn41x"]
 [ext_resource type="Material" uid="uid://ctgu26h1f3wye" path="res://assets/materials/boxes.tres" id="3_0knua"]
+[ext_resource type="AudioStream" uid="uid://dtef6wefi2omj" path="res://assets/sound/door_close.mp3" id="4_bqdpd"]
+[ext_resource type="AudioStream" uid="uid://btdnrmn5o4tej" path="res://assets/sound/door_open.mp3" id="4_ikkg8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(1.5, 4, 0.25)
@@ -44,21 +46,21 @@ tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0)
 
 [sub_resource type="Animation" id="Animation_w5v75"]
 resource_name = "open"
-length = 0.5000033594105393
+length = 0.19999999999999998
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0, 0.5, 1, 2, 1.5, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0, 0.2, 1, 2, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0, 0.5, 1, -2, 1.5, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0, 0.2, 1, -2, 1.5, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3c8gx"]
 _data = {
@@ -113,3 +115,13 @@ mesh = SubResource("BoxMesh_57qmd")
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=398918870]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_3c8gx")
+
+[node name="DoorOpen" type="AudioStreamPlayer3D" parent="." unique_id=267335178]
+stream = ExtResource("4_ikkg8")
+volume_db = -12.0
+max_db = -3.0
+
+[node name="DoorClose" type="AudioStreamPlayer3D" parent="." unique_id=261905335]
+stream = ExtResource("4_bqdpd")
+volume_db = -12.0
+max_db = -3.0
