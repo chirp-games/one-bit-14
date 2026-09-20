@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7thl0bte1iih"]
 
-[ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_ohaem"]
+[ext_resource type="Script" uid="uid://cpx0wbbsdjuyk" path="res://game/levels/laser_tutorial.gd" id="1_vkhmt"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_qrf7w"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="4_ohaem"]
 [ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_vecty"]
@@ -18,7 +18,7 @@ _data = {
 point_count = 2
 
 [node name="Level" type="Node3D" unique_id=1439589701]
-script = ExtResource("1_ohaem")
+script = ExtResource("1_vkhmt")
 
 [node name="Walls" type="GridMap" parent="." unique_id=1423643689]
 mesh_library = ExtResource("2_qrf7w")
