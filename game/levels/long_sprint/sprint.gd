@@ -8,6 +8,7 @@ extends "res://game/levels/nologic_level.gd"
 
 var ticks = 0
 
+
 func timer_tick() -> void:
 	if ticks > time_limit:
 		return

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bjrr6ncamsfnb" path="res://game/levels/long_sprint/stepped_lights.gd" id="3_ma38e"]
 [ext_resource type="AudioStream" uid="uid://cgvr28nsojox8" path="res://assets/sounds/bleep.wav" id="4_crtul"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="5_f0urr"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_ma38e"]
 
 [sub_resource type="Curve" id="Curve_jure5"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -29,10 +30,13 @@ script = ExtResource("3_ma38e")
 stream = ExtResource("4_crtul")
 
 [node name="Timer" type="Timer" parent="." unique_id=21162137]
-autostart = true
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("5_f0urr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 2, 0)
 
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("6_ma38e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
 [connection signal="timeout" from="Timer" to="." method="timer_tick"]
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="released" from="Button" to="Timer" method="start" binds= [0]]

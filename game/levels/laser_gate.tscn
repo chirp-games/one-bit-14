@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cim75hyr0llqo"]
 
-[ext_resource type="Script" uid="uid://dlmxetg4abnoj" path="res://game/levels/level_7.gd" id="1_kd8s7"]
+[ext_resource type="Script" uid="uid://dlmxetg4abnoj" path="res://game/levels/latch.gd" id="1_kd8s7"]
 [ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_j2ee2"]
 [ext_resource type="PackedScene" uid="uid://cd8hcutprxwcm" path="res://game/objects/laser_turret.tscn" id="3_sgghk"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="4_j2ee2"]
@@ -32,3 +32,5 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5
 spot_range = 8.0
 spot_attenuation = 0.0
 spot_angle = 60.0
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]

@@ -80,7 +80,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -12)
 light_energy = 10.0
 omni_range = 30.0
 
-[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="LaserReciever" to="." method="_on_laser_reciever_pushed"]
 [connection signal="released" from="LaserReciever" to="." method="_on_laser_reciever_released"]
