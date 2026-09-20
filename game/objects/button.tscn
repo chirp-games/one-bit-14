@@ -33,15 +33,11 @@ size = Vector3(1, 1, 0.50912476)
 [node name="Button" type="Node3D" unique_id=8617206]
 script = ExtResource("1_1ukj6")
 
-[node name="SliderJoint3D" type="SliderJoint3D" parent="." unique_id=2134733746]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-node_a = NodePath("../Generic6DOFJoint3D/PushPart")
-
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=866226941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15185875, 0)
 node_b = NodePath("PushPart")
 linear_spring_y/enabled = true
-linear_spring_y/stiffness = 1.0
+linear_spring_y/stiffness = 0.1
 
 [node name="PushPart" type="RigidBody3D" parent="Generic6DOFJoint3D" unique_id=1138465487]
 unique_name_in_owner = true

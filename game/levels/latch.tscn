@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="4_yqyfj"]
 [ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_fwxom"]
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="6_hrdvb"]
-[ext_resource type="PackedScene" uid="uid://piub7fxweqpw" path="res://game/objects/hanging_light.tscn" id="7_5pflw"]
 [ext_resource type="PackedScene" uid="uid://c18ofqt55hqyi" path="res://game/objects/wire_connections/wired_tile.tscn" id="8_r8w7t"]
 
 [sub_resource type="Curve3D" id="Curve3D_b6xh1"]
@@ -81,11 +80,6 @@ is_open = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 16.1236)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=650667086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, 7)
-light_energy = 10.0
-omni_range = 30.0
-
 [node name="Wires1" type="Node3D" parent="." unique_id=797014210]
 
 [node name="a1" parent="Wires1" unique_id=2011983873 instance=ExtResource("8_r8w7t")]
@@ -140,9 +134,6 @@ transform = Transform3D(-1, 4.3711392e-08, 8.742277e-08, 4.3711385e-08, 1, -4.37
 [node name="9" parent="Wires2" unique_id=1719158588 instance=ExtResource("8_r8w7t")]
 transform = Transform3D(1.3113416e-07, 4.3711385e-08, 1, 4.3711385e-08, 1, -4.3711392e-08, -1, 4.3711395e-08, 1.3113416e-07, 7, 1, 9)
 type = 1
-
-[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("7_5pflw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.029663, 3.4131923)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]

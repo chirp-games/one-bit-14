@@ -51,7 +51,7 @@ transform = Transform3D(-4.3711285e-08, 1, -4.3711285e-08, 0, -4.371139e-08, -0.
 start_offset = 1.0
 
 [node name="TriggerLaser1" parent="." unique_id=492900681 instance=ExtResource("6_4ga7h")]
-transform = Transform3D(4.371139e-08, 1.3113416e-07, -1, -1, 1.910685e-15, -4.371139e-08, -3.821371e-15, 1, 1.3113416e-07, -5.98163, -0.4972663, -3.0405848)
+transform = Transform3D(4.371139e-08, 1.3113416e-07, -1, -1, 1.910685e-15, -4.371139e-08, -3.821371e-15, 1, 1.3113416e-07, -5.98163, -0.4972663, -3.5630715)
 
 [node name="Door" parent="." unique_id=527303417 instance=ExtResource("8_d25y4")]
 unique_name_in_owner = true
