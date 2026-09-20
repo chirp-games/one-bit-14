@@ -143,5 +143,6 @@ spot_angle = 10.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=335613126]
 stream = ExtResource("4_tc3dp")
+volume_db = -12.0
 parameters/looping = true
 script = ExtResource("4_wtm2e")
