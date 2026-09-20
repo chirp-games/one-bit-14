@@ -25,9 +25,8 @@ var normal_level_numbers: Array[int] = []
 var current_number: int = 1
 var current_level: LevelInfo :
 	get():
-		return levels[
-			levels.find_custom(func(x: LevelInfo): return x.number == current_number)
-		]
+		var level_index = levels.find_custom(func(x: LevelInfo): return x.number == current_number)
+		return levels[level_index] if level_index >= 0 else null
 
 func load_levels() -> void:
 	for file in DirAccess.open("res://resources/levels").get_files():
@@ -46,12 +45,15 @@ func level_complete() -> void:
 		return
 
 	var current_unlocks: Array = ConfigManager.get_value("unlocks", [])
-	current_unlocks.append_array(current_level.unlocks)
+	for unlock in current_level.unlocks:
+		if unlock not in current_unlocks:
+			current_unlocks.push_back(unlock)
 	ConfigManager.set_value("unlocks", current_unlocks)
 	
 	var current_completions: Array = ConfigManager.get_value("completions", [])
-	current_completions.push_back(current_level.number)
-	ConfigManager.set_value("completions", current_completions)
+	if current_number not in current_completions:
+		current_completions.push_back(current_level.number)
+		ConfigManager.set_value("completions", current_completions)
 	
 	ConfigManager.on_quit() # Saves progress
 	

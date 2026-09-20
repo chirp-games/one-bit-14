@@ -10,4 +10,5 @@ void fragment() {
 	col_size /= col_size.y;
 	
 	COLOR.rgb = texture(u_color_tex, vec2(COLOR.r*255., 0.5)).rgb; // Pretty sure this a fucked way to do it but hey ho
+	COLOR.a = COLOR.a * 255.;
 }

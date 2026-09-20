@@ -7,13 +7,13 @@ signal set_blackholes_enabled(enabled: bool)
 signal reset_level
 signal lethal
 
-const WALK_FORCE = 30
-const AIR_WALK_FORCE = 5
+const WALK_FORCE = 120
+const AIR_WALK_FORCE = 15
 const JUMP_IMPULSE = 6.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
-const MAX_GROUND_VELOCTIY = 7
-const AIR_RESISTANCE = 0.1
+const MAX_GROUND_VELOCTIY = 8
+const AIR_RESISTANCE = 1.
 
 const MAX_CHARGES := 1
 
@@ -79,8 +79,6 @@ func recharge() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%GunMovementAnimationPlayer.play("RESET")
-
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	%HoleRecharge.max_value = RECHARGE_TIME
 	%HoleRecharge.step = RECHARGE_TIME / 100
@@ -145,18 +143,23 @@ func _physics_process(delta: float) -> void:
 	var direction = (%Mesh.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if on_floor:
-		var floor_material = floor.get("physics_material")
 		var friction = 1.
-		if floor_material:
-			friction = max(0.01, floor_material.friction)
+		if floor:
+			var floor_material = floor.get("physics_material")
+			if floor_material:
+				friction = max(0.01, floor_material.friction)
+			else:
+				apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
 		if direction:
-			clamp_players_velocity(MAX_GROUND_VELOCTIY / friction)
-			apply_central_force(direction * WALK_FORCE * friction)
-		else:
-			apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
+			var limiter: Vector3 = Vector3(0., 0., 0.)
+			var dot = direction.dot(self.linear_velocity)
+			if dot > 0:
+				limiter = -self.linear_velocity.normalized() * min(dot / MAX_GROUND_VELOCTIY, 1)
+			apply_central_force((direction + limiter) * WALK_FORCE * friction)
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE)
-		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
+	# yk what you are always in the air
+	apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 
 	if on_floor and direction:
 		if %GunBobAnimationPlayer.current_animation != "bob":

@@ -6,6 +6,7 @@ extends "res://game/levels/nologic_level.gd"
 var progressing := false
 var time := 0.
 var last_second := -1
+var complete = false
 
 func succeeding() -> void:
 	progressing = true
@@ -14,18 +15,19 @@ func failing() -> void:
 	progressing = false
 	time = 0
 	last_second = -1
+	%Failure.stop()
 	%Failure.play()
 
 func _process(delta: float) -> void:
 	if progressing:
 		time += delta
-		print(time)
 		
 		if last_second != floor(time):
 			last_second = floor(time)
 			%Bleeper.pitch_scale = 1 + last_second * 0.25
 			%Bleeper.play()
 			
-		if time > hold_time:
+		if time > hold_time and not complete:
+			complete = true
 			await %Bleeper.finished
 			level_complete.emit()

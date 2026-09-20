@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bumn7py77oo5s" path="res://jakes_test/isometric_guy.tscn" id="6_ivxs2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
-rough = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
 font_size = 75
@@ -233,7 +232,6 @@ transform = Transform3D(-3.4921182e-08, -1.8301421e-09, -0.7999999, -0.041868765
 
 [node name="BlackHolePreview" parent="Mesh/Camera" unique_id=1549274347 instance=ExtResource("5_ssesi")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6310773, 1.515206, 0.55598915)
 gravity = 0
 preview_mode = true
 
