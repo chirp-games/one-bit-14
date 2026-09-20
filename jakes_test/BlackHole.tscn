@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b7u6sajcx8xuy" path="res://jakes_test/center_of_gravity.gd" id="2_87a4u"]
 [ext_resource type="Shader" uid="uid://bktaev8iw521m" path="res://jakes_test/black_whole_ring.gdshader" id="2_s8rmi"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_s8rmi"]
+[ext_resource type="AudioStream" uid="uid://bi2jtot8lxrhn" path="res://assets/sound/black_hole_hum.mp3" id="4_tc3dp"]
+[ext_resource type="Script" uid="uid://bdwrpyfti2tx8" path="res://jakes_test/blackhole_sound.gd" id="4_wtm2e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0xfd7"]
 
@@ -138,3 +140,8 @@ light_size = 1.0
 light_negative = true
 spot_range = 100.0
 spot_angle = 10.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=335613126]
+stream = ExtResource("4_tc3dp")
+parameters/looping = true
+script = ExtResource("4_wtm2e")

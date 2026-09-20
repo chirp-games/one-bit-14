@@ -121,6 +121,7 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	print(self.transform)
 	if not on_floor:
 		cayote_timer += delta
 

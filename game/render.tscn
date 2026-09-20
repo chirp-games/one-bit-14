@@ -43,7 +43,7 @@ shader_parameter/black_hole_location = Vector4(0, 0, 10002, 0)
 shader = ExtResource("10_2ga11")
 shader_parameter/u_color_tex = ExtResource("6_t7a8y")
 
-[node name="Game" type="Control" unique_id=960045773]
+[node name="Game" type="Control" unique_id=960045773 groups=["audio_master"]]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
