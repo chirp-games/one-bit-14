@@ -46,21 +46,21 @@ tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0)
 
 [sub_resource type="Animation" id="Animation_w5v75"]
 resource_name = "open"
-length = 0.5000033594105393
+length = 0.19999999999999998
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Door")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0, 0.5, 1, 2, 1.5, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.75, 1.5, 0, 0.2, 1, 2, 1.5, 0)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Door2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0, 0.5, 1, -2, 1.5, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, -0.75, 1.5, 0, 0.2, 1, -2, 1.5, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3c8gx"]
 _data = {
