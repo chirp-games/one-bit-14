@@ -95,5 +95,7 @@ mesh = SubResource("BoxMesh_wdfcw")
 
 [node name="BoxHit" type="AudioStreamPlayer3D" parent="." unique_id=945023068]
 stream = SubResource("AudioStreamRandomizer_wdfcw")
+volume_db = -2.0
+max_db = -3.0
 
 [connection signal="body_entered" from="RailedBox" to="." method="_on_railed_box_body_entered"]
