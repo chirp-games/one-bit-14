@@ -15,6 +15,9 @@ func loop_music() -> void:
 	await get_tree().create_timer($BGM.stream.get_length()).timeout
 	loop_music()
 
+func audio_sync(audio: AudioStreamPlayer3D) -> void:
+	audio.play($BGM.get_playback_position() + AudioServer.get_time_since_last_mix())
+
 func place_level(level: LevelInfo) -> void:
 	LevelManager.current_number = level.number
 	reset()
@@ -62,9 +65,11 @@ func _ready() -> void:
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos
+	%BlackHole.unmute()
 
 func _on_player_delete_black_hole() -> void:
 	%BlackHole.global_position = Vector3(0, -10000, 0)
+	%BlackHole.mute()
 
 func _physics_process(_delta: float) -> void:
 	if %Player.position.y < (LevelManager.current_level.floor if LevelManager.current_level else -5):
