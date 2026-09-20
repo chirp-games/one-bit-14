@@ -114,12 +114,14 @@ func _input(event: InputEvent) -> void:
 		charges -= 1
 		%HoleRecharge.value = 0
 		%GunMovementAnimationPlayer.play("fire", .05)
+		$BlackHoleGunShoot.play(0.04)
 		black_hole_placed_position = %BlackHolePreview.global_position
 		create_black_hole.emit(%BlackHolePreview.global_position)
 	if event.is_action_pressed("right_click"):
 		black_hole_placed_position = Vector3.ZERO
 		delete_black_hole.emit()
 		%GunMovementAnimationPlayer.play("release_black_hole")
+		$BlackHoleGunRemove.play(0.04)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
