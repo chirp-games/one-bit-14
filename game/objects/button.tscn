@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c2oyuknq3auuy" path="res://game/objects/button.gd" id="1_1ukj6"]
 [ext_resource type="Material" uid="uid://ctgu26h1f3wye" path="res://assets/materials/boxes.tres" id="2_sifrq"]
+[ext_resource type="AudioStream" uid="uid://c23a0eswanh0g" path="res://assets/sound/button_on.mp3" id="3_sifrq"]
+[ext_resource type="AudioStream" uid="uid://b5ldkkgbx3fbw" path="res://assets/sound/button_off.mp3" id="4_qxqmd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvabg"]
 albedo_color = Color(1, 0.09803922, 1, 1)
@@ -98,3 +100,13 @@ shape = SubResource("BoxShape3D_os57d")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1273076723]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 1.2049296, 0, 0.20251584)
 shape = SubResource("BoxShape3D_os57d")
+
+[node name="ClickOn" type="AudioStreamPlayer3D" parent="." unique_id=175919154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18149042, 0)
+stream = ExtResource("3_sifrq")
+bus = &"SFX"
+
+[node name="ClickOff" type="AudioStreamPlayer3D" parent="." unique_id=339710391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18707132, 0)
+stream = ExtResource("4_qxqmd")
+bus = &"SFX"
