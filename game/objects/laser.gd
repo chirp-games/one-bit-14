@@ -4,6 +4,7 @@ const STEP = 0.5
 const TURN_FACTOR := STEP / 10
 @export var max_length := 30
 
+var effectors: Array[Node]
 var direction = Vector3.FORWARD
 var endpoint = Vector3.ZERO
 
@@ -64,7 +65,10 @@ func propagate() -> void:
 
 @onready var curve: Curve3D = Curve3D.new()
 @onready var collisionRay: RayCast3D = $Collider
-@onready var effectors = get_tree().get_nodes_in_group("curves_light")
+
+func _ready() -> void:
+	await get_tree().process_frame
+	effectors = get_tree().get_nodes_in_group("curves_light")
 
 func are_curves_equal(a: Curve3D, b: Curve3D):
 	if a.point_count == 0 or b.point_count == 0:

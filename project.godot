@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Template Game"
+config/name="Gravity Well"
 run/main_scene="uid://rgda1ji5mes3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.1254902, 0.16862746, 0.26666668, 1)
