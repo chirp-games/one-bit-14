@@ -116,10 +116,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, -18)
 transform = Transform3D(4.3711392e-08, -1, 4.3711385e-08, -1, -4.371139e-08, 4.371139e-08, -4.3711385e-08, -4.371139e-08, -1, 10, 0, -9)
 type = 1
 
-[node name="Wire11" parent="Wires" unique_id=2053301415 instance=ExtResource("8_drrfb")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 9, -1, -9)
-type = 1
-
 [node name="Wire12" parent="Wires" unique_id=973445635 instance=ExtResource("8_drrfb")]
 transform = Transform3D(-2.1855693e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855693e-07, 1, -1, -9)
 type = 1
