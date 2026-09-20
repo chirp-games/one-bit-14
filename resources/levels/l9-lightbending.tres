@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://g4cb1am6v7ol"]
+
+[ext_resource type="PackedScene" uid="uid://cim75hyr0llqo" path="res://game/levels/laser_gate.tscn" id="1_en1b0"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_tdbca"]
+
+[resource]
+script = ExtResource("2_tdbca")
+number = 9
+name = "Lightbending"
+scene = ExtResource("1_en1b0")
+start_position = Vector3(0, 2, 0)
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
