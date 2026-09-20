@@ -79,8 +79,6 @@ func recharge() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%GunMovementAnimationPlayer.play("RESET")
-
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	%HoleRecharge.max_value = RECHARGE_TIME
 	%HoleRecharge.step = RECHARGE_TIME / 100
