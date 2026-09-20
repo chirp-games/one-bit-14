@@ -16,11 +16,11 @@ func _on_button_released() -> void:
 		w.power_off()
 
 func _on_laser_reciever_pushed() -> void:
-	%Door.close()
+	%Door1.close()
 	for w in %Wires.get_children():
 		w.power_on()
 
 func _on_laser_reciever_released() -> void:
-	%Door.open()
+	%Door1.open()
 	for w in %Wires.get_children():
 		w.power_off()
