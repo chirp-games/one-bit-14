@@ -1,19 +1,26 @@
 [gd_scene format=3 uid="uid://btaqj7t5yfjkq"]
 
 [ext_resource type="Script" uid="uid://c1kh1athhjwce" path="res://game/objects/reciever_top.gd" id="1_882dp"]
+[ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="2_sws6q"]
 [ext_resource type="Script" uid="uid://bdhu3ahk4jy5l" path="res://game/objects/reciever.gd" id="2_uvdmh"]
+[ext_resource type="Material" uid="uid://ctgu26h1f3wye" path="res://assets/materials/boxes.tres" id="4_kffsl"]
+[ext_resource type="Material" uid="uid://u2imps6wd0xa" path="res://assets/materials/wire_off.tres" id="5_8xatp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
-size = Vector3(0.1, 0.5, 0.5)
+size = Vector3(0.1, 0.95, 0.95)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
+size = Vector3(0.1, 0.2, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvdmh"]
-size = Vector3(0.071894534, 0.3, 0.3)
+size = Vector3(0.072, 0.95, 0.95)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3fx5"]
-size = Vector3(0.02, 0.3, 0.3)
+material = ExtResource("4_kffsl")
+size = Vector3(0.02, 0.85, 0.85)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
-size = Vector3(0.18908203, 0.3, 0.3)
+size = Vector3(0.09157031, 0.9, 0.9)
 
 [node name="LaserReciever" type="Node3D" unique_id=898270630]
 script = ExtResource("1_882dp")
@@ -21,9 +28,39 @@ script = ExtResource("1_882dp")
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1013374174]
 collision_layer = 7
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1206146083]
+[node name="change_material" type="Node3D" parent="StaticBody3D" unique_id=1283384854]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/change_material" unique_id=1206146083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0, 0)
 mesh = SubResource("BoxMesh_gm6uc")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_sws6q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/change_material" unique_id=740743395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032401886, 0.37070638, 0)
+mesh = SubResource("BoxMesh_0xfd7")
+skeleton = NodePath("../../../Reciever")
+surface_material_override/0 = ExtResource("5_8xatp")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D/change_material" unique_id=1311534257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032401886, -0.36157554, 0)
+mesh = SubResource("BoxMesh_0xfd7")
+skeleton = NodePath("../../../Reciever")
+surface_material_override/0 = ExtResource("2_sws6q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/change_material" unique_id=1200485738]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.032401886, 0.02564603, 0.35841298)
+mesh = SubResource("BoxMesh_0xfd7")
+skeleton = NodePath("../../../Reciever")
+surface_material_override/0 = ExtResource("2_sws6q")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/change_material" unique_id=1018571278]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.032401886, 0.02564603, -0.36796445)
+mesh = SubResource("BoxMesh_0xfd7")
+skeleton = NodePath("../../../Reciever")
+surface_material_override/0 = ExtResource("2_sws6q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2014237067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025710717, 0, 0)
@@ -39,7 +76,7 @@ mesh = SubResource("BoxMesh_h3fx5")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Reciever" unique_id=4508086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08454099, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03582615, 0, 0)
 shape = SubResource("BoxShape3D_gm6uc")
 
 [connection signal="laser_hit" from="Reciever" to="." method="laser_hit"]

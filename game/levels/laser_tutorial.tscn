@@ -50,11 +50,6 @@ curve = SubResource("Curve3D_ynxvs")
 transform = Transform3D(-4.3711285e-08, 1, -4.3711285e-08, 0, -4.371139e-08, -0.9999977, -0.9999977, -4.371139e-08, 1.910681e-15, 0, 0, 0)
 start_offset = 1.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=650667086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-light_energy = 10.0
-omni_range = 30.0
-
 [node name="TriggerLaser1" parent="." unique_id=492900681 instance=ExtResource("6_4ga7h")]
 transform = Transform3D(4.371139e-08, 1.3113416e-07, -1, -1, 1.910685e-15, -4.371139e-08, -3.821371e-15, 1, 1.3113416e-07, -5.98163, -0.4972663, -3.0405848)
 
@@ -64,12 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -10.123941)
 
 [node name="LaserReciever" parent="." unique_id=898270630 instance=ExtResource("7_ohaem")]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 12.043349, 1.5015832, -4.9842215)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=611803123]
-transform = Transform3D(-4.0338268e-08, -0.38520274, -0.92283195, -1.6837745e-08, 0.92283195, -0.38520274, 1, 0, -4.371139e-08, 6.225, -0.5, -5)
-light_energy = 16.0
-spot_range = 30.0
-spot_angle = 27.104557
 
 [node name="Wires" type="Node3D" parent="." unique_id=1037922995]
 
