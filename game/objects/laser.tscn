@@ -11,13 +11,12 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_o7tws"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_jip06"]
-size = Vector3(0.5, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7tws"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jip06"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 10.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jip06"]
 
 [node name="Laser" type="Node3D" unique_id=2123689957]
 script = ExtResource("1_jip06")
@@ -33,9 +32,7 @@ curve = SubResource("Curve3D_o7tws")
 [node name="Collider" type="RayCast3D" parent="." unique_id=1972241685]
 target_position = Vector3(0, 0, -1)
 
-[node name="PointMeshes" type="Node3D" parent="." unique_id=1804139686]
+[node name="Laser" type="MeshInstance3D" parent="." unique_id=1116673728]
 unique_name_in_owner = true
-
-[node name="LaserBase" type="MeshInstance3D" parent="." unique_id=1116673728]
-mesh = SubResource("BoxMesh_jip06")
-surface_material_override/0 = SubResource("StandardMaterial3D_o7tws")
+material_override = SubResource("StandardMaterial3D_jip06")
+mesh = SubResource("ArrayMesh_jip06")
