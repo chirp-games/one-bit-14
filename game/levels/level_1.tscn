@@ -7,9 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="5_crrvt"]
 [ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="6_crrvt"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_rifvl"]
+[ext_resource type="Texture2D" uid="uid://d1fxig05bmy0g" path="res://assets/sprites/sign_1.png" id="8_l6jt4"]
+[ext_resource type="Texture2D" uid="uid://blpfjt4tlfc37" path="res://assets/sprites/sign_2.png" id="9_qkxey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuvkr"]
 size = Vector3(42, 8.2543335, 18.515503)
+
+[sub_resource type="QuadMesh" id="QuadMesh_km8ha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dourk"]
+shading_mode = 0
+albedo_texture = ExtResource("8_l6jt4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l6jt4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq0h3"]
+shading_mode = 0
+albedo_texture = ExtResource("9_qkxey")
 
 [node name="Level1" type="Node3D" unique_id=1801648244]
 script = ExtResource("1_15okj")
@@ -43,14 +57,6 @@ length = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.257324, 3.6271667, 2.4140015)
 shape = SubResource("BoxShape3D_tuvkr")
 
-[node name="Hint1" type="Label" parent="." unique_id=1733041931]
-offset_left = 584.0
-offset_top = 992.0
-offset_right = 1293.0
-offset_bottom = 1037.0
-theme_override_font_sizes/font_size = 32
-text = "Right Click to Shoot / Scroll to change position"
-
 [node name="Box" parent="." unique_id=1246468868 instance=ExtResource("4_4ocoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.003107, 2.1844172, 0)
 
@@ -64,6 +70,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -4.1697745)
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("7_rifvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=263886268]
+transform = Transform3D(-4.4054523, 0, -8.742279e-08, 0, 3.4142582, 0, 3.8513684e-07, 0, -1.0000002, 2.6585374, 3.9232893, 5.640936)
+mesh = SubResource("QuadMesh_km8ha")
+surface_material_override/0 = SubResource("StandardMaterial3D_dourk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1892862786]
+transform = Transform3D(-4.4054523, 0, -8.742279e-08, 0, 3.4142582, 0, 3.8513684e-07, 0, -1.0000002, -2.3570576, 3.9232893, 5.640936)
+mesh = SubResource("QuadMesh_l6jt4")
+surface_material_override/0 = SubResource("StandardMaterial3D_fq0h3")
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]

@@ -40,7 +40,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ep7oq")
-bypass_unlocks = true
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewport/Picker" unique_id=174141007]
 layout_mode = 2

@@ -27,7 +27,7 @@ var black_hole_placed_position = Vector3(0, 0, 0)
 var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
 var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
-var black_hole_position = 0.0
+var black_hole_position = 0.75
 
 var floor: Object
 
