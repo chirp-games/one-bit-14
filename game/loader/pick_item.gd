@@ -3,6 +3,9 @@ extends MarginContainer
 
 
 const game_scene = "res://game/render.tscn"
+const lock = preload("res://assets/ui/lock.png")
+const check = preload("res://assets/ui/check.png")
+const empty = preload("res://assets/ui/empty.png")
 
 @export var slant_mult = 0.1
 @export var hover_mult = 1.5
@@ -25,6 +28,15 @@ func check_locked() -> void:
 		return
 	var unlocks: Array = ConfigManager.get_value("unlocks")
 	enabled = level.number in unlocks
+	update_icon()
+
+func update_icon() -> void:
+	if not (enabled or bypass):
+		%Button.icon = lock
+	elif level.number in ConfigManager.get_value("completions"):
+		%Button.icon = check
+	else:
+		%Button.icon = empty
 
 func update_text() -> void:
 	%Button.text = "%d - %s" % [level.number, level.name]

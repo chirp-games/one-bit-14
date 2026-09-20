@@ -48,6 +48,7 @@ theme_override_constants/margin_right = 500
 
 [node name="LevelList" type="VBoxContainer" parent="SubViewport/Picker/MarginContainer" unique_id=1847638559]
 unique_name_in_owner = true
+top_level = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = -5
