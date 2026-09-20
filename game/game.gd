@@ -57,6 +57,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		loop_music()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	reset()
 
 func _on_player_create_black_hole(pos: Vector3) -> void:
 	%BlackHole.global_position = pos
@@ -80,5 +82,9 @@ func _process(delta: float) -> void:
 	
 	if %BlackHole.global_position != null:
 		var viewport = %Player.get_viewport()
-		var black_hole_pos = viewport.get_camera_3d().unproject_position(%BlackHole.global_position)
+		var p = %BlackHole.global_position
+		p.y = 0
+		var black_hole_pos := Vector2.ZERO
+		if p != Vector3.ZERO:
+			black_hole_pos = viewport.get_camera_3d().unproject_position(%BlackHole.global_position)
 		$SubViewportContainer.material.set_shader_parameter("black_hole_location", Vector4(black_hole_pos.x,black_hole_pos.y,%Player.global_position.distance_to(%BlackHole.global_position),0. if viewport.get_camera_3d().is_position_behind(%BlackHole.global_position) else 1.))
