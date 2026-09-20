@@ -62,7 +62,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	load_levels()
-	place_level(7)
+	place_level(12)
 	if not Engine.is_editor_hint():
 		loop_music()
 
