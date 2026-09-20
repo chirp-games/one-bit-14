@@ -121,7 +121,6 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print("a",self.linear_velocity, self.linear_velocity.length())
 	if not on_floor:
 		cayote_timer += delta
 
@@ -151,7 +150,11 @@ func _physics_process(delta: float) -> void:
 				friction = max(0.01, floor_material.friction)
 			#apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
 		if direction:
-			apply_central_force(direction * WALK_FORCE * friction * max(0, (1 - (self.linear_velocity.length() / MAX_GROUND_VELOCTIY))))
+			var limiter: Vector3 = Vector3(0., 0., 0.)
+			var dot = direction.dot(self.linear_velocity)
+			if dot > 0:
+				limiter = -self.linear_velocity.normalized() * min(dot / MAX_GROUND_VELOCTIY, 1)
+			apply_central_force((direction + limiter) * WALK_FORCE * friction)
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE)
 		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
@@ -186,7 +189,6 @@ func _physics_process(delta: float) -> void:
 		%RotateGunToBlackHole.rotation = lerp(old_rotation, %RotateGunToBlackHole.rotation, 5 * delta)
 	else:
 		%RotateGunToBlackHole.rotation = lerp(%RotateGunToBlackHole.rotation, Vector3.ZERO, 5 * delta)
-	print("A",self.linear_velocity, self.linear_velocity.length())
 
 func _process(_delta: float) -> void:
 	position_black_hole_preview()
@@ -194,7 +196,6 @@ func _process(_delta: float) -> void:
 	%Gun.set_dist(black_hole_position)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	print("b",self.linear_velocity, self.linear_velocity.length())
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
 	var i := 0
 	on_floor = false
