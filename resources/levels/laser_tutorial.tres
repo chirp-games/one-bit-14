@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b0l8s03ll4fr7"]
+
+[ext_resource type="PackedScene" uid="uid://7thl0bte1iih" path="res://game/levels/laser_tutorial.tscn" id="1_fd8ik"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_ufj6n"]
+
+[resource]
+script = ExtResource("2_ufj6n")
+number = 14
+name = "Laser tutorial"
+scene = ExtResource("1_fd8ik")
+floor = -2
+starts_unlocked = true
+unlocks = Array[int]([4, 5, 6, 7, 8, 9, 10, 0])
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

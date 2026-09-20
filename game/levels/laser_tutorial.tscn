@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://7thl0bte1iih"]
+
+[ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_ohaem"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_qrf7w"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="4_ohaem"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_vecty"]
+[ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="6_4ga7h"]
+[ext_resource type="PackedScene" uid="uid://btaqj7t5yfjkq" path="res://game/objects/laser_reciever.tscn" id="7_ohaem"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="8_d25y4"]
+
+[sub_resource type="Curve3D" id="Curve3D_ynxvs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_ohaem")
+
+[node name="Walls" type="GridMap" parent="." unique_id=1423643689]
+mesh_library = ExtResource("2_qrf7w")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(-1, 65535, 0, -1, 0, 0, -65536, 0, 0, -65536, 65535, 0, -1, 65534, 0, -65536, 65534, 0, -1, 65533, 0, -65536, 65533, 0, -2, 65534, 0, -2, 65533, 0, -65535, 65534, 0, -65535, 65533, 0, -65534, 65533, 0, -3, 65534, 0, -3, 65533, 0, -4, 65534, 1441793, -4, 65533, 1441793, -3, 65535, 1, -2, 65535, 1441795, -2, 0, 1441793, -1, 1, 1, -65536, 1, 1, -65535, 0, 1048577, -65535, 65535, 3, -65534, 65535, 1, -65533, 65535, 1, -65533, 65533, 655360, -65534, 65532, 1048576, -65535, 65532, 1048576, -65536, 65532, 1048576, -1, 65532, 1048576, -2, 65532, 655363, -3, 65532, 655361, -65534, 65534, 1441792, 3, 65534, 1048587, -65533, 65534, 1048576, -65532, 65534, 1048576, -65532, 65533, 1048576, -1, 65531, 1048576, -65536, 65531, 1048576, -65535, 65531, 1048576, -65534, 65531, 1048576, -65533, 65532, 1048576, -65533, 65531, 1048576, -65532, 65531, 1048576, -65532, 65532, 1048576, -65531, 65534, 3, -65531, 65532, 1048579, -65531, 65531, 1048577, -2, 65531, 1441793, -65534, 65530, 1048579, -65533, 65530, 655361, -65532, 65530, 655361, -65532, 65535, 1, -65531, 65533, 1048576, -65530, 65533, 1048577, -1, 65530, 1048576, -65536, 65530, 1048576, -65535, 65530, 1048576, -65535, 65529, 1048576, -65536, 65529, 1048576, -1, 65529, 1048576, -1, 65528, 1048576, -65536, 65528, 1048576, -65535, 65528, 1048576, -2, 65530, 1441793, -2, 65529, 1441793, -2, 65528, 1441793, -1, 65527, 655361, -65536, 65527, 655361, -65535, 65527, 655361, -65534, 65528, 1048577, -65534, 65529, 1048577, 65541, 65533, 1048576, 65540, 65533, 1048576, 65540, 65534, 1048576, 65539, 65534, 1048576, 65539, 65533, 1048576, 65540, 65532, 1048576, 65540, 65531, 1048576, 65539, 65531, 1048576, 65539, 65532, 1048576, 65538, 65532, 1048576, 65538, 65531, 1048576, 65537, 65531, 1048576, 65537, 65532, 1048576, 65537, 65533, 1048576, 65538, 65533, 1048576, 65538, 65534, 1048576, 65537, 65534, 1048576, 65536, 65534, 1048576, 65536, 65535, 1048576, 131071, 65535, 1048576, 131071, 0, 1048576, 65536, 0, 1048576, 131071, 65534, 1048576, 131071, 65533, 1048576, 131070, 65534, 1048576, 131069, 65534, 1048576, 131069, 65533, 1048576, 131070, 65533, 1048576, 65536, 65533, 1048576, 65536, 65532, 1048576, 131071, 65532, 1048576, 131071, 65531, 1048576, 65536, 65531, 1048576, 131071, 65530, 1048576, 131071, 65529, 1048576, 131071, 65528, 1048576, 65536, 65528, 1048576, 65536, 65529, 1048576, 65537, 65529, 1048576, 65537, 65530, 1048576, 65536, 65530, 1048576, 65537, 65528, 1048576)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Floor2" type="GridMap" parent="." unique_id=705508040]
+mesh_library = ExtResource("2_qrf7w")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(-65534, 65532, 655361, -65535, 65532, 655361, -65533, 65533, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Grates" type="GridMap" parent="." unique_id=1726543861]
+mesh_library = ExtResource("2_qrf7w")
+metadata/_editor_floor_ = Vector3(0, -2, 0)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("4_ohaem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -13)
+
+[node name="Middle" type="Path3D" parent="." unique_id=1546878631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -3)
+curve = SubResource("Curve3D_ynxvs")
+
+[node name="Box1" parent="Middle" unique_id=787075143 instance=ExtResource("5_vecty")]
+transform = Transform3D(-4.3711285e-08, 1, -4.3711285e-08, 0, -4.371139e-08, -0.9999977, -0.9999977, -4.371139e-08, 1.910681e-15, 0, 0, 0)
+start_offset = 1.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=650667086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+light_energy = 10.0
+omni_range = 30.0
+
+[node name="TriggerLaser1" parent="." unique_id=492900681 instance=ExtResource("6_4ga7h")]
+transform = Transform3D(4.371139e-08, 1.3113416e-07, -1, -1, 1.910685e-15, -4.371139e-08, -3.821371e-15, 1, 1.3113416e-07, -5.98163, -0.4972663, -3.0405848)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("8_d25y4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -10.123941)
+
+[node name="LaserReciever" parent="." unique_id=898270630 instance=ExtResource("7_ohaem")]
+transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 12.043349, 1.5015832, -4.9842215)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=611803123]
+transform = Transform3D(-4.0338268e-08, -0.38520274, -0.92283195, -1.6837745e-08, 0.92283195, -0.38520274, 1, 0, -4.371139e-08, 6.225, -0.5, -5)
+light_energy = 16.0
+spot_range = 30.0
+spot_angle = 27.104557
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="pushed" from="LaserReciever" to="Door" method="open"]
+[connection signal="released" from="LaserReciever" to="Door" method="close"]
