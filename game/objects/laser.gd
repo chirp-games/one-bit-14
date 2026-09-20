@@ -62,7 +62,7 @@ func propagate() -> void:
 		%VisibleCurve.curve = curve.duplicate()
 		update_sprites()
 
-var traignt_height = .2
+var height = .025
 
 func update_sprites():
 	var length = curve.get_baked_length()
@@ -74,13 +74,43 @@ func update_sprites():
 		var p1 = curve.sample_baked(pos)
 		var p2 = curve.sample_baked(pos + 0.5)
 		# bottom
-		vertices.push_back(Vector3(p2.x, p2.y + traignt_height, p2.z))
-		vertices.push_back(Vector3(p1.x, p1.y + traignt_height, p1.z))
-		vertices.push_back(Vector3(p2.x, p2.y - traignt_height, p2.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
 
-		vertices.push_back(Vector3(p1.x, p1.y - traignt_height, p1.z))
-		vertices.push_back(Vector3(p2.x, p2.y - traignt_height, p2.z))
-		vertices.push_back(Vector3(p1.x, p1.y + traignt_height, p1.z))
+		vertices.push_back(Vector3(p1.x + height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
+
+		# Top
+		vertices.push_back(Vector3(p2.x - height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
+
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+
+		# Left
+		vertices.push_back(Vector3(p2.x - height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+
+		vertices.push_back(Vector3(p1.x + height, p1.y + height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y + height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y + height, p1.z))
+
+		# Right
+		vertices.push_back(Vector3(p2.x - height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+
+		vertices.push_back(Vector3(p1.x + height, p1.y - height, p1.z))
+		vertices.push_back(Vector3(p2.x + height, p2.y - height, p2.z))
+		vertices.push_back(Vector3(p1.x - height, p1.y - height, p1.z))
+
+
+
 
 		pos += 0.5
 
