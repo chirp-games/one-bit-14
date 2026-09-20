@@ -77,6 +77,9 @@ func reset_unlocks() -> void:
 func level_unlocked(level: int) -> bool:
 	return level in ConfigManager.get_value("unlocks", [])
 
+func unlock_all() -> void:
+	ConfigManager.set_value("unlocks", levels.map(func(level): return level.number))
+
 func _ready() -> void:
 	load_levels()
 	if Engine.is_editor_hint():
