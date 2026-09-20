@@ -2,7 +2,6 @@ extends "res://game/levels/nologic_level.gd"
 
 signal three
 
-var pushed: Array = []
 var b2 = false
 var b3 = false
 var b4 = false
