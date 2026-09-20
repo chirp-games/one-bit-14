@@ -22,6 +22,14 @@ static func load_asset(path : String) -> Resource:
 var levels: Array[LevelInfo] = []
 var current_level: LevelInfo
 
+func place_next_level() -> void:
+	LevelManager.level_complete()
+	var next_level := LevelManager.next_level()
+	if next_level and LevelManager.level_unlocked(next_level.number):
+		place_level(next_level)
+	else:
+		get_tree().call_deferred("change_scene_to_file", "res://game/loader/picker.tscn")
+
 func loop_music() -> void:
 	$BGM.play()
 	await get_tree().create_timer($BGM.stream.get_length()).timeout
@@ -59,6 +67,20 @@ func reset() -> void:
 	%Player.reset_physics_interpolation()
 
 	%BlackHole.global_position = Vector3(0, -10000, 0)
+
+func main_menu() -> void:
+	get_tree().paused = false
+	get_tree().call_deferred("change_scene_to_file", "res://game/loader/picker.tscn")
+
+func pause() -> void:
+	get_tree().paused = true
+	%PauseMenu.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func unpause() -> void:
+	get_tree().paused = false
+	%PauseMenu.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _ready() -> void:
 	load_levels()
