@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://ckxcuqavglt64" path="res://assets/sound/footstep/fs_5.mp3" id="11_knxwg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
+rough = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
 font_size = 75

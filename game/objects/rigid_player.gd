@@ -14,6 +14,7 @@ const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 8
 const AIR_RESISTANCE = 1.
+const SLOW_MULTIPLIER = 0.25
 
 const MAX_CHARGES := 1
 
@@ -26,7 +27,7 @@ var black_hole_placed_position = Vector3(0, 0, 0)
 
 var BLACK_HOLE_PLACEMENT_DIST_MAX = 5.0
 var BLACK_HOLE_PLACEMENT_DIST_MIN = 1.0
-var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .1
+var BLACK_HOLE_PLACEMENT_MOVEMENT_ON_SCROLL = .05
 var black_hole_position = 0.75
 var footsteps_cooldown = 0.0
 
@@ -122,7 +123,11 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print(self.transform)
+	var slow_mult = 1
+	
+	if Input.is_action_pressed("slow"):
+		slow_mult = SLOW_MULTIPLIER
+	
 	if not on_floor:
 		cayote_timer += delta
 
@@ -157,9 +162,9 @@ func _physics_process(delta: float) -> void:
 			var dot = direction.dot(self.linear_velocity)
 			if dot > 0:
 				limiter = -self.linear_velocity.normalized() * min(dot / MAX_GROUND_VELOCTIY, 1)
-			apply_central_force((direction + limiter) * WALK_FORCE * friction)
+			apply_central_force((direction + limiter) * WALK_FORCE * friction * slow_mult)
 	else:
-		apply_central_force(direction * AIR_WALK_FORCE)
+		apply_central_force(direction * AIR_WALK_FORCE * slow_mult)
 	# yk what you are always in the air
 	apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 

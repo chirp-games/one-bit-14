@@ -108,6 +108,7 @@ texture = SubResource("GradientTexture2D_0xfd7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5265765e-05, 0.00047187507, -1.04904175e-05)
 pixel_size = 0.025
 billboard = 1
+render_priority = 2
 texture = SubResource("ViewportTexture_s8rmi")
 
 [node name="UvRings" type="Node3D" parent="." unique_id=623480089]

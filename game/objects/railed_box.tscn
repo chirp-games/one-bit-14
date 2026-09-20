@@ -6,6 +6,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_echrq"]
 friction = 0.1
+rough = true
 absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cghko"]
