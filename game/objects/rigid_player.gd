@@ -8,12 +8,12 @@ signal reset_level
 signal lethal
 
 const WALK_FORCE = 120
-const AIR_WALK_FORCE = 5
+const AIR_WALK_FORCE = 15
 const JUMP_IMPULSE = 6.5
 const LOOK_VELOCITY_Y = 0.01
 const CAYOTE_TIME = .1
 const MAX_GROUND_VELOCTIY = 8
-const AIR_RESISTANCE = 0.1
+const AIR_RESISTANCE = 1.
 
 const MAX_CHARGES := 1
 
@@ -148,7 +148,8 @@ func _physics_process(delta: float) -> void:
 			var floor_material = floor.get("physics_material")
 			if floor_material:
 				friction = max(0.01, floor_material.friction)
-			#apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
+			else:
+				apply_central_force(-self.linear_velocity.normalized() * pow((1 + friction), 2))
 		if direction:
 			var limiter: Vector3 = Vector3(0., 0., 0.)
 			var dot = direction.dot(self.linear_velocity)
@@ -157,7 +158,8 @@ func _physics_process(delta: float) -> void:
 			apply_central_force((direction + limiter) * WALK_FORCE * friction)
 	else:
 		apply_central_force(direction * AIR_WALK_FORCE)
-		apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
+	# yk what you are always in the air
+	apply_central_force(-self.linear_velocity.normalized() * self.linear_velocity.length() * AIR_RESISTANCE)
 
 	if on_floor and direction:
 		if %GunBobAnimationPlayer.current_animation != "bob":

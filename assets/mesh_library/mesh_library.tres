@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" format=4 uid="uid://bvbdt3mlqrrx4"]
 
 [ext_resource type="Material" uid="uid://deubqb767vrul" path="res://assets/materials/midtone.tres" id="1_8a2yc"]
-[ext_resource type="Material" uid="uid://c6yql6gwevluy" path="res://assets/materials/wire_on.tres" id="2_qvvgt"]
+[ext_resource type="Material" uid="uid://eqo7syfitsd7" path="res://assets/materials/wire_on.tres" id="2_qvvgt"]
 [ext_resource type="Material" uid="uid://n7ntdwyu1oyq" path="res://assets/materials/black.tres" id="2_siedi"]
 [ext_resource type="Material" uid="uid://dk8gq0jm2xnms" path="res://assets/materials/black_round.tres" id="3_8a2yc"]
 
