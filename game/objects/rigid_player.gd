@@ -1,3 +1,5 @@
+class_name Laser
+
 extends RigidBody3D
 
 signal create_black_hole(position: Vector3)
@@ -78,6 +80,17 @@ func recharge() -> void:
 		return
 	recharging = false
 	charges += 1
+
+func get_laser_dist():
+	var min_dist = 10000.0
+	for l in get_tree().get_nodes_in_group("laser"):
+		var curve: Curve3D = l.curve
+		if curve.point_count == 0:
+			continue
+		
+		var dist = global_position.distance_to(l.to_global(curve.get_closest_point(l.to_local(global_position))))
+		if dist < min_dist:
+			min_dist = dist
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -206,7 +219,9 @@ func _process(delta: float) -> void:
 	position_black_hole_preview()
 	%Gun.set_charge(%HoleRecharge.value / RECHARGE_TIME)
 	%Gun.set_dist(black_hole_position)
-	
+
+	get_laser_dist()
+
 	footsteps_cooldown -= delta
 	
 	if footsteps_cooldown <= 0.:
@@ -237,4 +252,5 @@ func _on_lethal() -> void:
 
 
 func _on_laser_hit() -> void:
-	pass # Replace with function body.
+	print("died")
+	reset_level.emit()

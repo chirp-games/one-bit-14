@@ -48,6 +48,7 @@ player=""
 kickable=""
 curves_light=""
 audio_master=""
+laser=""
 
 [gui]
 
