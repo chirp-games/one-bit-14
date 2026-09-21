@@ -14,7 +14,7 @@
 friction = 0.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gt6o5"]
-friction = 0.2
+friction = 0.15
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xfd7"]
 material = ExtResource("9_6b0l8")
