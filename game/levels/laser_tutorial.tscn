@@ -12,10 +12,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_ynxvs"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.3200114, 0, 0, 0, 0, 0, 0, 0, 0.3908677, 2.8719482, -1.4753494),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [node name="Level" type="Node3D" unique_id=1439589701]
 script = ExtResource("1_vkhmt")
@@ -164,10 +164,10 @@ type = 1
 
 [node name="Wire5" parent="Wires2" unique_id=500259571 instance=ExtResource("8_drrfb")]
 transform = Transform3D(-1, 4.371139e-08, 8.742278e-08, -8.742278e-08, 1.9106853e-15, -1, -4.371139e-08, -1, 1.9106855e-15, 5, 1, -2.0189505)
-type = 1
+type = 2
 
 [node name="Button" parent="." unique_id=8617206 instance=ExtResource("9_vkhmt")]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 5.000522, 1.9826634, -2.9980035)
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 5.000522, 1.426038, -2.9980035)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="LaserReciever" to="." method="_on_laser_reciever_pushed"]
