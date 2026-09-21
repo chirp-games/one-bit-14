@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_tpug0")
-number = 21
-name = "Pnumatic Tubes"
+number = 24
+name = "Pnumatic Tube"
 scene = ExtResource("1_kch2r")
 start_position = Vector3(0, 6, 0)
 start_rotation = Vector3(0, 90, 0)
