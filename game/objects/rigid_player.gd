@@ -255,4 +255,5 @@ func _on_lethal() -> void:
 
 func _on_laser_hit() -> void:
 	print("died")
+	$Death.play(0.04)
 	reset_level.emit()

@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ckxcuqavglt64" path="res://assets/sound/footstep/fs_5.mp3" id="11_knxwg"]
 [ext_resource type="AudioStream" uid="uid://igjdox4a8n5v" path="res://assets/sound/black_hole_gun.mp3" id="12_mq64w"]
 [ext_resource type="AudioStream" uid="uid://wwgchij2l88l" path="res://assets/sound/black_hole_remove.mp3" id="13_xxxfs"]
+[ext_resource type="AudioStream" uid="uid://c47w5s4ikob07" path="res://assets/sound/death.mp3" id="15_knxwg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xssv6"]
 rough = true
@@ -181,6 +182,12 @@ random_pitch = 1.122462
 streams_count = 1
 stream_0/stream = ExtResource("13_xxxfs")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dourk"]
+random_pitch = 1.0594631
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("15_knxwg")
+
 [node name="RigidPlayer" type="RigidBody3D" unique_id=68552729 groups=["gravity_body", "player"]]
 collision_layer = 7
 axis_lock_angular_x = true
@@ -319,6 +326,10 @@ volume_db = -4.0
 
 [node name="BlackHoleGunRemove" type="AudioStreamPlayer" parent="." unique_id=884426152]
 stream = SubResource("AudioStreamRandomizer_bdu65")
+volume_db = -4.0
+
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=1565026866]
+stream = SubResource("AudioStreamRandomizer_dourk")
 volume_db = -4.0
 
 [connection signal="laser_hit" from="." to="." method="_on_laser_hit"]
