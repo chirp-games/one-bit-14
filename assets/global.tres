@@ -26,8 +26,16 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmoo6"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
 Button/font_sizes/font_size = 48
 Button/styles/hover = SubResource("StyleBoxFlat_3q3vt")
 Button/styles/normal = SubResource("StyleBoxFlat_eth52")
 Panel/styles/panel = SubResource("StyleBoxFlat_2ga11")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_kmoo6")

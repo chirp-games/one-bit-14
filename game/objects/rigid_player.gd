@@ -230,6 +230,8 @@ func _process(delta: float) -> void:
 			footsteps_cooldown = 0.35
 		else:
 			footsteps_cooldown = 0.
+	
+	%LevelDisplay.level = LevelManager.current_level
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3

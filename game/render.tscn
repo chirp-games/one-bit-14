@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwowogxc3ky8f" path="res://game/objects/rigid_player.tscn" id="4_vgggf"]
 [ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="5_n3e1p"]
 [ext_resource type="PackedScene" uid="uid://htglbgt13uu7" path="res://include/comment/Comment.tscn" id="5_vgggf"]
-[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="6_t7a8y"]
+[ext_resource type="Texture2D" uid="uid://cj0ml2n0r1uf4" path="res://bens_tests/dither_color.png" id="6_t7a8y"]
 [ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="7_n3e1p"]
 [ext_resource type="AudioStream" uid="uid://d3q0wr3w130hq" path="res://assets/sound/spacesong.wav" id="9_2ga11"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="9_n6cbj"]
@@ -42,6 +42,9 @@ shader_parameter/black_hole_location = Vector4(0, 0, 10002, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ga11"]
 shader = ExtResource("10_2ga11")
 shader_parameter/u_color_tex = ExtResource("6_t7a8y")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmoo6"]
+font_size = 32
 
 [node name="Game" type="Control" unique_id=960045773 groups=["audio_master"]]
 process_mode = 3
@@ -129,6 +132,18 @@ theme_override_constants/margin_right = 200
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer" unique_id=163346499]
 layout_mode = 2
 alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer" unique_id=1109943881]
+layout_mode = 2
+text = "WASD - Movement
+Space - Jump
+Shift - Slow walk
+Scroll - Gravity well distance
+Left click - Place gravity well
+Right click - Remove gravity well
+R - Restart"
+label_settings = SubResource("LabelSettings_kmoo6")
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer" unique_id=2119985016]
 layout_mode = 2

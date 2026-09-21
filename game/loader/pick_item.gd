@@ -13,6 +13,8 @@ const empty = preload("res://assets/ui/empty.png")
 
 var level: LevelInfo = preload("res://resources/levels/l1-button_press.tres") : 
 	set(value):
+		if level == value:
+			return
 		level = value
 		update_text()
 		check_locked()
@@ -114,3 +116,4 @@ func _draw() -> void:
 	])
 
 	%Line.points = points
+	%Poly.polygon = points
