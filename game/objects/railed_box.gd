@@ -6,6 +6,7 @@ extends Node3D
 
 # Percent offset to start box at
 @export var start_offset: float
+@export var box_mass = 0.5
 
 var path: Path3D
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	%SliderJoint3D.set_param(SliderJoint3D.PARAM_LINEAR_LIMIT_UPPER, dist -.6)
 
 	%RailedBox.global_position = path.global_position + start_offset * path.curve.get_point_position(1)
+	%RailedBox.mass = box_mass
 
 	%Rail.global_position = path.global_position + .5 * path.curve.get_point_position(1)
 	%Rail.scale.z = dist
