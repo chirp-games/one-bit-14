@@ -88,22 +88,18 @@ collision_layer = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=485985964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2227834)
 shape = SubResource("BoxShape3D_os57d")
-disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2" unique_id=310508148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2025158)
 shape = SubResource("BoxShape3D_os57d")
-disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D2" unique_id=877330204]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -1.2106047, 0, 0.20251584)
 shape = SubResource("BoxShape3D_os57d")
-disabled = true
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1273076723]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 1.2049296, 0, 0.20251584)
 shape = SubResource("BoxShape3D_os57d")
-disabled = true
 
 [node name="ClickOn" type="AudioStreamPlayer3D" parent="." unique_id=175919154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18149042, 0)
