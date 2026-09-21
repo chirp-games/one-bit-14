@@ -33,12 +33,15 @@ func check_locked() -> void:
 	update_icon()
 
 func update_icon() -> void:
+	%Special.hide()
 	if not (enabled or bypass):
 		%Button.icon = lock
 	elif level.number in ConfigManager.get_value("completions"):
 		%Button.icon = check
 	else:
 		%Button.icon = empty
+		if level.special:
+			%Special.show()
 
 func update_text() -> void:
 	%Button.text = "%02d - %s" % [level.number, level.name]
@@ -115,5 +118,6 @@ func _draw() -> void:
 		Vector2(half, size.y - half)
 	])
 
+	%Special.position.x = size.x - half
 	%Line.points = points
 	%Poly.polygon = points

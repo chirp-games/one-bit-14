@@ -22,6 +22,20 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_b3jju")
 
+[node name="Special" type="CPUParticles2D" parent="." unique_id=2099294432]
+unique_name_in_owner = true
+visible = false
+position = Vector2(232, 26)
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 26)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
 [node name="Line" type="Line2D" parent="." unique_id=1313215926]
 unique_name_in_owner = true
 points = PackedVector2Array(2.5, 2.5, 254.9, 2.5, 231.5, 49.5, 2.5, 49.5)

@@ -14,13 +14,15 @@ class_name LevelInfo
 @export var start_position: Vector3
 ## The player's starting rotation
 @export var start_rotation: Vector3
-## Resets the player's position when below this threshold
+## Resets the player when below this threshold
 @export var floor: int = -10
 
 @export_category("Unlocks")
 ## Lock state when the game first runs or "Reset Progress" is pressed.
-@export var starts_unlocked = false
+@export var starts_unlocked := false
 ## Array of levels unlocked when this level is completed.
 @export var unlocks: Array[int] = []
 ## Challenge levels unlock after all non-challenge levels have been completed.
-@export var challenge = false
+@export var challenge := false
+## Gives the level a cool particle effect to promote it to players.
+@export var special := false
