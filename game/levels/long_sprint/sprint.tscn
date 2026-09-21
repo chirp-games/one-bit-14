@@ -14,7 +14,6 @@ point_count = 5
 [node name="BoxLoop" type="Node3D" unique_id=1195937591]
 script = ExtResource("1_jure5")
 pitch_curve = SubResource("Curve_jure5")
-time_limit = 11.0
 max_pitch = 1.5
 
 [node name="Fallout" type="GridMap" parent="." unique_id=1841239401]
