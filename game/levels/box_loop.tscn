@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="5_bydkp"]
 [ext_resource type="PackedScene" uid="uid://c18ofqt55hqyi" path="res://game/objects/wire_connections/wired_tile.tscn" id="6_ro7fa"]
 [ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="7_vgvj4"]
+[ext_resource type="Texture2D" uid="uid://bghhxbe4ffglq" path="res://assets/sprites/sign_3.png" id="8_bv7i2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_km8ha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dourk"]
+shading_mode = 0
+albedo_texture = ExtResource("8_bv7i2")
 
 [node name="BoxLoop" type="Node3D" unique_id=1195937591]
 script = ExtResource("1_whrfy")
@@ -98,6 +105,11 @@ type = 1
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("7_vgvj4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1197588938]
+transform = Transform3D(-2.7, 0, 8.940695e-08, 0, 2.65, 0, -2.4139882e-07, 0, -0.9999998, 10.745616, 2.8726964, 9.845524)
+mesh = SubResource("QuadMesh_km8ha")
+surface_material_override/0 = SubResource("StandardMaterial3D_dourk")
 
 [connection signal="pushed" from="Button1" to="." method="_on_button_1_pushed"]
 [connection signal="released" from="Button1" to="." method="_on_button_1_released"]
