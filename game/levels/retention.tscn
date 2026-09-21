@@ -34,9 +34,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 mesh_library = ExtResource("2_uvbrm")
 collision_layer = 7
 data = {
-"cells": PackedInt32Array(655360, 0, 4, 720895, 0, 1441793, 655361, 0, 1048577, 655360, 1, 0, 655360, 2, 0, 720895, 1, 1441793, 655361, 1, 1048577, 786432, 1, 1048576, 786432, 0, 0, 786432, 2, 0, 655360, 3, 1, 720895, 2, 1441793, 655361, 2, 1048577, 720895, 65535, 1441793, 655361, 65535, 1048577, 589823, 65535, 1441793, 458751, 65535, 1441793, 393216, 65534, 655361, 524288, 65534, 655361, 655360, 65534, 655361, 524289, 65535, 1048577, 393217, 65535, 1048577, 393216, 0, 10, 524288, 0, 10, 786432, 65535, 0, 196610, 2, 10, 196609, 2, 10, 196608, 2, 10, 262143, 2, 10, 262142, 2, 10, 262141, 1, 1441802, 262141, 0, 1441802, 262141, 65535, 1441802, 262141, 65534, 1441802, 262141, 65533, 1441802, 262142, 65532, 655370, 262143, 65532, 655370, 196608, 65532, 655370, 196609, 65532, 655370, 196610, 65532, 655370, 196611, 65533, 1048586, 196611, 65534, 1048586, 196611, 65535, 1048586, 196611, 0, 1048586, 196611, 1, 1048586)
+"cells": PackedInt32Array(655360, 2, 0, 720895, 1, 1441793, 655361, 1, 1048577, 786432, 1, 1048576, 786432, 0, 0, 786432, 2, 0, 655360, 3, 1, 720895, 2, 1441793, 655361, 2, 1048577, 720895, 65535, 1441793, 655361, 65535, 1048577, 589823, 65535, 1441793, 458751, 65535, 1441793, 393216, 65534, 655361, 524288, 65534, 655361, 655360, 65534, 655361, 524289, 65535, 1048577, 393217, 65535, 1048577, 786432, 65535, 0, 655360, 1, 0, 655360, 0, 0, 720895, 0, 1441793, 655361, 0, 1048577)
 }
-metadata/_editor_floor_ = Vector3(0, -1, 0)
+metadata/_editor_floor_ = Vector3(0, 3, 0)
 
 [node name="Door" parent="." unique_id=527303417 instance=ExtResource("4_uvbrm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21, 0)
@@ -89,32 +89,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 [node name="Box" parent="." unique_id=1398796155 instance=ExtResource("9_wu4ba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 21.5, 3)
 
+[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("10_5pbhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 27.2, -1)
+
+[node name="Grates" type="GridMap" parent="." unique_id=1675563671]
+mesh_library = ExtResource("2_uvbrm")
+data = {
+"cells": PackedInt32Array(393216, 0, 10, 524288, 0, 10, 131075, 1, 1048586, 131075, 0, 1048586, 131075, 65535, 1048586, 131075, 65534, 1048586, 131075, 65533, 1048586, 131074, 2, 10, 131073, 2, 10, 131072, 2, 10, 196607, 2, 10, 196606, 2, 10, 196605, 1, 1441802, 196605, 0, 1441802, 196605, 65535, 1441802, 196605, 65534, 1441802, 196605, 65533, 1441802, 196606, 65532, 655370, 196607, 65532, 655370, 131072, 65532, 655370, 131073, 65532, 655370, 131074, 65532, 655370)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
 [node name="WallMountedLaserGun" parent="." unique_id=492900681 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 8, 4.1)
 
-[node name="WallMountedLaserGun2" parent="." unique_id=1318046576 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun2" parent="." unique_id=1150943466 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.1, 8, 0.5)
 
-[node name="WallMountedLaserGun3" parent="." unique_id=1774306882 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun3" parent="." unique_id=1577388363 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5, 8, -6.1)
 
-[node name="WallMountedLaserGun4" parent="." unique_id=1987326196 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun4" parent="." unique_id=277782260 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.1, 8, -2.5)
 
-[node name="WallMountedLaserGun5" parent="." unique_id=38350227 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun5" parent="." unique_id=1789307693 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10, 4.1)
 
-[node name="WallMountedLaserGun6" parent="." unique_id=1177318784 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun6" parent="." unique_id=727880213 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.1, 10, -2.5)
 
-[node name="WallMountedLaserGun7" parent="." unique_id=1716948205 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun7" parent="." unique_id=105342869 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5, 10, -6.1)
 
-[node name="WallMountedLaserGun8" parent="." unique_id=2029532468 instance=ExtResource("9_5pbhf")]
+[node name="WallMountedLaserGun8" parent="." unique_id=1923756545 instance=ExtResource("9_5pbhf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.1, 10, 0.5)
-
-[node name="HangingLight" parent="." unique_id=1437048895 instance=ExtResource("10_5pbhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 27.2, -1)
 
 [connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
 [connection signal="pushed" from="Button" to="Door" method="open"]

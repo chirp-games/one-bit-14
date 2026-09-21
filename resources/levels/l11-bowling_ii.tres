@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b68b5yu7skcgc"]
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://12gnt51xshyr"]
 
 [ext_resource type="PackedScene" uid="uid://dply3k20qfyi2" path="res://game/levels/bowling_ii.tscn" id="1_lnxeo"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_ocv74"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dply3k20qfyi2"]
+[gd_scene format=3 uid="uid://c7o80ipkhwux"]
 
 [ext_resource type="Script" uid="uid://bcecuxgyiyxbj" path="res://game/levels/bowling.gd" id="1_gt6o5"]
 [ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="2_r14ys"]
