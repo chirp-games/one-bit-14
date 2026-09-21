@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://8mfqwvafjbft"]
+
+<<<<<<<< HEAD:resources/levels/l21 - wind_up_toy.tres
+[ext_resource type="PackedScene" uid="uid://b5yng46jxv7uw" path="res://game/levels/wind_up_toy.tscn" id="1_0jk3h"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_m0uwq"]
+
+[resource]
+script = ExtResource("2_m0uwq")
+number = 21
+name = "Wind Up Toy"
+scene = ExtResource("1_0jk3h")
+start_position = Vector3(-2, 2, 19)
+========
+[ext_resource type="PackedScene" uid="uid://b5yng46jxv7uw" path="res://game/levels/there_and_back_again.tscn" id="1_4rl0n"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_b85ow"]
+
+[resource]
+script = ExtResource("2_b85ow")
+number = 9
+name = "There and Back Again"
+scene = ExtResource("1_4rl0n")
+start_position = Vector3(-4, 2, 4)
+start_rotation = Vector3(0, 315, 0)
+>>>>>>>> 0576d6fae273dd401b14bc2cf49d6d0e7a3cdaa5:resources/levels/l9-there_and_back_again.tres
+floor = -4
+challenge = true
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

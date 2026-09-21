@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://o8kse7ky2xwf"]
+
+[ext_resource type="PackedScene" uid="uid://c7o80ipkhwux" path="res://game/levels/bowling_ii.tscn" id="1_kdrvi"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_vck1q"]
+
+[resource]
+script = ExtResource("2_vck1q")
+number = 16
+name = "Bowling II"
+scene = ExtResource("1_kdrvi")
+start_position = Vector3(-1, 2, -25)
+start_rotation = Vector3(0, 180, 0)
+floor = -4
+challenge = true
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
