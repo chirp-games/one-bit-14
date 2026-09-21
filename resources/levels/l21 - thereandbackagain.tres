@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("2_p4eld")
-number = 21
+number = 20
 name = "There and Back Again"
 scene = ExtResource("1_l2c80")
-start_position = Vector3(-4, 2, 4)
-start_rotation = Vector3(0, 315, 0)
+start_position = Vector3(-2, 2, 1)
+start_rotation = Vector3(0, 85, 0)
 floor = -4
 challenge = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

@@ -22,7 +22,7 @@ const SLOW_MULTIPLIER = 0.25
 const MAX_CHARGES := 1
 
 # We don't use the hole recharge animation for the time it takes to recharge
-@onready var RECHARGE_TIME: float  = .3
+@onready var RECHARGE_TIME: float  = .1
 
 var cayote_timer = 0
 var on_floor: bool = false
