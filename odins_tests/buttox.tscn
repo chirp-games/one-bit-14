@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bmub6bd3xde24"]
+
+[ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="1_2305l"]
+[ext_resource type="Script" uid="uid://cu4jpm4ykwoq6" path="res://odins_tests/buttox.gd" id="1_x85xe"]
+[ext_resource type="AudioStream" uid="uid://c23a0eswanh0g" path="res://assets/sound/button_on.mp3" id="3_ngn4a"]
+[ext_resource type="AudioStream" uid="uid://b5ldkkgbx3fbw" path="res://assets/sound/button_off.mp3" id="4_6rdx5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gm6uc"]
+size = Vector3(0.69628906, 0.2109375, 0.71484375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm6uc"]
+size = Vector3(0.68847656, 0.20898438, 0.70996094)
+
+[node name="Buttox" type="Node3D" unique_id=1965878653]
+script = ExtResource("1_x85xe")
+
+[node name="PushPart" type="RigidBody3D" parent="." unique_id=786969490 groups=["gravity_body", "pushable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50566316, 0)
+mass = 0.025
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PushPart" unique_id=1193095451]
+mesh = SubResource("BoxMesh_gm6uc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushPart" unique_id=898640016]
+shape = SubResource("BoxShape3D_gm6uc")
+
+[node name="Box" parent="." unique_id=1246468868 instance=ExtResource("1_2305l")]
+
+[node name="ClickOn" type="AudioStreamPlayer3D" parent="Box" unique_id=1108052930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18149042, 0)
+stream = ExtResource("3_ngn4a")
+bus = &"SFX"
+
+[node name="ClickOff" type="AudioStreamPlayer3D" parent="Box" unique_id=468178622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18707132, 0)
+stream = ExtResource("4_6rdx5")
+bus = &"SFX"
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="." unique_id=1665532120]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+node_a = NodePath("../Box")
+node_b = NodePath("../PushPart")
+linear_limit/upper_distance = 0.0
+linear_limit/lower_distance = -0.1
