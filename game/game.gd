@@ -59,6 +59,8 @@ func unpause() -> void:
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		loop_music()
+	
+	if not OS.has_feature("web"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	reset()

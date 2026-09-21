@@ -2,9 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://dfl18pf86l1rd" path="res://assets/shaders/remap.gdshader" id="1_7i4t2"]
 [ext_resource type="Script" uid="uid://cccd5a7j4wep8" path="res://game/loader/picker.gd" id="1_ep7oq"]
-[ext_resource type="Texture2D" uid="uid://c2gyxo33ujrra" path="res://bens_tests/dither_color.png" id="2_7i4t2"]
+[ext_resource type="Texture2D" uid="uid://cj0ml2n0r1uf4" path="res://bens_tests/dither_color.png" id="2_7i4t2"]
 [ext_resource type="FontFile" uid="uid://bg5unci03fxcf" path="res://assets/fonts/PixelOperator.ttf" id="3_0j8yd"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="6_hgp8l"]
+[ext_resource type="Script" uid="uid://dvsn0ecctu7fi" path="res://game/loader/web_build_switch.gd" id="7_dh275"]
 [ext_resource type="Theme" uid="uid://bp35ok3gel4nx" path="res://assets/global.tres" id="7_eth52"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7i4t2"]
@@ -14,6 +15,9 @@ shader_parameter/u_color_tex = ExtResource("2_7i4t2")
 [sub_resource type="LabelSettings" id="LabelSettings_gm6uc"]
 font = ExtResource("3_0j8yd")
 font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_eth52"]
+font_size = 38
 
 [node name="SubViewportContainer" type="SubViewportContainer" unique_id=1898376378]
 material = SubResource("ShaderMaterial_7i4t2")
@@ -79,6 +83,16 @@ text = "Reset Progress"
 layout_mode = 2
 theme = ExtResource("7_eth52")
 text = "Quit"
+script = ExtResource("7_dh275")
+
+[node name="Label3" type="Label" parent="SubViewport/Picker/HBoxContainer/VBoxContainer" unique_id=1678168466]
+visible = false
+custom_minimum_size = Vector2(476, 0)
+layout_mode = 2
+text = "This is the web build. For better performance and sound, try the windows or linux build instead!"
+label_settings = SubResource("LabelSettings_eth52")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="SubViewport/Picker/HBoxContainer/VBoxContainer/Label2" to="SubViewport/Picker" method="reset_unlocks"]
 [connection signal="pressed" from="SubViewport/Picker/HBoxContainer/VBoxContainer/Button" to="SubViewport/Picker" method="quit"]
