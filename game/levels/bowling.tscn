@@ -128,7 +128,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.6940098, -36)
 
 [node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("5_dj8b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9715586, 2, -42.34803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9715586, 1.5853941, -42.34803)
 
 [node name="WallMountedLaserGun" parent="." unique_id=492900681 instance=ExtResource("6_aufcm")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.714575, 4, -3)
@@ -215,5 +215,6 @@ type = 1
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1021847201]
 mesh = SubResource("BoxMesh_0xfd7")
 
+[connection signal="level_complete" from="CompletionArea" to="." method="_on_completion_area_level_complete"]
 [connection signal="pushed" from="LaserReciever" to="." method="_on_laser_reciever_pushed"]
 [connection signal="released" from="LaserReciever" to="." method="_on_laser_reciever_released"]
