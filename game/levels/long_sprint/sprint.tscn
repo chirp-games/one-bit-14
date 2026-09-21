@@ -30,6 +30,7 @@ script = ExtResource("3_ma38e")
 
 [node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1122225992]
 stream = ExtResource("4_crtul")
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="." unique_id=21162137]
 
