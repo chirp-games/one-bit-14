@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_ma38e"]
 
 [sub_resource type="Curve" id="Curve_jure5"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(0.5, 0), 0.0, 0.0, 1, 0, Vector2(0.501, 0.25), 250.00323, 0.0, 1, 0, Vector2(0.75, 0.25), 0.0, 3.0, 0, 1, Vector2(1, 1), 3.0, 0.0, 1, 0]
+point_count = 5
 
 [node name="BoxLoop" type="Node3D" unique_id=1195937591]
 script = ExtResource("1_jure5")
 pitch_curve = SubResource("Curve_jure5")
 time_limit = 11.0
+max_pitch = 1.5
 
 [node name="Fallout" type="GridMap" parent="." unique_id=1841239401]
 mesh_library = ExtResource("2_f0urr")
