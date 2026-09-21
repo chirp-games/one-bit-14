@@ -24,9 +24,14 @@ script = ExtResource("1_b3jju")
 
 [node name="Line" type="Line2D" parent="." unique_id=1313215926]
 unique_name_in_owner = true
-points = PackedVector2Array(2.5, 2.5, 243.1, 2.5, 217.5, 49.5, 2.5, 49.5)
+points = PackedVector2Array(2.5, 2.5, 254.9, 2.5, 231.5, 49.5, 2.5, 49.5)
 closed = true
 width = 5.0
+
+[node name="Poly" type="Polygon2D" parent="." unique_id=261896347]
+unique_name_in_owner = true
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(2.5, 2.5, 254.9, 2.5, 231.5, 49.5, 2.5, 49.5)
 
 [node name="Button" type="Button" parent="." unique_id=1613488742]
 unique_name_in_owner = true
@@ -45,5 +50,5 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_1idwh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_87bcv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_c6ny2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0f1d2")
-text = "1 - Button press"
+text = "01 - Button press"
 alignment = 0
