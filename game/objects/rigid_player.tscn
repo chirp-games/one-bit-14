@@ -211,6 +211,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="HoleRecharge" type="TextureProgressBar" parent="UI/MarginContainer" unique_id=106938463]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 value = 100.0
 allow_greater = true
@@ -219,6 +220,7 @@ texture_progress = ExtResource("3_ivxs2")
 
 [node name="HoleCharges" type="Label" parent="UI/MarginContainer" unique_id=1600330544]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_gm6uc")
