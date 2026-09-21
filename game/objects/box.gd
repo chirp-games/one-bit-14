@@ -2,6 +2,12 @@ extends RigidBody3D
 
 var last_velocity: Vector3 = Vector3.ZERO
 
+@export var ignore_black_hole = false
+
+func _ready() -> void:
+	if ignore_black_hole:
+		remove_from_group("gravity_body")
+
 func _physics_process(_delta: float) -> void:
 	last_velocity = linear_velocity
 	
