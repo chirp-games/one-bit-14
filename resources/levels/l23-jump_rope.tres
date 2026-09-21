@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://dcrlorr54uibk"]
+
+[ext_resource type="PackedScene" uid="uid://cobdo35x7huu2" path="res://game/levels/jump_rope.tscn" id="1_7gqxq"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_q41pu"]
+
+[resource]
+script = ExtResource("2_q41pu")
+number = 17
+name = "Jump Rope"
+scene = ExtResource("1_7gqxq")
+start_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
