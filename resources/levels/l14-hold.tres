@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_5eglc")
-number = 14
+number = 15
 name = "Well fought"
 scene = ExtResource("1_p2brf")
 start_rotation = Vector3(0, 90, 0)

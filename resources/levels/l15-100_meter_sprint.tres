@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_f5fo1")
-number = 15
+number = 16
 name = "100 meter sprint"
 scene = ExtResource("1_jef3m")
 start_position = Vector3(0, 2, 0)
