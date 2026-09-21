@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b68b5yu7skcgc"]
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://bcsbg0x5n4dd0"]
 
-[ext_resource type="PackedScene" uid="uid://dply3k20qfyi2" path="res://game/levels/bowling.tscn" id="1_ewdt2"]
+[ext_resource type="PackedScene" uid="uid://bntkt3wrba01a" path="res://game/levels/bowling.tscn" id="1_lye3e"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_0kclu"]
 
 [resource]
 script = ExtResource("2_0kclu")
-number = 11
+number = 20
 name = "Bowling"
-scene = ExtResource("1_ewdt2")
-start_position = Vector3(-0.5, 2, -25)
+scene = ExtResource("1_lye3e")
+start_position = Vector3(-1, 2, -25)
 start_rotation = Vector3(0, 180, 0)
 floor = -4
 challenge = true
