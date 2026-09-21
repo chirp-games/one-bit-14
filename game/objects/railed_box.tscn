@@ -82,8 +82,8 @@ mesh = SubResource("BoxMesh_wdfcw")
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_os57d")
 surface_material_override/0 = SubResource("StandardMaterial3D_wdfcw")
-[node name="BoxHit" type="AudioStreamPlayer3D" parent="." unique_id=945023068]
 
+[node name="BoxHit" type="AudioStreamPlayer3D" parent="." unique_id=945023068]
 stream = SubResource("AudioStreamRandomizer_wdfcw")
 volume_db = -2.0
 max_db = -3.0
