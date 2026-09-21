@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://csheasjqicpwm"]
+
+[ext_resource type="Script" uid="uid://c2oyuknq3auuy" path="res://game/objects/button.gd" id="1_gvq8u"]
+[ext_resource type="Material" uid="uid://ctgu26h1f3wye" path="res://assets/materials/boxes.tres" id="2_dxsbs"]
+[ext_resource type="AudioStream" uid="uid://c23a0eswanh0g" path="res://assets/sound/button_on.mp3" id="3_t17w0"]
+[ext_resource type="AudioStream" uid="uid://b5ldkkgbx3fbw" path="res://assets/sound/button_off.mp3" id="4_0ncum"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c2be8"]
+friction = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xljv"]
+size = Vector3(1.5, 0.15, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdqni"]
+albedo_color = Color(0.02745098, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f8rx7"]
+material = SubResource("StandardMaterial3D_qdqni")
+size = Vector3(1.5, 0.15, 1.5)
+
+[sub_resource type="Curve3D" id="Curve3D_gvq8u"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.075, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvabg"]
+albedo_color = Color(1, 0.09803922, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxsbs"]
+material = SubResource("StandardMaterial3D_tvabg")
+size = Vector3(1.25, 0.1, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t17w0"]
+size = Vector3(1.25, 0.05, 1.25)
+
+[node name="RigidButton" type="RigidBody3D" unique_id=1182935234 groups=["gravity_body", "pushable"]]
+collision_layer = 7
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_c2be8")
+script = ExtResource("1_gvq8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=764815874]
+shape = SubResource("BoxShape3D_0xljv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=611044882]
+mesh = SubResource("BoxMesh_f8rx7")
+skeleton = NodePath("")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=981720643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+curve = SubResource("Curve3D_gvq8u")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Path3D" unique_id=637845217]
+transform = Transform3D(1, 0, -8.351872e-23, 0, 1, 0, -8.351872e-23, 0, 1, 0, 0, 0)
+node_a = NodePath("../..")
+node_b = NodePath("PushPart")
+linear_spring_y/enabled = true
+linear_spring_y/stiffness = 0.1
+
+[node name="PushPart" type="RigidBody3D" parent="Path3D/Generic6DOFJoint3D" unique_id=1333620269]
+unique_name_in_owner = true
+collision_layer = 7
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/Generic6DOFJoint3D/PushPart" unique_id=1977100297]
+material_override = ExtResource("2_dxsbs")
+mesh = SubResource("BoxMesh_dxsbs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Generic6DOFJoint3D/PushPart" unique_id=992708000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_t17w0")
+
+[node name="ClickOn" type="AudioStreamPlayer3D" parent="." unique_id=175787939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18149042, 0)
+stream = ExtResource("3_t17w0")
+bus = &"SFX"
+
+[node name="ClickOff" type="AudioStreamPlayer3D" parent="." unique_id=1369135512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18707132, 0)
+stream = ExtResource("4_0ncum")
+bus = &"SFX"
