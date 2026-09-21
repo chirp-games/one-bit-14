@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_n7cr7")
-number = 18
+number = 17
 name = "Wall"
 scene = ExtResource("1_nphpd")
 start_position = Vector3(0, 2, 0)

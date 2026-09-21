@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://8mfqwvafjbft"]
+
+[ext_resource type="PackedScene" uid="uid://b5yng46jxv7uw" path="res://game/levels/there_and_back_again.tscn" id="1_4rl0n"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_b85ow"]
+
+[resource]
+script = ExtResource("2_b85ow")
+number = 9
+name = "There and Back Again"
+scene = ExtResource("1_4rl0n")
+start_position = Vector3(-4, 2, 4)
+start_rotation = Vector3(0, 315, 0)
+floor = -4
+challenge = true
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

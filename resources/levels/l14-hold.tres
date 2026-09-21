@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://boklfmy66icof"]
+
+[ext_resource type="PackedScene" uid="uid://djuds8n5sggpk" path="res://game/levels/level_4.tscn" id="1_p2brf"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_5eglc"]
+
+[resource]
+script = ExtResource("2_5eglc")
+number = 14
+name = "Well fought"
+scene = ExtResource("1_p2brf")
+start_rotation = Vector3(0, 90, 0)
+floor = -2
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

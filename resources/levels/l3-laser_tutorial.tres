@@ -10,5 +10,5 @@ name = "Laser Tutorial"
 scene = ExtResource("1_ihhr4")
 floor = -2
 starts_unlocked = true
-unlocks = Array[int]([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+unlocks = Array[int]([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"
