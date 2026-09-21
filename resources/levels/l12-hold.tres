@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_wja41")
 number = 12
-name = "Odin WIP"
+name = "Well fought"
 scene = ExtResource("1_it42h")
 start_rotation = Vector3(0, 90, 0)
 floor = -2

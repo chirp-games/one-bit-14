@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("2_0kclu")
-number = 18
+number = 11
 name = "Bowling"
 scene = ExtResource("1_ewdt2")
 start_position = Vector3(-0.5, 2, -25)
 start_rotation = Vector3(0, 180, 0)
 floor = -4
 challenge = true
+special = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

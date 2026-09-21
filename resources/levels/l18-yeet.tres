@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://bu4qox3vl7iho"]
+
+[ext_resource type="PackedScene" uid="uid://c1bn15xciemp7" path="res://game/levels/yeet.tscn" id="1_016yq"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_feo7t"]
+
+[resource]
+script = ExtResource("2_feo7t")
+number = 18
+name = "Yeet"
+scene = ExtResource("1_016yq")
+start_position = Vector3(0, 8.5, -12)
+start_rotation = Vector3(0, 180, 0)
+floor = -4
+challenge = true
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
