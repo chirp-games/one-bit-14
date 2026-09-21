@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cobdo35x7huu2"]
+
+[ext_resource type="Script" uid="uid://cncfifqu8oh7n" path="res://game/levels/nologic_level.gd" id="1_k8cjp"]
+[ext_resource type="MeshLibrary" uid="uid://bvbdt3mlqrrx4" path="res://assets/mesh_library/mesh_library.tres" id="2_ujuqv"]
+[ext_resource type="PackedScene" uid="uid://dbue43f7otyeq" path="res://game/objects/completion_area.tscn" id="3_nvaid"]
+[ext_resource type="PackedScene" uid="uid://dyn1b4me8mqus" path="res://game/objects/railed_box.tscn" id="5_4hmsh"]
+[ext_resource type="PackedScene" uid="uid://bi5cull8l705w" path="res://game/objects/PathFollowPlatform.tscn" id="6_2qoy8"]
+[ext_resource type="PackedScene" uid="uid://krvyuv8d8hwc" path="res://game/objects/button.tscn" id="6_40jld"]
+[ext_resource type="PackedScene" uid="uid://v1n7htyu5ekv" path="res://game/objects/Door.tscn" id="7_htmew"]
+[ext_resource type="PackedScene" uid="uid://becai6go1fqgr" path="res://game/objects/wall_mounted_laser_gun.tscn" id="8_bm043"]
+[ext_resource type="PackedScene" uid="uid://3jipfs8ogvwa" path="res://game/objects/box.tscn" id="8_k8cjp"]
+
+[sub_resource type="Curve3D" id="Curve3D_0jwxh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_myn66"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 0, 0, 8, -20, 0, 0, 0, 0, 0, 0, 0, 8, -40.775, 0, -6.92, 2.295, 0, 0, 0, 0, 4, -46.5, 0, 0, 0, 0, 0, 0, 0, 4, -60),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Level" type="Node3D" unique_id=1439589701]
+script = ExtResource("1_k8cjp")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=488222975]
+mesh_library = ExtResource("2_ujuqv")
+collision_layer = 7
+data = {
+"cells": PackedInt32Array(-1, 65535, 655360, -65536, 65535, 655360, -65536, 0, 655360, -1, 0, 655360, 131071, 0, 655360, 131071, 65535, 655360, 65536, 0, 655360, 65536, 65535, 655360, 131070, 65535, 655360, 131070, 0, 655360, 131069, 0, 655360, 131069, 65535, 655360, -2, 65535, 655360, -2, 0, 655360, -3, 0, 655360, -3, 65535, 655360, 196609, 65523, 0, 196609, 65522, 0, 196609, 65521, 0, 196609, 65520, 0, 196610, 65523, 0, 196610, 65522, 0, 196610, 65521, 0, 196610, 65520, 0, 196610, 65519, 0, 196609, 65519, 0, 196611, 65520, 1048577, 196611, 65521, 1048577, 196611, 65522, 1048577, 196611, 65523, 1048577, 196610, 65524, 1, 196609, 65524, 1, 196609, 65518, 0, 196610, 65518, 0, 196610, 65517, 0, 196609, 65517, 0, 196610, 65516, 0, 196609, 65516, 0, 196611, 65519, 1048577, 196611, 65518, 1048577, 196611, 65517, 1048577, 196611, 65516, 1048577, 196610, 65515, 655361, 196609, 65515, 655361, 65536, 65512, 1, 65536, 65511, 655361, 131071, 65511, 655361, 131071, 65512, 1, 65537, 65512, 1, 65538, 65512, 1, 65539, 65512, 1, 131070, 65512, 1, 131069, 65512, 1, 131068, 65512, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Grates" type="GridMap" parent="." unique_id=286372809]
+mesh_library = ExtResource("2_ujuqv")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="CompletionArea" parent="." unique_id=1036395825 instance=ExtResource("3_nvaid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -64)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1546878631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, 0)
+curve = SubResource("Curve3D_0jwxh")
+
+[node name="PathFollow3D" parent="Path3D" unique_id=787075143 instance=ExtResource("5_4hmsh")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+
+[node name="Path3D2" type="Path3D" parent="." unique_id=1947314294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4)
+curve = SubResource("Curve3D_myn66")
+
+[node name="PathFollowPlatform" parent="Path3D2" unique_id=1505859973 instance=ExtResource("6_2qoy8")]
+unique_name_in_owner = true
+speed = 2.5
+normalise_speed = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1238834055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -12)
+light_energy = 10.0
+omni_range = 30.0
+
+[node name="Button" parent="." unique_id=8617206 instance=ExtResource("6_40jld")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -4, 2.655, 0)
+
+[node name="Lasers" type="Node3D" parent="." unique_id=2049167802]
+
+[node name="WallMountedLaserGun" parent="Lasers" unique_id=492900681 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -15)
+
+[node name="WallMountedLaserGun2" parent="Lasers" unique_id=867360016 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -16)
+
+[node name="WallMountedLaserGun4" parent="Lasers" unique_id=1659363761 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -20)
+
+[node name="WallMountedLaserGun3" parent="Lasers" unique_id=675327678 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -19)
+
+[node name="WallMountedLaserGun5" parent="Lasers" unique_id=1160618121 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 2, -24)
+
+[node name="WallMountedLaserGun6" parent="Lasers" unique_id=1769558730 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 2, -23)
+
+[node name="WallMountedLaserGun7" parent="Lasers" unique_id=383436109 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 5, -25)
+
+[node name="WallMountedLaserGun8" parent="Lasers" unique_id=2127966779 instance=ExtResource("8_bm043")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 5, -24)
+
+[node name="Button2" parent="." unique_id=1354950286 instance=ExtResource("6_40jld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6.964283, -30)
+
+[node name="Box" parent="." unique_id=1246468868 instance=ExtResource("8_k8cjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7.5, -26)
+
+[node name="Door" parent="." unique_id=527303417 instance=ExtResource("7_htmew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 7, -40)
+
+[connection signal="level_complete" from="CompletionArea" to="." method="on_complete"]
+[connection signal="pushed" from="Button" to="Path3D2/PathFollowPlatform" method="forward"]
+[connection signal="released" from="Button" to="Path3D2/PathFollowPlatform" method="back"]
+[connection signal="pushed" from="Button2" to="Door" method="open"]
+[connection signal="released" from="Button2" to="Door" method="close"]
