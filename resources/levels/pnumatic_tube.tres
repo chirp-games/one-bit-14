@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b75qkcabxpm7x"]
+
+[ext_resource type="PackedScene" uid="uid://g2dvyh08qq5x" path="res://game/levels/expert_puzzle.tscn" id="1_ayp01"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_6jast"]
+
+[resource]
+script = ExtResource("2_6jast")
+number = 8
+name = "Pnumatic Tube"
+scene = ExtResource("1_ayp01")
+start_position = Vector3(14, 1, 2)
+start_rotation = Vector3(0, 45, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"
