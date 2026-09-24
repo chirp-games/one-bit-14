@@ -15,3 +15,4 @@ For example, if you wanted to start a player with certain cards in a card game, 
 do that in that function.
 
 To write test that stay on your local system name the file `tests/<your_test_name>.local.gd`.
+# bullet-hell-test
