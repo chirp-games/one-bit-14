@@ -21,23 +21,32 @@ static func load_asset(path : String) -> Resource:
 		return load(path)
 
 var levels: Array[LevelInfo] = []
-var normal_level_numbers: Array[int] = []
-var current_number: int = 1
-var current_level: LevelInfo :
-	get():
-		var level_index = levels.find_custom(func(x: LevelInfo): return x.number == current_number)
-		return levels[level_index] if level_index >= 0 else null
+var normal_levels: Array[String] = []
+var current_level: LevelInfo
 
 func load_levels() -> void:
+	var unsorted_levels: Array[LevelInfo] = []
 	for file in DirAccess.open("res://resources/levels").get_files():
-		levels.push_back(load_asset("res://resources/levels/%s" % file))
-	levels.sort_custom(func(a:LevelInfo, b:LevelInfo): return a.number < b.number)
-	for level in levels:
-		if not level.challenge:
-			normal_level_numbers.push_back(level.number)
+		unsorted_levels.push_back(load_asset("res://resources/levels/%s" % file))
+	
+	var loading
+	var insert_at 
+	while len(unsorted_levels) > 0:
+		print(unsorted_levels)
+		loading = unsorted_levels[0]
+		insert_at = 0
+		while loading.next and loading.next not in levels:
+			if not loading.challenge:
+				normal_levels.push_back(loading.name)
+			unsorted_levels.erase(loading)
+			levels.insert(insert_at, loading)
+			insert_at += 1
+			loading = loading.next
+		unsorted_levels.erase(loading)
+		levels.insert(insert_at, loading)
 
 func next_level() -> LevelInfo:
-	current_number += 1
+	current_level = current_level.next
 	return current_level
 
 func level_complete() -> void:
@@ -45,24 +54,27 @@ func level_complete() -> void:
 		return
 
 	var current_unlocks: Array = ConfigManager.get_value("unlocks", [])
-	for unlock in current_level.unlocks:
-		if unlock not in current_unlocks:
-			current_unlocks.push_back(unlock)
+	if current_level.unlocks_normal:
+		for level in levels:
+			if level.name in current_unlocks or level.challenge:
+				continue
+			current_unlocks.push_back(level.name)
 	ConfigManager.set_value("unlocks", current_unlocks)
 	
 	var current_completions: Array = ConfigManager.get_value("completions", [])
-	if current_number not in current_completions:
-		current_completions.push_back(current_level.number)
+	if current_level.name not in current_completions:
+		current_completions.push_back(current_level.name)
 		ConfigManager.set_value("completions", current_completions)
 	
-	ConfigManager.on_quit() # Saves progress
-	
-	for level_number in normal_level_numbers:
-		if level_number not in current_completions:
+	for level_name in normal_levels:
+		if level_name not in current_completions:
+			ConfigManager.on_quit() # Saves progress
 			return
+		
 	for level in levels:
 		if level.challenge:
-			current_unlocks.push_back(level.number)
+			current_unlocks.push_back(level.name)
+	
 	ConfigManager.set_value("unlocks", current_unlocks)
 	ConfigManager.on_quit()
 
@@ -72,15 +84,15 @@ func reset_unlocks() -> void:
 	var unlocks = []
 	for level in levels:
 		if level.starts_unlocked:
-			unlocks.push_back(level.number)
+			unlocks.push_back(level.name)
 	ConfigManager.set_value("unlocks", unlocks)
 	ConfigManager.set_value("completions", [])
 
-func level_unlocked(level: int) -> bool:
+func level_unlocked(level: String) -> bool:
 	return level in ConfigManager.get_value("unlocks", [])
 
 func unlock_all() -> void:
-	ConfigManager.set_value("unlocks", levels.map(func(level): return level.number))
+	ConfigManager.set_value("unlocks", levels.map(func(level): return level.name))
 
 func _ready() -> void:
 	load_levels()

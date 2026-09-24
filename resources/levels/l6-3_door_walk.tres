@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://c35ij1ijmuekn"]
 
+[ext_resource type="Resource" uid="uid://dweitv1e0wqnm" path="res://resources/levels/l7-flak_cannon.tres" id="1_4wyql"]
 [ext_resource type="PackedScene" uid="uid://d2bohm5tfeb7m" path="res://game/levels/door_walk.tscn" id="1_du64x"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_4wyql"]
 
 [resource]
 script = ExtResource("2_4wyql")
-number = 6
+next = ExtResource("1_4wyql")
 name = "3 Door Walk"
 scene = ExtResource("1_du64x")
 start_position = Vector3(-20, 4, 0)

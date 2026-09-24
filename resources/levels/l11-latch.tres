@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://ck6er71jm2j75"]
 
 [ext_resource type="PackedScene" uid="uid://bhbfgqkuidefd" path="res://game/levels/latch.tscn" id="1_4vfja"]
+[ext_resource type="Resource" uid="uid://c8bjs56ehmxlw" path="res://resources/levels/l12-launch.tres" id="1_43qtf"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_43qtf"]
 
 [resource]
 script = ExtResource("2_43qtf")
-number = 12
+next = ExtResource("1_43qtf")
 name = "Latch"
 scene = ExtResource("1_4vfja")
 start_position = Vector3(-4, 0.1, -4)
