@@ -1,9 +1,10 @@
 extends Resource
 class_name LevelInfo
 
-## The order in which the level appears
-@export var number := 1
-## The name of the level, may give a hint to what the puzzle is
+## The next level after this one.
+@export var next: LevelInfo
+## The name of the level, may give a hint to what the puzzle is.
+## Must be unique.
 @export var name := ""
 ## The level scene - do not include the player object.
 @export var scene: PackedScene
@@ -20,8 +21,8 @@ class_name LevelInfo
 @export_category("Unlocks")
 ## Lock state when the game first runs or "Reset Progress" is pressed.
 @export var starts_unlocked := false
-## Array of levels unlocked when this level is completed.
-@export var unlocks: Array[int] = []
+## If true, unlocks all normal levels when this level is complete
+@export var unlocks_normal := false
 ## Challenge levels unlock after all non-challenge levels have been completed.
 @export var challenge := false
 ## Gives the level a cool particle effect to promote it to players.

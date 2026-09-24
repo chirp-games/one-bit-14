@@ -29,14 +29,14 @@ func check_locked() -> void:
 	if Engine.is_editor_hint():
 		return
 	var unlocks: Array = ConfigManager.get_value("unlocks")
-	enabled = level.number in unlocks
+	enabled = level.name in unlocks
 	update_icon()
 
 func update_icon() -> void:
 	%Special.hide()
 	if not (enabled or bypass):
 		%Button.icon = lock
-	elif level.number in ConfigManager.get_value("completions"):
+	elif level.name in ConfigManager.get_value("completions"):
 		%Button.icon = check
 	else:
 		%Button.icon = empty
@@ -44,13 +44,13 @@ func update_icon() -> void:
 			%Special.show()
 
 func update_text() -> void:
-	%Button.text = "%02d - %s" % [level.number, level.name]
+	%Button.text = level.name
 
 func load_level() -> void:
 	# Has to be specified or all levels move
 	loading = true
 	# Autoload persists between scene change
-	LevelManager.current_number = level.number
+	LevelManager.current_level = level
 	ResourceLoader.load_threaded_request(game_scene)
 
 func _ready() -> void:
