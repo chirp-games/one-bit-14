@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MultiplayerLevelInfo" format=3 uid="uid://dqsvc736lbgjy"]
+
+[ext_resource type="PackedScene" uid="uid://82c8jkh2ru01" path="res://game/levels/multiplayer/level_1.tscn" id="1_irjj8"]
+[ext_resource type="Script" uid="uid://b2q42eu5ilbbc" path="res://resources/multiplayer_level.gd" id="1_x4udg"]
+
+[resource]
+script = ExtResource("1_x4udg")
+second_start_position = Vector3(-2, 0, 0)
+name = "Easy level"
+scene = ExtResource("1_irjj8")
+start_position = Vector3(2, 0, 0)
+metadata/_custom_type_script = "uid://b2q42eu5ilbbc"

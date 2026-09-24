@@ -10,7 +10,7 @@ class_name LevelInfo
 @export var scene: PackedScene
 
 ## Configure player starting state
-@export_category("Player")
+@export_category("Player 1")
 ## The player's starting position, relative to the level scene origin
 @export var start_position: Vector3
 ## The player's starting rotation

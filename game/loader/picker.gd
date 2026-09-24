@@ -22,6 +22,9 @@ func reset_unlocks() -> void:
 	for button in %LevelList.get_children():
 		button.check_locked()
 
+func goto_multiplayer() -> void:
+	get_tree().change_scene_to_file("res://game/multiplayer/loader/picker.tscn")
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	

@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://ctj65i2qrshh2"]
+
+[ext_resource type="Script" uid="uid://b2ivajja6xke0" path="res://game/multiplayer/render.gd" id="1_c4n6c"]
+[ext_resource type="Shader" uid="uid://cmmrncmhfle78" path="res://shaders/dither.gdshader" id="3_rf3sf"]
+[ext_resource type="Texture2D" uid="uid://dslrni7aaox61" path="res://bens_tests/blue_noise.png" id="4_3ga4g"]
+[ext_resource type="Texture2D" uid="uid://cj0ml2n0r1uf4" path="res://bens_tests/dither_color.png" id="5_bh002"]
+[ext_resource type="Texture2D" uid="uid://cinytsosrur58" path="res://bens_tests/bayer16.png" id="6_3p23a"]
+[ext_resource type="AudioStream" uid="uid://d3q0wr3w130hq" path="res://assets/sound/spacesong.wav" id="9_ifiws"]
+[ext_resource type="Shader" uid="uid://dfl18pf86l1rd" path="res://assets/shaders/remap.gdshader" id="10_mfcbe"]
+
+[sub_resource type="Environment" id="Environment_2h351"]
+background_mode = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 9.73
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cmxxu"]
+frequency = 0.035
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vv1mp"]
+noise = SubResource("FastNoiseLite_cmxxu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6cbj"]
+shader = ExtResource("3_rf3sf")
+shader_parameter/u_dither_tex = ExtResource("6_3p23a")
+shader_parameter/u_color_tex = ExtResource("5_bh002")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 0.775
+shader_parameter/u_offset = 0.0
+shader_parameter/noiseyness = -0.04
+shader_parameter/u_dither_size = 2.0
+shader_parameter/noise = SubResource("NoiseTexture2D_vv1mp")
+shader_parameter/bypass = false
+shader_parameter/bn_dither_tex = ExtResource("4_3ga4g")
+shader_parameter/bn_bit_depth = 32
+shader_parameter/bn_contrast = 1.0
+shader_parameter/bn_offset = 0.0
+shader_parameter/black_hole_location = Vector4(0, 0, 10002, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ga11"]
+shader = ExtResource("10_mfcbe")
+shader_parameter/u_color_tex = ExtResource("5_bh002")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmoo6"]
+font_size = 32
+
+[node name="Game" type="Control" unique_id=960045773 groups=["audio_master"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c4n6c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1593385754]
+environment = SubResource("Environment_2h351")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1392844193]
+process_mode = 1
+material = SubResource("ShaderMaterial_n6cbj")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainGame" type="SubViewport" parent="SubViewportContainer" unique_id=581796732]
+handle_input_locally = false
+audio_listener_enable_3d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="LevelContainer" type="Node3D" parent="SubViewportContainer/MainGame" unique_id=179893977]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/MainGame" unique_id=1141046818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.030241)
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1315549566]
+stream = ExtResource("9_ifiws")
+volume_db = -6.0
+bus = &"Music"
+
+[node name="PauseMenu" type="SubViewportContainer" parent="." unique_id=1265616076]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_2ga11")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="PauseMenu" unique_id=1030011579]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SubViewport" unique_id=1993087087]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 437
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 417
+theme_override_constants/margin_bottom = 300
+
+[node name="Panel" type="Panel" parent="PauseMenu/SubViewport/MarginContainer" unique_id=352031293]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/SubViewport/MarginContainer" unique_id=1983597139]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer" unique_id=163346499]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer" unique_id=1109943881]
+layout_mode = 2
+text = "WASD - Movement
+Space - Jump
+Shift - Slow walk
+Scroll - Gravity well distance
+Left click - Place gravity well
+Right click - Remove gravity well
+R - Restart"
+label_settings = SubResource("LabelSettings_kmoo6")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer" unique_id=2119985016]
+layout_mode = 2
+text = "Resume"
+
+[node name="Button2" type="Button" parent="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer" unique_id=788871778]
+layout_mode = 2
+text = "Back to menu"
+
+[connection signal="pressed" from="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer/Button" to="." method="unpause"]
+[connection signal="pressed" from="PauseMenu/SubViewport/MarginContainer/MarginContainer/VBoxContainer/Button2" to="." method="main_menu"]

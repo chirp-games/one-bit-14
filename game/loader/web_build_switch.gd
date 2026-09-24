@@ -5,4 +5,5 @@ extends Button
 func _ready() -> void:
 	if OS.has_feature("web"):
 		hide()
+		$"../Label4".hide()
 		$"../Label3".show()
