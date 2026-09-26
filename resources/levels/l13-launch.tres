@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://c8bjs56ehmxlw"]
 
 [ext_resource type="PackedScene" uid="uid://bjhhfpvp7i1tg" path="res://game/levels/level_5/level_5.tscn" id="1_144sh"]
+[ext_resource type="Resource" uid="uid://dcrlorr54uibk" path="res://resources/levels/l14-jump_rope.tres" id="1_aaaaa"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_jtq08"]
 
 [resource]
 script = ExtResource("2_jtq08")
-next = ExtResource("1_oosvx")
+next = ExtResource("1_aaaaa")
 name = "Launch"
 scene = ExtResource("1_144sh")
 start_position = Vector3(0, 4, 0)
