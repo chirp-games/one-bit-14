@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_jtq08")
-number = "13"
+next = ExtResource("1_oosvx")
 name = "Launch"
 scene = ExtResource("1_144sh")
 start_position = Vector3(0, 4, 0)

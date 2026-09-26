@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_3woa2")
-number = "04"
+next = ExtResource("1_hl8yc")
 name = "Ring a Ring"
 scene = ExtResource("1_w47va")
 start_position = Vector3(0, 0, -1)

@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://d1jn607bopqig"]
 
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="1_hndnq"]
+[ext_resource type="Resource" uid="uid://cafx2pe3h6vmq" path="res://resources/levels/l2-cant_touch_this.tres" id="1_luskw"]
 [ext_resource type="PackedScene" uid="uid://cgyp3u5tvaeyv" path="res://game/levels/level_1.tscn" id="1_sfdh2"]
 
 [resource]
 script = ExtResource("1_hndnq")
-number = "01"
-name = "Hello World"
+next = ExtResource("1_luskw")
+name = "Button press"
 scene = ExtResource("1_sfdh2")
 start_position = Vector3(4, 2, -4)
 start_rotation = Vector3(0, 135, 0)

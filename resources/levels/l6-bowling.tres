@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://cj3f2755ooh0v"]
 
+[ext_resource type="Resource" uid="uid://dweitv1e0wqnm" path="res://resources/levels/l7-flak_cannon.tres" id="1_j3mn2"]
 [ext_resource type="PackedScene" uid="uid://bntkt3wrba01a" path="res://game/levels/bowling.tscn" id="1_mlckq"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_j3mn2"]
 
 [resource]
 script = ExtResource("2_j3mn2")
-number = "06"
+next = ExtResource("1_j3mn2")
 name = "Bowling"
 scene = ExtResource("1_mlckq")
 start_position = Vector3(-1, 2, -25)

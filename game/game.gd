@@ -4,9 +4,9 @@ extends Control
 
 func place_next_level() -> void:
 	LevelManager.level_complete()
-	var next_level = LevelManager.next_level()
-	if next_level and LevelManager.level_unlocked(next_level.number):
-		place_level(next_level)
+	var next_level := LevelManager.next_level()
+	if next_level and LevelManager.level_unlocked(next_level.name):
+		reset()
 	else:
 		main_menu()
 
@@ -17,10 +17,6 @@ func loop_music() -> void:
 
 func audio_sync(audio: AudioStreamPlayer3D) -> void:
 	audio.play($BGM.get_playback_position() + AudioServer.get_time_since_last_mix())
-
-func place_level(level: LevelInfo) -> void:
-	LevelManager.current_number = level.number
-	reset()
 
 func reset() -> void:
 	for child in %LevelContainer.get_children():
