@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("2_xfkju")
 next = ExtResource("1_xfkju")
-name = "Laser Tutorial"
+name = "03 - Laser Tutorial"
 scene = ExtResource("1_ihhr4")
 floor = -2
-starts_unlocked = true
-unlocks_normal = true
+tutorial = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

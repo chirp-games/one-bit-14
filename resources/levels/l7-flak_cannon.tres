@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_e4x4k")
 next = ExtResource("1_e4x4k")
-name = "Flak Canon"
+name = "07 - Flak Canon"
 scene = ExtResource("1_563lh")
 start_position = Vector3(0, 2, -3)
 start_rotation = Vector3(0, 225, 0)

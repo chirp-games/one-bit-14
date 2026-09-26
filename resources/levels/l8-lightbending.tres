@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_xbqir")
 next = ExtResource("1_xbqir")
-name = "Lightbending"
+name = "08 - Lightbending"
 scene = ExtResource("1_q3ad4")
 start_position = Vector3(0, 2, 0)
 start_rotation = Vector3(0, 90, 0)

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_jtq08")
 next = ExtResource("1_aaaaa")
-name = "Launch"
+name = "13 - Launch"
 scene = ExtResource("1_144sh")
 start_position = Vector3(0, 4, 0)
 start_rotation = Vector3(0, 90, 0)

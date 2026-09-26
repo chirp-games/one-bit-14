@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_h565t")
 next = ExtResource("1_h565t")
-name = "Wind Up Toy"
+name = "09 - Wind Up Toy"
 scene = ExtResource("1_5va1o")
 start_position = Vector3(-2, 2, 19)
 floor = -4

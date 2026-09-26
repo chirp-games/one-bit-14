@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_7isrs")
 next = ExtResource("1_7isrs")
-name = "Laser Door"
+name = "05 - Laser Door"
 scene = ExtResource("1_ymrtw")
 start_position = Vector3(0, 2, 2)
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

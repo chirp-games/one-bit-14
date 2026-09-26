@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_1p7mo")
 next = ExtResource("1_w2fco")
-name = "Signal Box"
+name = "10 - Signal Box"
 scene = ExtResource("1_7b1th")
 start_position = Vector3(0, 0, 1)
 start_rotation = Vector3(0, -90, 0)

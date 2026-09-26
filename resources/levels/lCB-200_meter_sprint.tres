@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_lvg4n")
 next = ExtResource("1_o8mnu")
-name = "200m Sprint"
+name = "Challenge B - 200m Sprint"
 scene = ExtResource("1_x22ln")
 start_position = Vector3(0, 2, 0)
 start_rotation = Vector3(0, 90, 0)

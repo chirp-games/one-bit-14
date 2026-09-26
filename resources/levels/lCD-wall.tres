@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_n7cr7")
-name = "Wall"
+name = "Challenge D - Wall"
 scene = ExtResource("1_nphpd")
 start_position = Vector3(0, 2, 0)
 start_rotation = Vector3(0, 90, 0)
