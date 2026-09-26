@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_ck4ty")
-number = "Challenge D"
+number = "Challenge A"
 name = "Retention"
 scene = ExtResource("1_sfor6")
 start_position = Vector3(1, 21, 1)

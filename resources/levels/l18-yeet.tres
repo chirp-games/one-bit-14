@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_feo7t")
-number = "Challenge A"
+number = "Challenge C"
 name = "Yeet"
 scene = ExtResource("1_016yq")
 start_position = Vector3(0, 8.5, -12)
