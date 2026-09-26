@@ -12,6 +12,5 @@ scene = ExtResource("1_mlckq")
 start_position = Vector3(-1, 2, -25)
 start_rotation = Vector3(0, 180, 0)
 floor = -4
-challenge = true
 special = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"
