@@ -4,7 +4,7 @@ extends Control
 
 func place_next_level() -> void:
 	LevelManager.level_complete()
-	var next_level := LevelManager.next_level()
+	var next_level = LevelManager.next_level()
 	if next_level and LevelManager.level_unlocked(next_level.number):
 		place_level(next_level)
 	else:

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_vck1q")
-number = 17
+number = "16"
 name = "Bowling II"
 scene = ExtResource("1_kdrvi")
 start_position = Vector3(-1, 2, -25)

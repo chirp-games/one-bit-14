@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_q41pu")
-number = 18
+number = "14"
 name = "Jump Rope"
 scene = ExtResource("1_7gqxq")
 start_rotation = Vector3(0, 90, 0)

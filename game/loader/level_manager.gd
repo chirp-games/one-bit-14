@@ -21,8 +21,8 @@ static func load_asset(path : String) -> Resource:
 		return load(path)
 
 var levels: Array[LevelInfo] = []
-var normal_level_numbers: Array[int] = []
-var current_number: int = 1
+var normal_level_numbers: Array[String] = []
+var current_number := "1"
 var current_level: LevelInfo :
 	get():
 		var level_index = levels.find_custom(func(x: LevelInfo): return x.number == current_number)
@@ -35,10 +35,12 @@ func load_levels() -> void:
 	for level in levels:
 		if not level.challenge:
 			normal_level_numbers.push_back(level.number)
-
+			
 func next_level() -> LevelInfo:
-	current_number += 1
-	return current_level
+	if current_level.number.is_valid_int():
+		current_number = str(int(current_number) + 1)
+		return current_level
+	return null
 
 func level_complete() -> void:
 	if Engine.is_editor_hint(): # Progress disabled in editor
@@ -76,7 +78,7 @@ func reset_unlocks() -> void:
 	ConfigManager.set_value("unlocks", unlocks)
 	ConfigManager.set_value("completions", [])
 
-func level_unlocked(level: int) -> bool:
+func level_unlocked(level: String) -> bool:
 	return level in ConfigManager.get_value("unlocks", [])
 
 func unlock_all() -> void:

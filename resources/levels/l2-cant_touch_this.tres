@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_hf5rv")
-number = 2
+number = "02"
 name = "Can't Touch This"
 scene = ExtResource("1_ynnil")
 start_position = Vector3(2, 0, 0)

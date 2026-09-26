@@ -44,7 +44,10 @@ func update_icon() -> void:
 			%Special.show()
 
 func update_text() -> void:
-	%Button.text = "%02d - %s" % [level.number, level.name]
+	if level.number.is_valid_int():
+		%Button.text = "%02d - %s" % [int(level.number), level.name]
+		return
+	%Button.text = "%s - %s" % [level.number, level.name]
 
 func load_level() -> void:
 	# Has to be specified or all levels move

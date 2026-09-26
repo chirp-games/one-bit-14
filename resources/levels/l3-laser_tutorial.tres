@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_xfkju")
-number = 3
+number = "03"
 name = "Laser Tutorial"
 scene = ExtResource("1_ihhr4")
 floor = -2

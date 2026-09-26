@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_hndnq")
-name = "Button press"
+number = "01"
+name = "Hello World"
 scene = ExtResource("1_sfdh2")
 start_position = Vector3(4, 2, -4)
 start_rotation = Vector3(0, 135, 0)

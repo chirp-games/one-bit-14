@@ -2,7 +2,7 @@ extends Resource
 class_name LevelInfo
 
 ## The order in which the level appears
-@export var number := 1
+@export var number := "1"
 ## The name of the level, may give a hint to what the puzzle is
 @export var name := ""
 ## The level scene - do not include the player object.
