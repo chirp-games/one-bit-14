@@ -48,7 +48,7 @@ spot_range = 15.0
 spot_attenuation = 0.0
 
 [node name="Funnel2" type="Node3D" parent="." unique_id=200738785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -16)
 
 [node name="CompletionArea" parent="Funnel2" unique_id=1036395825 instance=ExtResource("4_jr4jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
