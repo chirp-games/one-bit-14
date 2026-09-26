@@ -22,5 +22,3 @@ shape = SubResource("BoxShape3D_66u15")
 
 [node name="floating_platform" parent="Platform" unique_id=395135997 instance=ExtResource("2_jnf2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1996206, 0)
-
-[node name="Node" type="Node" parent="." unique_id=2111280335]
