@@ -21,6 +21,7 @@ static func load_asset(path : String) -> Resource:
 		return load(path)
 
 var levels: Array[LevelInfo] = []
+var tutorials: Array[String] = []
 var normal_level_numbers: Array[String] = []
 var current_number := "1"
 var current_level: LevelInfo :
@@ -33,6 +34,8 @@ func load_levels() -> void:
 		levels.push_back(load_asset("res://resources/levels/%s" % file))
 	levels.sort_custom(func(a:LevelInfo, b:LevelInfo): return a.number < b.number)
 	for level in levels:
+		if level.starts_unlocked:
+			tutorials.push_back(level.number)
 		if not level.challenge:
 			normal_level_numbers.push_back(level.number)
 			
@@ -43,25 +46,39 @@ func next_level() -> LevelInfo:
 	return null
 
 func level_complete() -> void:
-	if Engine.is_editor_hint(): # Progress disabled in editor
-		return
+	#if Engine.is_editor_hint(): # Progress disabled in editor
+	#	return
 
 	var current_unlocks: Array = ConfigManager.get_value("unlocks", [])
+	print(current_unlocks)
 	for unlock in current_level.unlocks:
 		if unlock not in current_unlocks:
 			current_unlocks.push_back(unlock)
 	ConfigManager.set_value("unlocks", current_unlocks)
 	
 	var current_completions: Array = ConfigManager.get_value("completions", [])
+	print(current_completions)
 	if current_number not in current_completions:
 		current_completions.push_back(current_level.number)
 		ConfigManager.set_value("completions", current_completions)
 	
 	ConfigManager.on_quit() # Saves progress
 	
-	for level_number in normal_level_numbers:
-		if level_number not in current_completions:
+	for tutorial in tutorials:
+		if tutorial not in current_completions:
 			return
+	
+	var all_normals = true
+	for level_number in normal_level_numbers:
+		if level_number not in current_unlocks:
+			current_unlocks.push_back(level_number)
+		if level_number not in current_completions:
+			all_normals = false
+	ConfigManager.set_value("unlocks", current_unlocks)
+	ConfigManager.on_quit()
+	
+	if not all_normals:
+		return
 	for level in levels:
 		if level.challenge:
 			current_unlocks.push_back(level.number)
