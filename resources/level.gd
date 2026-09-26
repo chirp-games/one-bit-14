@@ -19,10 +19,8 @@ class_name LevelInfo
 @export var floor: int = -10
 
 @export_category("Unlocks")
-## Lock state when the game first runs or "Reset Progress" is pressed.
-@export var starts_unlocked := false
-## If true, unlocks all normal levels when this level is complete
-@export var unlocks_normal := false
+## Tutorial levels start unlocked and unlocks non-challenge levels when all are complete.
+@export var tutorial := false
 ## Challenge levels unlock after all non-challenge levels have been completed.
 @export var challenge := false
 ## Gives the level a cool particle effect to promote it to players.

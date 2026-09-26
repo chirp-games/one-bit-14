@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://c4x0lkpmyvj4a"]
 
-[ext_resource type="Resource" uid="uid://l73gwa7kgfa7" path="res://resources/levels/l22-signal_box.tres" id="1_ck4ty"]
+[ext_resource type="Resource" uid="uid://ddfbf0u1rrjtr" path="res://resources/levels/lCB-200_meter_sprint.tres" id="1_hifvh"]
 [ext_resource type="PackedScene" uid="uid://bhxovi46a4amc" path="res://game/levels/retention.tscn" id="1_sfor6"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_ck4ty"]
 
 [resource]
 script = ExtResource("2_ck4ty")
-next = ExtResource("1_ck4ty")
-name = "Retention"
+next = ExtResource("1_hifvh")
+name = "Challenge A - Retention"
 scene = ExtResource("1_sfor6")
 start_position = Vector3(1, 21, 1)
 start_rotation = Vector3(0, 90, 0)

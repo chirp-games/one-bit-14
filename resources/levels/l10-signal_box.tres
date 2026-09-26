@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://l73gwa7kgfa7"]
+
+[ext_resource type="PackedScene" uid="uid://dqxvp4mdtroy3" path="res://game/levels/signal_box.tscn" id="1_7b1th"]
+[ext_resource type="Resource" uid="uid://ck6er71jm2j75" path="res://resources/levels/l11-latch.tres" id="1_w2fco"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_1p7mo"]
+
+[resource]
+script = ExtResource("2_1p7mo")
+next = ExtResource("1_w2fco")
+name = "10 - Signal Box"
+scene = ExtResource("1_7b1th")
+start_position = Vector3(0, 0, 1)
+start_rotation = Vector3(0, -90, 0)
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

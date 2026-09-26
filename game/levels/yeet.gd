@@ -7,7 +7,7 @@ var b3 = false
 var b4 = false
 
 func _physics_process(delta: float) -> void:
-	%Launcher.speed = max(0.5, %Launcher.progress_ratio * 10)
+	%Launcher.speed = clamp(0.5, %Launcher.progress_ratio * 10, 5)
 
 func button2():
 	b2 = true

@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource("2_hf5rv")
 next = ExtResource("1_hf5rv")
-name = "Can't Touch This"
+name = "02 - Can't Touch This"
 scene = ExtResource("1_ynnil")
 start_position = Vector3(2, 0, 0)
 start_rotation = Vector3(0, 90, 0)
 floor = -5
-starts_unlocked = true
+tutorial = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

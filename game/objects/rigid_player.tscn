@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d3dncwsor66d4" path="res://game/loader/pick_item.tscn" id="4_bdu65"]
 [ext_resource type="PackedScene" uid="uid://bnojoechjpkmm" path="res://jakes_test/gun.tscn" id="4_ssesi"]
 [ext_resource type="PackedScene" uid="uid://dw6jd0bf8s3uc" path="res://jakes_test/BlackHole.tscn" id="5_ssesi"]
-[ext_resource type="PackedScene" uid="uid://bumn7py77oo5s" path="res://jakes_test/isometric_guy.tscn" id="6_ivxs2"]
 [ext_resource type="AudioStream" uid="uid://cjvcxnuf347ui" path="res://assets/sound/footstep/fs_1.mp3" id="7_arf0k"]
 [ext_resource type="AudioStream" uid="uid://yg8hagni3iol" path="res://assets/sound/footstep/fs_2.mp3" id="8_mq64w"]
 [ext_resource type="AudioStream" uid="uid://ba8dnvlsoh205" path="res://assets/sound/footstep/fs_3.mp3" id="9_xxxfs"]
@@ -248,10 +247,6 @@ shape = SubResource("CapsuleShape3D_g4v7s")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=616947894]
 unique_name_in_owner = true
-
-[node name="IsometricGuy" parent="Mesh" unique_id=1391830877 instance=ExtResource("6_ivxs2")]
-transform = Transform3D(0.00455529, 0, -0.2499585, 0, 0.25, 0, 0.2499585, 0, 0.00455529, 0, -0.5, 0)
-visible = false
 
 [node name="Camera" type="Camera3D" parent="Mesh" unique_id=1645967111]
 unique_name_in_owner = true

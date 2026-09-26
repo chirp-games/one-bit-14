@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 			1
 		)
 	if movement_mode == MovementMode.Back:
-		clamp(
+		progress_ratio = clamp(
 			progress_ratio -
 				((speed / parent.curve.get_baked_length()) if normalise_speed else speed) *
 				delta,

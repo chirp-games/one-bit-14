@@ -1,15 +1,14 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://b0l8s03ll4fr7"]
 
 [ext_resource type="PackedScene" uid="uid://7thl0bte1iih" path="res://game/levels/laser_tutorial.tscn" id="1_ihhr4"]
-[ext_resource type="Resource" uid="uid://g0lsgft4s44a" path="res://resources/levels/l4-jumping_101.tres" id="1_xfkju"]
+[ext_resource type="Resource" uid="uid://difro6quxt6ce" path="res://resources/levels/l4-ring_a_ring.tres" id="1_xfkju"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_xfkju"]
 
 [resource]
 script = ExtResource("2_xfkju")
 next = ExtResource("1_xfkju")
-name = "Laser Tutorial"
+name = "03 - Laser Tutorial"
 scene = ExtResource("1_ihhr4")
 floor = -2
-starts_unlocked = true
-unlocks_normal = true
+tutorial = true
 metadata/_custom_type_script = "uid://btqqmrxm4u0po"

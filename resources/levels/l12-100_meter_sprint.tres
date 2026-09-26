@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://c4vfxkatvoyb4"]
+
+[ext_resource type="Resource" uid="uid://c8bjs56ehmxlw" path="res://resources/levels/l13-launch.tres" id="1_do0fl"]
+[ext_resource type="PackedScene" uid="uid://bh2j1oy3dbrwt" path="res://game/levels/long_sprint/sprint.tscn" id="1_g0sxf"]
+[ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_do0fl"]
+
+[resource]
+script = ExtResource("2_do0fl")
+next = ExtResource("1_do0fl")
+name = "12 - 100m Sprint"
+scene = ExtResource("1_g0sxf")
+start_position = Vector3(0, 2, 0)
+start_rotation = Vector3(0, 90, 0)
+floor = -4
+metadata/_custom_type_script = "uid://btqqmrxm4u0po"

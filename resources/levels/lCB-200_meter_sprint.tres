@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="LevelInfo" format=3 uid="uid://ddfbf0u1rrjtr"]
 
-[ext_resource type="Resource" uid="uid://c4x0lkpmyvj4a" path="res://resources/levels/l20-retention.tres" id="1_lvg4n"]
+[ext_resource type="Resource" uid="uid://bu4qox3vl7iho" path="res://resources/levels/lCC-yeet.tres" id="1_o8mnu"]
 [ext_resource type="PackedScene" uid="uid://dedv5sm4a3n8" path="res://game/levels/long_sprint/sprint_2.tscn" id="1_x22ln"]
 [ext_resource type="Script" uid="uid://btqqmrxm4u0po" path="res://resources/level.gd" id="2_lvg4n"]
 
 [resource]
 script = ExtResource("2_lvg4n")
-next = ExtResource("1_lvg4n")
-name = "200 meter sprint"
+next = ExtResource("1_o8mnu")
+name = "Challenge B - 200m Sprint"
 scene = ExtResource("1_x22ln")
 start_position = Vector3(0, 2, 0)
 start_rotation = Vector3(0, 90, 0)
